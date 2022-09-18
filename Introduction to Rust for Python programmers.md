@@ -1651,35 +1651,93 @@ let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 ## 벡터
 
+벡터는 러스트에서 가장 널리 사용되는 자료형 중 하나로, 여러 개의 값을 하나로 묶어서 사용할 수 있습니다. 벡터의 특징은 길이를 런타임에 동적으로 변경 가능하다는 점입니다. 이러한 특징 떄문에 런타임에서는 값이 힙 영역에 저장됩니다.
 
 
 
+### 벡터 선언
 
-`Vec<T>` 
-
-길이를 런타임에 동적으로 변경 가능, 힙 영역에 데이터 저장
-
-선언 시 타입 명시
-
-
-
-매크로를 사용해 선언 시 타입 추론됨
-
-
+벡터의 선언은 두 가지로 가능합니다. 원소의 값으로부터 타입을 추론할 수 있습니다. 첫 번째는 `Vec` 구조체의 `from` 메소드를 사용해 배열로부터 벡터를 만드는 방법입니다. 두 번째는 `vec!` 매크로를 사용해 벡터를 만드는 방법입니다. 값을 직접 입력해 벡터를 만드는 경우, 매크로를 사용하는 방법이 좀더 간결합니다.
 
 ```rust
 fn main() {
-    let vec1: Vec<i32> = Vec::new();
-    let vec2: Vec<i32> = vec![];
+    let vec1 = Vec::from([1, 2, 3]);
+    let vec2 = vec![1, 2, 3];
+}
 
-    let vec3 = vec![1, 2, 3];
+```
+
+비어 있는 벡터를 선언하는 경우는 원소로부터 타입을 추론할 수 없기 때문에 반드시 타입을 명시해야 합니다. 
+
+```rust
+fn main() {
+    let vec3: Vec<i32> = Vec::new();
+    let vec4: Vec<i32> = vec![];
 }
 
 ```
 
 
 
-벡터에 값 추가하기
+### 벡터 원소 접근하기
+
+벡터의 원소는 인덱스(index)를 사용해 접근할 수 있습니다. 두 번째 원소 `2` 를 인덱스로 접근해 변수 `num` 에 할당하고, 출력하는 예제를 만들어 보겠습니다. 먼저 파이썬 코드는 다음과 같습니다.
+
+```python
+vec1 = [1, 2, 3]
+num = vec1[1]
+
+print(num)
+
+```
+
+실행 결과
+
+```
+```
+
+동일한 내용의 러스트 코드는 다음과 같습니다.
+
+```python
+fn main() {
+    let vec1 = vec![1, 2, 3];
+
+    let num = vec1[1];
+
+    println!("{}", num);
+}
+
+```
+
+실행 결과
+
+```
+2
+```
+
+
+
+### 벡터에 값 추가하기
+
+벡터를 선언하고 값을 추가해 보겠습니다. 먼저 파이썬에서 벡터와 비슷한 리스트로 같은 내용을 구현하면 다음과 같습니다. 리스트의 마지막에 4, 5, 6을 추가합니다.
+
+```python
+vec1 = [1, 2, 3]
+vec1.append(4)
+vec1.append(5)
+vec1.append(6)
+
+print(vec1)
+
+```
+
+실행 결과
+
+```
+[1, 2, 3, 4, 5, 6]
+```
+
+마찬가지로 벡터의 마지막에 값을 추가해 보겠습니다. `push` 메소드를 사용하면 원소를 벡터 마지막에 하나씩 추가할 수 있습니다. 주의해야 하는 점은 벡터 `vec1` 이 변경되기 때문에 처음에 `vec1`을 가변 변수로 선언해야 한다는 것입니다. 마지막으로, 벡터 자체를 프린트하기 위해서는 디버그 모드로 프린트하기 위해서 서식을 `"{:?}"`로 사용해야 합니다.
 
 ```rust
 fn main() {
@@ -1702,15 +1760,95 @@ fn main() {
 
 
 
+### 벡터에서 값 삭제하기
+
+이번에는 리스트 `[1, 2, 3]` 에서 마지막 원소 3을 제거한 다음, 맨 앞의 원소 1을 제거해 보겠습니다. 파이썬의 `pop` 메소드는 실행 시 원소를 제거하고 제거된 값을 리턴합니다.
+
+```python
+vec1 = [1, 2, 3]
+num1 = vec1.pop()
+num2 = vec1.pop(0)
+
+print(num1, num2, vec1)
+
+
+```
+
+실행 결과
+
+```
+3 1 [2]
+```
+
+러스트는 `pop` 메소드에 인덱스를 넣을 수 없고, 무조건 마지막 원소가 제거됩니다. 마지막 원소가 아닌 다른 원소를 제거하려면 `remove` 메소드에 인덱스를 넣어야 합니다. 러스트의 `pop`과 `remove` 모두 원소를 제거하고, 제거된 원소를 리턴합니다.
+
+```rust
+fn main() {
+    let mut vec1 = vec![1, 2, 3];
+
+    let num1 = vec1.pop().unwrap();
+    let num2 = vec1.remove(0);
+
+    println!("{} {} {:?}", num1, num2, vec1);
+}
+
+```
+
+실행 결과
+
+```
+3 1 [2]
+```
+
+
+
+### 데크
+
+참고로 파이썬의 리스트와 러스트의 벡터 모두 맨 앞의 원소를 제거하는 데 시간 복잡도가 $O(n)$ 만큼 소요되기 때문에 맨 앞에서 원소를 자주 제거해야 한다면 데크(deque)를 사용하는 것이 좋습니다. 파이썬은 `collections` 모듈의  `deque` 를 사용합니다.
+
+```python
+from collections import deque
+
+deq = deque([1, 2, 3])
+print(deq.popleft())
+
+```
+
+실행 결과
+
+```
+1
+```
+
+
+
+러스트에서는 `VecDeque`를 사용합니다.
+
+```rust
+use std::collections::VecDeque;
+
+fn main() {
+    let mut deq = VecDeque::from([1, 2, 3]);
+    println!("{}", deq.pop_front().unwrap());
+}
+
+```
+
+실행 결과
+
+```
+1
+```
+
 
 
 
 
 ## 배열
 
+### 배열 선언
 
-
-
+배열(array)이란, 같은 타입의 값이 모여 있는 길이가 고정된 자료형입니다. 파이썬에서 비슷한 내장 자료형은 없지만, 넘파이(numpy)의 배열(array)가 가장 이와 유사합니다. 넘파이는 내부적으로 C로 구현된 배열을 가지고 있고, 파이썬에서 이 배열의 값을 꺼내서 사용하는 방식으로 동작합니다. 넘파이 배열을 이용해 열두 달을 나타내면 다음과 같습니다.
 
 ```python
 import numpy as np
@@ -1733,6 +1871,18 @@ months = np.array(
 )
 print(months)
 
+```
+
+실행 결과
+
+```
+['January' 'February' 'March' 'April' 'May' 'June' 'July' 'August'
+ 'September' 'October' 'November' 'December']
+```
+
+`full` 함수를 사용하면 배열을 간단하게 한 번에 초기화할 수 있습니다.
+
+```python
 nums = np.full(5, 3)
 print(nums)
 
@@ -1741,18 +1891,12 @@ print(nums)
 실행 결과
 
 ```
-['January' 'February' 'March' 'April' 'May' 'June' 'July' 'August'
- 'September' 'October' 'November' 'December']
 [3 3 3 3 3]
 ```
 
+러스트의 배열의 길이는 처음 선언된 이후 변경할 수 없습니다. 배열을 사용하면 벡터와 다르게 메모리가 스택 영역에 저장되기 때문에 빠르게 값에 접근할 수 있다는 장점이 있습니다. 이때 배열의 원소들은 모두 같은 타입이어야 합니다. 
 
-
-
-
-러스트의 배열의 원소들은 모두 같은 타입이어야 합니다. 배열의 선언은 대괄호 안에 콤마로 구분된 값을 나열합니다. 배열의 길이는 처음 선언된 이후 변경할 수 없습니다. 배열을 사용하면 벡터와 다르게 메모리가 스택 영역에 저장되기 때문에 빠르게 값에 접근할 수 있다는 장점이 있습니다.
-
-배열은 벡터와 자주 비교되는데, 데이터의 길이가 컴파일 타임에 정해지는 경우에는 배열을, 데이터의 길이가 런타임에 정해지는 경우에는 벡터를 사용합니다.
+배열의 선언은 대괄호 안에 콤마로 구분된 값을 나열합니다. 
 
 ```rust
 fn main() {
@@ -1771,7 +1915,20 @@ fn main() {
         "December",
     ];
     println!("{:?}", months);
+}
 
+```
+
+실행 결과
+
+```
+["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+```
+
+러스트에서도 편리한 배열 초기화를 지원합니다. `[3; 5]` 와 같이 표기하면 숫자 3을 5번 나열하라는 의미입니다.
+
+```rust
+fn main() {
     let nums = [3; 5];
     println!("{:?}", nums);
 }
@@ -1781,17 +1938,116 @@ fn main() {
 실행 결과
 
 ```
-["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 [3, 3, 3, 3, 3]
 ```
 
 
 
+### 원소 참조
 
+넘파이 배열의 원소들은 인덱스를 통해 접근이 가능합니다.	
 
+```python
+import numpy as np
 
+nums = np.full(5, 3)
+nums[1] = 1
+print(nums)
 
-배열 인덱스 에러는 런타임에 발생하므로 특히 주의
+```
+
+실행 결과
+
+```
+[3 1 3 3 3]
+```
+
+러스트 배열도 동일합니다. 이번에는 배열 원소를 수정해야 하기 때문에 `nums` 배열을 가변 변수로 선언합니다.
+
+```rust
+fn main() {
+    let mut nums = [3; 5];
+    nums[1] = 1;
+    println!("{:?}", nums);
+}
+
+```
+
+실행 결과
+
+```
+[3, 1, 3, 3, 3]
+```
+
+넘파이 배열의 길이보다 큰 값을 참조하려고 하면 에러가 발생합니다.
+
+```python
+import numpy as np
+
+nums = np.full(5, 3)
+print(nums[5])
+
+```
+
+실행 결과
+
+```
+Traceback (most recent call last):
+  File "/Users/code/temp/python/main.py", line 4, in <module>
+    print(nums[5])
+IndexError: index 5 is out of bounds for axis 0 with size 5
+```
+
+러스트 코드는 컴파일 시 인덱스가 범위를 벗어난다는 에러가 발생합니다.
+
+```rust,ignore
+fn main() {
+    let nums = [3; 5];
+    println!("{}", nums[5]);
+}
+
+```
+
+실행 결과
+
+```
+Compiling rust_part v0.1.0 (/Users/code/temp/rust_part)
+error: this operation will panic at runtime
+ --> src/main.rs:3:20
+  |
+3 |     println!("{}", nums[5]);
+  |                    ^^^^^^^ index out of bounds: the length is 5 but the index is 5
+  |
+  = note: `#[deny(unconditional_panic)]` on by default
+
+error: could not compile `rust_part` due to previous error
+```
+
+하지만 이렇게 미리 참조할 배열 인덱스를 컴파일러가 알 수 없는 경우, 런타임에 에러가 발생할 수 있기 때문에 주의해야 합니다.
+
+```rust, should_panic
+fn main() {
+    let nums = [3; 5];
+    for i in 0..nums.len() + 1 {
+        println!("{}", nums[i]);
+    }
+}
+
+```
+
+실행 결과
+
+```
+3
+3
+3
+3
+3
+thread 'main' panicked at 'index out of bounds: the len is 5 but the index is 5', src/main.rs:4:24
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+```
+
+배열은 벡터와 자주 비교되는데, 데이터의 길이가 컴파일 타임에 정해지는 경우에는 배열을, 데이터의 길이가 런타임에 정해지는 경우에는 벡터를 사용합니다.
 
 
 
@@ -1803,7 +2059,7 @@ fn main() {
 
 ### 튜플 선언
 
-둘 다 다음과 같이 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다.
+파이썬의 튜플은 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다.
 
 ```python
 tup1 = (0, 0.1, "hello")
@@ -1820,7 +2076,7 @@ print(f"tup1 has {tup1} and the value of y is {y}")
 tup1 has (0, 0.1, 'hello') and the value of y is 1.01
 ```
 
-변수의 타입을 컴파일러가 추론하는 것처럼 튜플의 타입도 컴파일러가 추론하기 때문에 타입을 명시할 필요가 없습니다. 하지만 타입을 직접 명시해도 상관없습니다.
+러스트의 튜플도 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다. 변수의 타입을 컴파일러가 추론하는 것처럼 튜플의 타입도 컴파일러가 추론하기 때문에 타입을 명시할 필요가 없습니다. 하지만 타입을 직접 명시해도 상관없습니다.
 
 ```rust
 fn main() {
@@ -1841,11 +2097,9 @@ tup1 is (0, 0.1, "hello") and the value of y is: 1.01
 
 
 
-
-
 ### 원소 참조
 
-
+파이썬에서 튜플 원소를 참조하려면 인덱스를 넣으면 됩니다.
 
 ```python
 tup1 = (0, 0.1, ("hello", "world"))
@@ -1860,7 +2114,7 @@ print(tup1[2][0], tup1[2][1])
 hello world
 ```
 
-러스트에서 튜플 원소의 참조는 약간 특이한 방식으로 합니다. 튜플 이름 뒤에 점(`.`)을 붙이고 그 뒤에 인덱스를 입력합니다.
+러스트에서 튜플 원소의 참조는 약간 특이한 방식으로 합니다. 튜플 이름 뒤에 점(`.`)을 붙이고 그 뒤에 인덱스를 입력합니다. 만일 다중 튜플인 경우, 점을 한번 더 찍고 인덱스를 입력하면 됩니다.
 
 ```rust
 fn main() {
@@ -1879,11 +2133,9 @@ hello world
 
 
 
-
-
 ### 튜플 불변성
 
-파이썬에서의 튜플과 러스트의 튜플은 차이점이 있는데 바로 불변성입니다. 파이썬의 튜플은 한 번 선언되면 원소의 내용을 바꾸거나, 튜플의 크기를 변경할 수 없습니다. 마찬가지로 러스트의 튜플도 한 번 선언되면 크기를 변경할 수 없지만, 원소의 내용은 바꿀 수 있습니다. 다만 처음 선언한 타입은 그대로 유지되어야 합니다. 
+파이썬에서의 튜플과 러스트의 튜플은 차이점이 있는데 바로 불변성입니다. 파이썬의 튜플은 한 번 선언되면 원소의 내용을 바꾸거나, 튜플의 크기를 변경할 수 없습니다. 
 
 ```python
 tup1 = (0, 0.1, "hello")
@@ -1910,7 +2162,7 @@ Traceback (most recent call last):
 TypeError: 'tuple' object does not support item assignment
 ```
 
-
+마찬가지로 러스트의 튜플도 한 번 선언되면 크기를 변경할 수 없지만, 원소의 내용은 바꿀 수 있습니다. 다만 처음 선언한 타입은 그대로 유지되어야 합니다. 
 
 ```rust
 fn main() {
@@ -1937,43 +2189,48 @@ fn main() {
 
 
 
-
-
-
-
 ## 열거형
+
+열거형은 여러 상수들의 집합으로 새로운 타입을 선언하는 방법입니다. 파이썬에서는 `Enum` 클래스를 상속해 열거형을 만들 수 있습니다. 아래와 같이 `Languages` 클래스를 선언하고, `python`, `rust`, `javascript`, `go` 4개의 값을 타입에 선언했습니다. 그리고 `echo` 메소드를 정의했는데, 이 메소드는 `Enum` 클래스에 미리 정의된 `name` 프로퍼티를 프린트합니다.
+
+이렇게 선언된 열거형을 이용해, 어떤 변수의 값에 따라 다른 행동을 하도록 할 수 있습니다. 여기서 `language` 변수와 비교되는 값들이 `Language` 클래스의 값들인 `Languages.*` 라는 점을 기억하세요.
 
 ```python
 from enum import Enum
 
 
 class Languages(Enum):
-    python = "python"
-    rust = "rust"
-    javascript = "javascript"
-    go = "go"
+    PYTHON = "python"
+    RUST = "rust"
+    JAVASCRIPT = "javascript"
+    GO = "go"
 
     def echo(self):
         print(self.name)
 
 
-language = Languages.rust
+language = Languages.RUST
 language.echo()
 
-if language == Languages.python:
-    print(language.name)
-elif language == Languages.go:
-    print(language.name)
-elif language == Languages.javascript:
-    print(language.name)
+if language == Languages.PYTHON:
+    print("I love Python")
+elif language == Languages.GO:
+    print("I love Go")
+elif language == Languages.JAVASCRIPT:
+    print("I love Javascript")
 else:
     print("I love Rust🦀")
 
 ```
 
+실행 결과
 
+```
+RUST
+I love Rust🦀
+```
 
-
+러스트의 열거형은 `enum` 키워드로 선언이 가능합니다. 이때 값이 없는 열거형과 값이 있는 열거형 두 가지를 만들 수 있는데, 먼저 값이 없는 열거형을 만들어 보면 다음과 같습니다. `impl` 블럭을 이용해 열거형에서 사용할 메소드를 만들 수 있습니다. 이에 관련한 자세한 문법은 나중에 객체지향을 배우면서 좀더 자세히 다루겠습니다. 마지막으로, 파이썬에서 `if` 문을 사용한 것과 다르게, 러스트에서는 `match` 를 이용해 열거형의 값에 따라 다른 행동을 하도록 만듭니다. 
 
 ```rust
 fn main() {
@@ -1998,16 +2255,66 @@ fn main() {
 
     // match
     match language {
-        Languages::Python => println!("{:?}", language),
-        Languages::Go => println!("{:?}", language),
-        Languages::Javascript => println!("{:?}", language),
+        Languages::Python => println!("I love Python"),
+        Languages::Go => println!("I love Go"),
+        Languages::Javascript => println!("I love Javascript"),
         _ => println!("I love Rust🦀"),
     }
 }
 
 ```
 
-pattern matching with enum and match
+실행 결과
+
+```
+Rust
+I love Rust🦀
+```
+
+열거형에 값을 지정하려면 열거형을 선언하면서 타입을 지정하면 됩니다. 열거형 변수 뒤에 `(타입)` 과 같이 입력하면 됩니다. 이제 열거형 변수를 선언할 때, 해당 타입에 대한 정보를 추가로 입력해줘야 합니다. 예를 들어, `indo` 라는 변수에 학년은 A, 이름은 indo라는 값을 넣으려면 다음과 같습니다.
+
+```rust,ignore
+let indo = Job::Student(Grade::A, "indo".to_string());
+```
+
+이제 `indo` 변수의 값에 따라 서로 다른 내용을 출력하도록 `match` 를 사용한 전체 코드는 다음과 같습니다.
+
+```rust
+#[allow(dead_code)]
+fn main() {
+    #[derive(Debug)] // derive Debug trait, to print the enum
+    enum Grade {
+        A,
+        B,
+        C,
+    }
+
+    enum Job {
+        Student(Grade, String),
+        Developer(String),
+    }
+
+    let indo = Job::Student(Grade::A, "indo".to_string());
+
+    match indo {
+        Job::Student(grade, name) => {
+            println!("{} is a student with grade {:?}", name, grade);
+        }
+        Job::Developer(name) => {
+            println!("{} is a developer", name);
+        }
+    }
+}
+
+```
+
+실행 결과
+
+```
+indo is a student with grade A
+```
+
+
 
 ### if let
 
@@ -2038,11 +2345,11 @@ x is 3
 
 
 
-
-
 ## 해시맵
 
+해시맵은 키와 밸류를 묶어서 관리하는 자료형으로, 키에 대응하는 밸류를 빠르게 찾을 수 있는 장점이 있습니다. 특히 데이터를 인덱스로 관리하지 않는 경우에 유용합니다.
 
+파이썬에서는 해시맵을 딕셔너리로 구현하고 있습니다. 다음 예제 코드에서는 `songs` 딕셔너리에 가수 이름과 대표 곡을 넣어 두었습니다. 그리고 딕셔너리에 특정 키나 밸류가 포함되어 있는지를 찾는 방법,  새로운 키를 넣거나 기존의 밸류를 업데이트하는 방법, 마지막으로 특정 원소를 삭제하는 방법 그리고 존재하지 않는 키를 참조할 때의 처리 방법을 다루고 있습니다.
 
 ```python
 songs = {
@@ -2079,7 +2386,7 @@ a-ha - Take on Me
 Post Malone is not in the playlist
 ```
 
-
+러스트에서는 해시맵을 `HashMap` 을 이용해 구현이 가능합니다. 아래 예제에서는 파이썬 코드와 동일하게 해시맵을 선언하고 가수 이름과 대표 곡을 저장했습니다. 그리고 특정 키나 밸류가 해시맵에 포함되어 있는지를 검사합니다. 새로운 키와 밸류 쌍을 추가하고, 수정하고, 삭제하는 방법, 그리고 존재하지 않는 키를 참조했을 때의 처리 방법을 소개합니다. 여기서 마지막에 `unwrap_or(&...)` 는 앞의 코드가 에러를 발생시켰을 때 처리하는 방법으로, 자세한 문법은 에러 처리 챕터에서 다루겠습니다.
 
 ```rust
 use std::collections::HashMap;
@@ -2130,13 +2437,9 @@ a-ha - Take on Me
 
 
 
-
-
-
-
 ## 문자열
 
-러스트에서는 문자열을 두 가지 방법을 사용해 선언할 수 있습니다. 첫 번째는 `String` 타입으로, 일반적인 문자열을 만들 때 사용합니다. 두 번째는 `&str` 타입으로, `String` 타입으로 선언된 문자열의 일부분을 의미합니다. `String` 타입으로 문자열을 선언하고 그 일부를 프린트해 보겠습니다.
+러스트에서는 문자열을 두 가지 방법을 사용해 선언할 수 있습니다. 첫 번째는 `String` 타입으로, 일반적인 문자열을 만들 때 사용합니다. 두 번째는 `&str` 타입으로, `String` 타입으로 선언된 문자열의 일부분을 의미합니다. 따라서 `&str`을 문자열 슬라이스라고 부릅니다. `String` 타입으로 문자열을 선언하고, 해당 문자열로부터 문자열 슬라이스를 만들어 프린트해 보겠습니다.
 
 ```rust
 fn main() {
@@ -2147,17 +2450,191 @@ fn main() {
 
 ```
 
+실행 결과
 
+```
+buzzi!
+```
 
 
 
 ## 이터레이터
 
-enumerate
+### 이터레이터란?
 
-implements `Iterator` traits `next()` method
+이터레이터(iterator)는 반복 가능한 시퀀스(sequence)를 입력으로 받아 각 원소에 특정 작업을 수행할 수 있도록 하는 기능입니다. 앞에서 배운 벡터를 이용해 값을 순서대로 출력하는 예제를 만들어 보겠습니다.
 
-map, skip, take, filter, sum, ...
+```rust,ignore
+fn main() {
+    let names = vec!["james", "cameron", "indo"];
+    for name in names {
+        println!("{}", name);
+    }
+    println!("{:?}", names);
+}
+
+```
+
+실행 결과
+
+```
+Compiling rust_part v0.1.0 (/Users/code/temp/rust_part)
+error[E0382]: borrow of moved value: `names`
+   --> src/main.rs:6:22
+    |
+2   |     let names = vec!["james", "cameron", "indo"];
+    |         ----- move occurs because `names` has type `Vec<&str>`, which does not implement the `Copy` trait
+3   |     for name in names {
+    |                 -----
+    |                 |
+    |                 `names` moved due to this implicit call to `.into_iter()`
+    |                 help: consider borrowing to avoid moving into the for loop: `&names`
+...
+6   |     println!("{:?}", names);
+    |                      ^^^^^ value borrowed here after move
+    |
+```
+
+컴파일하면 에러가 발생하는데, `for name in names` 에서 `names`가 암묵적으로 `.into_iter()` 메소드를 호출했다고 나옵니다. 여기서 `into_iter()`가 바로 이터레이터인데, 벡터 원소의 값을 `for` 루프 안으로 가져와 반복하는 역할을 수행합니다. 이때 값이 가져와지기 때문에 원소의 소유권도 함께 이동됩니다. 이미 이동된 소유권을 `println!("{:?}", names);` 에서 참조하기 때문에 에러가 발생합니다.
+
+이를 해결하기 위해서는 명시적으로 `iter()` 메소드를 호출해 원소를 `for` 루프 안으로 전달해주어야 합니다.
+
+```rust
+fn main() {
+    let names = vec!["james", "cameron", "indo"];
+    for name in names.iter() {
+        println!("{}", name);
+    }
+    println!("{:?}", names);
+}
+
+```
+
+실행 결과
+
+```
+james
+cameron
+indo
+["james", "cameron", "indo"]
+```
+
+`iter()` 메소드는 선언 즉시 원소를 내놓는 것이 아니라, 값이 필요해지면 그때 원소를 리턴합니다. 따라서 다음과 같은 코드가 가능합니다.
+
+```rust
+fn main() {
+    let names = vec!["james", "cameron", "indo"];
+    let names_iter = names.iter();
+    for name in names_iter {
+        println!("{}", name);
+    }
+    println!("{:?}", names);
+}
+
+```
+
+실행 결과
+
+```
+james
+cameron
+indo
+["james", "cameron", "indo"]
+```
+
+
+
+### 이터레이터를 소비하는 메소드들
+
+이번 단원에서는 이터레이터에 속한 메소드들을 이용해 원소에 여러 작업을 수행해 보겠습니다. 파이썬에서는 합계, 최대값, 최소값을 구하는 함수인 `sum`, `max`, `min`을 리스트에 직접 사용합니다.
+
+```python
+nums = [1, 2, 3]
+
+sum = sum(nums)
+max = max(nums)
+min = min(nums)
+print(f"sum: {sum}, max: {max}, min: {min}")
+```
+
+실행 결과
+
+```
+sum: 6, max: 3, min: 1
+```
+
+러스트에서는 이터레이터에서 `sum`, `max`, `min` 메소드를 호출합니다.
+
+```rust
+fn main() {
+    let num = vec![1, 2, 3];
+
+    let sum: i32 = num.iter().sum();
+    let max = num.iter().max().unwrap();
+    let min = num.iter().min().unwrap();
+    println!("sum: {}, max: {}, min: {}", sum, max, min);
+}
+
+```
+
+실행 결과
+
+```
+sum: 6, max: 3, min: 1
+```
+
+
+
+### 새로운 이터레이터를 만드는 메소드들
+
+이터레이터 메소드 중에는 새로운 이터레이터를 만드는 메소드들이 있습니다. 대표적으로 인덱스와 원소를 함께 반복하는 `enumerate` 와 두 시퀀스의 원소를 순서대로 함께 묶어 반복하는 `zip` 입니다.
+
+먼저 파이썬 코드는 다음과 같습니다.
+
+```python
+nums1 = [1, 2, 3]
+nums2 = [4, 5, 6]
+
+enumer = list(enumerate(nums1))
+print(enum)
+zip = list(zip(nums1, nums2))
+print(zip)
+
+```
+
+실행 결과
+
+```
+[(0, 1), (1, 2), (2, 3)]
+[(1, 4), (2, 5), (3, 6)]
+```
+
+마찬가지로 러스트에서도 원소와 인덱스를 동시에 반복하거나 두 시퀀스의 원소를 동시에 반복할 수 있습니다.
+
+```rust
+fn main() {
+    let nums1 = vec![1, 2, 3];
+    let nums2 = vec![4, 5, 6];
+
+    let enumer: Vec<(usize, &i32)> = nums1.iter().enumerate().collect();
+    println!("{:?}", enumer);
+
+    let zip: Vec<(&i32, &i32)> = nums1.iter().zip(nums2.iter()).collect();
+    println!("{:?}", zip);
+}
+
+```
+
+실행 결과
+
+```
+[(0, 1), (1, 2), (2, 3)]
+[(1, 4), (2, 5), (3, 6)]
+```
+
+
+
+이터레이터를 만들어내는 메소드 중에서 가장 중요하게 봐야 하는 두 가지가 있는데 바로 `map` 과 `filter` 입니다. `map` 은 주어진 함수를 각 원소에 적용합니다. `filter` 는 주어진 시퀀스에서 기준에 맞는 결과만 남기는 방법입니다. 아래 두 예제에서는 시퀀스의 원소에 1을 더한 새로운 시퀀스를 만들거나, 원소 중 홀수인 값만 남기도록 했습니다.
 
 ```python
 nums = [1, 2, 3]
@@ -2165,8 +2642,6 @@ nums = [1, 2, 3]
 f = lambda x: x + 1
 
 print(list(map(f, nums)))
-print(sum(map(f, nums)))
-
 print(list(filter(lambda x: x % 2 == 1, nums)))
 
 ```
@@ -2175,13 +2650,10 @@ print(list(filter(lambda x: x % 2 == 1, nums)))
 
 ```
 [2, 3, 4]
-9
 [1, 3]
 ```
 
-
-
-
+러스트 코드에서는 클로저를 이용해 동일한 내용을 구현했습니다. 이때 `filter` 의 경우, 기존의 원소의 값을 이동해서 새로운 벡터를 만들기 때문에 `into_iter` 메소드로 이터레이터를 만들었습니다.
 
 ```rust
 fn main() {
@@ -2189,15 +2661,11 @@ fn main() {
 
     let f = |x: &i32| x + 1;
 
-    println!("{:?}", nums.iter().map(f).collect::<Vec<i32>>()); // recall turbofish!
-    println!("{:?}", nums.iter().map(f).sum::<i32>());
+    let maps: Vec<i32> = nums.iter().map(f).collect();
+    println!("{:?}", maps);
 
-    println!(
-        "{:?}",
-        nums.into_iter()
-            .filter(|x: &i32| -> bool { x % 2 == 1 })
-            .collect::<Vec<i32>>()
-    );
+    let filters: Vec<i32> = nums.into_iter().filter(|x| x % 2 == 1).collect();
+    println!("{:?}", filters);
 }
 
 ```
@@ -2206,11 +2674,8 @@ fn main() {
 
 ```
 [2, 3, 4]
-9
 [1, 3]
 ```
-
-
 
 
 
