@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>열거형 - 파이썬 프로그래머를 위한 러스트 입문</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html" class="active"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li class="chapter-item expanded "><a href="ch10.html"><strong aria-hidden="true">10.</strong> 스마트 포인터</a></li><li class="chapter-item expanded "><a href="ch11.html"><strong aria-hidden="true">11.</strong> 예외처리</a></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 소스코드 살펴보기</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-04.html"><strong aria-hidden="true">14.4.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">파이썬 프로그래머를 위한 러스트 입문</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="열거형"><a class="header" href="#열거형">열거형</a></h2>
+<p>열거형은 여러 상수들의 집합으로 새로운 타입을 선언하는 방법입니다. 파이썬에서는 <code>Enum</code> 클래스를 상속해 열거형을 만들 수 있습니다. 아래와 같이 <code>Languages</code> 클래스를 선언하고, <code>python</code>, <code>rust</code>, <code>javascript</code>, <code>go</code> 4개의 값을 타입에 선언했습니다. 그리고 <code>echo</code> 메소드를 정의했는데, 이 메소드는 <code>Enum</code> 클래스에 미리 정의된 <code>name</code> 프로퍼티를 프린트합니다.</p>
+<p>이렇게 선언된 열거형을 이용해, 어떤 변수의 값에 따라 다른 행동을 하도록 할 수 있습니다. 여기서 <code>language</code> 변수와 비교되는 값들이 <code>Language</code> 클래스의 값들인 <code>Languages.*</code> 라는 점을 기억하세요.</p>
+<pre><code class="language-python">from enum import Enum
+
+
+class Languages(Enum):
+    PYTHON = &quot;python&quot;
+    RUST = &quot;rust&quot;
+    JAVASCRIPT = &quot;javascript&quot;
+    GO = &quot;go&quot;
+
+    def echo(self):
+        print(self.name)
+
+
+language = Languages.RUST
+language.echo()
+
+if language == Languages.PYTHON:
+    print(&quot;I love Python&quot;)
+elif language == Languages.GO:
+    print(&quot;I love Go&quot;)
+elif language == Languages.JAVASCRIPT:
+    print(&quot;I love Javascript&quot;)
+else:
+    print(&quot;I love Rust🦀&quot;)
+
+</code></pre>
+<p>실행 결과</p>
+<pre><code>RUST
+I love Rust🦀
+</code></pre>
+<p>러스트의 열거형은 <code>enum</code> 키워드로 선언이 가능합니다. 이때 값이 없는 열거형과 값이 있는 열거형 두 가지를 만들 수 있는데, 먼저 값이 없는 열거형을 만들어 보면 다음과 같습니다. <code>impl</code> 블럭을 이용해 열거형에서 사용할 메소드를 만들 수 있습니다. 이에 관련한 자세한 문법은 나중에 객체지향을 배우면서 좀더 자세히 다루겠습니다. 마지막으로, 파이썬에서 <code>if</code> 문을 사용한 것과 다르게, 러스트에서는 <code>match</code> 를 이용해 열거형의 값에 따라 다른 행동을 하도록 만듭니다. </p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    // Enum
+    #[allow(dead_code)]
+    #[derive(Debug)] // derive Debug trait, to print the enum
+    enum Languages {
+        Python,
+        Rust,
+        Javascript,
+        Go,
+    }
+
+    impl Languages {
+        fn echo(&amp;self) {
+            println!(&quot;{:?}&quot;, &amp;self);
+        }
+    }
+
+    let language = Languages::Rust;
+    language.echo();
+
+    // match
+    match language {
+        Languages::Python =&gt; println!(&quot;I love Python&quot;),
+        Languages::Go =&gt; println!(&quot;I love Go&quot;),
+        Languages::Javascript =&gt; println!(&quot;I love Javascript&quot;),
+        _ =&gt; println!(&quot;I love Rust🦀&quot;),
+    }
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Rust
+I love Rust🦀
+</code></pre>
+<p>열거형에 값을 지정하려면 열거형을 선언하면서 타입을 지정하면 됩니다. 열거형 변수 뒤에 <code>(타입)</code> 과 같이 입력하면 됩니다. 이제 열거형 변수를 선언할 때, 해당 타입에 대한 정보를 추가로 입력해줘야 합니다. 예를 들어, <code>indo</code> 라는 변수에 학년은 A, 이름은 indo라는 값을 넣으려면 다음과 같습니다.</p>
+<pre><code class="language-rust ignore">let indo = Job::Student(Grade::A, &quot;indo&quot;.to_string());</code></pre>
+<p>이제 <code>indo</code> 변수의 값에 따라 서로 다른 내용을 출력하도록 <code>match</code> 를 사용한 전체 코드는 다음과 같습니다.</p>
+<pre><pre class="playground"><code class="language-rust">#[allow(dead_code)]
+fn main() {
+    #[derive(Debug)] // derive Debug trait, to print the enum
+    enum Grade {
+        A,
+        B,
+        C,
+    }
+
+    enum Job {
+        Student(Grade, String),
+        Developer(String),
+    }
+
+    let indo = Job::Student(Grade::A, &quot;indo&quot;.to_string());
+
+    match indo {
+        Job::Student(grade, name) =&gt; {
+            println!(&quot;{} is a student with grade {:?}&quot;, name, grade);
+        }
+        Job::Developer(name) =&gt; {
+            println!(&quot;{} is a developer&quot;, name);
+        }
+    }
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>indo is a student with grade A
+</code></pre>
+<h1 id="열거형-1"><a class="header" href="#열거형-1">열거형</a></h1>
+<h2 id="option-열거형"><a class="header" href="#option-열거형">Option<T> 열거형</a></h2>
+<p><code>Option&lt;T&gt;</code> 열거형은 <code>Some(T)</code>와 <code>None</code> 값을 가질 수 있습니다. <code>Option&lt;T&gt;</code> 열거형은 <code>T</code> 타입의 값이 있을 수도 있고 없을 수도 있음을 나타냅니다. <code>Option&lt;T&gt;</code> 열거형은 <code>T</code> 타입의 값이 있을 수도 있고 없을 수도 있음을 나타냅니다.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Option&lt;T&gt; {
+    Some(T),
+    None,
+}
+<span class="boring">}</span></code></pre></pre>
+<h3 id="-연산자"><a class="header" href="#-연산자"><code>?</code> 연산자</a></h3>
+<p><code>?</code> 연산자는 <code>Option&lt;T&gt;</code> 열거형의 값을 반환합니다. 만약 <code>Option&lt;T&gt;</code> 열거형의 값이 <code>Some(T)</code>라면 <code>T</code> 값을 반환합니다. 만약 <code>Option&lt;T&gt;</code> 열거형의 값이 <code>None</code>이라면 <code>None</code> 값을 반환합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let some_number = Some(5);
+    let some_string = Some(&quot;a string&quot;);
+
+    let absent_number: Option&lt;i32&gt; = None;
+
+    // `Option&lt;T&gt;` 열거형의 값을 반환합니다.
+    let x: i8 = 5;
+    let y: Option&lt;i8&gt; = Some(5);
+
+    let sum = x + y?;
+}</code></pre></pre>
+<h3 id="if-let-구문"><a class="header" href="#if-let-구문"><code>if let</code> 구문</a></h3>
+<p><code>if let</code> 구문은 <code>Option&lt;T&gt;</code> 열거형의 값을 패턴 매칭하여 값을 반환합니다. 만약 <code>Option&lt;T&gt;</code> 열거형의 값이 <code>Some(T)</code>라면 <code>T</code> 값을 반환합니다. 만약 <code>Option&lt;T&gt;</code> 열거형의 값이 <code>None</code>이라면 <code>None</code> 값을 반환합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let some_u8_value = Some(0u8);
+    match some_u8_value {
+        Some(3) =&gt; println!(&quot;three&quot;),
+        _ =&gt; (),
+    }
+
+    // `if let` 구문은 `match` 구문과 같은 역할을 합니다.
+    if let Some(3) = some_u8_value {
+        println!(&quot;three&quot;);
+    }
+}</code></pre></pre>
+<h2 id="resultt-e-열거형"><a class="header" href="#resultt-e-열거형">Result&lt;T, E&gt; 열거형</a></h2>
+<p><code>Result&lt;T, E&gt;</code> 열거형은 <code>Ok(T)</code>와 <code>Err(E)</code> 값을 가질 수 있습니다. <code>Result&lt;T, E&gt;</code> 열거형은 <code>T</code> 타입의 값이 있을 수도 있고 없을 수도 있음을 나타냅니다. <code>Result&lt;T, E&gt;</code> 열거형은 <code>E</code> 타입의 값이 있을 수도 있고 없을 수도 있음을 나타냅니다.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+<span class="boring">}</span></code></pre></pre>
+<h3 id="-연산자-1"><a class="header" href="#-연산자-1"><code>?</code> 연산자</a></h3>
+<p><code>?</code> 연산자는 <code>Result&lt;T, E&gt;</code> 열거형의 값을 반환합니다. 만약 <code>Result&lt;T, E&gt;</code> 열거형의 값이 <code>Ok(T)</code>라면 <code>T</code> 값을 반환합니다. 만약 <code>Result&lt;T, E&gt;</code> 열거형의 값이 <code>Err(E)</code>라면 <code>Err(E)</code> 값을 반환합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let f = File::open(&quot;hello.txt&quot;);
+
+    let f = match f {
+        Ok(file) =&gt; file,
+        Err(error) =&gt; panic!(&quot;There was a problem opening the file: {:?}&quot;, error),
+    };
+}</code></pre></pre>
+<h3 id="if-let-구문-1"><a class="header" href="#if-let-구문-1"><code>if let</code> 구문</a></h3>
+<p><code>if let</code> 구문은 <code>Result&lt;T, E&gt;</code> 열거형의 값을 패턴 매칭하여 값을 반환합니다. 만약 <code>Result&lt;T, E&gt;</code> 열거형의 값이 <code>Ok(T)</code>라면 <code>T</code> 값을 반환합니다. 만약 <code>Result&lt;T, E&gt;</code> 열거형의 값이 <code>Err(E)</code>라면 <code>Err(E)</code> 값을 반환합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let f = File::open(&quot;hello.txt&quot;);
+
+    if let Ok(file) = f {
+        // 파일을 사용합니다.
+    } else {
+        // 파일을 열 수 없습니다.
+    }
+}</code></pre></pre>
+<h2 id="panic"><a class="header" href="#panic">panic!</a></h2>
+<p>Rust에는 <code>try ... except</code> 가 없습니다.</p>
+<h3 id="if-let"><a class="header" href="#if-let">if let</a></h3>
+<p><code>let if</code>와 이름은 비슷하지만 전혀 다른 문법인 <code>if let</code> 이 있습니다. <code>if let</code> 문법은 조건문이 <code>let &lt;표현식&gt; = 변수</code> 로 구성되는데, 이때 표현식의 결과가 변수와 같은지를 검사합니다. 아래 예제의 경우, 변수 <code>x</code>의 값은 3입니다. 이때 if문에서 표현식이 정수 3이기 때문에 <code>&quot;x is 3&quot;</code> 이 프린트됩니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 3;
+
+    if let 3 = x {
+        println!(&quot;x is 3&quot;);
+    } else if let 4 = x {
+        println!(&quot;x is 4&quot;);
+    } else {
+        println!(&quot;x is not 3 or 4&quot;);
+    };
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>x is 3
+</code></pre>
+<p>만일 <code>x</code>의 값이 4라면 &quot;x is 4&quot;가 출력되고, 값이 3과 4 모두 아니라면 &quot;x is not 3 or 4&quot;가 출력되게 됩니다. <code>if let</code> 구문은 나중에 <code>Enum</code>을 배운 다음에 유용하게 쓰이는 부분이므로 여기서는 표현식을 바탕으로 조건문을 만들 수 있다는 사실만 기억해 두셔도 충분합니다.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch6-01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch6-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch6-01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch6-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

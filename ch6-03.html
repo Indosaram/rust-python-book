@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>이터레이터 - 파이썬 프로그래머를 위한 러스트 입문</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html" class="active"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li class="chapter-item expanded "><a href="ch10.html"><strong aria-hidden="true">10.</strong> 스마트 포인터</a></li><li class="chapter-item expanded "><a href="ch11.html"><strong aria-hidden="true">11.</strong> 예외처리</a></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 소스코드 살펴보기</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-04.html"><strong aria-hidden="true">14.4.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">파이썬 프로그래머를 위한 러스트 입문</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="이터레이터"><a class="header" href="#이터레이터">이터레이터</a></h2>
+<h3 id="이터레이터란"><a class="header" href="#이터레이터란">이터레이터란?</a></h3>
+<p>이터레이터(iterator)는 반복 가능한 시퀀스(sequence)를 입력으로 받아 각 원소에 특정 작업을 수행할 수 있도록 하는 기능입니다. 앞에서 배운 벡터를 이용해 값을 순서대로 출력하는 예제를 만들어 보겠습니다.</p>
+<pre><code class="language-rust ignore">fn main() {
+    let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    for name in names {
+        println!(&quot;{}&quot;, name);
+    }
+    println!(&quot;{:?}&quot;, names);
+}
+</code></pre>
+<p>실행 결과</p>
+<pre><code>error[E0382]: borrow of moved value: `names`
+   --&gt; src/main.rs:6:22
+    |
+2   |     let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    |         ----- move occurs because `names` has type `Vec&lt;&amp;str&gt;`, which does not implement the `Copy` trait
+3   |     for name in names {
+    |                 -----
+    |                 |
+    |                 `names` moved due to this implicit call to `.into_iter()`
+    |                 help: consider borrowing to avoid moving into the for loop: `&amp;names`
+...
+6   |     println!(&quot;{:?}&quot;, names);
+    |                      ^^^^^ value borrowed here after move
+    |
+</code></pre>
+<p>컴파일하면 에러가 발생하는데, <code>for name in names</code> 에서 <code>names</code>가 암묵적으로 <code>.into_iter()</code> 메소드를 호출했다고 나옵니다. 여기서 <code>into_iter()</code>가 바로 이터레이터인데, 벡터 원소의 값을 <code>for</code> 루프 안으로 가져와 반복하는 역할을 수행합니다. 이때 값이 가져와지기 때문에 원소의 소유권도 함께 이동됩니다. 이미 이동된 소유권을 <code>println!(&quot;{:?}&quot;, names);</code> 에서 참조하기 때문에 에러가 발생합니다.</p>
+<p>이를 해결하기 위해서는 명시적으로 <code>iter()</code> 메소드를 호출해 원소를 <code>for</code> 루프 안으로 전달해주어야 합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    for name in names.iter() {
+        println!(&quot;{}&quot;, name);
+    }
+    println!(&quot;{:?}&quot;, names);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>james
+cameron
+indo
+[&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;]
+</code></pre>
+<p><code>iter()</code> 메소드는 선언 즉시 원소를 내놓는 것이 아니라, 값이 필요해지면 그때 원소를 리턴합니다. 따라서 다음과 같은 코드가 가능합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    let names_iter = names.iter();
+    for name in names_iter {
+        println!(&quot;{}&quot;, name);
+    }
+    println!(&quot;{:?}&quot;, names);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>james
+cameron
+indo
+[&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;]
+</code></pre>
+<h3 id="이터레이터를-소비하는-메소드들"><a class="header" href="#이터레이터를-소비하는-메소드들">이터레이터를 소비하는 메소드들</a></h3>
+<p>이번 단원에서는 이터레이터에 속한 메소드들을 이용해 원소에 여러 작업을 수행해 보겠습니다. 파이썬에서는 합계, 최대값, 최소값을 구하는 함수인 <code>sum</code>, <code>max</code>, <code>min</code>을 리스트에 직접 사용합니다.</p>
+<pre><code class="language-python">nums = [1, 2, 3]
+
+sum = sum(nums)
+max = max(nums)
+min = min(nums)
+print(f&quot;sum: {sum}, max: {max}, min: {min}&quot;)
+</code></pre>
+<p>실행 결과</p>
+<pre><code>sum: 6, max: 3, min: 1
+</code></pre>
+<p>러스트에서는 이터레이터에서 <code>sum</code>, <code>max</code>, <code>min</code> 메소드를 호출합니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let num = vec![1, 2, 3];
+
+    let sum: i32 = num.iter().sum();
+    let max = num.iter().max().unwrap();
+    let min = num.iter().min().unwrap();
+    println!(&quot;sum: {}, max: {}, min: {}&quot;, sum, max, min);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>sum: 6, max: 3, min: 1
+</code></pre>
+<h3 id="새로운-이터레이터를-만드는-메소드들"><a class="header" href="#새로운-이터레이터를-만드는-메소드들">새로운 이터레이터를 만드는 메소드들</a></h3>
+<p>이터레이터 메소드 중에는 새로운 이터레이터를 만드는 메소드들이 있습니다. 대표적으로 인덱스와 원소를 함께 반복하는 <code>enumerate</code> 와 두 시퀀스의 원소를 순서대로 함께 묶어 반복하는 <code>zip</code> 입니다.</p>
+<p>먼저 파이썬 코드는 다음과 같습니다.</p>
+<pre><code class="language-python">nums1 = [1, 2, 3]
+nums2 = [4, 5, 6]
+
+enumer = list(enumerate(nums1))
+print(enum)
+zip = list(zip(nums1, nums2))
+print(zip)
+
+</code></pre>
+<p>실행 결과</p>
+<pre><code>[(0, 1), (1, 2), (2, 3)]
+[(1, 4), (2, 5), (3, 6)]
+</code></pre>
+<p>마찬가지로 러스트에서도 원소와 인덱스를 동시에 반복하거나 두 시퀀스의 원소를 동시에 반복할 수 있습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let nums1 = vec![1, 2, 3];
+    let nums2 = vec![4, 5, 6];
+
+    let enumer: Vec&lt;(usize, &amp;i32)&gt; = nums1.iter().enumerate().collect();
+    println!(&quot;{:?}&quot;, enumer);
+
+    let zip: Vec&lt;(&amp;i32, &amp;i32)&gt; = nums1.iter().zip(nums2.iter()).collect();
+    println!(&quot;{:?}&quot;, zip);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>[(0, 1), (1, 2), (2, 3)]
+[(1, 4), (2, 5), (3, 6)]
+</code></pre>
+<p>이터레이터를 만들어내는 메소드 중에서 가장 중요하게 봐야 하는 두 가지가 있는데 바로 <code>map</code> 과 <code>filter</code> 입니다. <code>map</code> 은 주어진 함수를 각 원소에 적용합니다. <code>filter</code> 는 주어진 시퀀스에서 기준에 맞는 결과만 남기는 방법입니다. 아래 두 예제에서는 시퀀스의 원소에 1을 더한 새로운 시퀀스를 만들거나, 원소 중 홀수인 값만 남기도록 했습니다.</p>
+<pre><code class="language-python">nums = [1, 2, 3]
+
+f = lambda x: x + 1
+
+print(list(map(f, nums)))
+print(list(filter(lambda x: x % 2 == 1, nums)))
+
+</code></pre>
+<p>실행 결과</p>
+<pre><code>[2, 3, 4]
+[1, 3]
+</code></pre>
+<p>러스트 코드에서는 클로저를 이용해 동일한 내용을 구현했습니다. 이때 <code>filter</code> 의 경우, 기존의 원소의 값을 이동해서 새로운 벡터를 만들기 때문에 <code>into_iter</code> 메소드로 이터레이터를 만들었습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let nums: Vec&lt;i32&gt; = vec![1, 2, 3];
+
+    let f = |x: &amp;i32| x + 1;
+
+    let maps: Vec&lt;i32&gt; = nums.iter().map(f).collect();
+    println!(&quot;{:?}&quot;, maps);
+
+    let filters: Vec&lt;i32&gt; = nums.into_iter().filter(|x| x % 2 == 1).collect();
+    println!(&quot;{:?}&quot;, filters);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>[2, 3, 4]
+[1, 3]
+</code></pre>
+<p>원본 벡터를 필터 이후에도 사용하기 위해서는 두 가지 방법이 있습니다.
+원본 벡터를 복사(clone)하는 방법</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let nums: Vec&lt;i32&gt; = vec![1, 2, 3];
+
+    let f = |x: &amp;i32| x + 1;
+
+    let maps: Vec&lt;i32&gt; = nums.iter().map(f).collect();
+    println!(&quot;{:?}&quot;, maps);
+
+    let filters: Vec&lt;i32&gt; = nums.clone().into_iter().filter(|x| x % 2 == 1).collect();
+    println!(&quot;{:?}&quot;, filters);
+
+    println!(&quot;{:?}&quot;, nums);
+}
+</code></pre></pre>
+<p>이터레이터를 복사하는 방법</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let nums: Vec&lt;i32&gt; = vec![1, 2, 3];
+
+    let f = |x: &amp;i32| x + 1;
+
+    let maps: Vec&lt;i32&gt; = nums.iter().map(f).collect();
+    println!(&quot;{:?}&quot;, maps);
+
+    let filters: Vec&lt;i32&gt; = nums.iter().filter(|x| *x % 2 == 1).cloned().collect();
+    println!(&quot;{:?}&quot;, filters);
+
+    println!(&quot;{:?}&quot;, nums);
+}</code></pre></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch6-02.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch7-00.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch6-02.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch7-00.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

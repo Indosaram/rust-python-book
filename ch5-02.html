@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>소유권 규칙 - 파이썬 프로그래머를 위한 러스트 입문</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html" class="active"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li class="chapter-item expanded "><a href="ch10.html"><strong aria-hidden="true">10.</strong> 스마트 포인터</a></li><li class="chapter-item expanded "><a href="ch11.html"><strong aria-hidden="true">11.</strong> 예외처리</a></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 소스코드 살펴보기</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-04.html"><strong aria-hidden="true">14.4.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">파이썬 프로그래머를 위한 러스트 입문</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="소유권-규칙-자세히-알아보기"><a class="header" href="#소유권-규칙-자세히-알아보기">소유권 규칙 자세히 알아보기</a></h2>
+<p>소유권을 요약하자면 다음 세 가지 규칙으로 정리할 수 있습니다.</p>
+<ul>
+<li>모든 &quot;값&quot;들은 해당 값을 &quot;소유&quot;하고 있는 소유자(Owner)가 존재합니다.</li>
+<li>한 번에 하나의 소유자만 존재할 수 있습니다. 하나의 값에 두 개의 소유자가 동시에 존재할 수 없습니다.</li>
+<li>소유자가 현재 코드의 스코프에서 벗어나면, 값은 메모리에서 할당 해제됩니다.</li>
+</ul>
+<p>안타깝게도 소유권 모델은 파이썬 뿐만 아니라 다른 프로그래밍 언어에는 없는 러스트만의 고유한 특징이기 때문에, 여기서 파이썬과 비교하며 소유권을 설명하기는 조금 어렵습니다.</p>
+<h3 id="값에-대한-소유권"><a class="header" href="#값에-대한-소유권">값에 대한 소유권</a></h3>
+<p>프로그래밍에서 메모리 관리가 필요한 이유는 더이상 사용되지 않는 &quot;값&quot;을 처리하지 않으면 스택과 힙 메모리 영역이 가득 차기 때문입니다. 러스트에서는 어떤 값이 더이상 사용되지 않는지를 소유권을 사용해 판단합니다. 모든 값에 소유자를 지정하고, 이 값을 소유하고 있는 소유자가 없게 되면 즉시 값이 메모리에서 할당 해제되는 원리입니다. 아래 예제를 보겠습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 1;
+    // x is dropped
+}
+</code></pre></pre>
+<p>이 예제에서, <code>x</code> 라는 변수에 담긴 <code>1</code> 이라는 값은 <code>main()</code> 함수를 벗어나게 되면 더 이상 사용되지 않습니다. 따라서 <code>x</code> 는 즉시 메모리에서 지워지게 됩니다. 마찬가지로 같은 함수 내에서라도 스코프를 벗어나면 즉시 값은 사라집니다.</p>
+<pre><code class="language-rust ignore">fn main() {
+    let x = 1;
+    {
+        let y = x;
+        println!(&quot;{} {}&quot;, x, y);
+        // y is dropped
+    }
+    println!(&quot;{} {}&quot;, x, y); // This line won't compile
+    // x is dropped
+}
+</code></pre>
+<p>이번엔 코드 중간에 있는 <code>{}</code> 에 의해 스코프가 추가되었고, 이 안에서 <code>y</code>가 선언되었습니다. 이 스코프를 벗어나면 <code>y</code>는 더이상 사용되지 않으므로 즉시 할당 해제됩니다. 마찬가지로 함수에 파라미터로 변수를 전달하는 경우에도 같은 원리가 적용됩니다. 여기서 <code>String::from(&quot;Hello&quot;)</code>는 러스트에서 문자열을 선언하는 방법으로, 문자열에 대한 자세한 내용은 다음 챕터에서 설명하겠습니다.</p>
+<pre><code class="language-rust ignore">fn dummy(x: String) {
+    println!(&quot;{}&quot;, x);
+  	// x is dropped
+}
+
+fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    dummy(x);
+    println!(&quot;{}&quot;, x);  // This line won't compile
+}
+</code></pre>
+<p>함수 <code>dummy</code> 에 문자열이 전달된 다음, 함수를 벗어나면 그 즉시 <code>x</code> 는 할당 해제됩니다. 그런데 이미 할당 해제된 <code>x</code>를 9번 라인에서 참조하고 있기 때문에 오류가 발생합니다. 그러면 모든 값은 다른 함수에 전달하면 영원히 사용하지 못하는 걸까요? 이런 경우 사용할 수 있는 두 가지 방법이 있습니다.</p>
+<h3 id="소유권-돌려주기"><a class="header" href="#소유권-돌려주기">소유권 돌려주기</a></h3>
+<p>먼저 함수에서 해당 변수의 소유권을 되돌려줄 수 있는 방법이 있습니다. 아래 예제를 보겠습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn dummy(x: String) -&gt; String {
+    println!(&quot;{}&quot;, x);
+    x
+}
+
+fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    let x = dummy(x);
+    println!(&quot;{}&quot;, x);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Hello
+Hello
+</code></pre>
+<p>함수 <code>dummy</code>에서 입력 변수 <code>x</code>는 함수 내부에서 사용된 다음 리턴됩니다. 그 다음 함수의 리턴값을 재선언한 변수 <code>x</code>에 할당함으로써 소유권이 <code>x</code>로 되돌아옵니다. 좀더 이해하기 쉽도록 변수명을 아래와 같이 바꿔보겠습니다. 결론적으로, <code>&quot;Hello&quot;</code>라는 값을 소유하고 있는 변수만 <code>x</code> → <code>y</code> → <code>z</code> 순서로 바뀌고, 값은 그대로 있게 됩니다. 하지만 이 방법은 매번 함수의 리턴값을 변수로 재선언해주어야 하기 때문에 코드의 가독성이 떨어지고, 값이 어느 변수로 이동하는지를 알기 어려운 단점이 있습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn dummy(y: String) -&gt; String {
+    println!(&quot;{}&quot;, y);
+    y
+}
+
+fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    let z = dummy(x);
+    println!(&quot;{}&quot;, z);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Hello
+Hello
+</code></pre>
+<h3 id="레퍼런스와-소유권-빌리기"><a class="header" href="#레퍼런스와-소유권-빌리기">레퍼런스와 소유권 빌리기</a></h3>
+<p>러스트에는 값의 소유권을 잠시 빌려줄 수 있는 개념인 대여(borrow)가 있습니다. 변수 앞에 <code>&amp;</code> 키워드를 사용하면 되는데, 해당 변수의 레퍼런스(reference)를 선언한다는 의미입니다. 레퍼런스란 소유권을 가져가지 않고 해당 값을 참조할 수 있는 방법입니다. 아래 예제를 보겠습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    let y = &amp;x;
+
+    println!(&quot;{} {}&quot;, x, y);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Hello Hello
+</code></pre>
+<p><code>let y = &amp;x;</code>와 같이 선언하더라도 문자열 &quot;Hello&quot;의 값의 소유권은 여전히 <code>x</code>에 있고, <code>y</code>는 단순히 값을 참조만 합니다. 따라서 마지막에서 변수 <code>x</code>와 <code>y</code>를 모두 프린트해도 에러가 발생하지 않습니다.</p>
+<p>아래 예제에서 <code>dummy</code> 함수의 파라미터 타입은 <code>&amp;String</code>으로, 문자열의 레퍼런스 타입을 의미합니다. <code>main</code>함수에서 <code>dummy</code>를 실행할 때, 변수 <code>x</code>의 레퍼런스인 <code>&amp;x</code> 가 전달되었습니다. 이건 소유권을 잠시 함수 내부의 <code>y</code> 파라미터에 빌려준다는 의미입니다. 소유권을 대여한 변수가 <code>dummy</code>함수의 스코프를 벗어나면, 그 즉시 소유권은 원래 소유자인 <code>x</code> 에게 되돌아갑니다. 따라서 <code>dummy</code> 함수에서 <code>x</code>에 저장된 문자열 값을 사용하더라도 이후에 <code>x</code>를 통해 문자열을 계속 사용할 수 있게 됩니다. 그래서 마지막에 <code>x</code>를 프린트해도 에러가 발생하지 않고 잘 컴파일됩니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn dummy(y: &amp;String) {
+    println!(&quot;{}&quot;, y);
+    // ownership returns to `x`
+}
+
+fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    dummy(&amp;x);
+    println!(&quot;{}&quot;, x);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Hello
+</code></pre>
+<h3 id="가변-레퍼런스"><a class="header" href="#가변-레퍼런스">가변 레퍼런스</a></h3>
+<p>어떤 변수의 레퍼런스를 만들 때, 원래 변수가 불변이라면 레퍼런스를 사용해 원래 변수의 값을 바꿀 수 없습니다. 아래 예제에서는 변수 <code>x</code>를 함수 <code>dummy</code>에 레퍼런스로 전달합니다. 그리고 <code>push_str</code> 함수를 사용해 &quot; world!&quot;라는 문자열을 <code>x</code>의 뒤에 추가하고 있습니다. 그런데 코드를 실행하면 에러가 발생합니다.</p>
+<pre><code class="language-rust ignore">fn dummy(y: &amp;String) {
+    y.push_str(&quot; world!&quot;);
+    println!(&quot;{}&quot;, y);
+    // ownership returns to `x`
+}
+
+fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    dummy(&amp;x);
+    println!(&quot;{}&quot;, x);
+}
+</code></pre>
+<p>실행 결과</p>
+<pre><code>   Compiling rust_part v0.1.0 (/Users/code/temp/rust_part)
+error[E0596]: cannot borrow `*y` as mutable, as it is behind a `&amp;` reference
+ --&gt; src/main.rs:2:5
+  |
+1 | fn dummy(y: &amp;String) {
+  |             ------- help: consider changing this to be a mutable reference: `&amp;mut String`
+2 |     y.push_str(&quot; world!&quot;);
+  |     ^^^^^^^^^^^^^^^^^^^^^ `y` is a `&amp;` reference, so the data it refers to cannot be borrowed as mutable
+</code></pre>
+<p>에러 내용을 읽어보면 <code>y</code>에서 소유권을 빌려왔지만, 가변 레퍼런스가 아니기 때문에 값을 수정할 수 없다고 합니다. 컴파일러의 조언에 따라서 <code>y</code>를 가변 레퍼런스로 수정해 보겠습니다. 여기서 총 3군데를 수정했습니다.</p>
+<ol>
+<li><code>dummy</code>함수의 파라미터 <code>y</code> 의 타입이 <code>&amp;mut String</code> 으로 변경</li>
+<li>변수 <code>x</code>를 가변 변수로 선언</li>
+<li><code>dummy</code>함수에 <code>x</code>를 전달할 때 가변 레퍼런스 <code>&amp;mut x</code>로 전달</li>
+</ol>
+<pre><pre class="playground"><code class="language-rust">fn dummy(y: &amp;mut String) {
+    y.push_str(&quot; world!&quot;);
+    println!(&quot;{}&quot;, y);
+    // ownership returns to `x`
+}
+
+fn main() {
+    let mut x = String::from(&quot;Hello&quot;);
+    dummy(&amp;mut x);
+    println!(&quot;{}&quot;, x);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Hello world!
+Hello world!
+</code></pre>
+<p>가변 레퍼런스를 사용할 때 주의해야 하는 점은 소유권 규칙의 두 번째 규칙인 &quot;한 번에 하나의 소유자만 존재할 수 있다&quot; 입니다. 예를 들어 하나의 값에 대해서 두 개의 가변 레퍼런스를 만들어 보겠습니다. 변수 <code>y</code>와 <code>z</code>는 모두 변수 <code>x</code>의 가변 레퍼런스입니다.</p>
+<pre><code class="language-rust ignore">fn main() {
+    let mut x = String::from(&quot;Hello&quot;);
+    let y = &amp;mut x;
+    let z = &amp;mut x;
+
+    println!(&quot;{} {}&quot;, y, z);
+}
+</code></pre>
+<p>실행 결과</p>
+<pre><code>   Compiling rust_part v0.1.0 (/Users/code/temp/rust_part)
+error[E0499]: cannot borrow `x` as mutable more than once at a time
+ --&gt; src/main.rs:4:13
+  |
+3 |     let y = &amp;mut x;
+  |             ------ first mutable borrow occurs here
+4 |     let z = &amp;mut x;
+  |             ^^^^^^ second mutable borrow occurs here
+5 |
+6 |     println!(&quot;{} {}&quot;, y, z);
+  |                       - first borrow later used here
+</code></pre>
+<p>실행 시 에러가 발생하는데, 변수 <code>x</code>의 소유권을 한 번 이상 대여할 수 없다고 합니다. 만일 하나의 소유권을 여러 개의 변수가 빌릴 수 있다면 큰 문제가 발생할 가능성이 있습니다. 하나의 메모리를 여러 곳에서 접근할 수 있기 때문에 버그가 발생할 수 있습니다. 예를 들어 어떤 가변 레퍼런스에서 값을 변경했는데, 다른 곳에서는 변경 전의 값을 필요로 한다면 예상치 못한 결과가 나올 수 있습니다. 따라서 러스트에서는 하나의 값에 대한 여러 개의 가변 레퍼런스를 허용하지 않습니다. 하지만 단순히 레퍼런스를 여러 개 만드는 것은 문제가 없습니다.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = String::from(&quot;Hello&quot;);
+    let y = &amp;x;
+    let z = &amp;x;
+
+    println!(&quot;{} {}&quot;, y, z);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>Hello Hello
+</code></pre>
+<p>러스트의 소유권 개념은 처음 러스트를 배우는 사람의 입장에서 정말 어렵고 복잡하게 느껴집니다. 그렇지만 컴파일러가 소유권 규칙이 위반되는 경우, 에러를 발생시키고 그에 대한 해결책을 제시해주기 때문에 생각보다 금방 익숙해질 수 있습니다.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch5-01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch5-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch5-01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch5-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
