@@ -28,12 +28,12 @@ fn main() {
 
 "Loved vs Dreaded(사랑하는 언어 대 두려운 언어)"
 
-![ch01-1](../assets/ch01-1.png)
+![ch01-1](../src/assets/ch01-1.png)
 
 ---
 
 
-![width:700px](../assets/ch01-2.png)
+![width:700px](../src/assets/ch01-2.png)
 
 ---
 
@@ -77,7 +77,7 @@ fn main() {
 
 ---
 
-![height:600px](../assets/ch01-3.png)
+![height:600px](../src/assets/ch01-3.png)
 
 https://docs.rs/serde_v8/0.49.0/serde_v8/
 
@@ -96,7 +96,7 @@ https://docs.rs/serde_v8/0.49.0/serde_v8/
 
 ## Rust로 뭘 할 수 있나요?
 
-![ch01-4](../assets/ch01-4.png)
+![ch01-4](../src/assets/ch01-4.png)
 - [솔라나(Solana)](https://github.com/solana-labs/solana)
 -  [AppFlowy](https://github.com/AppFlowy-IO/appflowy)
 
@@ -111,7 +111,7 @@ https://docs.rs/serde_v8/0.49.0/serde_v8/
 
 #### [Figma](https://blog.figma.com/rust-in-production-at-figma-e10a0ec31929)
 
-![img](../assets/ch01-5.png)
+![img](../src/assets/ch01-5.png)
 
 ---
 
@@ -123,7 +123,7 @@ https://docs.rs/serde_v8/0.49.0/serde_v8/
 
 Go에서 Rust로 이전
 
-![ch01-6](../assets/ch01-6.png)
+![ch01-6](../src/assets/ch01-6.png)
 
 ---
 - 페이스북에서는 백엔드 서버를 작성하는 언어 중 하나로 러스트를 채택했습니다.

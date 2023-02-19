@@ -1,0 +1,9 @@
+[book]
+authors = ["Indosaram"]
+language = "kr"
+multilingual = false
+src = "src"
+title = "파이썬 프로그래머를 위한 러스트 입문"
+
+[output.html]
+git-repository-url = "https://github.com/Indosaram/rust-python-book"
