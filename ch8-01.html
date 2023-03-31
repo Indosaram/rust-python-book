@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -151,7 +153,7 @@
 <li>패키지(Packages) : cargo에서 제공하는 기능으로, crate를 빌드하고 생성할 수 있습니다.</li>
 <li>크레이트(Crates) : 라이브러리 또는 바이너리를 생성하는 모듈 트리(a tree of modules)입니다.</li>
 <li><code>mod</code> 와 <code>use</code>: 코드 안에서 다른 모듈들을 구성하고, 불러오거나 다른 모듈에 노출할 지 여부(private or public)를 결정합니다.</li>
-<li>Paths: A way of naming an item, such as a struct, function, or module</li>
+<li>경로: 모듈에서 특정 요소(함수, 구조체, 변수 등)를 찾기 위한 방법</li>
 </ul>
 <h3 id="패키지"><a class="header" href="#패키지">패키지</a></h3>
 <p><code>cargo.toml</code> 파일</p>
@@ -210,9 +212,57 @@ pub static</code></pre>
 <p>특정 모듈에 대한 접근은 크레이트 루트를 기준으로 절대경로를 사용하면 됩니다. 예를 들어 코드 어디에서라도 다음과 같이 모듈에 접근이 가능합니다.</p>
 <pre><code class="language-rust ignore">// src/new_module.rs -&gt; MyType
 use crate::new_module::MyType</code></pre>
-<blockquote>
-<p>상대 경로를 사용할 때도 있는데, 이 경우에는 <code>self</code> 와 <code>super</code> 키워드를 사용합니다. <code>self</code> 는 struct 자기 자신을, <code>super</code>는 현재 모듈의 상위 모듈을 의미합니다.</p>
-</blockquote>
+<p>상대 경로를 사용할 때도 있는데, 이 경우에는 <code>self</code> 와 <code>super</code> 키워드를 사용합니다.</p>
+<p><code>self</code> 는 struct 자기 자신을 의미합니다.</p>
+<pre><pre class="playground"><code class="language-rust">mod mod2 {
+    fn func() {
+        println!(&quot;mod2::func()&quot;);
+    }
+
+    mod mod1 {
+        pub fn func() {
+            println!(&quot;mod2::mod1::func()&quot;);
+        }
+    }
+
+    pub fn dummy() {
+        func();
+        self::func();
+        mod1::func();
+        self::mod1::func();
+    }
+}
+
+fn main() {
+    mod2::dummy();
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>mod2::func()
+mod2::func()
+mod2::mod1::func()
+mod2::mod1::func()
+</code></pre>
+<p><code>super</code>는 현재 모듈의 상위 모듈을 의미합니다.</p>
+<pre><pre class="playground"><code class="language-rust">mod mod1 {
+    pub fn dummy() {
+        println!(&quot;Hello, world!&quot;);
+    }
+}
+
+mod mod2 {
+    // use crate::mod1;
+    use super::mod1;
+
+    pub fn dummy() {
+        mod1::dummy();
+    }
+}
+
+fn main() {
+    mod2::dummy();
+}
+</code></pre></pre>
 
                     </main>
 

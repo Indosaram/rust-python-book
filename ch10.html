@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -145,16 +147,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ch10-스마트-포인터"><a class="header" href="#ch10-스마트-포인터">CH10. 스마트 포인터</a></h1>
-<h2 id="포인터란"><a class="header" href="#포인터란">포인터란?</a></h2>
-<p>A <em>pointer</em> is a general concept for a variable that contains an address in memory. This address refers to, or “points at,” some other data.</p>
-<p>스마트 포인터는 러스트에서 저수준 메모리 작업을 지원하기 위한 기능입니다.</p>
-<p>레퍼런스</p>
-<p>This pointer enables you to allow data to have multiple owners by keeping track of the number of owners and, when no owners remain, cleaning up the data.</p>
-<h2 id="box-타입"><a class="header" href="#box-타입">Box 타입</a></h2>
-<h2 id="참조와-역참조"><a class="header" href="#참조와-역참조">참조와 역참조</a></h2>
-<h2 id="스마트-포인터"><a class="header" href="#스마트-포인터">스마트 포인터</a></h2>
-<h2 id="레퍼런스-카운트"><a class="header" href="#레퍼런스-카운트">레퍼런스 카운트</a></h2>
+                        <h1 id="스마트-포인터"><a class="header" href="#스마트-포인터">스마트 포인터</a></h1>
 
                     </main>
 

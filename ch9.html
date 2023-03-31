@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -145,18 +147,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ch9-제네릭"><a class="header" href="#ch9-제네릭">CH9. 제네릭</a></h1>
-<h2 id="제네릭이란"><a class="header" href="#제네릭이란">제네릭이란?</a></h2>
-<p>Generic types are incredibly important in Rust. They are used in:</p>
-<ul>
-<li>the representation of nullable values (i.e. variables which might not have a value yet)</li>
-<li>error handling</li>
-<li>collections</li>
-</ul>
-<p>Generic types allow us to partially define a <code>struct</code> or <code>enum</code>, enabling a compiler to create a fully defined version at compile-time based off our code usage.</p>
-<p>Rust는 대부분 우리가 선언하는 변수의 타입을 추측할 수 있지만, 명시적으로 타입을 정의하는 것이 가장 좋습니다. 이렇게 타입을 명시하는 연산자를 &quot;turbofish&quot;라고 합니다.</p>
-<pre><code class="language-rust ignore">::&lt;T&gt;</code></pre>
-<h2 id="트레이트"><a class="header" href="#트레이트">트레이트</a></h2>
+                        <h1 id="제네릭"><a class="header" href="#제네릭">제네릭</a></h1>
 
                     </main>
 

@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -147,7 +149,6 @@
                     <main>
                         <h2 id="구조체의-정의"><a class="header" href="#구조체의-정의">구조체의 정의</a></h2>
 <h3 id="구조체-선언"><a class="header" href="#구조체-선언">구조체 선언</a></h3>
-<p>Encapsulation</p>
 <p>먼저 파이썬에서 클래스를 하나 정의해 보겠습니다. <code>Person</code> 클래스는 객체화 시 <code>name</code>, <code>age</code> 두 변수를 파라미터로 받고, <code>self.name</code>, <code>self.age</code> 라는 인스턴스 프로퍼티에 할당됩니다.</p>
 <pre><code class="language-python">class Person:
     def __init__(self, name, age):

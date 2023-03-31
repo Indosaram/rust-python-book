@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -146,6 +148,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="트레이트trait"><a class="header" href="#트레이트trait">트레이트(trait)</a></h2>
+<h3 id="트레이트로-메소드-공유하기"><a class="header" href="#트레이트로-메소드-공유하기">트레이트로 메소드 공유하기</a></h3>
 <p>파이썬은 클래스를 상속해 공통된 메소드를 사용할 수 있지만, 러스트는 구조체의 상속이 되지 않습니다.</p>
 <p>먼저 파이썬에서 다음과 같이 <code>Person</code> 을 상속하는 새로운 클래스 <code>Student</code> 를 선언합니다.</p>
 <pre><code class="language-python">class Person:
@@ -175,15 +178,7 @@ class Student(Person):
 <pre><code class="language-rust ignore">trait Greet {
     fn say_hello(&amp;self) {}
 }</code></pre>
-<p>이렇게 선언하면, <code>say_hello</code>를 각 구조체의 메소드에서 반드시 구현해야 합니다. 혹은 기본 구현형을 정의할 수도 있습니다. 이 경우 별도로 구현하지 않아도 해당 함수를 사용할 수 있습니다.</p>
-<pre><code class="language-rust ignore">trait Greet {
-    fn say_hello(&amp;self) {
-        println!(&quot;Hello, Rustacean!&quot;);
-    }
-}</code></pre>
-<blockquote>
-<p>여기서 파라미터로 <code>&amp;self</code> 를 받고 있지만, 트레이트에 정의되는 함수는 인스턴스 프로퍼티에 접근할 수 없습니다. 만일 여기서 <code>self.name</code> 등을 프린트하려고 하면 컴파일이 되지 않습니다.</p>
-</blockquote>
+<p>이렇게 선언하면, <code>say_hello</code>는 아무것도 실행하지 않는 빈 함수이기 때문에, 실제 내용을 각 구조체의 메소드에서 구현해야 합니다. 혹은 <code>say_hello</code>의 기본 구현형을 트레이트를 선언할 때 정의할 수도 있습니다.</p>
 <p>이제 파이썬과 동일하게 러스트 코드를 작성해 보겠습니다.</p>
 <pre><code class="language-rust ignore">struct Person {
     name: String,
@@ -247,6 +242,61 @@ impl Greet for Student {
 Hello, I am Jane and I am studying Computer Science
 </code></pre>
 <p><code>person.say_hello()</code>는 <code>trait Greet</code>의 메소드를 그대로 사용하기 때문에 아무것도 출력되지 않는 것을 알 수 있습니다.</p>
+<p>다시 트레이트 선언으로 돌아가보면 <code>say_hello</code> 함수는 파라미터로 <code>&amp;self</code> 를 받고 있지만, 트레이트에 정의되는 함수는 인스턴스 프로퍼티에 접근할 수 없습니다. 만일 여기서 다음과 같이 함수의 원형을 수정하고 컴파일해보면 에러가 발생합니다.</p>
+<pre><code class="language-rust ignore">trait Greet {
+    fn say_hello(&amp;self) {
+        println!(&quot;Hello, Rustacean!&quot;);
+    }
+}</code></pre>
+<h3 id="파생derive"><a class="header" href="#파생derive">파생(Derive)</a></h3>
+<p>컴파일러는 <code>#[derive]</code> 트레이트을 통해 일부 특성에 대한 기본 구현을 제공할 수 있습니다. 보다 복잡한 동작이 필요한 경우 이러한 특성은 직접 구현할 수 있습니다.</p>
+<p>다음은 파생 가능한 트레이트 목록입니다:</p>
+<ul>
+<li>비교: <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html"><code>Eq</code></a>, <a href="https://doc.rust-lang.org/std/cmp/trait.PartialEq.html"><code>PartialEq</code></a>, <a href="https://doc.rust-lang.org/std/cmp/trait.Ord.html"><code>Ord</code></a>, <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html"><code>PartialOrd</code></a>.</li>
+<li><a href="https://doc.rust-lang.org/std/clone/trait.Clone.html"><code>Clone</code></a>, 복사본을 통해 <code>&amp;T</code>에서 <code>T</code>를 생성합니다.</li>
+<li><a href="https://doc.rust-lang.org/core/marker/trait.Copy.html"><code>Copy</code></a>, '이동 시맨틱' 대신 '복사 시맨틱' 타입을 제공합니다.</li>
+<li><a href="https://doc.rust-lang.org/std/hash/trait.Hash.html"><code>Hash</code></a>, <code>&amp;T</code>에서 해시를 계산합니다.</li>
+<li><a href="https://doc.rust-lang.org/std/default/trait.Default.html"><code>Default</code></a>, 데이터 타입의 빈 인스턴스를 생성합니다.</li>
+<li><code>{:?}</code> 포매터를 사용하여 값의 형식을 지정하려면 <a href="https://doc.rust-lang.org/std/fmt/trait.Debug.html"><code>Debug</code></a>.</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(&quot;rect1 is {:?}&quot;, rect1); // 🤯
+}
+</code></pre></pre>
+<pre><code>error[E0277]: `Rectangle` doesn't implement `Debug`
+  --&gt; src/main.rs:12:31
+   |
+12 |     println!(&quot;rect1 is {:?}&quot;, rect1); // 🤯
+   |                               ^^^^^ `Rectangle` cannot be formatted using `{:?}`
+   |
+   = help: the trait `Debug` is not implemented for `Rectangle`
+   = note: add `#[derive(Debug)]` to `Rectangle` or manually `impl Debug for Rectangle`
+</code></pre>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(&quot;rect1 is {:?}&quot;, rect1);
+}
+</code></pre></pre>
 
                     </main>
 

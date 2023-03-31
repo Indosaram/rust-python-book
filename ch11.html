@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -145,105 +147,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ch11-예외처리"><a class="header" href="#ch11-예외처리">CH11. 예외처리</a></h1>
-<p>LBYL</p>
-<p>EAFP</p>
-<h2 id="panic"><a class="header" href="#panic">panic!</a></h2>
-<p>Rust에는 <code>try ... except</code> 가 없다.</p>
-<h2 id="result-enum"><a class="header" href="#result-enum">Result enum</a></h2>
-<pre><code class="language-rust ignore">enum Result&lt;T, E&gt; {
-    Ok(T),
-    Err(E),
-}
-</code></pre>
-<h3 id=""><a class="header" href="#">?</a></h3>
-<p>If the result is not <code>Some</code> , instantly terminates the function and returns <code>None</code></p>
-<p>unwrap</p>
-<p>unwrap_or</p>
-<pre><code class="language-python">import os
-
-
-def fail():
-    raise Exception
-
-
-def get_content():
-    filepath = os.path.join(os.path.pardir, &quot;test.txt&quot;)
-    with open(filepath, &quot;r&quot;) as f:
-        return f.read()
-
-
-class CustomError(Exception):
-    pass
-
-
-if __name__ == '__main__':
-
-    # fail() # -&gt; this will stop the program
-
-    try:
-        with open(&quot;hello.txt&quot;, &quot;r&quot;) as file:
-            file.read()
-    except FileNotFoundError as exc:
-        print(exc)
-    except:
-        print(&quot;Unexpected error&quot;)
-
-    content = &quot;&quot;
-    try:
-        content = get_content()
-    except:
-        raise CustomError
-    print(content)
-
-</code></pre>
-<pre><code class="language-rust ignore">use std::fmt;
-use std::fs::File;
-use std::io::{Error, ErrorKind, Read};
-use std::path::Path;
-
-#[allow(dead_code)]
-fn fail() {
-    panic!()
-}
-
-fn get_content() -&gt; Result&lt;String, Error&gt; {
-    let mut content = String::new();
-    let filepath = Path::new(std::env::current_dir().unwrap().parent().unwrap()).join(&quot;test.txt&quot;);
-    File::open(filepath)?.read_to_string(&amp;mut content)?;
-    Ok(content)
-}
-
-#[derive(Debug, Clone)]
-struct CustomError;
-
-impl fmt::Display for CustomError {
-    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
-        write!(f, &quot;&quot;)
-    }
-}
-
-fn main() {
-    // fail(); // -&gt; this will stop the program
-
-    let file = File::open(&quot;hello.txt&quot;);
-    match file {
-        Ok(file) =&gt; println!(&quot;{:?}&quot;, file),
-        Err(error) =&gt; match error.kind() {
-            ErrorKind::NotFound =&gt; println!(&quot;{:?}&quot;, error),
-            _ =&gt; println!(&quot;Unexpected error&quot;),
-        },
-    }
-
-    let content = match get_content() {
-        Ok(c) =&gt; c,
-        Err(_) =&gt; {
-            panic!(&quot;{}&quot;, CustomError);
-        }
-    };
-    println!(&quot;{}&quot;, content);
-}
-</code></pre>
+                        <h1 id="예외처리"><a class="header" href="#예외처리">예외처리</a></h1>
 
                     </main>
 

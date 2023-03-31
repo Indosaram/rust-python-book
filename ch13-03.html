@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -146,16 +148,30 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="rayon"><a class="header" href="#rayon">rayon</a></h2>
+<p>비동기 프로그래밍과는 큰 상관이 없지만, <code>tokio</code> 와 자주 비교되는 크레이트인 <code>rayon</code> 에 대해서 살펴보겠습니다.</p>
+<h3 id="tokio-vs-rayon"><a class="header" href="#tokio-vs-rayon">tokio vs rayon</a></h3>
+<p>Tokio와 Rayon은 모두 Rust에서 병렬 및 비동기 프로그래밍을 위한 라이브러리이지만, 초점과 사용 사례는 서로 다릅니다.</p>
+<ul>
+<li>Tokio는 주로 비동기 프로그래밍, 특히 네트워크 애플리케이션 구축을 위한 비동기 프로그래밍에 중점을 둡니다. Rust에서 효율적이고 고성능이며 확장 가능한 비동기 애플리케이션을 구축하기 위한 도구 세트를 제공합니다. Tokio는 Rust의 퓨처 및 비동기/대기 언어 기능과 함께 작동하도록 설계되었으며, 비동기 작업을 효율적으로 실행할 수 있는 런타임을 제공합니다.</li>
+<li>반면 레이온은 데이터 처리 작업을 위한 병렬 처리와 동시성에 중점을 두고 있습니다. 대규모 데이터 컬렉션에 대한 계산을 병렬화하기 위한 간단하고 사용하기 쉬운 인터페이스를 제공합니다. 레이온은 Rust의 이터레이터 특성과 함께 작동하도록 설계되었으며, 데이터를 병렬로 처리하는 데 사용할 수 있는 일련의 병렬 알고리즘을 제공합니다.</li>
+</ul>
+<p>요약하자면, Tokio는 비동기 네트워크 애플리케이션을 구축하는 데 이상적이며, Rayon은 대규모 데이터 컬렉션에 대한 계산을 병렬화하는 데 이상적입니다. 두 라이브러리 모두 다양한 사용 사례에 유용하며, 비동기 처리와 병렬 처리가 모두 필요한 경우에 함께 사용할 수 있습니다.</p>
+<h3 id="병렬-이터레이터"><a class="header" href="#병렬-이터레이터">병렬 이터레이터</a></h3>
 <p>레이온은 Rust를 위한 데이터 병렬 처리 라이브러리입니다. 매우 가볍고 순차 계산을 병렬 계산으로 쉽게 변환할 수 있습니다. 또한 데이터 레이스가 발생하지 않는 것이 보장됩니다. 레이온은 아래 명령어로 설치 가능합니다.</p>
 <pre><code class="language-bash">cargo add rayon
 </code></pre>
+<p>공식 문서에서 권장하는 사용 방법은 <code>prelude</code> 밑에 있는 모든 것을 불러오는 것입니다. 이렇게 하면 병렬 이터레이터와 다른 트레이트를 전부 불러오기 때문에 코드를 훨씬 쉽게 작성할 수 있습니다.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use rayon::prelude::*;
+<span class="boring">}</span></code></pre></pre>
 <p>기존의 순차 계산 함수에 병렬성을 더하려면, 단순히 이터레이터를 <code>par_iter</code>로 바꿔주기만 하면 됩니다.</p>
 <pre><code class="language-rust ignore">use rayon::prelude::*;
 use std::time::SystemTime;
 
 fn sum_of_squares(input: &amp;Vec&lt;i32&gt;) -&gt; i32 {
     input
-        .par_iter() // &lt;-- just change that!
+        .par_iter() // ✨
         .map(|&amp;i| {
             std::thread::sleep(std::time::Duration::from_millis(10));
             i * i
@@ -165,7 +181,7 @@ fn sum_of_squares(input: &amp;Vec&lt;i32&gt;) -&gt; i32 {
 
 fn sum_of_squares_seq(input: &amp;Vec&lt;i32&gt;) -&gt; i32 {
     input
-        .iter() // &lt;-- just change that!
+        .iter()
         .map(|&amp;i| {
             std::thread::sleep(std::time::Duration::from_millis(10));
             i * i
@@ -186,6 +202,68 @@ fn main() {
 <pre><code>106ms
 1122ms
 </code></pre>
+<p>par_iter_mut 는 각 원소의 가변 레퍼런스를 받는 이터레이터입니다.</p>
+<pre><pre class="playground"><code class="language-rust">use rayon::prelude::*;
+
+use std::time::SystemTime;
+
+fn plus_one(x: &amp;mut i32) {
+    *x += 1;
+    std::thread::sleep(std::time::Duration::from_millis(10));
+}
+
+fn increment_all_seq(input: &amp;mut [i32]) {
+    input.iter_mut().for_each(plus_one);
+}
+
+fn increment_all(input: &amp;mut [i32]) {
+    input.par_iter_mut().for_each(plus_one);
+}
+
+fn main() {
+    let mut data = vec![1, 2, 3, 4, 5];
+
+    let start = SystemTime::now();
+    increment_all(&amp;mut data);
+    println!(&quot;{:?} - {}ms&quot;, data, start.elapsed().unwrap().as_millis());
+
+    let start = SystemTime::now();
+    increment_all_seq(&amp;mut data);
+    println!(&quot;{:?} - {}ms&quot;, data, start.elapsed().unwrap().as_millis());
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>[2, 3, 4, 5, 6] - 12ms
+[3, 4, 5, 6, 7] - 55ms
+</code></pre>
+<p><code>par_sort</code> 는 병합 정렬을 응용한 정렬 알고리즘을 사용해 데이터를 병렬적으로 분할해 정렬합니다.</p>
+<pre><pre class="playground"><code class="language-rust">use rand::Rng;
+use rayon::prelude::*;
+
+use std::time::SystemTime;
+
+fn main() {
+    let mut rng = rand::thread_rng();
+    let mut data1: Vec&lt;i32&gt; = (0..1_000_000).map(|_| rng.gen_range(0..=100)).collect();
+    let mut data2 = data1.clone();
+
+    let start = SystemTime::now();
+    data1.par_sort();
+    println!(&quot;{}ms&quot;, start.elapsed().unwrap().as_millis());
+
+    let start = SystemTime::now();
+    data2.sort();
+    println!(&quot;{}ms&quot;, start.elapsed().unwrap().as_millis());
+
+    assert_eq!(data1, data2);
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>68ms
+325ms
+</code></pre>
+<h3 id="rayon-사용-시-주의사항"><a class="header" href="#rayon-사용-시-주의사항">Rayon 사용 시 주의사항</a></h3>
+<p>멀티스레드도 마찬가지지만 스레드 스폰 및 조인에 시간이 소요되기 때문에 주의</p>
 
                     </main>
 

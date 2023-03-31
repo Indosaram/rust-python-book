@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -210,7 +212,7 @@ thread::spawn(move || dbg!(b));
 <li><code>Arc</code>를 클론하면 레퍼런스 카운트는 2가 되고, <code>a</code>와 <code>b</code> 모두 같은 메모리 주소를 사용합니다.</li>
 <li>각 스레드마다 고유한 <code>Arc</code>를 전달받았습니다. 즉 배열이 스레드 사이에 공유되었습니다. 각 스레드에서 <code>Arc</code>가 삭제될 때마다 레퍼런스 카운터가 감소하고, 카운터가 0이 되면 배열은 메모리에서 할당 해제됩니다.</li>
 </ul>
-<h3 id="뮤텍스mutex"><a class="header" href="#뮤텍스mutex">뮤텍스(mutex)</a></h3>
+<h2 id="뮤텍스mutex"><a class="header" href="#뮤텍스mutex">뮤텍스(mutex)</a></h2>
 <p>뮤텍스는 Mutual exclusion(상호 배제)의 약자로, 뮤텍스는 주어진 시간에 하나의 스레드만 데이터에 액세스할 수 있도록 허용합니다. 뮤텍스의 데이터에 액세스하려면 먼저 스레드가 뮤텍스의 락(lock)을 획득하도록 요청하여 액세스를 원한다는 신호를 보내야 합니다. 락은 뮤텍스의 일부인 데이터 구조로, 어떤 스레드에서 뮤텍스를 참조하고 있는지가 저장되어 있습니다.</p>
 <p>뮤텍스를 사용하기 위해서는 두 가지 규칙을 지켜야 합니다.</p>
 <ul>
@@ -240,61 +242,182 @@ fn main() {
 <p>만약 락을 보유한 다른 스레드가 패닉에 빠지면 <code>lock</code> 호출이 실패합니다. 이 경우 아무도 락을 얻을 수 없게 되기 때문에 스레드에서 패닉을 발생시킵니다.</p>
 </blockquote>
 <p>락을 획득한 후에는 반환 값(이 경우 num)을 뮤텍스 내부의 값에 대한 가변 레퍼런스로 취급할 수 있습니다. 락을 해제하고 나서 뮤텍스의 값을 출력하면 내부에 보관하고 있던 정수형 값이 5에서 6으로 변경된 것을 확인할 수 있습니다.</p>
-<h4 id="멀티스레드에서의-뮤텍스"><a class="header" href="#멀티스레드에서의-뮤텍스">멀티스레드에서의 뮤텍스</a></h4>
+<p>balance가 인출하고자 하는 금액보다 크다고 판단해 잔고를 인출합니다.</p>
 <pre><code class="language-python">import threading
 import time
 
-data = 0
+balance = 100
+
+def withdraw(amount):
+    global balance
+    if balance &gt;= amount:
+        time.sleep(0.01)
+        balance -= amount
+        print(f&quot;Withdrawal successful. Balance: {balance}&quot;)
+    else:
+        print(&quot;Insufficient balance.&quot;)
+
+def main():
+    t1 = threading.Thread(target=withdraw, args=(50,))
+    t2 = threading.Thread(target=withdraw, args=(75,))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p>실행 결과</p>
+<pre><code class="language-python">Withdrawal successful. Balance: 50
+Withdrawal successful. Balance: -25
+</code></pre>
+<p>스레드가 lock을 획득했을 때만 데이터에 접근 가능하도록 하면 이러한 문제를 막을 수 있습니다.</p>
+<pre><code class="language-python">import time
+import threading
+
+balance = 100
 lock = threading.Lock()
 
-
-def adder():
-    global data, lock
-
+def withdraw(amount):
+    global balance
+    thread_id = threading.get_ident()
     with lock:
-        for _ in range(100):
-            data += 1
-            time.sleep(0.001)
+        print(f&quot;Thread {thread_id}: Checking balance...&quot;)
+        if balance &gt;= amount:
+            time.sleep(1)
+            balance -= amount
+            print(f&quot;Thread {thread_id}: Withdrawal successful. Balance: {balance}&quot;)
+        else:
+            print(f&quot;Thread {thread_id}: Insufficient balance.&quot;)
 
+def check_lock():
+    while lock.locked():
+        print(&quot;Lock is locked.&quot;)
+        time.sleep(0.1)
 
-if __name__ == &quot;__main__&quot;:
-    threads = []
-    for index in range(10):
-        thread = threading.Thread(target=adder)
-        threads.append(thread)
-        thread.start()
+def main():
+    t1 = threading.Thread(target=withdraw, args=(50,))
+    t2 = threading.Thread(target=withdraw, args=(75,))
+    t3 = threading.Thread(target=check_lock)
+    t1.start()
+    t2.start()
+    t3.start()
+    t1.join()
+    t2.join()
+    t3.join()
 
-    for thread in threads:
-        thread.join()
-    print(data)
-
+if __name__ == '__main__':
+    main()
 </code></pre>
-<p>다음 코드는 10개의 스레드가 100번씩 1씩 증가하는 값을 더하는 코드입니다. 뮤텍스를 사용해 데이터를 보호하고 있습니다. 뮤텍스를 사용하면 여러 스레드가 동시에 데이터에 액세스할 수 없습니다. 따라서 데이터가 더해지는 동안 다른 스레드는 데이터에 액세스할 수 없습니다. 결과적으로 데이터는 정확하게 1000이 출력됩니다.</p>
+<p>실행 결과</p>
+<pre><code class="language-python">Thread 123145503645696: Checking balance...
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Thread 123145503645696: Withdrawal successful. Balance: 50
+Thread 123145520435200: Checking balance...
+Thread 123145520435200: Insufficient balance.
+</code></pre>
+<p>다음 코드는 10개의 스레드가 100번씩 1씩 증가하는 값을 더하는 코드입니다. </p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::Arc;
+use std::thread;
+use std::time::Duration;
+
+fn withdraw(balance: &amp;mut i32, amount: i32) {
+    if *balance &gt;= amount {
+        thread::sleep(Duration::from_millis(10));
+        *balance -= amount;
+        println!(&quot;Withdrawal successful. Balance: {balance}&quot;);
+    } else {
+        println!(&quot;Insufficient balance.&quot;);
+    }
+}
+
+fn main() {
+    let mut balance = Arc::new(100);
+
+    let t1 = thread::spawn(move || {
+        withdraw(&amp;mut balance, 50); // 🤯
+    });
+
+    let t2 = thread::spawn(move || {
+        withdraw(&amp;mut balance, 75);
+    });
+
+    t1.join().unwrap();
+    t2.join().unwrap();
+}
+</code></pre></pre>
+<p>가변 레퍼런스로 각 스레드에 값을 전달할 수 없습니다.</p>
+<p>뮤텍스를 사용해 데이터를 보호하고 있습니다. 뮤텍스를 사용하면 여러 스레드가 동시에 데이터에 액세스할 수 없습니다. 따라서 데이터가 더해지는 동안 다른 스레드는 데이터에 액세스할 수 없습니다.</p>
 <pre><pre class="playground"><code class="language-rust">use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
-fn main() {
-    let data = Arc::new(Mutex::new(0));
-    let mut threads = vec![];
+fn withdraw(balance: Arc&lt;Mutex&lt;i32&gt;&gt;, amount: i32) {
+    let mut balance = balance.lock().unwrap();
+    println!(&quot;{:?}: Checking balance.&quot;, thread::current().id());
+    if *balance &gt;= amount {
+        thread::sleep(Duration::from_millis(100));
+        *balance -= amount;
+        println!(&quot;Withdrawal successful. Balance: {balance}&quot;);
+    } else {
+        println!(&quot;Insufficient balance.&quot;);
+    }
+}
 
-    for _ in 0..10 {
-        let mydata = data.clone();
-        let handle = std::thread::spawn(move || {
-            let mut dat = mydata.lock().unwrap();
-            for _ in 0..100 {
-                *dat += 1;
-                thread::sleep(Duration::from_millis(1));
-            }
-        });
-        threads.push(handle);
+fn check_lock(balance: Arc&lt;Mutex&lt;i32&gt;&gt;) {
+    while let Err(_) = balance.try_lock() {
+        println!(&quot;Lock is locked.&quot;);
+        thread::sleep(Duration::from_millis(10));
     }
-    for thread in threads {
-        thread.join().unwrap();
-    }
-    println!(&quot;{}&quot;, *data.lock().unwrap());
+}
+
+fn main() {
+    let balance = Arc::new(Mutex::new(100));
+
+    let balance1 = Arc::clone(&amp;balance);
+    let t1 = thread::spawn(move || {
+        withdraw(Arc::clone(&amp;balance1), 50);
+    });
+    let balance2 = Arc::clone(&amp;balance);
+    let t2 = thread::spawn(move || {
+        withdraw(Arc::clone(&amp;balance2), 75);
+    });
+    let balance3 = Arc::clone(&amp;balance);
+    let t3 = thread::spawn(move || {
+        check_lock(Arc::clone(&amp;balance3));
+    });
+
+    t1.join().unwrap();
+    t2.join().unwrap();
+    t3.join().unwrap();
 }
 </code></pre></pre>
+<p>실행 결과</p>
+<pre><code>ThreadId(2): Checking balance.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Lock is locked.
+Withdrawal successful. Balance: 50
+ThreadId(3): Checking balance.
+Insufficient balance.
+</code></pre>
 
                     </main>
 
