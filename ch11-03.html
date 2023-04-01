@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html lang="kr" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RefCell - 파이썬 프로그래머를 위한 러스트 입문</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li><li class="chapter-item expanded "><a href="ch1-04.html"><strong aria-hidden="true">1.4.</strong> 러스트 코드 실행하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9-00.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="(./ch9-01.html"><strong aria-hidden="true">9.1.</strong> 타입 파라미터</a></li><li class="chapter-item expanded "><a href="ch9-02.html"><strong aria-hidden="true">9.2.</strong> 제네릭과 트레이트</a></li><li class="chapter-item expanded "><a href="ch9-03.html"><strong aria-hidden="true">9.3.</strong> 미니프로젝트: cat 만들어보기</a></li><li class="chapter-item expanded "><a href="ch9-04.html"><strong aria-hidden="true">9.4.</strong> 라이프타임과 스태틱</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00.html"><strong aria-hidden="true">10.</strong> 예외 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01.html"><strong aria-hidden="true">10.1.</strong> panic!</a></li><li class="chapter-item expanded "><a href="ch10-02.html"><strong aria-hidden="true">10.2.</strong> Option 열거형</a></li><li class="chapter-item expanded "><a href="ch10-03.html"><strong aria-hidden="true">10.3.</strong> Result 열거형</a></li><li class="chapter-item expanded "><a href="ch10-04.html"><strong aria-hidden="true">10.4.</strong> 에러 로깅</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00.html"><strong aria-hidden="true">11.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01.html"><strong aria-hidden="true">11.1.</strong> Box 타입</a></li><li class="chapter-item expanded "><a href="ch11-02.html"><strong aria-hidden="true">11.2.</strong> Rc</a></li><li class="chapter-item expanded "><a href="ch11-03.html" class="active"><strong aria-hidden="true">11.3.</strong> RefCell</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 소스코드 살펴보기</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-04.html"><strong aria-hidden="true">14.4.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">파이썬 프로그래머를 위한 러스트 입문</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Indosaram/rust-python-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="refcellt"><a class="header" href="#refcellt"><code>RefCell&lt;T&gt;</code></a></h2>
+<h3 id="rct의-한계"><a class="header" href="#rct의-한계"><code>Rc&lt;T&gt;</code>의 한계</a></h3>
+<p>Rc<T>를 사용하면 프로그램의 여러 부분에서 읽기 전용으로 데이터를 공유할 수 있습니다. 하지만 Rc<T>가 불변 레퍼런스를 통해 값을 공유하기 때문에, 공유받은 값을 변경하는 것은 불가능합니다. 아래 예시를 살펴봅시다.</p>
+<pre><pre class="playground"><code class="language-rust">use std::rc::Rc;
+
+struct Owner {
+    name: String,
+    tools: Rc&lt;Vec&lt;Rc&lt;Tool&gt;&gt;&gt;,
+}
+
+struct Tool {
+    owner: Rc&lt;Owner&gt;,
+}
+
+pub fn main() {
+    let indo = Rc::new(Owner {
+        name: &quot;indo&quot;.to_string(),
+        tools: Rc::new(vec![]),
+    });
+    let pliers = Rc::new(Tool {
+        owner: Rc::clone(&amp;indo),
+    });
+    let wrench = Rc::new(Tool {
+        owner: indo.clone(),
+    });
+
+    indo.tools.push(Rc::clone(&amp;pliers)); // 🤯
+    indo.tools.push(Rc::clone(&amp;wrench));
+
+    println!(&quot;Pliers owner: {}&quot;, pliers.owner.name);
+
+    for tool in indo.tools.iter() {
+        println!(&quot;Tool's owner: {:?}&quot;, tool.owner.name);
+    }
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>error[E0596]: cannot borrow data in an `Rc` as mutable
+  --&gt; src/main.rs:24:5
+   |
+24 |     brad.tools.push(Rc::clone(&amp;pliers)); // 🤯
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ cannot borrow as mutable
+   |
+
+...
+</code></pre>
+<pre><pre class="playground"><code class="language-rust">use std::{cell::RefCell, rc::Rc};
+
+struct Owner {
+    name: String,
+    tools: RefCell&lt;Vec&lt;Rc&lt;Tool&gt;&gt;&gt;,
+}
+
+struct Tool {
+    owner: Rc&lt;Owner&gt;,
+}
+
+pub fn main() {
+    let indo = Rc::from(Owner {
+        name: &quot;indo&quot;.to_string(),
+        tools: RefCell::new(vec![]),
+    });
+    let pliers = Rc::from(Tool {
+        owner: Rc::clone(&amp;indo),
+    });
+    let wrench = Rc::from(Tool {
+        owner: indo.clone(),
+    });
+
+    indo.tools.borrow_mut().push(Rc::clone(&amp;pliers));
+    indo.tools.borrow_mut().push(Rc::clone(&amp;wrench));
+
+    println!(&quot;Pliers owner: {}&quot;, pliers.owner.name);
+
+    for tool in indo.tools.borrow().iter() {
+        println!(&quot;Tool's owner: {:?}&quot;, tool.owner.name);
+    }
+}
+</code></pre></pre>
+<h3 id="내부-가변성interiror-mutability"><a class="header" href="#내부-가변성interiror-mutability">내부 가변성(Interiror mutability)</a></h3>
+<p><code>RefCell&lt;T&gt;</code>가 불변이어도 내부의 값은 가변으로 사용 가능</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>indo.tools.borrow_mut().push(Rc::clone(&amp;pliers));
+<span class="boring">}</span></code></pre></pre>
+<p>불변 소유권 대여도 가능</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>indo.tools.borrow().iter()
+<span class="boring">}</span></code></pre></pre>
+<h3 id="소유권-규칙"><a class="header" href="#소유권-규칙">소유권 규칙</a></h3>
+<ul>
+<li>여러 번 빌려도 괜찮습니다</li>
+<li>한 번 빌리는 것도 괜찮습니다</li>
+<li>하지만 가변과 불변이 대여는 불가능합니다</li>
+</ul>
+<p>런타임 시간에 소유권이 확인되기 때문에 컴파일이 되지만 런타임 에러 발생</p>
+<pre><pre class="playground"><code class="language-rust">use std::{cell::RefCell, rc::Rc};
+
+struct Owner {
+    name: String,
+    tools: RefCell&lt;Vec&lt;Rc&lt;Tool&gt;&gt;&gt;,
+}
+
+struct Tool {
+    owner: Rc&lt;Owner&gt;,
+}
+
+pub fn main() {
+    let indo = Rc::from(Owner {
+        name: &quot;indo&quot;.to_string(),
+        tools: RefCell::new(vec![]),
+    });
+    let pliers = Rc::from(Tool {
+        owner: Rc::clone(&amp;indo),
+    });
+    let wrench = Rc::from(Tool {
+        owner: indo.clone(),
+    });
+
+    let mut borrow_mut_tools1 = indo.tools.borrow_mut();
+    let mut borrow_mut_tools2 = indo.tools.borrow_mut(); // 🤯
+    borrow_mut_tools1.push(Rc::clone(&amp;pliers));
+    borrow_mut_tools2.push(Rc::clone(&amp;wrench));
+
+    println!(&quot;Pliers owner: {}&quot;, pliers.owner.name);
+
+    for tool in indo.tools.borrow().iter() {
+        println!(&quot;Tool's owner: {:?}&quot;, tool.owner.name);
+    }
+}
+</code></pre></pre>
+<p>실행 결과</p>
+<pre><code>thread 'main' panicked at 'already borrowed: BorrowMutError', src/main.rs:25:44
+</code></pre>
+<h3 id="rcrefcellt"><a class="header" href="#rcrefcellt"><code>Rc&lt;RefCell&lt;T&gt;&gt;</code></a></h3>
+<p><code>RefCell&lt;T&gt;</code>를 사용하는 일반적인 방법은 <code>Rc&lt;T&gt;</code>와 함께 사용하는 것입니다. <code>Rc&lt;T&gt;</code>를 사용하면 일부 데이터의 소유자를 여러 명 가질 수 있지만, 해당 데이터에 대한 불변 액세스 권한만 부여한다는 점을 기억하세요. <code>RefCell&lt;T&gt;</code>를 보유한 <code>Rc&lt;T&gt;</code>가 있다면, 여러 소유자를 가질 수 있고 변경할 수 있는 값을 얻을 수 있습니다!</p>
+<p>요약하자면, Rc는 공유 소유권을 제공합니다. 내부 값에는 여러 소유자가 있으며, 참조 카운팅은 적어도 한 명의 소유자가 데이터를 계속 보유하고 있는 한 데이터가 계속 유지되도록 합니다. 이는 데이터 소유자가 명확하지 않은 경우에 유용합니다. RefCell은 내부 가변성을 제공합니다. 즉, 런타임에 내부 값을 동적으로 빌릴 수 있고 공유 참조를 통해서도 수정할 수 있습니다. Rc&lt;RefCell&lt;...&gt;&gt; 조합은 소유자가 여러 명인 값을 소유자 중 한 명이 가변적으로 빌릴 수 있는 두 가지의 조합을 제공합니다.</p>
+<h3 id="언제-무엇을"><a class="header" href="#언제-무엇을">언제 무엇을</a></h3>
+<div class="table-wrapper"><table><thead><tr><th></th><th><code>Box&lt;T&gt;</code></th><th><code>Rc&lt;T&gt;</code></th><th><code>RefCell&lt;T&gt;</code></th></tr></thead><tbody>
+<tr><td>소유권</td><td>한 개</td><td>한 개를 공유</td><td>한 개</td></tr>
+<tr><td>소유권 확인 시점</td><td>불변/가변 소유권을 컴파일 타임에 확인</td><td>불변 소유권을 컴파일 타임에 확인</td><td>불변/가변 소유권을 런타임에 확인</td></tr>
+<tr><td>특징</td><td>스코프를 벗어나면 레퍼런스도 모두 삭제</td><td>레퍼런스가 존재한다면 스코프를 벗어나도 값이 유지됨</td><td><code>RefCell&lt;T&gt;</code>가 불변이어도 내부의 값은 가변으로 사용 가능</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>RefCell<T>는 멀티스레드 코드에서는 작동하지 않는다는 점에 유의하세요! Mutex<T>는 스레드에 안전한 RefCell&lt;T의 버전이며, Mutex&lt;T에 대해서는 나중에 설명하겠습니다.</p>
+</blockquote>
+<h3 id="quiz"><a class="header" href="#quiz">Quiz</a></h3>
+<pre><pre class="playground"><code class="language-rust">use std::fmt::Display;
+use std::vec::Vec;
+
+#[derive(Debug)]
+struct Node&lt;T&gt; {
+    data: T,
+    children: Vec&lt;Node&lt;T&gt;&gt;,
+}
+
+impl&lt;T: Display&gt; Node&lt;T&gt; {
+    fn new(data: T) -&gt; Node&lt;T&gt; {
+        Node {
+            data,
+            children: Vec::new(),
+        }
+    }
+
+    fn depth_first(&amp;self) {
+        println!(&quot;{}&quot;, self.data);
+        for child in self.children.iter() {
+            child.depth_first();
+        }
+    }
+}
+
+fn main() {
+    let mut a = Node::new('A');
+    let mut b = Node::new('B');
+    let c = Node::new('C');
+    let d = Node::new('D');
+
+    b.children.push(d);
+    a.children.push(b);
+    a.children.push(c);
+
+    a.depth_first();
+}
+</code></pre></pre>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>  fn add_child(&amp;mut self, child: Wrapper&lt;Node&lt;T&gt;&gt;) {
+      self.children.push(child);
+  }
+<span class="boring">}</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let a = wrap(Node::new('A'));
+    let b = wrap(Node::new('B'));
+    let c = wrap(Node::new('C'));
+    let d = wrap(Node::new('D'));
+
+    a.borrow_mut().add_child(Rc::clone(&amp;b));
+    a.borrow_mut().add_child(Rc::clone(&amp;c));
+    b.borrow_mut().add_child(Rc::clone(&amp;d));
+    a.borrow_mut().depth_first();
+}</code></pre></pre>
+<p>정답</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+use std::fmt::Display;
+use std::rc::Rc;
+use std::vec::Vec;
+
+type Wrapper&lt;T&gt; = Rc&lt;RefCell&lt;T&gt;&gt;;
+
+fn wrap&lt;T&gt;(data: T) -&gt; Wrapper&lt;T&gt; {
+    Rc::new(RefCell::new(data))
+}
+
+#[derive(Debug)]
+struct Node&lt;T&gt; {
+    data: T,
+    children: Vec&lt;Wrapper&lt;Node&lt;T&gt;&gt;&gt;,
+}
+
+impl&lt;T: Display&gt; Node&lt;T&gt; {
+    fn add_child(&amp;mut self, child: Wrapper&lt;Node&lt;T&gt;&gt;) {
+        self.children.push(child);
+    }
+
+    fn new(data: T) -&gt; Node&lt;T&gt; {
+        Node {
+            data,
+            children: Vec::new(),
+        }
+    }
+
+    fn depth_first(&amp;self) {
+        println!(&quot;node {}&quot;, self.data);
+        for child in self.children.iter() {
+            child.borrow().depth_first();
+        }
+    }
+}
+
+fn main() {
+    let a = wrap(Node::new('A'));
+    let b = wrap(Node::new('B'));
+    let c = wrap(Node::new('C'));
+    let d = wrap(Node::new('D'));
+
+    a.borrow_mut().add_child(Rc::clone(&amp;b));
+    a.borrow_mut().add_child(Rc::clone(&amp;c));
+    b.borrow_mut().add_child(Rc::clone(&amp;d));
+    a.borrow_mut().depth_first();
+}
+</code></pre></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch11-02.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch12-00.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch11-02.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch12-00.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
