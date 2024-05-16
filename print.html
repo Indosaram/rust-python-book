@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="kr" class="sidebar-visible no-js light">
+<html lang="kr" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>파이썬 프로그래머를 위한 러스트 입문</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -32,7 +32,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,42 +62,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li><li class="chapter-item expanded "><a href="ch1-04.html"><strong aria-hidden="true">1.4.</strong> 러스트 코드 실행하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9-00.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="(./ch9-01.html"><strong aria-hidden="true">9.1.</strong> 타입 파라미터</a></li><li class="chapter-item expanded "><a href="ch9-02.html"><strong aria-hidden="true">9.2.</strong> 제네릭과 트레이트</a></li><li class="chapter-item expanded "><a href="ch9-03.html"><strong aria-hidden="true">9.3.</strong> 미니프로젝트: cat 만들어보기</a></li><li class="chapter-item expanded "><a href="ch9-04.html"><strong aria-hidden="true">9.4.</strong> 라이프타임과 스태틱</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00.html"><strong aria-hidden="true">10.</strong> 예외 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01.html"><strong aria-hidden="true">10.1.</strong> panic!</a></li><li class="chapter-item expanded "><a href="ch10-02.html"><strong aria-hidden="true">10.2.</strong> Option 열거형</a></li><li class="chapter-item expanded "><a href="ch10-03.html"><strong aria-hidden="true">10.3.</strong> Result 열거형</a></li><li class="chapter-item expanded "><a href="ch10-04.html"><strong aria-hidden="true">10.4.</strong> 에러 로깅</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00.html"><strong aria-hidden="true">11.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01.html"><strong aria-hidden="true">11.1.</strong> Box 타입</a></li><li class="chapter-item expanded "><a href="ch11-02.html"><strong aria-hidden="true">11.2.</strong> Rc</a></li><li class="chapter-item expanded "><a href="ch11-03.html"><strong aria-hidden="true">11.3.</strong> RefCell</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -150,15 +179,15 @@
                     <main>
                         <h1 id="ch1-러스트-시작하기"><a class="header" href="#ch1-러스트-시작하기">CH1. 러스트 시작하기</a></h1>
 <h2 id="가장-사랑받는-언어-러스트"><a class="header" href="#가장-사랑받는-언어-러스트">가장 사랑받는 언어, 러스트</a></h2>
-<pre><code class="language-python">print(&quot;Hello, Pythonista!&quot;)
+<pre><code class="language-python">print("Hello, Pythonista!")
 </code></pre>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!(&quot;Hello, Rustacean!&quot;);
+    println!("Hello, Rustacean!");
 }</code></pre></pre>
 <p>파이썬은 최근 가장 인기가 높은 언어 중 하나입니다. 간결한 문법과 범용성 덕분에 서버 개발부터 딥러닝 모델 개발까지 다양한 분야에서 사용되고 있습니다. 하지만 파이썬은 개발 시의 높은 생산성을 위해 코드 실행 속도를 일정 부분 포기한 언어입니다. 특히 파이썬의 태생적 한계인 GIL(Global interpreter lock)때문에 빠른 연산이 필요한 작업이나 멀티스레딩 프로그램에서 좋은 성능을 내기 어려운 단점이 있습니다.</p>
-<p>러스트는 높은 추상성으로 높은 생산성을 가지고 있는 동시에 C/C++의 99%에 가까운 성능을 가지고 있어서 빠른 연산속도가 필요한 분야에서 각광받고 있습니다. 2022년 스택오버플로우 개발자 설문조사의 &quot;Loved vs Dreaded(사랑하는 언어 대 두려운 언어)&quot;에서 러스트는 86.73%라는 높은 비율로 가장 사랑받는 언어로 선정되었습니다. 참고로, 러스트는 현재 7년 연속 가장 사랑받는 언어 1위로 선정되었습니다.</p>
+<p>러스트는 높은 추상성으로 높은 생산성을 가지고 있는 동시에 C/C++의 99%에 가까운 성능을 가지고 있어서 빠른 연산속도가 필요한 분야에서 각광받고 있습니다. 2022년 스택오버플로우 개발자 설문조사의 "Loved vs Dreaded(사랑하는 언어 대 두려운 언어)"에서 러스트는 86.73%라는 높은 비율로 가장 사랑받는 언어로 선정되었습니다. 참고로, 러스트는 현재 7년 연속 가장 사랑받는 언어 1위로 선정되었습니다.</p>
 <p><img src="assets/ch01-1.png" alt="ch01-1" /></p>
-<p>국내에서도 2022 프로그래머스 설문조사에 따르면 러스트는 5.3% 비율로 7위를 차지해 꽤 상위권에 위치해 있는 편입니다. </p>
+<p>국내에서도 2022 프로그래머스 설문조사에 따르면 러스트는 5.3% 비율로 7위를 차지해 꽤 상위권에 위치해 있는 편입니다.</p>
 <img src="assets/ch01-2.png" alt="ch01-2" style="zoom:50%;" />
 <div style="break-before: page; page-break-before: always;"></div><h2 id="파이썬-개발자가-러스트를-배워야-하는-이유"><a class="header" href="#파이썬-개발자가-러스트를-배워야-하는-이유">파이썬 개발자가 러스트를 배워야 하는 이유</a></h2>
 <p>왜 국내/외에서 러스트를 배우고 싶어할까요? 그리고 파이썬과 러스트의 어떤 차이점 때문에 파이썬 개발자들이 러스트를 배워야만 할까요?</p>
@@ -172,10 +201,10 @@
 <p>특히 파이썬은 GIL(Global Interpreter Lock) 때문에 멀티스레딩이라 하더라도 한 번에 하나의 코어밖에 사용하지 않습니다. 하지만 러스트를 사용하면 GIL 락이 걸린 순간에 여러 스레드를 사용해 더 빠르게 계산을 완료할 수 있습니다.</p>
 <h3 id="마지막으로-개발-도구가-매우-편리합니다"><a class="header" href="#마지막으로-개발-도구가-매우-편리합니다">마지막으로, 개발 도구가 매우 편리합니다.</a></h3>
 <p>러스트는 언어 입문서와 예제 모음집이 공식적으로 제공됩니다. 그리고 매우 친절한 컴파일러가 있습니다. 때로는 컴파일 시에 발생하는 오류에 대해 적절한 해결책을 컴파일러가 제시해 주기도 합니다. 러스트의 내장 패키지 매니저인 Cargo 덕분에 빌드, 테스트, 의존성 관리 등이 매우 간편합니다. 또한 Visual Studio Code와 같은 통합개발환경(Integrated Developement Environment, IDE) 지원이 잘 되어 있어 자동완성, 타입 검사, 포매팅 등을 자연스럽게 사용할 수 있습니다.</p>
-<p>이같은 점 때문에 7년 연속 &quot;가장 사랑받는 프로그래밍 언어&quot; 1위를 차지하고 있는 러스트는 더 이상 파이썬 개발자에게 선택이 아닌 필수가 되었습니다.</p>
+<p>이같은 점 때문에 7년 연속 "가장 사랑받는 프로그래밍 언어" 1위를 차지하고 있는 러스트는 더 이상 파이썬 개발자에게 선택이 아닌 필수가 되었습니다.</p>
 <h2 id="파이썬과-러스트의-차이점"><a class="header" href="#파이썬과-러스트의-차이점">파이썬과 러스트의 차이점</a></h2>
 <h3 id="언어상의-차이"><a class="header" href="#언어상의-차이">언어상의 차이</a></h3>
-<p>먼저 기본적인 언어상의 차이를 살펴보면 다음과 같습니다. </p>
+<p>먼저 기본적인 언어상의 차이를 살펴보면 다음과 같습니다.</p>
 <div class="table-wrapper"><table><thead><tr><th>파이썬</th><th>러스트</th></tr></thead><tbody>
 <tr><td>인터프리터 언어</td><td>컴파일 언어</td></tr>
 <tr><td>강타입 언어이면서 동적 타입 언어</td><td>강타입 언어이면서 정적 타입 언어</td></tr>
@@ -188,7 +217,7 @@
 <blockquote>
 <p>강타입 언어란?</p>
 <p>서로 다른 타입의 변수를 사용해 계산을 수행했을 때, 모든 경우에 대해 에러가 발생하면 강타입 언어입니다. 예를 들어 자바스크립트는 약타입 언어입니다.</p>
-<pre><code class="language-javascript">&gt; console.log(1 + &quot;2&quot;);
+<pre><code class="language-javascript">&gt; console.log(1 + "2");
 
 13
 </code></pre>
@@ -225,12 +254,12 @@
 <p><img src="assets/ch01-4.png" alt="ch01-4" /></p>
 <p>시스템 소프트웨어의 CLI(Command Line Interface)를 만들거나, 고성능 네트워크가 필요한 분야에서 사용되고 있습니다. 러스트의 높은 성능 때문에 웹 어셈블리(WebAssembly)에서 다른 프로그래밍 언어 중에서 가장 많이 사용되고 있습니다. 하드웨어의 CPU나 메모리가 매우 제한적인 임베디드 분야에서는 전통적으로 C/C++가 가장 많이 사용되어 왔는데, 기존에 C/C++로 작성하던 코드를 러스트로 마이그레이션해 생산성과 안정성이 대폭 향상시킨 사례가 많이 보고되고 있습니다.</p>
 <blockquote>
-<p>웹어셈블리란, 브라우저에서 자바스크립트가 아닌 다른 프로그래밍 언어를 실행시킬 수 있는 방법입니다. 즉 기존에 자바스크립트를 사용했을 때 발생하는 성능 저하를 러스트와 웹어셈블리를 사용하면 간단하게 해결할 수 있습니다. </p>
+<p>웹어셈블리란, 브라우저에서 자바스크립트가 아닌 다른 프로그래밍 언어를 실행시킬 수 있는 방법입니다. 즉 기존에 자바스크립트를 사용했을 때 발생하는 성능 저하를 러스트와 웹어셈블리를 사용하면 간단하게 해결할 수 있습니다.</p>
 </blockquote>
 <p><img src="assets/ch01-02-1.jpg" alt="solana logo" /></p>
-<p>가장 유명한 러스트 프로젝트로는 암호화폐 <a href="https://github.com/solana-labs/solana">솔라나(Solana)</a>가 있습니다. &quot;세계에서 가장 빠른 블록체인&quot;이라는 표어가 보여주듯이 러스트의 성능과 안정성을 잘 이용하고 있는 프로젝트입니다. 솔라나를 이용해 NFT, DeFi 등 다양한 프로젝트가 이어져 나가고 있어서 솔라나는 러스트 생태계에 큰 역할을 하고 있습니다.</p>
+<p>가장 유명한 러스트 프로젝트로는 암호화폐 <a href="https://github.com/solana-labs/solana">솔라나(Solana)</a>가 있습니다. "세계에서 가장 빠른 블록체인"이라는 표어가 보여주듯이 러스트의 성능과 안정성을 잘 이용하고 있는 프로젝트입니다. 솔라나를 이용해 NFT, DeFi 등 다양한 프로젝트가 이어져 나가고 있어서 솔라나는 러스트 생태계에 큰 역할을 하고 있습니다.</p>
 <p><img src="assets/ch01-02-2.png" alt="img" /></p>
-<p>웹 어플리케이션의 백엔드로 러스트가 사용되기도 합니다. <a href="https://github.com/AppFlowy-IO/appflowy">AppFlowy</a>는 러스트로 작성된 노션(Notion) 대체제로, 온라인에서 문서를 작성하고 협업할 수 있는 오픈소스 도구입니다. </p>
+<p>웹 어플리케이션의 백엔드로 러스트가 사용되기도 합니다. <a href="https://github.com/AppFlowy-IO/appflowy">AppFlowy</a>는 러스트로 작성된 노션(Notion) 대체제로, 온라인에서 문서를 작성하고 협업할 수 있는 오픈소스 도구입니다.</p>
 <p><img src="assets/ch01-02-3.png" alt="image-20230219213052794" /></p>
 <p>러스트로 모바일 게임을 제작할 수도 있습니다. 가장 유명한 프로젝트로는 Bevy가 있습니다. Bevy를 사용하면 브라우저에서 게임을 실행하거나, 안드로이드, iOS 등 모바일 앱으로 게임을 만들 수도 있습니다.</p>
 <p>이처럼 러스트는 이미 다양한 분야에서 활용되고 있습니다.</p>
@@ -277,30 +306,30 @@
 <h3 id="프로젝트-생성하기"><a class="header" href="#프로젝트-생성하기">프로젝트 생성하기</a></h3>
 <p>프로그래밍에서는 항상 프로젝트를 폴더 단위로 관리합니다. 여기서는 새로운 프로젝트를 하나 생성해 보겠습니다.</p>
 <p><img src="assets/ch01-03-04.png" alt="image-20230219215906979" /></p>
-<p>Visual Studio Code의 상단 메뉴에서, &quot;파일 - 폴더 열기&quot;를 클릭합니다. 폴더를 새로 생성한 다음, 해당 폴더를 선택합니다. 그러면 창이 새로고침되고 빈 프로젝트 화면이 나타납니다.</p>
+<p>Visual Studio Code의 상단 메뉴에서, "파일 - 폴더 열기"를 클릭합니다. 폴더를 새로 생성한 다음, 해당 폴더를 선택합니다. 그러면 창이 새로고침되고 빈 프로젝트 화면이 나타납니다.</p>
 <h4 id="파이썬-폴더-만들기"><a class="header" href="#파이썬-폴더-만들기">파이썬 폴더 만들기</a></h4>
-<p>우리는 파이썬 코드와 러스트 코드를 비교하면서 러스트 문법을 배워나갈 것입니다. 따라서 파이썬 프로젝트와 러스트 프로젝트를 같은 폴더 밑에 만들어 두겠습니다. 현재 경로가 <code>/code/temp/</code>라고 했을 때, 하위 폴더로 &quot;python&quot; 폴더를 하나 생성합니다. 그리고 폴더 안에 파이썬 코드가 들어갈 <code>main.py</code> 모듈을 생성합니다. 현재 파일 구조는 다음과 같습니다.</p>
+<p>우리는 파이썬 코드와 러스트 코드를 비교하면서 러스트 문법을 배워나갈 것입니다. 따라서 파이썬 프로젝트와 러스트 프로젝트를 같은 폴더 밑에 만들어 두겠습니다. 현재 경로가 <code>/code/temp/</code>라고 했을 때, 하위 폴더로 "python" 폴더를 하나 생성합니다. 그리고 폴더 안에 파이썬 코드가 들어갈 <code>main.py</code> 모듈을 생성합니다. 현재 파일 구조는 다음과 같습니다.</p>
 <pre><code>.
 └── python
     └── main.py
 </code></pre>
 <h4 id="러스트-폴더-만들기"><a class="header" href="#러스트-폴더-만들기">러스트 폴더 만들기</a></h4>
-<p>러스트 프로젝트를 시작하는 방법은 두 가지가 있습니다. </p>
+<p>러스트 프로젝트를 시작하는 방법은 두 가지가 있습니다.</p>
 <blockquote>
 <p>아직 과정을 따라하지 마세요! 저희는 두 번째 방법으로 폴더를 만들 것입니다.</p>
 </blockquote>
-<p>첫째, 터미널에서 빈 폴더에서 <code>cargo init</code> 으로 프로젝트를 시작합니다. 이 경우에는 현재 폴더에 러스트 프로젝트가 생성됩니다. </p>
+<p>첫째, 터미널에서 빈 폴더에서 <code>cargo init</code> 으로 프로젝트를 시작합니다. 이 경우에는 현재 폴더에 러스트 프로젝트가 생성됩니다.</p>
 <pre><code class="language-bash">$ cargo init
 </code></pre>
 <p>예를 들어, 터미널에서 현재 경로가 <code>/code/temp/</code> 라고 했을 때, <code>cargo init</code> 을 수행하면 이 폴더가 프로젝트 폴더가 됩니다. 방금 파이썬 폴더를 새로 만들었기 대문에, 현재 폴더의 파일 목록을 출력하는 <code>ls</code> 명령어를 수행한 결과는 다음과 같습니다.</p>
 <pre><code class="language-bash">/code/temp $ ls 
 Cargo.toml src python
 </code></pre>
-<p>현재 폴더에서 <code>cargo init</code> 으로 프로젝트를 생성하는 경우에는 현재 폴더 이름이 프로젝트 이름이 됩니다. 따라서 현재 생성된 프로젝트 이름은 &quot;temp&quot;가 됩니다. 프로젝트 이름을 확인하는 방법은 잠시 후에 <code>Cargo.toml</code> 파일을 설명하면서 다루겠습니다.</p>
-<p>이제 두 번째 방법으로 프로젝트 만들기를 함께 해보겠습니다. 먼저 터미널을 열기 위해서 메뉴의 &quot;터미널 - 새 터미널&quot;을 클릭합니다. 또는 단축키 <code>Ctrl + Shift + `</code>를 입력해도 됩니다. 이제 터미널에 <code>cargo new &lt;프로젝트명&gt;</code> 명령어를 입력해서 프로젝트 이름을 직접 설정할 수 있습니다. 이 경우에는 하위 폴더가 해당 이름으로 만들어집니다. 현재 폴더 경로가 동일하게 <code>/code/temp/</code> 라고 했을 때, 다음과 같이 실행해 보겠습니다.</p>
+<p>현재 폴더에서 <code>cargo init</code> 으로 프로젝트를 생성하는 경우에는 현재 폴더 이름이 프로젝트 이름이 됩니다. 따라서 현재 생성된 프로젝트 이름은 "temp"가 됩니다. 프로젝트 이름을 확인하는 방법은 잠시 후에 <code>Cargo.toml</code> 파일을 설명하면서 다루겠습니다.</p>
+<p>이제 두 번째 방법으로 프로젝트 만들기를 함께 해보겠습니다. 먼저 터미널을 열기 위해서 메뉴의 "터미널 - 새 터미널"을 클릭합니다. 또는 단축키 <code>Ctrl + Shift + `</code>를 입력해도 됩니다. 이제 터미널에 <code>cargo new &lt;프로젝트명&gt;</code> 명령어를 입력해서 프로젝트 이름을 직접 설정할 수 있습니다. 이 경우에는 하위 폴더가 해당 이름으로 만들어집니다. 현재 폴더 경로가 동일하게 <code>/code/temp/</code> 라고 했을 때, 다음과 같이 실행해 보겠습니다.</p>
 <pre><code class="language-bash">$ cargo new rust_part
 </code></pre>
-<p>그러면 현재 폴더 밑에 &quot;rust_part&quot;라는 폴더가 생성되고, 이 폴더 안에 파일이 생성됩니다. 이제 현재 경로에서는 아래와 같이 두 개의 폴더가 존재합니다.</p>
+<p>그러면 현재 폴더 밑에 "rust_part"라는 폴더가 생성되고, 이 폴더 안에 파일이 생성됩니다. 이제 현재 경로에서는 아래와 같이 두 개의 폴더가 존재합니다.</p>
 <pre><code class="language-bash">/code/temp $ ls 
 rust_part python
 </code></pre>
@@ -321,9 +350,9 @@ rust_part python
 </code></pre>
 <p>먼저 <code>Cargo.toml</code> 파일은 프로젝트의 모든 설정값을 가지고 있는 파일입니다. 파일의 구조는 아래와 같이 생겼습니다.</p>
 <pre><code class="language-toml">[package]
-name = &quot;rust_part&quot;
-version = &quot;0.1.0&quot;
-edition = &quot;2021&quot;
+name = "rust_part"
+version = "0.1.0"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -338,9 +367,9 @@ edition = &quot;2021&quot;
 <div style="break-before: page; page-break-before: always;"></div><h2 id="러스트-코드-실행하기"><a class="header" href="#러스트-코드-실행하기">러스트 코드 실행하기</a></h2>
 <p>이번에는 러스트 코드를 컴파일하고 실행하는 방법을 알아보겠습니다.</p>
 <h3 id="코드-컴파일하기"><a class="header" href="#코드-컴파일하기">코드 컴파일하기</a></h3>
-<p><code>main.rs</code>파일을 열어보면, <code>main()</code> 함수에 <code>&quot;Hello, world!&quot;</code> 라는 문자열을 프린트하는 <code>println!</code> 만 들어있습니다.</p>
+<p><code>main.rs</code>파일을 열어보면, <code>main()</code> 함수에 <code>"Hello, world!"</code> 라는 문자열을 프린트하는 <code>println!</code> 만 들어있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!(&quot;Hello, world!&quot;);
+    println!("Hello, world!");
 }
 </code></pre></pre>
 <p>코드를 컴파일하려면 <code>cargo build</code>를 사용합니다.</p>
@@ -379,12 +408,12 @@ Hello, world!
 <p>아래 코드를 <code>main.rs</code> 에 입력하고, 단축키를 사용해 포맷을 실행해 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main(    ){
     println! (
-        &quot;Please run 'rustfmt!'&quot;
+        "Please run 'rustfmt!'"
     );
 }</code></pre></pre>
 <p>실행 결과</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!(&quot;Please run 'rustfmt!'&quot;);
+    println!("Please run 'rustfmt!'");
 }
 </code></pre></pre>
 <p>공백 간격, 줄바꿈 등을 rustfmt가 알아서 처리해줍니다. 이처럼 공식적인 공통 포맷터가 존재하기 때문에 어떤 러스트 프로젝트라도 일관적인 소스코드 관리가 가능하다는 것이 러스트의 큰 장점입니다.</p>
@@ -394,12 +423,12 @@ Hello, world!
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch2-변수"><a class="header" href="#ch2-변수">CH2. 변수</a></h1>
 <p>이번 장부터는 파이썬과 러스트 코드를 동시에 비교하면서 러스트 언어의 개념들을 설명해 보도록 하겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="값-출력하기"><a class="header" href="#값-출력하기">값 출력하기</a></h2>
-<p>파이썬에서는 모든 객체를 <code>print</code> 함수로 출력할 수 있습니다. 문자열 <code>&quot;Hello, world!&quot;</code> 를 출력하는 예제는 다음과 같습니다.</p>
-<pre><code class="language-python">print(&quot;Hello, world!&quot;)
+<p>파이썬에서는 모든 객체를 <code>print</code> 함수로 출력할 수 있습니다. 문자열 <code>"Hello, world!"</code> 를 출력하는 예제는 다음과 같습니다.</p>
+<pre><code class="language-python">print("Hello, world!")
 </code></pre>
-<p>반면 러스트에서는 <code>print</code> 같은 편리한 함수 대신, 매크로(macro)를 사용해 값을 출력합니다. 매크로란 사전 정의된 편리한 기능을 의미하고, 항상 이름 뒤에 <code>!</code>가 붙습니다. 매크로에 대해서는 뒤에서 다시 자세히 설명하겠습니다. 러스트 코드는 매 줄의 마지막에 세미콜론(;) 이 붙습니다. 세미콜론이 없으면 컴파일 에러가 발생하니 주의하세요. 위의 파이썬 예제와 동일하게 문자열 <code>&quot;Hello, world!&quot;</code> 를 출력하는 코드는 다음과 같습니다.</p>
+<p>반면 러스트에서는 <code>print</code> 같은 편리한 함수 대신, 매크로(macro)를 사용해 값을 출력합니다. 매크로란 사전 정의된 편리한 기능을 의미하고, 항상 이름 뒤에 <code>!</code>가 붙습니다. 매크로에 대해서는 뒤에서 다시 자세히 설명하겠습니다. 러스트 코드는 매 줄의 마지막에 세미콜론(;) 이 붙습니다. 세미콜론이 없으면 컴파일 에러가 발생하니 주의하세요. 위의 파이썬 예제와 동일하게 문자열 <code>"Hello, world!"</code> 를 출력하는 코드는 다음과 같습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!(&quot;Hello, world!&quot;);
+    println!("Hello, world!");
 }
 </code></pre></pre>
 <h2 id="변수-선언"><a class="header" href="#변수-선언">변수 선언</a></h2>
@@ -407,13 +436,13 @@ Hello, world!
 <pre><code class="language-python">x = 1.0
 y = 10
 
-print(f&quot;x = {x}, y = {y}&quot;)
+print(f"x = {x}, y = {y}")
 </code></pre>
-<p>파이썬 코드 실행 결과는 다음과 같습니다. 폴더를 하위 폴더인 &quot;python&quot;으로 이동한 다음 코드를 실행해야 합니다.</p>
+<p>파이썬 코드 실행 결과는 다음과 같습니다. 폴더를 하위 폴더인 "python"으로 이동한 다음 코드를 실행해야 합니다.</p>
 <pre><code class="language-bash">/code/temp/python $ python main.py
 x = 1.0, y = 10
 </code></pre>
-<p>러스트에서는 <code>let</code> 키워드를 사용해 변수를 선언합니다. 그리고 타입을 <code>:</code> 뒤에 명시합니다. </p>
+<p>러스트에서는 <code>let</code> 키워드를 사용해 변수를 선언합니다. 그리고 타입을 <code>:</code> 뒤에 명시합니다.</p>
 <pre><code class="language-rust ignore"> 변수명  타입   값
 let x: i32 = 10;</code></pre>
 <p>대부분의 경우에서는 컴파일러가 타입을 추측해주지만, 몇몇 경우에는 직접 타입을 명시해줘야 하기도 합니다. 아래 예제에서는 실수 1.0을 <code>f64</code> 타입으로 선언했지만, 실제로는 변수 <code>y</code>와 같이 명시적으로 타입을 적어주지 않아도 컴파일이 됩니다. 다음으로 <code>prinln!</code> 매크로에서는 문자열의 <code>{}</code> 자리에 변수가 순서대로 들어가 전체 문자열이 완성됩니다.</p>
@@ -421,14 +450,14 @@ let x: i32 = 10;</code></pre>
     let x: f64 = 1.0;
     let y = 10;
 
-    println!(&quot;x = {}, y = {}&quot;, x, y);
+    println!("x = {}, y = {}", x, y);
 }</code></pre></pre>
-<p>하위 폴더인 &quot;rust_part&quot; 폴더로 이동한 다음, <code>cargo run</code> 을 실행해 결과를 확인해보겠습니다.</p>
+<p>하위 폴더인 "rust_part" 폴더로 이동한 다음, <code>cargo run</code> 을 실행해 결과를 확인해보겠습니다.</p>
 <pre><code class="language-bash">/code/temp/rust_part $ cargo run
 x = 1, y = 10
 </code></pre>
 <p>파이썬과 러스트 모두 같은 결과가 나오는 것을 알 수 있습니다.</p>
-<p>앞으로 파이썬 코드와 러스트 코드를 동시에 실행해야 하기 때문에, VSCode 터미널의 분할(split) 기능을 사용하면 편리합니다. 터미널을 연 다음, 우측 상단의 &quot;터미널 분할&quot;을 클릭합니다.</p>
+<p>앞으로 파이썬 코드와 러스트 코드를 동시에 실행해야 하기 때문에, VSCode 터미널의 분할(split) 기능을 사용하면 편리합니다. 터미널을 연 다음, 우측 상단의 "터미널 분할"을 클릭합니다.</p>
 <img src="assets/ch02-1.png" alt="image-20220807162900672" style="zoom:50%;" />
 <p>그리고 분할된 화면에서 하나는 파이썬 프로젝트를, 나머지는 러스트 프로젝트로 이동해 두면 편리하게 코드를 실행할 수 있습니다.</p>
 <p><img src="assets/ch02-2.png" alt="image-20220807162808437" /></p>
@@ -449,14 +478,14 @@ x = 1, y = 10
 <div style="break-before: page; page-break-before: always;"></div><h2 id="불변성"><a class="header" href="#불변성">불변성</a></h2>
 <p>러스트에서 변수를 다룰 때, 파이썬에는 없는 두 가지 개념이 있습니다. 러스트의 모든 변수는 기본적으로 불변(immutable)입니다. 파이썬에서는 변수를 선언한 다음 다른 값을 넣는 것이 매우 자유롭습니다. 변수의 타입도 상관 없이 새로운 값을 마음대로 넣을 수 있습니다.</p>
 <pre><code class="language-python">x = 1
-x = &quot;2&quot;
+x = "2"
 x = 3.141592
 </code></pre>
 <p>하지만 러스트에서는 조금 다릅니다. 예를 들어, 아래 코드와 같이 <code>let</code> 키워드로 변수를 선언하고, 해당 변수의 값을 바꾸려고 한다면 컴파일이 되지 않습니다.</p>
 <pre><code class="language-rust ignore">fn main() {
     let x = 1;
     x = 2; // won't compile!
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
 }
 </code></pre>
 <p>위 코드를 실행해보면 다음과 같은 에러가 발생합니다.</p>
@@ -472,25 +501,25 @@ x = 3.141592
   |     ^^^^^ cannot assign twice to immutable variable
 
 </code></pre>
-<p>에러의 내용을 읽어보면, 처음 <code>let x=1</code> 로 선언된 변수가 불변(immutable)이기 때문에 값을 두 번 할당할 수 없다고 합니다. 그리고 컴파일러가 &quot;help&quot;에서 문제 해결 방법을 소개하는데, 변수 <code>x</code> 를 가변 변수(mutable)로 다음과 같이 선언하라고 합니다.</p>
+<p>에러의 내용을 읽어보면, 처음 <code>let x=1</code> 로 선언된 변수가 불변(immutable)이기 때문에 값을 두 번 할당할 수 없다고 합니다. 그리고 컴파일러가 "help"에서 문제 해결 방법을 소개하는데, 변수 <code>x</code> 를 가변 변수(mutable)로 다음과 같이 선언하라고 합니다.</p>
 <pre><code class="language-rust ignore">let mut x = 1;</code></pre>
 <p>컴파일러의 조언에 따라 수정된 코드를 아래와 같이 작성하고 실행해봅시다.</p>
 <pre><code class="language-rust ignore">fn main() {
     let mut x = 1;
     x = 2;
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
 }
 </code></pre>
 <p>이제 콘솔에 값 2가 잘 출력되는 것을 알 수 있습니다. 이처럼, 러스트에서는 모든 변수의 값이 불변으로 선언이 됩니다. 따라서 값을 바꾸고자 하는 변수에는 <code>mut</code> 키워드로 가변성을 부여해야 합니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="섀도잉"><a class="header" href="#섀도잉">섀도잉</a></h2>
 <p>한번 선언한 불변 변수의 값을 변경하는 것은 불가능하지만, 변수 자체를 새로 선언하는 것은 가능합니다. 이렇게 변수 이름을 재사용해서 새로운 변수를 다시 선언하는 것을 섀도잉(shadowing)이라고 합니다.</p>
-<p>섀도잉을 사용할 경우, <code>mut</code> 키워드 없이도 새로운 값을 변수에 할당할 수 있고, 새로운 변수이기 때문에 타입도 변경할 수 있습니다. 아래 예제에서는 변수 <code>x</code> 에 처음에는 <code>&quot;5&quot;</code> 라는 문자열을 할당했지만, 그 다음에는 섀도잉을 사용해 <code>x</code>에 정수 6을 할당했습니다. 코드를 실행해보면 정상적으로 컴파일됩니다.</p>
+<p>섀도잉을 사용할 경우, <code>mut</code> 키워드 없이도 새로운 값을 변수에 할당할 수 있고, 새로운 변수이기 때문에 타입도 변경할 수 있습니다. 아래 예제에서는 변수 <code>x</code> 에 처음에는 <code>"5"</code> 라는 문자열을 할당했지만, 그 다음에는 섀도잉을 사용해 <code>x</code>에 정수 6을 할당했습니다. 코드를 실행해보면 정상적으로 컴파일됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let x = &quot;5&quot;;
+    let x = "5";
 
     let x = 6; // x is redeclared as 6
 
-    println!(&quot;The value of x is: {}&quot;, x); // 6
+    println!("The value of x is: {}", x); // 6
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="타입"><a class="header" href="#타입">타입</a></h2>
@@ -524,7 +553,7 @@ x = 3.141592
 <pre><pre class="playground"><code class="language-rust">fn main(){
     let x = 1;
     let y = 1.0;
-    println!(&quot;{} {}&quot;, x, y);
+    println!("{} {}", x, y);
 }</code></pre></pre>
 <img src="assets/ch02-3.png" alt="ch02-3" style="zoom:50%;" />
 <p>마찬가지로 이 상태로도 컴파일이 잘 실행되고, 컴파일러가 각 변수를 <code>i32</code> 와 <code>f64</code> 로 추측해서 컴파일합니다.</p>
@@ -535,7 +564,7 @@ x = 3.141592
 <p>변수의 타입을 다른 타입으로 바꾸는 타입 변환(Casting)도 가능합니다. 파이썬에서는 타입 이름을 바로 사용해 타입 변환을 수행합니다.</p>
 <pre><code class="language-python">x = 1.2
 y = int(x)
-print(f&quot;{x} -&gt; {y}&quot;);
+print(f"{x} -&gt; {y}");
 </code></pre>
 <p>실행결과</p>
 <pre><code>1.2 -&gt; 1
@@ -544,7 +573,7 @@ print(f&quot;{x} -&gt; {y}&quot;);
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x: f64 = 1.2;
     let y = x as i32;
-    println!(&quot;{} -&gt; {}&quot;, x, y);
+    println!("{} -&gt; {}", x, y);
 }
 </code></pre></pre>
 <p>실행결과</p>
@@ -580,15 +609,15 @@ fn is_big(n: i32) -&gt; bool {
 }
 
 fn main() {
-    println!(&quot;{}&quot;, THRESHOLD);
-    println!(&quot;{}&quot;, is_big(5));
+    println!("{}", THRESHOLD);
+    println!("{}", is_big(5));
 }
 </code></pre></pre>
 <p>실행결과</p>
 <pre><code>10
 false
 </code></pre>
-<p>러스트에서는 상수를 <code>const</code> 키워드로 선언하게 됩니다. 이렇게 선언된 상수는 불변이기 때문에 값을 변경할 수 없습니다. 파이썬에서 상수를 모듈 전체에서 접근할 수 있었던 것처럼, 마찬가지로 러스트에서도 선언된 상수 <code>THRESHOLD</code> 를 함수 <code>is_big</code> 과 <code>main</code> 내부에서 참조하는 것이 가능합니다. 하지만 값이 불변이기 때문에 <code>THRESHOLD = 5;</code>와 같이 새로운 값을 할당하게 되면 오류가 발생합니다. </p>
+<p>러스트에서는 상수를 <code>const</code> 키워드로 선언하게 됩니다. 이렇게 선언된 상수는 불변이기 때문에 값을 변경할 수 없습니다. 파이썬에서 상수를 모듈 전체에서 접근할 수 있었던 것처럼, 마찬가지로 러스트에서도 선언된 상수 <code>THRESHOLD</code> 를 함수 <code>is_big</code> 과 <code>main</code> 내부에서 참조하는 것이 가능합니다. 하지만 값이 불변이기 때문에 <code>THRESHOLD = 5;</code>와 같이 새로운 값을 할당하게 되면 오류가 발생합니다.</p>
 <pre><code class="language-rust ignore">const THRESHOLD: i32 = 10;
 
 fn is_big(n: i32) -&gt; bool {
@@ -596,8 +625,8 @@ fn is_big(n: i32) -&gt; bool {
 }
 
 fn main() {
-    println!(&quot;{}&quot;, THRESHOLD);
-    println!(&quot;{}&quot;, is_big(5));
+    println!("{}", THRESHOLD);
+    println!("{}", is_big(5));
 
     THRESHOLD = 5;
 }
@@ -620,7 +649,7 @@ fn main() {
 <pre><code class="language-python">def add(num1: int, num2: int) -&gt; int:
     return num1 + num2
 </code></pre>
-<p>동일한 기능의 러스트 코드는 다음과 같습니다. 함수의 선언에 <code>fn</code> 키워드를 사용하고, 함수에서 실행할 코드를 중괄호로 묶어줍니다. 그리고 파이썬과 비슷하게 파라미터에는 <code>:i32</code>로 타입을 표기하고, 리턴값에는 <code>-&gt; i32</code>처럼 화살표를 사용해 타입을 명시했습니다. </p>
+<p>동일한 기능의 러스트 코드는 다음과 같습니다. 함수의 선언에 <code>fn</code> 키워드를 사용하고, 함수에서 실행할 코드를 중괄호로 묶어줍니다. 그리고 파이썬과 비슷하게 파라미터에는 <code>:i32</code>로 타입을 표기하고, 리턴값에는 <code>-&gt; i32</code>처럼 화살표를 사용해 타입을 명시했습니다.</p>
 <pre><code class="language-rust ignore">fn add(num1: i32, num2: i32) -&gt; i32 {
     return num1 + num2;
 }</code></pre>
@@ -637,7 +666,7 @@ fn main() {
 }
 
 fn main() {
-    println!(&quot;{}&quot;, add(1, 2));
+    println!("{}", add(1, 2));
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -651,7 +680,7 @@ fn main() {
 
 
 num1, num2 = swap(1, 2)
-print(f&quot;{num1}, {num2}&quot;)
+print(f"{num1}, {num2}")
 
 </code></pre>
 <p>실행 결과</p>
@@ -664,7 +693,7 @@ print(f&quot;{num1}, {num2}&quot;)
 
 fn main() {
     let (num1, num2) = swap(1, 2);
-    println!(&quot;{num1}, {num2}&quot;);
+    println!("{num1}, {num2}");
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -681,26 +710,26 @@ fn main() {
 fn me_too() {}
 
 fn main() {
-    println!(&quot;{:?}&quot;, do_nothing());
-    println!(&quot;{:?}&quot;, me_too());
+    println!("{:?}", do_nothing());
+    println!("{:?}", me_too());
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="스코프"><a class="header" href="#스코프">스코프</a></h2>
 <p>스코프(scope)란 변수에 접근할 수 있는 범위를 의미합니다. 먼저 파이썬에서는 스코프를 기본적으로 함수 단위로 구분합니다.</p>
 <blockquote>
-<p>실제로는 파이썬은 LEGB 룰이라고 불리는 좀더 복잡한 스코프 규칙을 가지고 있지만, 여기서는 단순화해서 함수 기준으로 설명합니다. </p>
+<p>실제로는 파이썬은 LEGB 룰이라고 불리는 좀더 복잡한 스코프 규칙을 가지고 있지만, 여기서는 단순화해서 함수 기준으로 설명합니다.</p>
 </blockquote>
 <pre><code class="language-python">def hello(name: str):
     num = 3
-    print(f&quot;Hello {name}&quot;)
+    print(f"Hello {name}")
 
 
 if __name__ == '__main__':
-    my_name = &quot;buzzi&quot;
+    my_name = "buzzi"
 
     if True:
-        print(&quot;My name is&quot;, my_name)
-        my_name = &quot;mellon&quot;
+        print("My name is", my_name)
+        my_name = "mellon"
 
     hello(my_name)
 
@@ -711,31 +740,31 @@ if __name__ == '__main__':
 <pre><code class="language-python">My name is buzzi
 Hello mellon
 </code></pre>
-<p>코드 실행 부분을 먼저 보면, <code>my_name</code> 변수에 <code>&quot;buzzi&quot;</code> 라는 문자열을 할당합니다. 그 다음  <code>if</code> 문에서 변수 값을 프린트해보면 &quot;buzzi&quot;가 프린트됩니다. 하지만 그 다음 라인에서 <code>my_name = &quot;mellon&quot;</code> 으로 변수의 값을 바꿔 버렸습니다.  파이썬은 스코프를 함수 단위로만 구분하고 있기 때문에 이제 코드 전체에서 값이 바뀌게 됩니다. 따라서 <code>hello(my_name)</code>의 출력은  <code>Hello mellon</code>이 됩니다. 마지막으로 <code># print(num) # error</code>를 주석 해제하고 실행해 보면 에러가 발생합니다. <code>hello</code> 함수 안에서 선언된 <code>num</code> 이라는 변수를 프린트하기 때문입니다. 즉,  <code>num</code> 의 스코프가 <code> hello</code> 함수이기 때문에 함수 바깥에서 참조할 수 없는 것입니다.</p>
+<p>코드 실행 부분을 먼저 보면, <code>my_name</code> 변수에 <code>"buzzi"</code> 라는 문자열을 할당합니다. 그 다음  <code>if</code> 문에서 변수 값을 프린트해보면 "buzzi"가 프린트됩니다. 하지만 그 다음 라인에서 <code>my_name = "mellon"</code> 으로 변수의 값을 바꿔 버렸습니다.  파이썬은 스코프를 함수 단위로만 구분하고 있기 때문에 이제 코드 전체에서 값이 바뀌게 됩니다. 따라서 <code>hello(my_name)</code>의 출력은  <code>Hello mellon</code>이 됩니다. 마지막으로 <code># print(num) # error</code>를 주석 해제하고 실행해 보면 에러가 발생합니다. <code>hello</code> 함수 안에서 선언된 <code>num</code> 이라는 변수를 프린트하기 때문입니다. 즉,  <code>num</code> 의 스코프가 <code> hello</code> 함수이기 때문에 함수 바깥에서 참조할 수 없는 것입니다.</p>
 <p>이번에는 러스트의 스코프를 살펴보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn hello(name: String) {
     let num = 3;
-    println!(&quot;Hello {}&quot;, name);
+    println!("Hello {}", name);
 }
 
 fn main() {
-    let my_name = &quot;buzzi&quot;.to_string();
+    let my_name = "buzzi".to_string();
 
     {
-        println!(&quot;My name is {}&quot;, my_name);
-        let my_name = &quot;mellon&quot;;
+        println!("My name is {}", my_name);
+        let my_name = "mellon";
     }
 
     hello(my_name);
 
-    // println!(&quot;{}&quot;, num); // error
+    // println!("{}", num); // error
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>My name is buzzi
 Hello buzzi
 </code></pre>
-<p>러스트에서는 스코프를 중괄호 &quot;{}&quot; 기준으로 구분합니다. 먼저 <code>my_name</code> 변수를 &quot;buzzi&quot;로 할당했습니다. 그 다음, 중괄호 안에서 <code>my_name</code> 을 프린트해보면 &quot;buzzi&quot;가 프린트됩니다. 중괄호 안에서 <code>my_name</code> 을 &quot;mellon&quot;으로 할당하더라도, 중괄호를 벗어나면 중괄호 안에서 선언된 <code>my_name</code> 의 스코프가 끝나게 되므로 중괄호 바깥에서는 <code>my_name</code> 의 값은 원래대로 &quot;buzzi&quot;가 됩니다. 따라서 <code>hello(my_name)</code>의 실행 결과는 &quot;Hello buzzi&quot;가 됩니다. 파이썬에서와 마찬가지로, <code>hello</code> 안에서 선언된 변수인 <code>num</code>은 함수 바깥에서 참조할 수 없기 때문에 <code>println!(&quot;{}&quot;, num);</code> 을 주석 해제한 다음 코드를 실행하면 에러가 발생합니다. </p>
+<p>러스트에서는 스코프를 중괄호 "{}" 기준으로 구분합니다. 먼저 <code>my_name</code> 변수를 "buzzi"로 할당했습니다. 그 다음, 중괄호 안에서 <code>my_name</code> 을 프린트해보면 "buzzi"가 프린트됩니다. 중괄호 안에서 <code>my_name</code> 을 "mellon"으로 할당하더라도, 중괄호를 벗어나면 중괄호 안에서 선언된 <code>my_name</code> 의 스코프가 끝나게 되므로 중괄호 바깥에서는 <code>my_name</code> 의 값은 원래대로 "buzzi"가 됩니다. 따라서 <code>hello(my_name)</code>의 실행 결과는 "Hello buzzi"가 됩니다. 파이썬에서와 마찬가지로, <code>hello</code> 안에서 선언된 변수인 <code>num</code>은 함수 바깥에서 참조할 수 없기 때문에 <code>println!("{}", num);</code> 을 주석 해제한 다음 코드를 실행하면 에러가 발생합니다.</p>
 <p>러스트의 스코프는 나중에 배울 소유권 모델과 밀접한 연관이 있기 때문에 중괄호를 기준으로 스코프가 변경된다는 사실을 꼭 기억해 두세요.</p>
 <blockquote>
 <p>러스트의 주석은 <code>//</code> 로 표기합니다.</p>
@@ -753,7 +782,7 @@ print(my_func(3))
 <p>위 예제처럼 람다 함수는 다른 함수에 파라미터로 전달하는 것이 가능합니다. 러스트에도 람다 함수와 비슷한 개념이 있는데 바로 클로저(Closure)입니다. 위에서 만든 람다 함수와 동일한 기능을 하는 클로저를 만들어 보겠습니다. 클로저는 파라미터를 <code>| |</code> 의 사이에 선언하고, 그 뒤에 함수에서 리턴하는 부분을 작성합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let my_func = |x| x + 1;
-    println!(&quot;{}&quot;, my_func(3));
+    println!("{}", my_func(3));
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -762,7 +791,7 @@ print(my_func(3))
 <p>이때 컴파일러가 클로저의 파라미터와 리턴값의 타입을 <code>i32</code>로 추측해서 보여줍니다. 이는 실제 함수가 실행되는 부분인 <code>my_func(3)</code>로부터 변수 <code>x</code>의 타입을 알 수 있기 때문입니다. 이처럼 클로저는 함수와 다르게 타입을 명시할 필요가 없이 컴파일러가 타입을 추론하도록 할 수 있습니다. 하지만 타입을 명시하는 것도 가능합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let my_func = |x: i32| -&gt; i32 { x + 1 };
-    println!(&quot;{}&quot;, my_func(3));
+    println!("{}", my_func(3));
 }
 </code></pre></pre>
 <p>타입을 명시해야 하는 경우, 함수 실행 부분을 중괄호로 묶어 주어야 합니다.</p>
@@ -770,7 +799,7 @@ print(my_func(3))
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let my_func = |mut x: i32| {
         x = x + 1;
-        println!(&quot;{}&quot;, x);
+        println!("{}", x);
     };
 
     my_func(3);
@@ -810,28 +839,28 @@ fibonacci(10)
 }
 
 fn main() {
-    println!(&quot;{}&quot;, fib(10));
+    println!("{}", fib(10));
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch4-흐름제어"><a class="header" href="#ch4-흐름제어">CH4. 흐름제어</a></h1>
 <p>다음은 프로그램의 논리적 흐름을 결정할 수 있는 흐름제어문(control flow)에 대해서 알아보겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="ifelse"><a class="header" href="#ifelse">if/else</a></h2>
 <p><code>if</code> 문은 어떤 조건을 만족하는 경우, 그에 해당하는 코드를 실행하도록 논리적 분기를 만드는 방법입니다. 만일 조건이 만족되지 않으면 해당 분기의 코드는 실행되지 않고 넘어갑니다. 보통  <code>if</code> 문은 첫 번째 조건을 검사하는 부분인 <code>if</code> 와, 그 다음 조건을 만족하는지를 검사하는 <code>else if</code> ,  그리고 모두 해당되지 않는 경우에 실행되는 <code> else</code> 로 구성됩니다.</p>
-<p>파이썬에서 <code>if</code>문을 구현하면 다음과 같습니다. 항상 <code>if</code> 문은 <code>if</code> 라는 키워드로 시작합니다. 여기서는 변수 <code>x</code> 가 <code>y</code> 보다 작은지를 검사하고 있는데, <code>x</code> 는 1.0이고 <code> y</code>가 10이기 때문에 조건이 만족됩니다. 조건이 만족되는 경우에는 아래에 있는 다른 조건들은 검사하지 않고 넘어가기 때문에 실행 결과는 <code>&quot;x is less than y&quot;</code> 가 출력됩니다.</p>
+<p>파이썬에서 <code>if</code>문을 구현하면 다음과 같습니다. 항상 <code>if</code> 문은 <code>if</code> 라는 키워드로 시작합니다. 여기서는 변수 <code>x</code> 가 <code>y</code> 보다 작은지를 검사하고 있는데, <code>x</code> 는 1.0이고 <code> y</code>가 10이기 때문에 조건이 만족됩니다. 조건이 만족되는 경우에는 아래에 있는 다른 조건들은 검사하지 않고 넘어가기 때문에 실행 결과는 <code>"x is less than y"</code> 가 출력됩니다.</p>
 <pre><code class="language-python">x = 1.0
 y = 10
 
 if x &lt; y:
-    print(&quot;x is less than y&quot;)
+    print("x is less than y")
 elif x == y:
-    print(&quot;x is equal to y&quot;)
+    print("x is equal to y")
 else:
-    print(&quot;x is not less than y&quot;)
+    print("x is not less than y")
 </code></pre>
 <p>실행 결과</p>
 <pre><code>x is less than y
 </code></pre>
-<p>만일 <code>x</code>의 값을 10으로 수정하고 다시 실행한다면 이번에는 &quot;x is equal to y&quot;가 출력될 것입니다. </p>
+<p>만일 <code>x</code>의 값을 10으로 수정하고 다시 실행한다면 이번에는 "x is equal to y"가 출력될 것입니다.</p>
 <p>러스트에서 동일한 코드를 작성해 보겠습니다. 여기서 몇 가지 다른 점이 있는데, 첫 번째로 <code>x</code>와 <code>y</code>를 조건문에서 바로 비교할 수 없습니다. 왜냐하면 두 변수의 타입이 다르기 때문에 둘 중 하나를 나머지의 타입으로 변환해 주어야 하기 때문입니다. 여기서는 <code>y</code>를 <code>f64</code>로 타입 변환을 해서 두 값을 비교하고 있습니다. 두 번째로는 파이썬의 <code>elif</code>가 <code>else if</code> 로 바뀐 것입니다. 세 번째는 러스트는 스코프를 중괄호로 구분하고 있기 때문에, if문의 각 분기에 해당하는 코드를 중괄호로 묶어주고 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 1.0;
@@ -839,11 +868,11 @@ else:
 
     if x &lt; (y as f64) {
         // casting
-        println!(&quot;x is less than y&quot;);
+        println!("x is less than y");
     } else if x == (y as f64) {
-        println!(&quot;x is equal to y&quot;);
+        println!("x is equal to y");
     } else {
-        println!(&quot;x is not less than y&quot;);
+        println!("x is not less than y");
     }
 }</code></pre></pre>
 <p>실행 결과</p>
@@ -857,21 +886,21 @@ else:
     let y = 10;
 
     let result = if x &lt; (y as f64) {
-        &quot;x is less than y&quot;
+        "x is less than y"
     } else if x == (y as f64) {
-        &quot;x is equal to y&quot;
+        "x is equal to y"
     } else {
-        &quot;x is not less than y&quot;
+        "x is not less than y"
     };
 
-    println!(&quot;{}&quot;, result);
+    println!("{}", result);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>x is less than y
 </code></pre>
 <p>실행 결과를 확인해보면 이전과 동일합니다. 그 이유는 if문의 각 분기에 해당하는 문자열들이 <code>result</code> 변수에 할당되기 때문인데, 위 코드에서는 첫 번째 조건인 <code>x &lt; (y as f64)</code>가 만족되기 때문에, 결국 위 if문은 아래와 동일합니다.</p>
-<pre><code class="language-rust ignore">let result = &quot;x is less than y&quot;;</code></pre>
+<pre><code class="language-rust ignore">let result = "x is less than y";</code></pre>
 <p>주의해야 하는 점은 위처럼  <code>let if</code> 문을 쓰려면 각 분기에서 할당하는 값들이 모두 동일한 타입이어야 한다는 것입니다.</p>
 <p>만일 <code>if</code>를 함수에서 바로 리턴한다면, 다음과 같은 코드도 가능합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn check_password(password: i32) -&gt; bool {
@@ -885,14 +914,14 @@ else:
 fn main() {
     let password = 1234;
     let result = check_password(password);
-    println!(&quot;Result: {}&quot;, result);
+    println!("Result: {}", result);
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="for"><a class="header" href="#for">for</a></h2>
 <p><code>for</code>을 사용하면 값들의 모음(collection)에서 각 값들을 순서대로 꺼낼 수 있습니다. 이처럼 값들을 순서대로 꺼내는 것을 순회(loop over)한다고 말합니다.</p>
-<p>6부터 9까지의 정수를 순서대로 프린트하는 코드를 작성해 보겠습니다. 먼저 파이썬에서는 <code>range</code>를 사용하면 됩니다. 이때 <code>range</code>는 마지막 값은 생략되므로 <code>range(6, 10)</code> 과 같이 입력해야 합니다. 이때 <code>print</code> 함수에 <code>end=&quot;,&quot;</code>를 넣어 줄바꿈 대신 콤마가 들어가도록 해서 결과가 한줄로 출력되도록 했습니다.</p>
+<p>6부터 9까지의 정수를 순서대로 프린트하는 코드를 작성해 보겠습니다. 먼저 파이썬에서는 <code>range</code>를 사용하면 됩니다. 이때 <code>range</code>는 마지막 값은 생략되므로 <code>range(6, 10)</code> 과 같이 입력해야 합니다. 이때 <code>print</code> 함수에 <code>end=","</code>를 넣어 줄바꿈 대신 콤마가 들어가도록 해서 결과가 한줄로 출력되도록 했습니다.</p>
 <pre><code class="language-python">for i in range(6, 10):
-    print(i, end=&quot;,&quot;)
+    print(i, end=",")
 </code></pre>
 <p>실행 결과</p>
 <pre><code>6,7,8,9,
@@ -900,7 +929,7 @@ fn main() {
 <p>러스트에서는 특정 범위의 정수를 <code>a..b</code> 와 같은 문법으로 간단하게 만들 수 있습니다. 마찬가지로 마지막 값은 생략되기 때문에 <code>6..10</code>과 같이 입력합니다. 결과를 한 줄로 프린트하기 위해서 <code>println!</code> 대신 <code>print!</code> 함수를 사용합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     for i in 6..10 {
-        print!(&quot;{},&quot;, i);
+        print!("{},", i);
     }
 }
 </code></pre></pre>
@@ -911,14 +940,14 @@ fn main() {
 <pre><code class="language-python">num_range = range(6, 10)
 
 for i in num_range:
-    print(i, end=&quot;,&quot;)
+    print(i, end=",")
 
 </code></pre>
 <p>마찬가지로 러스트에서도 정수 범위를 변수에 할당해 두었다가 나중에 반복할 수 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let num_range = 6..10;
     for i in num_range {
-        print!(&quot;{},&quot;, i);
+        print!("{},", i);
     }
 }
 </code></pre></pre>
@@ -926,7 +955,7 @@ for i in num_range:
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let num_range = 6..=10;
     for i in num_range {
-        print!(&quot;{},&quot;, i);
+        print!("{},", i);
     }
 }
 </code></pre></pre>
@@ -940,7 +969,7 @@ for i in num_range:
 <p><code>while</code> 문은 조건이 만족되는 동안 코드가 계속 반복해서 실행됩니다. 만일 조건이 만족되지 않으면 코드가 실행되지 않고 반복이 종료됩니다. 파이썬에서 while문을 사용해 0부터 4까지의 정수를 프린트하는 코드를 작성해 보겠습니다.</p>
 <pre><code class="language-python">x = 0
 while x &lt; 5:
-    print(x, end=&quot;,&quot;)
+    print(x, end=",")
     x += 1
 </code></pre>
 <p>실행 결과</p>
@@ -950,7 +979,7 @@ while x &lt; 5:
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut x = 0;
     while x &lt; 5 {
-        print!(&quot;{},&quot;, x);
+        print!("{},", x);
         x += 1; // no incremental operator: x++
     }
 }
@@ -965,7 +994,7 @@ while True:
     x += 1
     if x == 5:
         break
-    print(x, end=&quot;,&quot;)
+    print(x, end=",")
 
 </code></pre>
 <p>실행 결과</p>
@@ -979,7 +1008,7 @@ while True:
         if x == 5 {
             break;
         }
-        print!(&quot;{},&quot;, x);
+        print!("{},", x);
     }
 }</code></pre></pre>
 <p>실행 결과</p>
@@ -993,10 +1022,10 @@ while True:
         if x == 5 {
             break x;
         }
-        print!(&quot;{},&quot;, x);
+        print!("{},", x);
     };
 
-    println!(&quot;{}&quot;, y);
+    println!("{}", y);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1008,25 +1037,25 @@ while True:
 <blockquote>
 <p>파이썬에서는 최신 버전인 3.10 이후부터 <code>match ... case</code>가 추가되었습니다.</p>
 </blockquote>
-<p>아래 코드는 <code>name</code> 변수에 값에 따라서 서로 다른 결과를 출력하는 코드입니다. 현재 <code>name</code> 변수의 값이 <code>&quot;John&quot;</code> 이므로 <code>&quot;Hello, John!&quot;</code>가 출력됩니다.</p>
-<pre><code class="language-python">name = &quot;John&quot;
-if name == &quot;John&quot;:
-    print(&quot;Hello, John!&quot;)
-elif name == &quot;Mary&quot;:
-    print(&quot;Hello, Mary!&quot;)
+<p>아래 코드는 <code>name</code> 변수에 값에 따라서 서로 다른 결과를 출력하는 코드입니다. 현재 <code>name</code> 변수의 값이 <code>"John"</code> 이므로 <code>"Hello, John!"</code>가 출력됩니다.</p>
+<pre><code class="language-python">name = "John"
+if name == "John":
+    print("Hello, John!")
+elif name == "Mary":
+    print("Hello, Mary!")
 else:
-    print(&quot;Hello, stranger!&quot;)
+    print("Hello, stranger!")
 </code></pre>
 <p>실행 결과</p>
 <pre><code>Hello, John!
 </code></pre>
-<p>이렇게 특정 변수의 값에 따라서 다른 행동을 하도록 하는 것이 <code>match</code> 문의 핵심입니다. <code>match</code> 뒤에 값을 비교할 변수를 입력하고, 중괄호 안에서 콤마로 각 경우를 구분해서 표기합니다. <code>name</code> 변수가 <code>&quot;John&quot;</code>인 경우, <code>&quot;Mary&quot;</code>인 경우, 그리고 나머지 모든 경우의 세 가지 경우의 수가 있습니다. 나머지 경우를 나타내기 위해서 매칭할 값을 생략하는 <code>_</code>을 사용합니다. 여기서 <code>name</code> 변수의 값이 <code>&quot;John&quot;</code>이기 때문에 <code>&quot;Hello, John!&quot;</code>이 출력됩니다.</p>
+<p>이렇게 특정 변수의 값에 따라서 다른 행동을 하도록 하는 것이 <code>match</code> 문의 핵심입니다. <code>match</code> 뒤에 값을 비교할 변수를 입력하고, 중괄호 안에서 콤마로 각 경우를 구분해서 표기합니다. <code>name</code> 변수가 <code>"John"</code>인 경우, <code>"Mary"</code>인 경우, 그리고 나머지 모든 경우의 세 가지 경우의 수가 있습니다. 나머지 경우를 나타내기 위해서 매칭할 값을 생략하는 <code>_</code>을 사용합니다. 여기서 <code>name</code> 변수의 값이 <code>"John"</code>이기 때문에 <code>"Hello, John!"</code>이 출력됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let name = &quot;John&quot;;
+    let name = "John";
     match name {
-        &quot;John&quot; =&gt; println!(&quot;Hello, John!&quot;),
-        &quot;Mary&quot; =&gt; println!(&quot;Hello, Mary!&quot;),
-        _ =&gt; println!(&quot;Hello, stranger!&quot;),
+        "John" =&gt; println!("Hello, John!"),
+        "Mary" =&gt; println!("Hello, Mary!"),
+        _ =&gt; println!("Hello, stranger!"),
     }
 }
 </code></pre></pre>
@@ -1035,14 +1064,14 @@ else:
 </code></pre>
 <p><code>loop</code>와 마찬가지로 <code>match</code> 문도 값을 리턴할 수 있습니다. <code>let &lt;변수명&gt; = match ...</code>와 같이 선언하면 됩니다. 이때 컴파일러가 <code>match</code>문의 리턴값으로부터 변수 <code>greet</code>의 타입을 추론합니다. 또한, 각 조건마다 리턴하는 값들의 타입이 반드시 동일해야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let name = &quot;John&quot;;
+    let name = "John";
     let greet = match name {
-        &quot;John&quot; =&gt; &quot;Hello, John!&quot;,
-        &quot;Mary&quot; =&gt; &quot;Hello, Mary!&quot;,
-        _ =&gt; &quot;Hello, stranger!&quot;,
+        "John" =&gt; "Hello, John!",
+        "Mary" =&gt; "Hello, Mary!",
+        _ =&gt; "Hello, stranger!",
     };
 
-    println!(&quot;{}&quot;, greet);
+    println!("{}", greet);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1051,14 +1080,14 @@ else:
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch5-소유권"><a class="header" href="#ch5-소유권">CH5. 소유권</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="메모리-관리"><a class="header" href="#메모리-관리">메모리 관리</a></h2>
 <p>모든 프로그램은 컴퓨터의 메모리(Memory)라고 하는 자원을 사용합니다. 이 메모리에 프로그램에서 사용하는 데이터를 저장하기 때문입니다. 우리가 코드상에서 어떤 변수에 값을 할당하면 메모리에 그 값이 저장됩니다. 메모리라는 자원은 한정되어 있기 때문에 프로그래밍 언어들은 각자의 방식으로 이 메모리를 효율적으로 관리하고자 노력합니다. 파이썬이나 고와 같은 언어는 가비지 콜렉터를 이용해 언어 차원에서 자동으로 메모리를 관리하고, C/C++같은 언어들은 개발자가 직접 메모리를 관리합니다.</p>
-<p>파이썬은 모든 객체의 데이터를 힙 영역에 저장합니다. 그리고 메모리를 가비지 콜렉션을 이용해 관리합니다. 즉, 런타임에 사용되지 않는 객체가 있으면 주기적으로 객체를 삭제하거나 메모리 사용량이 너무 높은 경우 가비지 콜렉션을 수행합니다. 가비지 콜렉션이 수행되는 동안에는 다른 파이썬 코드가 실행될 수 없기 때문에 파이썬의 코드 실행 속도가 느려지는 원인이 됩니다. 또한 어떤 객체가 언제 메모리에서 할당 해제되는지를 개발자가 명시적으로 알 수 있는 방법이 없고 가비지 콜렉터가 이를 전담하기 때문에 프로그램이 불필요하게 많은 메모리를 사용할 가능성도 있습니다. </p>
+<p>파이썬은 모든 객체의 데이터를 힙 영역에 저장합니다. 그리고 메모리를 가비지 콜렉션을 이용해 관리합니다. 즉, 런타임에 사용되지 않는 객체가 있으면 주기적으로 객체를 삭제하거나 메모리 사용량이 너무 높은 경우 가비지 콜렉션을 수행합니다. 가비지 콜렉션이 수행되는 동안에는 다른 파이썬 코드가 실행될 수 없기 때문에 파이썬의 코드 실행 속도가 느려지는 원인이 됩니다. 또한 어떤 객체가 언제 메모리에서 할당 해제되는지를 개발자가 명시적으로 알 수 있는 방법이 없고 가비지 콜렉터가 이를 전담하기 때문에 프로그램이 불필요하게 많은 메모리를 사용할 가능성도 있습니다.</p>
 <p>반면 러스트는 소유권(Ownership)이라는 개념을 통해 메모리를 관리합니다. 소유권 모델 덕분에 러스트 프로그램은 메모리 안전성과 스레드 안전성이 보장됩니다. 메모리 안전성이란, 하나의 값에 대해서 단 하나의 코드만 접근하기 때문에 예상치 못하게 값이 변경되는 일이 없다는 의미입니다. C/C++같은 언어에서는 잘못된 포인터 사용이나 잘못된 메모리 접근과 같은 이유로 버그가 발생하거나 메모리 누수가 일어나기도 하지만 러스트에서는 이를 걱정할 필요가 없습니다. 다음으로 스레드 안전성이란, 여러 개의 스레드에서 하나의 값에 접근하고자 할 때 발생할 수 있는 경합 조건(Race condition)이나 데드락(Deadlock)이 발생하지 않는다는 의미입니다. 이 두 가지 문제가 멀티스레딩 프로그램을 만들 때 가장 어렵고 복잡한 문제이지만 러스트에서는 이를 컴파일 타임에 탐지할 수 있기 때문에 안정성이 보장됩니다.</p>
 <h2 id="스택과-힙"><a class="header" href="#스택과-힙">스택과 힙</a></h2>
 <p>소유권에 대해서 알아보기 전에, 프로그램에서 메모리를 저장하는 영역인 스택과 힙에 대해서 살펴보겠습니다. 스택 영역은 함수가 실행될 때 사용하는 메모리 공간으로, 함수에서 사용하는 지역 변수가 스택에 저장됩니다. 일반적으로 스택에서 사용될 메모리 공간이 미리 정해지기 때문에 매우 빠르게 값을 저장하고 접근할 수 있습니다. 만일 함수 실행이 종료되면 스택 영역에서 사용된 모든 지역 변수는 메모리에서 삭제됩니다. 힙 영역은 동적으로 할당되는 메모리를 위해 존재하는 공간으로, 개발자가 명시적으로 특정 크기의 메모리 공간을 사용하겠다고 선언해야 합니다. 만일 해당 메모리 공간이 더 이상 필요하지 않은 경우에는 해당 메모리를 할당 해제해주어야 합니다. 왜냐하면 이미 점유된 메모리 공간은 다른 프로그램이나 스레드에서 사용할 수 없기 때문입니다.</p>
 <p>파이썬은 스택을 사용하지 않고 모든 객체를 힙 영역에 저장합니다. 이렇게 저장된 객체들은 파이썬에서 가비지 콜렉션을 통해 메모리를 관리하기 때문에 파이썬을 사용할 때는 메모리 관리에 신경쓰지 않아도 됩니다. 위에서 힙 영역에 대해서 설명할 때 언급한 개발자가 할당하고 할당 해제하는 메모리를 파이썬의 가비지 콜렉터가 대신해주는 것입니다.</p>
 <p>반면 러스트는 스택 영역과 힙 영역 모두를 사용합니다. 러스트는 기본적으로 아래와 같이 함수에서 사용하는 모든 값을 제한된 크기의 스택 영역에 저장합니다. 따라서 함수 호출이 종료되면 지역 변수 <code>foo</code> 와 <code>var</code>는 모두 삭제됩니다.</p>
 <pre><code class="language-rust ignore">fn foo() {
-    let foo = &quot;foo&quot;;
+    let foo = "foo";
     let var = 5;
 }</code></pre>
 <p>힙 영역은 함수에서 명시적으로 선언하는 경우에만 사용되는데, 힙 영역에 저장하는 값은 전역적으로(globally) 접근이 가능합니다. 나중에 배울 <code>Box</code> 타입을 사용해 선언하면 됩니다.</p>
@@ -1069,13 +1098,13 @@ else:
 <div style="break-before: page; page-break-before: always;"></div><h2 id="소유권-규칙-자세히-알아보기"><a class="header" href="#소유권-규칙-자세히-알아보기">소유권 규칙 자세히 알아보기</a></h2>
 <p>소유권을 요약하자면 다음 세 가지 규칙으로 정리할 수 있습니다.</p>
 <ul>
-<li>모든 &quot;값&quot;들은 해당 값을 &quot;소유&quot;하고 있는 소유자(Owner)가 존재합니다.</li>
+<li>모든 "값"들은 해당 값을 "소유"하고 있는 소유자(Owner)가 존재합니다.</li>
 <li>한 번에 하나의 소유자만 존재할 수 있습니다. 하나의 값에 두 개의 소유자가 동시에 존재할 수 없습니다.</li>
 <li>소유자가 현재 코드의 스코프에서 벗어나면, 값은 메모리에서 할당 해제됩니다.</li>
 </ul>
 <p>안타깝게도 소유권 모델은 파이썬 뿐만 아니라 다른 프로그래밍 언어에는 없는 러스트만의 고유한 특징이기 때문에, 여기서 파이썬과 비교하며 소유권을 설명하기는 조금 어렵습니다.</p>
 <h3 id="값에-대한-소유권"><a class="header" href="#값에-대한-소유권">값에 대한 소유권</a></h3>
-<p>프로그래밍에서 메모리 관리가 필요한 이유는 더이상 사용되지 않는 &quot;값&quot;을 처리하지 않으면 스택과 힙 메모리 영역이 가득 차기 때문입니다. 러스트에서는 어떤 값이 더이상 사용되지 않는지를 소유권을 사용해 판단합니다. 모든 값에 소유자를 지정하고, 이 값을 소유하고 있는 소유자가 없게 되면 즉시 값이 메모리에서 할당 해제되는 원리입니다. 아래 예제를 보겠습니다.</p>
+<p>프로그래밍에서 메모리 관리가 필요한 이유는 더이상 사용되지 않는 "값"을 처리하지 않으면 스택과 힙 메모리 영역이 가득 차기 때문입니다. 러스트에서는 어떤 값이 더이상 사용되지 않는지를 소유권을 사용해 판단합니다. 모든 값에 소유자를 지정하고, 이 값을 소유하고 있는 소유자가 없게 되면 즉시 값이 메모리에서 할당 해제되는 원리입니다. 아래 예제를 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 1;
     // x is dropped
@@ -1086,53 +1115,53 @@ else:
     let x = 1;
     {
         let y = x;
-        println!(&quot;{} {}&quot;, x, y);
+        println!("{} {}", x, y);
         // y is dropped
     }
-    println!(&quot;{} {}&quot;, x, y); // This line won't compile
+    println!("{} {}", x, y); // This line won't compile
     // x is dropped
 }
 </code></pre>
-<p>이번엔 코드 중간에 있는 <code>{}</code> 에 의해 스코프가 추가되었고, 이 안에서 <code>y</code>가 선언되었습니다. 이 스코프를 벗어나면 <code>y</code>는 더이상 사용되지 않으므로 즉시 할당 해제됩니다. 마찬가지로 함수에 파라미터로 변수를 전달하는 경우에도 같은 원리가 적용됩니다. 여기서 <code>String::from(&quot;Hello&quot;)</code>는 러스트에서 문자열을 선언하는 방법으로, 문자열에 대한 자세한 내용은 다음 챕터에서 설명하겠습니다.</p>
+<p>이번엔 코드 중간에 있는 <code>{}</code> 에 의해 스코프가 추가되었고, 이 안에서 <code>y</code>가 선언되었습니다. 이 스코프를 벗어나면 <code>y</code>는 더이상 사용되지 않으므로 즉시 할당 해제됩니다. 마찬가지로 함수에 파라미터로 변수를 전달하는 경우에도 같은 원리가 적용됩니다. 여기서 <code>String::from("Hello")</code>는 러스트에서 문자열을 선언하는 방법으로, 문자열에 대한 자세한 내용은 다음 챕터에서 설명하겠습니다.</p>
 <pre><code class="language-rust ignore">fn dummy(x: String) {
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
   	// x is dropped
 }
 
 fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     dummy(x);
-    println!(&quot;{}&quot;, x);  // This line won't compile
+    println!("{}", x);  // This line won't compile
 }
 </code></pre>
 <p>함수 <code>dummy</code> 에 문자열이 전달된 다음, 함수를 벗어나면 그 즉시 <code>x</code> 는 할당 해제됩니다. 그런데 이미 할당 해제된 <code>x</code>를 9번 라인에서 참조하고 있기 때문에 오류가 발생합니다. 그러면 모든 값은 다른 함수에 전달하면 영원히 사용하지 못하는 걸까요? 이런 경우 사용할 수 있는 두 가지 방법이 있습니다.</p>
 <h3 id="소유권-돌려주기"><a class="header" href="#소유권-돌려주기">소유권 돌려주기</a></h3>
 <p>먼저 함수에서 해당 변수의 소유권을 되돌려줄 수 있는 방법이 있습니다. 아래 예제를 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn dummy(x: String) -&gt; String {
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
     x
 }
 
 fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     let x = dummy(x);
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>Hello
 Hello
 </code></pre>
-<p>함수 <code>dummy</code>에서 입력 변수 <code>x</code>는 함수 내부에서 사용된 다음 리턴됩니다. 그 다음 함수의 리턴값을 재선언한 변수 <code>x</code>에 할당함으로써 소유권이 <code>x</code>로 되돌아옵니다. 좀더 이해하기 쉽도록 변수명을 아래와 같이 바꿔보겠습니다. 결론적으로, <code>&quot;Hello&quot;</code>라는 값을 소유하고 있는 변수만 <code>x</code> → <code>y</code> → <code>z</code> 순서로 바뀌고, 값은 그대로 있게 됩니다. 하지만 이 방법은 매번 함수의 리턴값을 변수로 재선언해주어야 하기 때문에 코드의 가독성이 떨어지고, 값이 어느 변수로 이동하는지를 알기 어려운 단점이 있습니다.</p>
+<p>함수 <code>dummy</code>에서 입력 변수 <code>x</code>는 함수 내부에서 사용된 다음 리턴됩니다. 그 다음 함수의 리턴값을 재선언한 변수 <code>x</code>에 할당함으로써 소유권이 <code>x</code>로 되돌아옵니다. 좀더 이해하기 쉽도록 변수명을 아래와 같이 바꿔보겠습니다. 결론적으로, <code>"Hello"</code>라는 값을 소유하고 있는 변수만 <code>x</code> → <code>y</code> → <code>z</code> 순서로 바뀌고, 값은 그대로 있게 됩니다. 하지만 이 방법은 매번 함수의 리턴값을 변수로 재선언해주어야 하기 때문에 코드의 가독성이 떨어지고, 값이 어느 변수로 이동하는지를 알기 어려운 단점이 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn dummy(y: String) -&gt; String {
-    println!(&quot;{}&quot;, y);
+    println!("{}", y);
     y
 }
 
 fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     let z = dummy(x);
-    println!(&quot;{}&quot;, z);
+    println!("{}", z);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1142,43 +1171,43 @@ Hello
 <h3 id="레퍼런스와-소유권-빌리기"><a class="header" href="#레퍼런스와-소유권-빌리기">레퍼런스와 소유권 빌리기</a></h3>
 <p>러스트에는 값의 소유권을 잠시 빌려줄 수 있는 개념인 대여(borrow)가 있습니다. 변수 앞에 <code>&amp;</code> 키워드를 사용하면 되는데, 해당 변수의 레퍼런스(reference)를 선언한다는 의미입니다. 레퍼런스란 소유권을 가져가지 않고 해당 값을 참조할 수 있는 방법입니다. 아래 예제를 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     let y = &amp;x;
 
-    println!(&quot;{} {}&quot;, x, y);
+    println!("{} {}", x, y);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>Hello Hello
 </code></pre>
-<p><code>let y = &amp;x;</code>와 같이 선언하더라도 문자열 &quot;Hello&quot;의 값의 소유권은 여전히 <code>x</code>에 있고, <code>y</code>는 단순히 값을 참조만 합니다. 따라서 마지막에서 변수 <code>x</code>와 <code>y</code>를 모두 프린트해도 에러가 발생하지 않습니다.</p>
+<p><code>let y = &amp;x;</code>와 같이 선언하더라도 문자열 "Hello"의 값의 소유권은 여전히 <code>x</code>에 있고, <code>y</code>는 단순히 값을 참조만 합니다. 따라서 마지막에서 변수 <code>x</code>와 <code>y</code>를 모두 프린트해도 에러가 발생하지 않습니다.</p>
 <p>아래 예제에서 <code>dummy</code> 함수의 파라미터 타입은 <code>&amp;String</code>으로, 문자열의 레퍼런스 타입을 의미합니다. <code>main</code>함수에서 <code>dummy</code>를 실행할 때, 변수 <code>x</code>의 레퍼런스인 <code>&amp;x</code> 가 전달되었습니다. 이건 소유권을 잠시 함수 내부의 <code>y</code> 파라미터에 빌려준다는 의미입니다. 소유권을 대여한 변수가 <code>dummy</code>함수의 스코프를 벗어나면, 그 즉시 소유권은 원래 소유자인 <code>x</code> 에게 되돌아갑니다. 따라서 <code>dummy</code> 함수에서 <code>x</code>에 저장된 문자열 값을 사용하더라도 이후에 <code>x</code>를 통해 문자열을 계속 사용할 수 있게 됩니다. 그래서 마지막에 <code>x</code>를 프린트해도 에러가 발생하지 않고 잘 컴파일됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn dummy(y: &amp;String) {
-    println!(&quot;{}&quot;, y);
+    println!("{}", y);
     // ownership returns to `x`
 }
 
 fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     dummy(&amp;x);
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>Hello
 </code></pre>
 <h3 id="가변-레퍼런스"><a class="header" href="#가변-레퍼런스">가변 레퍼런스</a></h3>
-<p>어떤 변수의 레퍼런스를 만들 때, 원래 변수가 불변이라면 레퍼런스를 사용해 원래 변수의 값을 바꿀 수 없습니다. 아래 예제에서는 변수 <code>x</code>를 함수 <code>dummy</code>에 레퍼런스로 전달합니다. 그리고 <code>push_str</code> 함수를 사용해 &quot; world!&quot;라는 문자열을 <code>x</code>의 뒤에 추가하고 있습니다. 그런데 코드를 실행하면 에러가 발생합니다.</p>
+<p>어떤 변수의 레퍼런스를 만들 때, 원래 변수가 불변이라면 레퍼런스를 사용해 원래 변수의 값을 바꿀 수 없습니다. 아래 예제에서는 변수 <code>x</code>를 함수 <code>dummy</code>에 레퍼런스로 전달합니다. 그리고 <code>push_str</code> 함수를 사용해 " world!"라는 문자열을 <code>x</code>의 뒤에 추가하고 있습니다. 그런데 코드를 실행하면 에러가 발생합니다.</p>
 <pre><code class="language-rust ignore">fn dummy(y: &amp;String) {
-    y.push_str(&quot; world!&quot;);
-    println!(&quot;{}&quot;, y);
+    y.push_str(" world!");
+    println!("{}", y);
     // ownership returns to `x`
 }
 
 fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     dummy(&amp;x);
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
 }
 </code></pre>
 <p>실행 결과</p>
@@ -1188,7 +1217,7 @@ error[E0596]: cannot borrow `*y` as mutable, as it is behind a `&amp;` reference
   |
 1 | fn dummy(y: &amp;String) {
   |             ------- help: consider changing this to be a mutable reference: `&amp;mut String`
-2 |     y.push_str(&quot; world!&quot;);
+2 |     y.push_str(" world!");
   |     ^^^^^^^^^^^^^^^^^^^^^ `y` is a `&amp;` reference, so the data it refers to cannot be borrowed as mutable
 </code></pre>
 <p>에러 내용을 읽어보면 <code>y</code>에서 소유권을 빌려왔지만, 가변 레퍼런스가 아니기 때문에 값을 수정할 수 없다고 합니다. 컴파일러의 조언에 따라서 <code>y</code>를 가변 레퍼런스로 수정해 보겠습니다. 여기서 총 3군데를 수정했습니다.</p>
@@ -1198,28 +1227,28 @@ error[E0596]: cannot borrow `*y` as mutable, as it is behind a `&amp;` reference
 <li><code>dummy</code>함수에 <code>x</code>를 전달할 때 가변 레퍼런스 <code>&amp;mut x</code>로 전달</li>
 </ol>
 <pre><pre class="playground"><code class="language-rust">fn dummy(y: &amp;mut String) {
-    y.push_str(&quot; world!&quot;);
-    println!(&quot;{}&quot;, y);
+    y.push_str(" world!");
+    println!("{}", y);
     // ownership returns to `x`
 }
 
 fn main() {
-    let mut x = String::from(&quot;Hello&quot;);
+    let mut x = String::from("Hello");
     dummy(&amp;mut x);
-    println!(&quot;{}&quot;, x);
+    println!("{}", x);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>Hello world!
 Hello world!
 </code></pre>
-<p>가변 레퍼런스를 사용할 때 주의해야 하는 점은 소유권 규칙의 두 번째 규칙인 &quot;한 번에 하나의 소유자만 존재할 수 있다&quot; 입니다. 예를 들어 하나의 값에 대해서 두 개의 가변 레퍼런스를 만들어 보겠습니다. 변수 <code>y</code>와 <code>z</code>는 모두 변수 <code>x</code>의 가변 레퍼런스입니다.</p>
+<p>가변 레퍼런스를 사용할 때 주의해야 하는 점은 소유권 규칙의 두 번째 규칙인 "한 번에 하나의 소유자만 존재할 수 있다" 입니다. 예를 들어 하나의 값에 대해서 두 개의 가변 레퍼런스를 만들어 보겠습니다. 변수 <code>y</code>와 <code>z</code>는 모두 변수 <code>x</code>의 가변 레퍼런스입니다.</p>
 <pre><code class="language-rust ignore">fn main() {
-    let mut x = String::from(&quot;Hello&quot;);
+    let mut x = String::from("Hello");
     let y = &amp;mut x;
     let z = &amp;mut x;
 
-    println!(&quot;{} {}&quot;, y, z);
+    println!("{} {}", y, z);
 }
 </code></pre>
 <p>실행 결과</p>
@@ -1232,16 +1261,16 @@ error[E0499]: cannot borrow `x` as mutable more than once at a time
 4 |     let z = &amp;mut x;
   |             ^^^^^^ second mutable borrow occurs here
 5 |
-6 |     println!(&quot;{} {}&quot;, y, z);
+6 |     println!("{} {}", y, z);
   |                       - first borrow later used here
 </code></pre>
 <p>실행 시 에러가 발생하는데, 변수 <code>x</code>의 소유권을 한 번 이상 대여할 수 없다고 합니다. 만일 하나의 소유권을 여러 개의 변수가 빌릴 수 있다면 큰 문제가 발생할 가능성이 있습니다. 하나의 메모리를 여러 곳에서 접근할 수 있기 때문에 버그가 발생할 수 있습니다. 예를 들어 어떤 가변 레퍼런스에서 값을 변경했는데, 다른 곳에서는 변경 전의 값을 필요로 한다면 예상치 못한 결과가 나올 수 있습니다. 따라서 러스트에서는 하나의 값에 대한 여러 개의 가변 레퍼런스를 허용하지 않습니다. 하지만 단순히 레퍼런스를 여러 개 만드는 것은 문제가 없습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let x = String::from(&quot;Hello&quot;);
+    let x = String::from("Hello");
     let y = &amp;x;
     let z = &amp;x;
 
-    println!(&quot;{} {}&quot;, y, z);
+    println!("{} {}", y, z);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1264,10 +1293,10 @@ error[E0499]: cannot borrow `x` as mutable more than once at a time
     let func = |x: i32| -&gt; i32 { x * multiplier };
 
     for i in 1..=5 {
-        println!(&quot;{}&quot;, func(i));
+        println!("{}", func(i));
     }
 
-    println!(&quot;{}&quot;, multiplier); // 👍
+    println!("{}", multiplier); // 👍
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1288,10 +1317,10 @@ error[E0499]: cannot borrow `x` as mutable more than once at a time
     };
 
     for i in 1..=5 {
-        println!(&quot;{}&quot;, func(i));
+        println!("{}", func(i));
     }
 
-    println!(&quot;{}&quot;, multiplier); // 👍
+    println!("{}", multiplier); // 👍
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1303,7 +1332,7 @@ error[E0499]: cannot borrow `x` as mutable more than once at a time
 10
 </code></pre>
 <h3 id="move-를-사용한-소유권-이동"><a class="header" href="#move-를-사용한-소유권-이동"><code>move</code> 를 사용한 소유권 이동</a></h3>
-<p>클로저가 환경으로부터 사용하는 값의 소유권을 가져갈 수도 있습니다. 클로저가 같은 스코프에 선언된 지역 변수의 소유권을 가져가도록 하려면 클로저의 파라미터를 선언하는 코드 앞에 <code>move</code> 키워드를 사용하면 됩니다. </p>
+<p>클로저가 환경으로부터 사용하는 값의 소유권을 가져갈 수도 있습니다. 클로저가 같은 스코프에 선언된 지역 변수의 소유권을 가져가도록 하려면 클로저의 파라미터를 선언하는 코드 앞에 <code>move</code> 키워드를 사용하면 됩니다.</p>
 <pre><code class="language-rust ignore">move | param, ... | body;</code></pre>
 <p>다음 예제에서는 클로저를 리턴하는 함수 <code>factory</code>를 만들었습니다. 여기서 리턴되는 클로저는 <code>factory</code> 함수의 파라미터인 <code>factor</code>를 캡처해 사용합니다. 그 다음 <code>factory</code>를 <code>main</code> 함수에서 사용해 만든 클로저를 호출하면 <code>multiplier</code> 변수를 모든 클로저에서 공유할 수 있게 됩니다.</p>
 <pre><code class="language-rust ignore">fn factory(factor: i32) -&gt; impl Fn(i32) -&gt; i32 {
@@ -1314,7 +1343,7 @@ fn main() {
     let multiplier = 5;
     let mult = factory(multiplier);
     for i in 1..=3 {
-        println!(&quot;{}&quot;, mult(i));
+        println!("{}", mult(i));
     }
 }
 </code></pre>
@@ -1344,7 +1373,7 @@ fn main() {
     let multiplier = 5;
     let mult = factory(multiplier);
     for i in 1..=3 {
-        println!(&quot;{}&quot;, mult(i));
+        println!("{}", mult(i));
     }
 }
 </code></pre></pre>
@@ -1395,7 +1424,7 @@ let num10 = 10;</code></pre>
     let vec2 = vec![1, 2, 3];
 }
 </code></pre></pre>
-<p>비어 있는 벡터를 선언하는 경우는 원소로부터 타입을 추론할 수 없기 때문에 반드시 타입을 명시해야 합니다. </p>
+<p>비어 있는 벡터를 선언하는 경우는 원소로부터 타입을 추론할 수 없기 때문에 반드시 타입을 명시해야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let vec3: Vec&lt;i32&gt; = Vec::new();
     let vec4: Vec&lt;i32&gt; = vec![];
@@ -1418,7 +1447,7 @@ print(num)
 
     let num = vec1[1];
 
-    println!(&quot;{}&quot;, num);
+    println!("{}", num);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1437,7 +1466,7 @@ print(vec1)
 <p>실행 결과</p>
 <pre><code>[1, 2, 3, 4, 5, 6]
 </code></pre>
-<p>마찬가지로 벡터의 마지막에 값을 추가해 보겠습니다. <code>push</code> 메소드를 사용하면 원소를 벡터 마지막에 하나씩 추가할 수 있습니다. 주의해야 하는 점은 벡터 <code>vec1</code> 이 변경되기 때문에 처음에 <code>vec1</code>을 가변 변수로 선언해야 한다는 것입니다. 마지막으로, 벡터를 프린트할 때는 디버그 모드를 사용해야 합니다.  따라서 서식을 <code>&quot;{:?}&quot;</code>로 사용해야 합니다.</p>
+<p>마찬가지로 벡터의 마지막에 값을 추가해 보겠습니다. <code>push</code> 메소드를 사용하면 원소를 벡터 마지막에 하나씩 추가할 수 있습니다. 주의해야 하는 점은 벡터 <code>vec1</code> 이 변경되기 때문에 처음에 <code>vec1</code>을 가변 변수로 선언해야 한다는 것입니다. 마지막으로, 벡터를 프린트할 때는 디버그 모드를 사용해야 합니다.  따라서 서식을 <code>"{:?}"</code>로 사용해야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut vec1 = vec![1, 2, 3];
 
@@ -1445,7 +1474,7 @@ print(vec1)
     vec1.push(5);
     vec1.push(6);
 
-    println!(&quot;{:?}&quot;, vec1);
+    println!("{:?}", vec1);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1470,7 +1499,7 @@ print(num1, num2, vec1)
     let num1 = vec1.pop().unwrap();
     let num2 = vec1.remove(0);
 
-    println!(&quot;{} {} {:?}&quot;, num1, num2, vec1);
+    println!("{} {} {:?}", num1, num2, vec1);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1492,7 +1521,7 @@ print(deq.popleft())
 
 fn main() {
     let mut deq = VecDeque::from([1, 2, 3]);
-    println!(&quot;{}&quot;, deq.pop_front().unwrap());
+    println!("{}", deq.pop_front().unwrap());
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1505,18 +1534,18 @@ fn main() {
 
 months = np.array(
     [
-        &quot;January&quot;,
-        &quot;February&quot;,
-        &quot;March&quot;,
-        &quot;April&quot;,
-        &quot;May&quot;,
-        &quot;June&quot;,
-        &quot;July&quot;,
-        &quot;August&quot;,
-        &quot;September&quot;,
-        &quot;October&quot;,
-        &quot;November&quot;,
-        &quot;December&quot;,
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     ]
 )
 print(months)
@@ -1534,40 +1563,40 @@ print(nums)
 <p>실행 결과</p>
 <pre><code>[3 3 3 3 3]
 </code></pre>
-<p>러스트의 배열의 길이는 처음 선언된 이후 변경할 수 없습니다. 배열을 사용하면 벡터와 다르게 메모리가 스택 영역에 저장되기 때문에 빠르게 값에 접근할 수 있다는 장점이 있습니다. 이때 배열의 원소들은 모두 같은 타입이어야 합니다. </p>
-<p>배열의 선언은 대괄호 안에 콤마로 구분된 값을 나열합니다. </p>
+<p>러스트의 배열의 길이는 처음 선언된 이후 변경할 수 없습니다. 배열을 사용하면 벡터와 다르게 메모리가 스택 영역에 저장되기 때문에 빠르게 값에 접근할 수 있다는 장점이 있습니다. 이때 배열의 원소들은 모두 같은 타입이어야 합니다.</p>
+<p>배열의 선언은 대괄호 안에 콤마로 구분된 값을 나열합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let months = [
-        &quot;January&quot;,
-        &quot;February&quot;,
-        &quot;March&quot;,
-        &quot;April&quot;,
-        &quot;May&quot;,
-        &quot;June&quot;,
-        &quot;July&quot;,
-        &quot;August&quot;,
-        &quot;September&quot;,
-        &quot;October&quot;,
-        &quot;November&quot;,
-        &quot;December&quot;,
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     ];
-    println!(&quot;{:?}&quot;, months);
+    println!("{:?}", months);
 }
 </code></pre></pre>
 <p>실행 결과</p>
-<pre><code>[&quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;]
+<pre><code>["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 </code></pre>
 <p>러스트에서도 편리한 배열 초기화를 지원합니다. <code>[3; 5]</code> 와 같이 표기하면 숫자 3을 5번 나열하라는 의미입니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let nums = [3; 5];
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>[3, 3, 3, 3, 3]
 </code></pre>
 <h3 id="원소-참조"><a class="header" href="#원소-참조">원소 참조</a></h3>
-<p>넘파이 배열의 원소들은 인덱스를 통해 접근이 가능합니다.	</p>
+<p>넘파이 배열의 원소들은 인덱스를 통해 접근이 가능합니다.</p>
 <pre><code class="language-python">import numpy as np
 
 nums = np.full(5, 3)
@@ -1582,7 +1611,7 @@ print(nums)
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut nums = [3; 5];
     nums[1] = 1;
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1597,14 +1626,14 @@ print(nums[5])
 </code></pre>
 <p>실행 결과</p>
 <pre><code>Traceback (most recent call last):
-  File &quot;/Users/code/temp/python/main.py&quot;, line 4, in &lt;module&gt;
+  File "/Users/code/temp/python/main.py", line 4, in &lt;module&gt;
     print(nums[5])
 IndexError: index 5 is out of bounds for axis 0 with size 5
 </code></pre>
 <p>러스트 코드는 컴파일 시 인덱스가 범위를 벗어난다는 에러가 발생합니다.</p>
 <pre><code class="language-rust ignore">fn main() {
     let nums = [3; 5];
-    println!(&quot;{}&quot;, nums[5]);
+    println!("{}", nums[5]);
 }
 </code></pre>
 <p>실행 결과</p>
@@ -1612,7 +1641,7 @@ IndexError: index 5 is out of bounds for axis 0 with size 5
 error: this operation will panic at runtime
  --&gt; src/main.rs:3:20
   |
-3 |     println!(&quot;{}&quot;, nums[5]);
+3 |     println!("{}", nums[5]);
   |                    ^^^^^^^ index out of bounds: the length is 5 but the index is 5
   |
   = note: `#[deny(unconditional_panic)]` on by default
@@ -1623,7 +1652,7 @@ error: could not compile `rust_part` due to previous error
 <pre><pre class="playground"><code class="language-rust should_panic">fn main() {
     let nums = [3; 5];
     for i in 0..nums.len() + 1 {
-        println!(&quot;{}&quot;, nums[i]);
+        println!("{}", nums[i]);
     }
 }
 </code></pre></pre>
@@ -1638,34 +1667,34 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </code></pre>
 <p>배열은 벡터와 자주 비교되는데, 데이터의 길이가 컴파일 타임에 정해지는 경우에는 배열을, 데이터의 길이가 런타임에 정해지는 경우에는 벡터를 사용합니다.</p>
 <h2 id="튜플"><a class="header" href="#튜플">튜플</a></h2>
-<p>튜플은 프로그래밍에서 가장 대표적인 열거형 자료형으로, 값들을 순서대로 나열해 저장하는 데이터 구조입니다. 파이썬과 러스트 모두 튜플 자료형을 가지고 있습니다. </p>
+<p>튜플은 프로그래밍에서 가장 대표적인 열거형 자료형으로, 값들을 순서대로 나열해 저장하는 데이터 구조입니다. 파이썬과 러스트 모두 튜플 자료형을 가지고 있습니다.</p>
 <h3 id="튜플-선언"><a class="header" href="#튜플-선언">튜플 선언</a></h3>
 <p>파이썬의 튜플은 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다.</p>
-<pre><code class="language-python">tup1 = (0, 0.1, &quot;hello&quot;)
-tup2 = (1, 1.01, &quot;bye&quot;)
+<pre><code class="language-python">tup1 = (0, 0.1, "hello")
+tup2 = (1, 1.01, "bye")
 
 _, y, _ = tup2
 
-print(f&quot;tup1 has {tup1} and the value of y is {y}&quot;)
+print(f"tup1 has {tup1} and the value of y is {y}")
 </code></pre>
 <p>실행 결과</p>
 <pre><code>tup1 has (0, 0.1, 'hello') and the value of y is 1.01
 </code></pre>
 <p>러스트의 튜플도 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다. 변수의 타입을 컴파일러가 추론하는 것처럼 튜플의 타입도 컴파일러가 추론하기 때문에 타입을 명시할 필요가 없습니다. 하지만 타입을 직접 명시해도 상관없습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let tup1 = (0, 0.1, &quot;hello&quot;);
-    let tup2: (i32, f64, &amp;str) = (1, 1.01, &quot;bye&quot;);
+    let tup1 = (0, 0.1, "hello");
+    let tup2: (i32, f64, &amp;str) = (1, 1.01, "bye");
 
     let (_, y, _) = tup2;
 
-    println!(&quot;tup1 has {:?} and the value of y is: {}&quot;, tup1, y);
+    println!("tup1 has {:?} and the value of y is: {}", tup1, y);
 }</code></pre></pre>
 <p>실행 결과</p>
-<pre><code>tup1 is (0, 0.1, &quot;hello&quot;) and the value of y is: 1.01
+<pre><code>tup1 is (0, 0.1, "hello") and the value of y is: 1.01
 </code></pre>
 <h3 id="원소-참조-1"><a class="header" href="#원소-참조-1">원소 참조</a></h3>
 <p>파이썬에서 튜플 원소를 참조하려면 인덱스를 넣으면 됩니다.</p>
-<pre><code class="language-python">tup1 = (0, 0.1, (&quot;hello&quot;, &quot;world&quot;))
+<pre><code class="language-python">tup1 = (0, 0.1, ("hello", "world"))
 
 print(tup1[2][0], tup1[2][1])
 
@@ -1675,17 +1704,17 @@ print(tup1[2][0], tup1[2][1])
 </code></pre>
 <p>러스트에서 튜플 원소의 참조는 약간 특이한 방식으로 합니다. 튜플 이름 뒤에 점(<code>.</code>)을 붙이고 그 뒤에 인덱스를 입력합니다. 만일 다중 튜플인 경우, 점을 한번 더 찍고 인덱스를 입력하면 됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let tup1 = (0, 0.1, (&quot;hello&quot;, &quot;world&quot;));
+    let tup1 = (0, 0.1, ("hello", "world"));
 
-    println!(&quot;{} {}&quot;, tup1.2 .0, tup1.2 .1);
+    println!("{} {}", tup1.2 .0, tup1.2 .1);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>hello world
 </code></pre>
 <h3 id="튜플-불변성"><a class="header" href="#튜플-불변성">튜플 불변성</a></h3>
-<p>파이썬에서의 튜플과 러스트의 튜플은 차이점이 있는데 바로 불변성입니다. 파이썬의 튜플은 한 번 선언되면 원소의 내용을 바꾸거나, 튜플의 크기를 변경할 수 없습니다. </p>
-<pre><code class="language-python">tup1 = (0, 0.1, &quot;hello&quot;)
+<p>파이썬에서의 튜플과 러스트의 튜플은 차이점이 있는데 바로 불변성입니다. 파이썬의 튜플은 한 번 선언되면 원소의 내용을 바꾸거나, 튜플의 크기를 변경할 수 없습니다.</p>
+<pre><code class="language-python">tup1 = (0, 0.1, "hello")
 
 x = tup1[0]
 _, y, _ = tup1
@@ -1701,13 +1730,13 @@ tup1[0] = 3
 <p>실행 결과</p>
 <pre><code>(0, 0.1, 'hello') 1 1.1
 Traceback (most recent call last):
-  File &quot;main.py&quot;, line 11, in &lt;module&gt;
+  File "main.py", line 11, in &lt;module&gt;
     tup1[0] = 3
 TypeError: 'tuple' object does not support item assignment
 </code></pre>
-<p>마찬가지로 러스트의 튜플도 한 번 선언되면 크기를 변경할 수 없지만, 원소의 내용은 바꿀 수 있습니다. 다만 처음 선언한 타입은 그대로 유지되어야 합니다. </p>
+<p>마찬가지로 러스트의 튜플도 한 번 선언되면 크기를 변경할 수 없지만, 원소의 내용은 바꿀 수 있습니다. 다만 처음 선언한 타입은 그대로 유지되어야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let mut tup1 = (0, 0.1, &quot;hello&quot;);
+    let mut tup1 = (0, 0.1, "hello");
 
     let mut x = tup1.0;
     let (_, mut y, _) = tup1;
@@ -1715,35 +1744,35 @@ TypeError: 'tuple' object does not support item assignment
     x = 1;
     y = 1.1;
 
-    println!(&quot;{:?} {} {}&quot;, tup1, x, y);
+    println!("{:?} {} {}", tup1, x, y);
 
     tup1.0 = 3;
 }
 </code></pre></pre>
 <p>실행 결과</p>
-<pre><code>(0, 0.1, &quot;hello&quot;) 1 1.1
+<pre><code>(0, 0.1, "hello") 1 1.1
 </code></pre>
 <h2 id="해시맵"><a class="header" href="#해시맵">해시맵</a></h2>
 <p>해시맵은 키와 밸류를 묶어서 관리하는 자료형으로, 키에 대응하는 밸류를 빠르게 찾을 수 있는 장점이 있습니다. 특히 데이터를 인덱스로 관리하지 않는 경우에 유용합니다.</p>
 <p>파이썬에서는 해시맵을 딕셔너리로 구현하고 있습니다. 다음 예제 코드에서는 <code>songs</code> 딕셔너리에 가수 이름과 대표 곡을 넣어 두었습니다. 그리고 딕셔너리에 특정 키나 밸류가 포함되어 있는지를 찾는 방법,  새로운 키를 넣거나 기존의 밸류를 업데이트하는 방법, 마지막으로 특정 원소를 삭제하는 방법 그리고 존재하지 않는 키를 참조할 때의 처리 방법을 다루고 있습니다.</p>
 <pre><code class="language-python">songs = {
-    &quot;Toto&quot;: &quot;Africa&quot;,
-    &quot;Post Malone&quot;: &quot;Rockstar&quot;,
-    &quot;twenty one pilots&quot;: &quot;Stressed Out&quot;,
+    "Toto": "Africa",
+    "Post Malone": "Rockstar",
+    "twenty one pilots": "Stressed Out",
 }
-print(&quot;----- Playlists -----&quot;)
-if &quot;Toto&quot; in songs and &quot;Africa&quot; in songs.values():
-    print(&quot;Toto's africa is the best song!&quot;)
+print("----- Playlists -----")
+if "Toto" in songs and "Africa" in songs.values():
+    print("Toto's africa is the best song!")
 
-songs[&quot;a-ha&quot;] = &quot;Take on Me&quot;  # Insert
-songs[&quot;Post Malone&quot;] = &quot;Happier&quot;  # Update
+songs["a-ha"] = "Take on Me"  # Insert
+songs["Post Malone"] = "Happier"  # Update
 
 for artist, title in songs.items():
-    print(f&quot;{artist} - {title}&quot;)
-print(&quot;---------------------&quot;)
+    print(f"{artist} - {title}")
+print("---------------------")
 
-songs.pop(&quot;Post Malone&quot;)  # Delete
-print(songs.get(&quot;Post Malone&quot;, &quot;Post Malone is not in the playlist&quot;))
+songs.pop("Post Malone")  # Delete
+print(songs.get("Post Malone", "Post Malone is not in the playlist"))
 
 </code></pre>
 <p>실행 결과</p>
@@ -1762,29 +1791,29 @@ Post Malone is not in the playlist
 fn main() {
     // Rust's HashMap does not keep the insertion order.
     let mut songs = HashMap::from([
-        (&quot;Toto&quot;, &quot;Africa&quot;),
-        (&quot;Post Malone&quot;, &quot;Rockstar&quot;),
-        (&quot;twenty one pilots&quot;, &quot;Stressed Out&quot;),
+        ("Toto", "Africa"),
+        ("Post Malone", "Rockstar"),
+        ("twenty one pilots", "Stressed Out"),
     ]);
-    println!(&quot;----- Playlists -----&quot;);
-    if songs.contains_key(&quot;Toto&quot;) &amp;&amp; songs.values().any(|&amp;val| val == &quot;Africa&quot;) {
-        println!(&quot;Toto's africa is the best song!&quot;);
+    println!("----- Playlists -----");
+    if songs.contains_key("Toto") &amp;&amp; songs.values().any(|&amp;val| val == "Africa") {
+        println!("Toto's africa is the best song!");
     }
 
-    songs.insert(&quot;a-ha&quot;, &quot;Take on Me&quot;); // Insert
-    songs.entry(&quot;Post Malone&quot;).and_modify(|v| *v = &quot;Happier&quot;); // Update
+    songs.insert("a-ha", "Take on Me"); // Insert
+    songs.entry("Post Malone").and_modify(|v| *v = "Happier"); // Update
 
     for (artist, title) in songs.iter() {
-        println!(&quot;{} - {}&quot;, artist, title);
+        println!("{} - {}", artist, title);
     }
 
-    println!(&quot;---------------------&quot;);
-    songs.remove(&quot;Post Malone&quot;); // Delete
+    println!("---------------------");
+    songs.remove("Post Malone"); // Delete
     println!(
-        &quot;{:?}&quot;,
+        "{:?}",
         songs
-            .get(&quot;Post Malone&quot;)
-            .unwrap_or(&amp;&quot;Post Malone is not in the playlist&quot;)
+            .get("Post Malone")
+            .unwrap_or(&amp;"Post Malone is not in the playlist")
     );
 }
 </code></pre></pre>
@@ -1796,7 +1825,7 @@ Toto - Africa
 twenty one pilots - Stressed Out
 a-ha - Take on Me
 ---------------------
-&quot;Post Malone is not in the playlist&quot;
+"Post Malone is not in the playlist"
 </code></pre>
 <p>여기서 파이썬과 러스트의 출력 순서가 다른데, 이는 파이썬이 3.6버전부터 원소의 삽입 순서를 보존하기 때문입니다. 만일 러스트에서도 삽입 순서를 보존하고 싶다면 <code>HashMap</code> 대신 <a href="https://github.com/bluss/indexmap"><code>indexmap</code> 크레이트</a>를 사용해야 합니다.</p>
 <h2 id="문자열"><a class="header" href="#문자열">문자열</a></h2>
@@ -1804,8 +1833,8 @@ a-ha - Take on Me
 <p>문자열을 만드는 방법에는 두 가지가 존재합니다. 코드가 컴파일 될 때 스택 영역에 만들어지는 <code>str</code>과 런타임에 힙 영역에 메모리가 할당되는 <code>String</code>입니다.</p>
 <p><code>str</code> 타입은 문자열 리터럴로 불리며, 아래와 같이 선언할 수 있습니다. <code>str</code> 타입은 한 번 만들어지면 값을 변경하거나 길이를 바꿀 수 없습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let s = &quot;hello&quot;;
-    println!(&quot;{}&quot;, s);
+    let s = "hello";
+    println!("{}", s);
 }
 </code></pre></pre>
 <p>일반적으로 문자열 혹은 스트링이라고 말하는 <code>String</code> 타입은 아래와 같이 여러 방법으로 선언이 가능합니다. 벡터와 마찬가지로 동적으로 값을 바꾸거나 길이를 바꿀 수 있습니다.</p>
@@ -1814,12 +1843,12 @@ a-ha - Take on Me
     let mut s = String::new();
 
     // 스트링 리터럴로부터 스트링 만들기
-    let data = &quot;initial contents&quot;;
+    let data = "initial contents";
     let s = data.to_string();
-    let s = &quot;initial contents&quot;.to_string();
+    let s = "initial contents".to_string();
 
     // String::from()을 사용하여 스트링 만들기
-    let s = String::from(&quot;initial contents&quot;);
+    let s = String::from("initial contents");
 }
 </code></pre></pre>
 <p>정리하자면 다음과 같습니다.</p>
@@ -1830,10 +1859,10 @@ a-ha - Take on Me
 <h3 id="문자열-슬라이스"><a class="header" href="#문자열-슬라이스">문자열 슬라이스</a></h3>
 <p><code>&amp;str</code> 은 문자열의 일부분을 의미하기도 합니다. 따라서 <code>&amp;str</code>을 문자열 슬라이스라고 부릅니다. <code>String</code> 타입으로 문자열을 선언하고, 해당 문자열로부터 문자열 슬라이스를 만들어 프린트해 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let greet = String::from(&quot;Hi, buzzi!&quot;);
-    // let name = &quot;buzzi!&quot;;
+    let greet = String::from("Hi, buzzi!");
+    // let name = "buzzi!";
     let name = &amp;greet[4..];
-    println!(&quot;{}&quot;, name);
+    println!("{}", name);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -1841,19 +1870,19 @@ a-ha - Take on Me
 </code></pre>
 <p>문자열 슬라이스를 사용할 때 주의해야 하는 점은, 러스트의 모든 문자열은 UTF-8로 인코딩되어 있다는 점입니다. 실제로 문자열 슬라이스의 인덱스는 문자 단위가 아닌 바이트 스트림의 바이트 단위 입니다. 아래 예제를 살펴봅시다.</p>
 <pre><pre class="playground"><code class="language-rust should_panic">fn main() {
-    let greet = String::from(&quot;Hi😃 buzzi!&quot;);
+    let greet = String::from("Hi😃 buzzi!");
     let name = &amp;greet[4..];
-    println!(&quot;{}&quot;, name);
+    println!("{}", name);
 }</code></pre></pre>
 <p>실행 결과</p>
 <pre><code>thread 'main' panicked at 'byte index 4 is not a char boundary; it is inside '😃' (bytes 2..6) of `Hi😃 buzzi!`', src/main.rs:4:17
 </code></pre>
 <p>일반적인 알파벳 문자는 바이트 스트림에서 1바이트를 차지하지만, 유니코드로 만들어진 이모지의 경우는 4바이트를 차지하기 때문입니다. 바이트 4에 해당하는 인덱스가 이모지 중간에 위치하므로 정상적으로 문자열을 잘라낼 수 없게 됩니다. 따라서 반드시 스트링을 문자 단위로 슬라이스하고 싶은 경우라면 문자열을 벡터로 만들어줘야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let greet = String::from(&quot;Hi😃 buzzi!&quot;);
+    let greet = String::from("Hi😃 buzzi!");
     let greet_chars: Vec&lt;char&gt; = greet.chars().collect();
     let name = &amp;greet_chars[4..].iter().collect::&lt;String&gt;();
-    println!(&quot;{:?}&quot;, name);
+    println!("{:?}", name);
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="열거형"><a class="header" href="#열거형">열거형</a></h2>
@@ -1863,10 +1892,10 @@ a-ha - Take on Me
 
 
 class Languages(Enum):
-    PYTHON = &quot;python&quot;
-    RUST = &quot;rust&quot;
-    JAVASCRIPT = &quot;javascript&quot;
-    GO = &quot;go&quot;
+    PYTHON = "python"
+    RUST = "rust"
+    JAVASCRIPT = "javascript"
+    GO = "go"
 
     def echo(self):
         print(self.name)
@@ -1876,20 +1905,20 @@ language = Languages.RUST
 language.echo()
 
 if language == Languages.PYTHON:
-    print(&quot;I love Python&quot;)
+    print("I love Python")
 elif language == Languages.GO:
-    print(&quot;I love Go&quot;)
+    print("I love Go")
 elif language == Languages.JAVASCRIPT:
-    print(&quot;I love Javascript&quot;)
+    print("I love Javascript")
 else:
-    print(&quot;I love Rust🦀&quot;)
+    print("I love Rust🦀")
 
 </code></pre>
 <p>실행 결과</p>
 <pre><code>RUST
 I love Rust🦀
 </code></pre>
-<p>러스트의 열거형은 <code>enum</code> 키워드로 선언이 가능합니다. 이때 값이 없는 열거형과 값이 있는 열거형 두 가지를 만들 수 있는데, 먼저 값이 없는 열거형을 만들어 보면 다음과 같습니다. <code>impl</code> 블럭을 이용해 열거형에서 사용할 메소드를 만들 수 있습니다. 이에 관련한 자세한 문법은 나중에 객체지향을 배우면서 좀더 자세히 다루겠습니다. 마지막으로, 파이썬에서 <code>if</code> 문을 사용한 것과 다르게, 러스트에서는 <code>match</code> 를 이용해 열거형의 값에 따라 다른 행동을 하도록 만듭니다. </p>
+<p>러스트의 열거형은 <code>enum</code> 키워드로 선언이 가능합니다. 이때 값이 없는 열거형과 값이 있는 열거형 두 가지를 만들 수 있는데, 먼저 값이 없는 열거형을 만들어 보면 다음과 같습니다. <code>impl</code> 블럭을 이용해 열거형에서 사용할 메소드를 만들 수 있습니다. 이에 관련한 자세한 문법은 나중에 객체지향을 배우면서 좀더 자세히 다루겠습니다. 마지막으로, 파이썬에서 <code>if</code> 문을 사용한 것과 다르게, 러스트에서는 <code>match</code> 를 이용해 열거형의 값에 따라 다른 행동을 하도록 만듭니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     // Enum
     #[allow(dead_code)]
@@ -1903,7 +1932,7 @@ I love Rust🦀
 
     impl Languages {
         fn echo(&amp;self) {
-            println!(&quot;{:?}&quot;, &amp;self);
+            println!("{:?}", &amp;self);
         }
     }
 
@@ -1912,10 +1941,10 @@ I love Rust🦀
 
     // match
     match language {
-        Languages::Python =&gt; println!(&quot;I love Python&quot;),
-        Languages::Go =&gt; println!(&quot;I love Go&quot;),
-        Languages::Javascript =&gt; println!(&quot;I love Javascript&quot;),
-        _ =&gt; println!(&quot;I love Rust🦀&quot;),
+        Languages::Python =&gt; println!("I love Python"),
+        Languages::Go =&gt; println!("I love Go"),
+        Languages::Javascript =&gt; println!("I love Javascript"),
+        _ =&gt; println!("I love Rust🦀"),
     }
 }
 </code></pre></pre>
@@ -1924,7 +1953,7 @@ I love Rust🦀
 I love Rust🦀
 </code></pre>
 <p>열거형에 값을 지정하려면 열거형을 선언하면서 타입을 지정하면 됩니다. 열거형 변수 뒤에 <code>(타입)</code> 과 같이 입력하면 됩니다. 이제 열거형 변수를 선언할 때, 해당 타입에 대한 정보를 추가로 입력해줘야 합니다. 예를 들어, <code>indo</code> 라는 변수에 학년은 A, 이름은 indo라는 값을 넣으려면 다음과 같습니다.</p>
-<pre><code class="language-rust ignore">let indo = Job::Student(Grade::A, &quot;indo&quot;.to_string());</code></pre>
+<pre><code class="language-rust ignore">let indo = Job::Student(Grade::A, "indo".to_string());</code></pre>
 <p>이제 <code>indo</code> 변수의 값에 따라 서로 다른 내용을 출력하도록 <code>match</code> 를 사용한 전체 코드는 다음과 같습니다.</p>
 <pre><pre class="playground"><code class="language-rust">#[allow(dead_code)]
 fn main() {
@@ -1940,14 +1969,14 @@ fn main() {
         Developer(String),
     }
 
-    let indo = Job::Student(Grade::A, &quot;indo&quot;.to_string());
+    let indo = Job::Student(Grade::A, "indo".to_string());
 
     match indo {
         Job::Student(grade, name) =&gt; {
-            println!(&quot;{} is a student with grade {:?}&quot;, name, grade);
+            println!("{} is a student with grade {:?}", name, grade);
         }
         Job::Developer(name) =&gt; {
-            println!(&quot;{} is a developer&quot;, name);
+            println!("{} is a developer", name);
         }
     }
 }
@@ -1967,14 +1996,14 @@ fn main() {
 <p><code>Option</code>을 사용하려면, 열거형 변수 중 하나인 <code>Some</code>을 사용해 값을 감싸주기만 하면 됩니다. 만일 값이 없음을 나타내려면 <code>None</code>을 사용합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let some_number = Some(5);
-    let some_string = Some(&quot;a string&quot;);
+    let some_string = Some("a string");
 
     let absent_number: Option&lt;i32&gt; = None;
 
-    println!(&quot;{:?} {:?} {:?}&quot;, some_number, some_string, absent_number);
+    println!("{:?} {:?} {:?}", some_number, some_string, absent_number);
 }</code></pre></pre>
 <p>실행 결과</p>
-<pre><code>Some(5) Some(&quot;a string&quot;) None
+<pre><code>Some(5) Some("a string") None
 </code></pre>
 <h4 id="match를-사용한-패턴-매칭"><a class="header" href="#match를-사용한-패턴-매칭"><code>match</code>를 사용한 패턴 매칭</a></h4>
 <p><code>Option</code>은 주로 <code>match</code>와 함께 사용됩니다. 그 이유는 다음 코드를 실행해 보면 알 수 있습니다.</p>
@@ -1989,7 +2018,7 @@ fn main() {
     let nums = vec![1, 2, 3];
 
     match check_len(nums) {
-        Some(len) =&gt; println!(&quot;Length: {}&quot;, len),
+        Some(len) =&gt; println!("Length: {}", len),
     }
 }
 </code></pre>
@@ -2013,22 +2042,22 @@ fn main() {
     let nums = vec![1, 2, 3];
 
     match check_len(nums) {
-        Some(len) =&gt; println!(&quot;Length: {}&quot;, len),
-        None =&gt; println!(&quot;No elements&quot;),
+        Some(len) =&gt; println!("Length: {}", len),
+        None =&gt; println!("No elements"),
     }
 }
 </code></pre></pre>
 <h4 id="if-let-구문"><a class="header" href="#if-let-구문"><code>if let</code> 구문</a></h4>
-<p>만일 <code>Option</code>의 결과에 따라서 특정 행동만 하고 싶다면, <code>if let</code> 구문을 사용하면 됩니다. </p>
+<p>만일 <code>Option</code>의 결과에 따라서 특정 행동만 하고 싶다면, <code>if let</code> 구문을 사용하면 됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let val = Some(3);
     match val {
-        Some(3) =&gt; println!(&quot;three&quot;),
+        Some(3) =&gt; println!("three"),
         _ =&gt; (),
     }
 
     if let Some(3) = val {
-        println!(&quot;three&quot;);
+        println!("three");
     }
 }</code></pre></pre>
 <h3 id="resultt-e-열거형"><a class="header" href="#resultt-e-열거형">Result&lt;T, E&gt; 열거형</a></h3>
@@ -2044,11 +2073,11 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">use std::fs::File;
 
 fn main() {
-    let f = File::open(&quot;hello.txt&quot;);
+    let f = File::open("hello.txt");
 
     let f = match f {
         Ok(file) =&gt; file,
-        Err(error) =&gt; panic!(&quot;There was a problem opening the file: {:?}&quot;, error),
+        Err(error) =&gt; panic!("There was a problem opening the file: {:?}", error),
     };
 }</code></pre></pre>
 <h4 id="if-let-구문-1"><a class="header" href="#if-let-구문-1"><code>if let</code> 구문</a></h4>
@@ -2056,7 +2085,7 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">use std::fs::File;
 
 fn main() {
-    let f = File::open(&quot;hello.txt&quot;);
+    let f = File::open("hello.txt");
 
     if let Ok(file) = f {
         // 파일을 사용합니다.
@@ -2078,17 +2107,17 @@ struct Info {
 
 fn write_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
     // Early return on error
-    let mut file = match File::create(&quot;my_best_friends.txt&quot;) {
+    let mut file = match File::create("my_best_friends.txt") {
         Err(e) =&gt; return Err(e),
         Ok(f) =&gt; f,
     };
-    if let Err(e) = file.write_all(format!(&quot;name: {}\n&quot;, info.name).as_bytes()) {
+    if let Err(e) = file.write_all(format!("name: {}\n", info.name).as_bytes()) {
         return Err(e);
     }
-    if let Err(e) = file.write_all(format!(&quot;age: {}\n&quot;, info.age).as_bytes()) {
+    if let Err(e) = file.write_all(format!("age: {}\n", info.age).as_bytes()) {
         return Err(e);
     }
-    if let Err(e) = file.write_all(format!(&quot;rating: {}\n&quot;, info.rating).as_bytes()) {
+    if let Err(e) = file.write_all(format!("rating: {}\n", info.rating).as_bytes()) {
         return Err(e);
     }
     Ok(())
@@ -2096,11 +2125,11 @@ fn write_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
 
 fn main() {
     if let Ok(_) = write_info(&amp;Info {
-        name: &quot;John&quot;.to_string(),
+        name: "John".to_string(),
         age: 32,
         rating: 10,
     }) {
-        println!(&quot;Writing to file succeeded!&quot;);
+        println!("Writing to file succeeded!");
     }
 }
 </code></pre></pre>
@@ -2116,21 +2145,21 @@ struct Info {
 }
 
 fn write_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
-    let mut file = File::create(&quot;my_best_friends.txt&quot;)?;
+    let mut file = File::create("my_best_friends.txt")?;
     // Early return on error
-    file.write_all(format!(&quot;name: {}\n&quot;, info.name).as_bytes())?;
-    file.write_all(format!(&quot;age: {}\n&quot;, info.age).as_bytes())?;
-    file.write_all(format!(&quot;rating: {}\n&quot;, info.rating).as_bytes())?;
+    file.write_all(format!("name: {}\n", info.name).as_bytes())?;
+    file.write_all(format!("age: {}\n", info.age).as_bytes())?;
+    file.write_all(format!("rating: {}\n", info.rating).as_bytes())?;
     Ok(())
 }
 
 fn main() {
     if let Ok(_) = write_info(&amp;Info {
-        name: &quot;John&quot;.to_string(),
+        name: "John".to_string(),
         age: 32,
         rating: 10,
     }) {
-        println!(&quot;Writing to file succeeded!&quot;);
+        println!("Writing to file succeeded!");
     }
 }
 </code></pre></pre>
@@ -2138,18 +2167,18 @@ fn main() {
 <h3 id="이터레이터란"><a class="header" href="#이터레이터란">이터레이터란?</a></h3>
 <p>이터레이터(iterator)는 반복 가능한 시퀀스(sequence)를 입력으로 받아 각 원소에 특정 작업을 수행할 수 있도록 하는 기능입니다. 앞에서 배운 벡터를 이용해 값을 순서대로 출력하는 예제를 만들어 보겠습니다.</p>
 <pre><code class="language-rust ignore">fn main() {
-    let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    let names = vec!["james", "cameron", "indo"];
     for name in names {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
-    println!(&quot;{:?}&quot;, names);
+    println!("{:?}", names);
 }
 </code></pre>
 <p>실행 결과</p>
 <pre><code>error[E0382]: borrow of moved value: `names`
    --&gt; src/main.rs:6:22
     |
-2   |     let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+2   |     let names = vec!["james", "cameron", "indo"];
     |         ----- move occurs because `names` has type `Vec&lt;&amp;str&gt;`, which does not implement the `Copy` trait
 3   |     for name in names {
     |                 -----
@@ -2157,41 +2186,41 @@ fn main() {
     |                 `names` moved due to this implicit call to `.into_iter()`
     |                 help: consider borrowing to avoid moving into the for loop: `&amp;names`
 ...
-6   |     println!(&quot;{:?}&quot;, names);
+6   |     println!("{:?}", names);
     |                      ^^^^^ value borrowed here after move
     |
 </code></pre>
-<p>컴파일하면 에러가 발생하는데, <code>for name in names</code> 에서 <code>names</code>가 암묵적으로 <code>.into_iter()</code> 메소드를 호출했다고 나옵니다. 여기서 <code>into_iter()</code>가 바로 이터레이터인데, 벡터 원소의 값을 <code>for</code> 루프 안으로 가져와 반복하는 역할을 수행합니다. 이때 값이 가져와지기 때문에 원소의 소유권도 함께 이동됩니다. 이미 이동된 소유권을 <code>println!(&quot;{:?}&quot;, names);</code> 에서 참조하기 때문에 에러가 발생합니다.</p>
+<p>컴파일하면 에러가 발생하는데, <code>for name in names</code> 에서 <code>names</code>가 암묵적으로 <code>.into_iter()</code> 메소드를 호출했다고 나옵니다. 여기서 <code>into_iter()</code>가 바로 이터레이터인데, 벡터 원소의 값을 <code>for</code> 루프 안으로 가져와 반복하는 역할을 수행합니다. 이때 값이 가져와지기 때문에 원소의 소유권도 함께 이동됩니다. 이미 이동된 소유권을 <code>println!("{:?}", names);</code> 에서 참조하기 때문에 에러가 발생합니다.</p>
 <p>이를 해결하기 위해서는 명시적으로 <code>iter()</code> 메소드를 호출해 원소를 <code>for</code> 루프 안으로 전달해주어야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    let names = vec!["james", "cameron", "indo"];
     for name in names.iter() {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
-    println!(&quot;{:?}&quot;, names);
+    println!("{:?}", names);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>james
 cameron
 indo
-[&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;]
+["james", "cameron", "indo"]
 </code></pre>
 <p><code>iter()</code> 메소드는 선언 즉시 원소를 내놓는 것이 아니라, 값이 필요해지면 그때 원소를 리턴합니다. 따라서 다음과 같은 코드가 가능합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let names = vec![&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;];
+    let names = vec!["james", "cameron", "indo"];
     let names_iter = names.iter();
     for name in names_iter {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
-    println!(&quot;{:?}&quot;, names);
+    println!("{:?}", names);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>james
 cameron
 indo
-[&quot;james&quot;, &quot;cameron&quot;, &quot;indo&quot;]
+["james", "cameron", "indo"]
 </code></pre>
 <h3 id="이터레이터를-소비하는-메소드들"><a class="header" href="#이터레이터를-소비하는-메소드들">이터레이터를 소비하는 메소드들</a></h3>
 <p>이번 단원에서는 이터레이터에 속한 메소드들을 이용해 원소에 여러 작업을 수행해 보겠습니다. 파이썬에서는 합계, 최대값, 최소값을 구하는 함수인 <code>sum</code>, <code>max</code>, <code>min</code>을 리스트에 직접 사용합니다.</p>
@@ -2200,7 +2229,7 @@ indo
 sum = sum(nums)
 max = max(nums)
 min = min(nums)
-print(f&quot;sum: {sum}, max: {max}, min: {min}&quot;)
+print(f"sum: {sum}, max: {max}, min: {min}")
 </code></pre>
 <p>실행 결과</p>
 <pre><code>sum: 6, max: 3, min: 1
@@ -2212,7 +2241,7 @@ print(f&quot;sum: {sum}, max: {max}, min: {min}&quot;)
     let sum: i32 = num.iter().sum();
     let max = num.iter().max().unwrap();
     let min = num.iter().min().unwrap();
-    println!(&quot;sum: {}, max: {}, min: {}&quot;, sum, max, min);
+    println!("sum: {}, max: {}, min: {}", sum, max, min);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -2240,10 +2269,10 @@ print(zip)
     let nums2 = vec![4, 5, 6];
 
     let enumer: Vec&lt;(usize, &amp;i32)&gt; = nums1.iter().enumerate().collect();
-    println!(&quot;{:?}&quot;, enumer);
+    println!("{:?}", enumer);
 
     let zip: Vec&lt;(&amp;i32, &amp;i32)&gt; = nums1.iter().zip(nums2.iter()).collect();
-    println!(&quot;{:?}&quot;, zip);
+    println!("{:?}", zip);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -2270,10 +2299,10 @@ print(list(filter(lambda x: x % 2 == 1, nums)))
     let f = |x: &amp;i32| x + 1;
 
     let maps: Vec&lt;i32&gt; = nums.iter().map(f).collect();
-    println!(&quot;{:?}&quot;, maps);
+    println!("{:?}", maps);
 
     let filters: Vec&lt;i32&gt; = nums.into_iter().filter(|x| x % 2 == 1).collect();
-    println!(&quot;{:?}&quot;, filters);
+    println!("{:?}", filters);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -2288,12 +2317,12 @@ print(list(filter(lambda x: x % 2 == 1, nums)))
     let f = |x: &amp;i32| x + 1;
 
     let maps: Vec&lt;i32&gt; = nums.iter().map(f).collect();
-    println!(&quot;{:?}&quot;, maps);
+    println!("{:?}", maps);
 
     let filters: Vec&lt;i32&gt; = nums.clone().into_iter().filter(|x| x % 2 == 1).collect();
-    println!(&quot;{:?}&quot;, filters);
+    println!("{:?}", filters);
 
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
 }
 </code></pre></pre>
 <p>이터레이터를 복사하는 방법</p>
@@ -2303,12 +2332,12 @@ print(list(filter(lambda x: x % 2 == 1, nums)))
     let f = |x: &amp;i32| x + 1;
 
     let maps: Vec&lt;i32&gt; = nums.iter().map(f).collect();
-    println!(&quot;{:?}&quot;, maps);
+    println!("{:?}", maps);
 
     let filters: Vec&lt;i32&gt; = nums.iter().filter(|x| *x % 2 == 1).cloned().collect();
-    println!(&quot;{:?}&quot;, filters);
+    println!("{:?}", filters);
 
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
 }</code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch7-구조체"><a class="header" href="#ch7-구조체">CH7. 구조체</a></h1>
 <p>러스트는 객체지향 프로그래밍보다는 함수형 프로그래밍에 더 가깝습니다. 단적인 예로 러스트 코드는 이터레이터와 클로저를 적극적으로 사용합니다. 이러한 이유에서 클래스가 존재하지 않습니다. 대신 비슷한 역할을 구조체 <code>struct</code> 를 통해서 구현할 수 있습니다.</p>
@@ -2327,7 +2356,7 @@ struct Person {
     age: i32,
 }</code></pre>
 <p>이제 각각 인스턴스를 생성해 보겠습니다.</p>
-<pre><code class="language-python">jane = Person(&quot;jane&quot;, 30)
+<pre><code class="language-python">jane = Person("jane", 30)
 jane.age += 1
 print(jane.name, jane.age)
 print(jane.__dict__)
@@ -2341,15 +2370,15 @@ struct Person {
 
 fn main() {
     let mut jane = Person {
-        name: String::from(&quot;Jane&quot;),
+        name: String::from("Jane"),
         age: 30
     };
     jane.age += 1;
-    println!(&quot;{} {}&quot;, jane.name, jane.age);
-    println!(&quot;{:?}&quot;, jane);
+    println!("{} {}", jane.name, jane.age);
+    println!("{:?}", jane);
 }</code></pre></pre>
 <p>인스턴스를 생성할 때는 구조체 이름 뒤에서 <code>{필드명: 값}</code> 문법으로 값들을 넣어주면 됩니다. 프로퍼티는 파이썬과 동일하게 접근과 변경이 가능합니다. 그런데 여기서 인스턴스 <code>jane</code> 이 mutable로 선언되었습니다. 왜냐하면 <code>jane.age</code> 의 값을 변경하고 있기 때문에 구조체 자체가 mutable로 선언되어야 합니다.</p>
-<p>마지막으로 <code>jane</code>을 출력하는데 <code>&quot;{:?}&quot;</code> 가 사용되었는데, 이 문법은 디버그 출력이라고 합니다. 원래 러스트에서 어떤 값을 출력하려면 그 값은 Format이 정의되어 있어야 하는데, <code>Person</code> 구조체는 정의되어 있지 않기 때문에 디버그 출력을 이용해 간편하게 내용을 확인할 수 있습니다.</p>
+<p>마지막으로 <code>jane</code>을 출력하는데 <code>"{:?}"</code> 가 사용되었는데, 이 문법은 디버그 출력이라고 합니다. 원래 러스트에서 어떤 값을 출력하려면 그 값은 Format이 정의되어 있어야 하는데, <code>Person</code> 구조체는 정의되어 있지 않기 때문에 디버그 출력을 이용해 간편하게 내용을 확인할 수 있습니다.</p>
 <h3 id="메소드"><a class="header" href="#메소드">메소드</a></h3>
 <p>만일 파이썬의 <code>Person</code> 클래스를 객체화할 때, <code>alive = True</code> 라는 프로퍼티를 추가하고 싶다면 아래와 같이 할 수 있습니다.</p>
 <pre><code class="language-python">class Person:
@@ -2358,7 +2387,7 @@ fn main() {
         self.age = age
         self.alive = True
 </code></pre>
-<p>함수는 메소드를 통해 구조체에 묶을 수 있습니다. <code>impl</code> 키워드 뒤에 구조체 이름을 명시해서 해당 구조체에 속한 메소드를 선언할 수 있습니다. 파이썬의 생성자와 마찬가지로, 객체화할때 사용되는 <code>new</code> 라는 함수를 정의할 수 있습니다. 메소드가 아닌 &quot;함수&quot;도 구조체 정의에 포함시킬 수 있는데, 이 경우는 연관 함수(Associated function)이라고 부르고, 파라미터에 <code>self</code>가 들어있지 않습니다. 먼저 구조체 정의에 <code>alive: bool',</code> 을 추가합니다.</p>
+<p>함수는 메소드를 통해 구조체에 묶을 수 있습니다. <code>impl</code> 키워드 뒤에 구조체 이름을 명시해서 해당 구조체에 속한 메소드를 선언할 수 있습니다. 파이썬의 생성자와 마찬가지로, 객체화할때 사용되는 <code>new</code> 라는 함수를 정의할 수 있습니다. 메소드가 아닌 "함수"도 구조체 정의에 포함시킬 수 있는데, 이 경우는 연관 함수(Associated function)이라고 부르고, 파라미터에 <code>self</code>가 들어있지 않습니다. 먼저 구조체 정의에 <code>alive: bool',</code> 을 추가합니다.</p>
 <pre><code class="language-rust ignore">#[derive(Debug)] // derived traits
 struct Person {
     name: String,
@@ -2400,7 +2429,7 @@ impl Person {
     }
 
     fn info(&amp;self) {
-        println!(&quot;{} {}&quot;, self.name, self.age)
+        println!("{} {}", self.name, self.age)
     }
 
     fn get_older(&amp;mut self, year: i32) {
@@ -2410,16 +2439,16 @@ impl Person {
         self.age += year;
     }
 }</code></pre>
-<p>이때 <code>self</code> 가 borrowed 되면서 mutable 인 것에 주의합니다. 왜냐하면 인스턴스 프로퍼티가 변경되기 때문에 <code>self</code>가 mutable이어야 합니다. 여기서 <code>info</code> 메소드의 <code>&amp;self</code>를 <code>self</code>로 바꾸면 어떻게 될까요? </p>
+<p>이때 <code>self</code> 가 borrowed 되면서 mutable 인 것에 주의합니다. 왜냐하면 인스턴스 프로퍼티가 변경되기 때문에 <code>self</code>가 mutable이어야 합니다. 여기서 <code>info</code> 메소드의 <code>&amp;self</code>를 <code>self</code>로 바꾸면 어떻게 될까요?</p>
 <p>다시 인스턴스를 생성하고 메소드를 호출해 보겠습니다.</p>
-<pre><code class="language-python">john = Person(&quot;john&quot;, 20)
+<pre><code class="language-python">john = Person("john", 20)
 john.info()
 john.get_older(3)
 john.info()
 </code></pre>
 <p><code>get_older</code> 메소드를 통해 age가 3 증가합니다. 러스트에서도 동일합니다.</p>
 <pre><code class="language-rust ignore">fn main() {
-    let mut john = Person::new(&quot;john&quot;, 20);
+    let mut john = Person::new("john", 20);
     john.info();
     john.get_older(3);
     john.info();
@@ -2434,7 +2463,7 @@ fn main() {
     let black = Color(0, 0, 0);
     let origin = Point(0, 0, 0);
 
-    println!(&quot;{} {}&quot;, black.0, origin.0);
+    println!("{} {}", black.0, origin.0);
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="트레이트trait"><a class="header" href="#트레이트trait">트레이트(trait)</a></h2>
@@ -2448,7 +2477,7 @@ fn main() {
         self.alive = True
 
     def say_hello(self):
-        print(&quot;Hello, Rustacean!&quot;)
+        print("Hello, Rustacean!")
 
     def get_older(self, year):
         self.age += year
@@ -2460,7 +2489,7 @@ class Student(Person):
         self.major = major
 
     def say_hello(self):
-        print(f&quot;Hello, I am {self.name} and I am studying {self.major}&quot;)
+        print(f"Hello, I am {self.name} and I am studying {self.major}")
 
 </code></pre>
 <p><code>Student</code> 클래스는 새로운 프로퍼티 <code>major</code> 를 가지고 있고, <code>Person</code> 의 <code>say_hello</code> 메소드를 오버라이드하고 있습니다.</p>
@@ -2513,17 +2542,17 @@ impl Student {
 
 impl Greet for Student {
     fn say_hello(&amp;self) {
-        println!(&quot;Hello, I am {} and I am studying {}&quot;, self.name, self.major)
+        println!("Hello, I am {} and I am studying {}", self.name, self.major)
     }
 }</code></pre>
 <p>이제 메인 함수에서 <code>Person</code>과 <code>Student</code> 구조체의 인스턴스를 만들고 <code>say_hello</code> 메소드를 각각 호출해 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let mut person = Person::new(&quot;John&quot;, 20);
+    let mut person = Person::new("John", 20);
     person.say_hello(); // 🫢
     person.get_older(1);
-    println!(&quot;{} is now {} years old&quot;, person.name, person.age);
+    println!("{} is now {} years old", person.name, person.age);
 
-    let student = Student::new(&quot;Jane&quot;, 20, &quot;Computer Science&quot;);
+    let student = Student::new("Jane", 20, "Computer Science");
     student.say_hello();
 }
 </code></pre></pre>
@@ -2535,7 +2564,7 @@ Hello, I am Jane and I am studying Computer Science
 <p>다시 트레이트 선언으로 돌아가보면 <code>say_hello</code> 함수는 파라미터로 <code>&amp;self</code> 를 받고 있지만, 트레이트에 정의되는 함수는 인스턴스 프로퍼티에 접근할 수 없습니다. 만일 여기서 다음과 같이 함수의 원형을 수정하고 컴파일해보면 에러가 발생합니다.</p>
 <pre><code class="language-rust ignore">trait Greet {
     fn say_hello(&amp;self) {
-        println!(&quot;Hello, Rustacean!&quot;);
+        println!("Hello, Rustacean!");
     }
 }</code></pre>
 <h3 id="파생derive"><a class="header" href="#파생derive">파생(Derive)</a></h3>
@@ -2560,13 +2589,13 @@ fn main() {
         height: 50,
     };
 
-    println!(&quot;rect1 is {:?}&quot;, rect1); // 🤯
+    println!("rect1 is {:?}", rect1); // 🤯
 }
 </code></pre></pre>
 <pre><code>error[E0277]: `Rectangle` doesn't implement `Debug`
   --&gt; src/main.rs:12:31
    |
-12 |     println!(&quot;rect1 is {:?}&quot;, rect1); // 🤯
+12 |     println!("rect1 is {:?}", rect1); // 🤯
    |                               ^^^^^ `Rectangle` cannot be formatted using `{:?}`
    |
    = help: the trait `Debug` is not implemented for `Rectangle`
@@ -2584,7 +2613,7 @@ fn main() {
         height: 50,
     };
 
-    println!(&quot;rect1 is {:?}&quot;, rect1);
+    println!("rect1 is {:?}", rect1);
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch8-모듈과-크레이트"><a class="header" href="#ch8-모듈과-크레이트">CH8. 모듈과 크레이트</a></h1>
@@ -2657,12 +2686,12 @@ use crate::new_module::MyType</code></pre>
 <p><code>self</code> 는 struct 자기 자신을 의미합니다.</p>
 <pre><pre class="playground"><code class="language-rust">mod mod2 {
     fn func() {
-        println!(&quot;mod2::func()&quot;);
+        println!("mod2::func()");
     }
 
     mod mod1 {
         pub fn func() {
-            println!(&quot;mod2::mod1::func()&quot;);
+            println!("mod2::mod1::func()");
         }
     }
 
@@ -2687,7 +2716,7 @@ mod2::mod1::func()
 <p><code>super</code>는 현재 모듈의 상위 모듈을 의미합니다.</p>
 <pre><pre class="playground"><code class="language-rust">mod mod1 {
     pub fn dummy() {
-        println!(&quot;Hello, world!&quot;);
+        println!("Hello, world!");
     }
 }
 
@@ -2707,7 +2736,7 @@ fn main() {
 <div style="break-before: page; page-break-before: always;"></div><h2 id="모듈과-크레이트-사용해보기"><a class="header" href="#모듈과-크레이트-사용해보기">모듈과 크레이트 사용해보기</a></h2>
 <p>파이썬 폴더에 <code>my_modle.py</code> 를 생성합니다.</p>
 <pre><code class="language-python">def greet():
-    print(f&quot;Hi! I am hello_bot&quot;)
+    print(f"Hi! I am hello_bot")
 
 
 class Person:
@@ -2724,7 +2753,7 @@ class Person:
 if __name__ == '__main__':
     greet()
 
-    john = Person(&quot;john&quot;, 20)
+    john = Person("john", 20)
     john.get_older(3)
     print(john.age)
 
@@ -2737,11 +2766,11 @@ if __name__ == '__main__':
 └── my_module.py
 </code></pre>
 <p><code>hello_bot.py</code> 는 다음과 같습니다.</p>
-<pre><code class="language-python">BOT_NAME = &quot;hello_bot&quot;
+<pre><code class="language-python">BOT_NAME = "hello_bot"
 
 
 def hello():
-    print(&quot;Hello, humans!&quot;)
+    print("Hello, humans!")
 
 </code></pre>
 <p><code>my_module.py</code>에서 <code>greet</code> 함수가 <code>BOT_NAME</code> 을 이용하도록 합니다.</p>
@@ -2749,7 +2778,7 @@ def hello():
 
 
 def greet():
-    print(f&quot;Hi! I am {BOT_NAME}&quot;)
+    print(f"Hi! I am {BOT_NAME}")
 </code></pre>
 <p>그 다음 <code>main.py</code> 에서 <code>bots</code> 모듈을 사용해 보겠습니다.</p>
 <pre><code class="language-python">from bots.hello_bot import hello
@@ -2760,7 +2789,7 @@ if __name__ == '__main__':
 
     greet()
 
-    john = Person(&quot;john&quot;, 20)
+    john = Person("john", 20)
     john.get_older(3)
     print(john.age)
 
@@ -2772,7 +2801,7 @@ if __name__ == '__main__':
 </code></pre>
 <p>그리고 다음 코드를 입력합니다. 함수 하나와 구조체 하나가 들어있습니다. 여기서 함수, 구조체, 메소드가 모두 <code>pub</code> 키워드로 선언되어 있다는 점에 주목하세요. 이때 구조체 필드도 public으로 만드려면 <code>pub</code> 키워드를 사용해야 합니다. 여기서는 <code>name</code> 만 public입니다.</p>
 <pre><code class="language-rust ignore">pub fn greet() {
-    println!(&quot;Hi! I am hello_bot&quot;);
+    println!("Hi! I am hello_bot");
 }
 
 pub struct Person {
@@ -2801,10 +2830,10 @@ use my_module::{greet, Person}; // actually import the function and struct from 
 fn main() {
     greet();
 
-    let mut john = Person::new(&quot;john&quot;, 20);
+    let mut john = Person::new("john", 20);
     john.get_older(3);
-    println!(&quot;{}&quot;, john.name);
-    // println!(&quot;Am I alive? {}&quot;, john.alive); // won't compile!
+    println!("{}", john.name);
+    // println!("Am I alive? {}", john.alive); // won't compile!
 }
 </code></pre>
 <p>다음으로는 하위 폴더 <code>bots</code>를 만들어 보겠습니다. <code>bots</code> 폴더에는 <code>hello_bot.rs</code>와 <code>mod.rs</code> 두 파일을 생성합니다.</p>
@@ -2818,17 +2847,17 @@ fn main() {
 <p>항상 하위 폴더를 모듈로 만드는 경우에는 <code>mod.rs</code> 가 있어야 합니다. 이 파일은 해당 모듈의 엔트리포인트가 되어 이 모듈 안에 있는 다른 하위 모듈들을 찾을 수 있게 합니다. 따라서 <code>mod.rs</code> 에는 <code>hello_bot</code> 모듈의 정보가 있어야 합니다.</p>
 <pre><code class="language-rust ignore">pub mod hello_bot; // will look for hello_bot.rs</code></pre>
 <p>이제 <code>hello_bot.rs</code> 파일을 작성합니다.</p>
-<pre><code class="language-rust ignore">pub static BOT_NAME: &amp;str = &quot;hello_bot&quot;;
+<pre><code class="language-rust ignore">pub static BOT_NAME: &amp;str = "hello_bot";
 
 pub fn hello() {
-    println!(&quot;Hello, humans!&quot;);
+    println!("Hello, humans!");
 }
 </code></pre>
 <p>static 변수와 함수 하나가 생성되어 있고, 둘 다 public으로 선언되었습니다. 먼저, <code>BOT_NAME</code> 스태틱을 <code>src/my_module.rs</code> 에서 참조해 보겠습니다. <code>my_module.rs</code> 는 크레이트 루트가 아니기 때문에 <code>use crate::</code> 문법으로 참조해야 합니다. 여기서 <code>greet</code> 함수가 이 <code>BOT_NAME</code> 스태틱을 참조해 실행되도록 수정해 봅시다.</p>
 <pre><code class="language-rust ignore">use crate::bots::hello_bot::BOT_NAME;
 
 pub fn greet() {
-    println!(&quot;Hi! I am {}&quot;, BOT_NAME);
+    println!("Hi! I am {}", BOT_NAME);
 }
 </code></pre>
 <p>이제 <code>main.rs</code> 에서 <code>bots</code> 모듈을 사용해 보겠습니다. <code>main.rs</code>는 크레이트 루트기 때문에 <code>use bots::hello_bot::hello;</code> 로 모듈을 불러올 수 있습니다.</p>
@@ -2844,10 +2873,10 @@ fn main() {
 
     greet();
 
-    let mut john = Person::new(&quot;john&quot;, 20);
+    let mut john = Person::new("john", 20);
     john.get_older(3);
-    println!(&quot;{}&quot;, john.name);
-    // println!(&quot;Am I alive? {}&quot;, john.alive); // won't compile!
+    println!("{}", john.name);
+    // println!("Am I alive? {}", john.alive); // won't compile!
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch9-제네릭"><a class="header" href="#ch9-제네릭">CH9. 제네릭</a></h1>
@@ -2864,11 +2893,11 @@ fn main() {
 <h4 id="파라미터-타입"><a class="header" href="#파라미터-타입">파라미터 타입</a></h4>
 <p>If your function is generic over a trait but you don't mind the specific type, you can simplify the function declaration using <code>impl Trait</code> as the type of the argument.</p>
 <pre><pre class="playground"><code class="language-rust">fn copy(_item: impl Copy) {
-    println!(&quot;Copy&quot;);
+    println!("Copy");
 }
 
 fn clone(_item: impl Clone) {
-    println!(&quot;Clone&quot;);
+    println!("Clone");
 }
 
 fn main() {
@@ -2876,7 +2905,7 @@ fn main() {
     copy(num);
     clone(num);
 
-    let string = String::from(&quot;Hello&quot;);
+    let string = String::from("Hello");
     clone(string);
     // copy(string); // 🤯
 }
@@ -2886,7 +2915,7 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">use std::fmt::Display;
 
 fn some_function&lt;T: Display&gt;(t: &amp;T) {
-    println!(&quot;{}&quot;, t);
+    println!("{}", t);
 }
 
 fn main() {
@@ -2898,7 +2927,7 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_function(t: &amp;impl Display) {
-    println!(&quot;{}&quot;, t);
+    println!("{}", t);
 }
 <span class="boring">}</span></code></pre></pre>
 <p>트레이트 바운드를 사용하면 다음과 같이 타입을 복합적으로 표현할 수 있습니다.</p>
@@ -2911,7 +2940,7 @@ where
     T: Display + Clone,
     U: Clone + Debug,
 {
-    println!(&quot;{} {:?}&quot;, t, u);
+    println!("{} {:?}", t, u);
 }
 
 fn main() {
@@ -2928,7 +2957,7 @@ fn main() {
 
 fn main() {
     for num in double(vec![1, 2, 3]) {
-        println!(&quot;{}&quot;, num);
+        println!("{}", num);
     }
 }
 </code></pre></pre>
@@ -2942,7 +2971,7 @@ fn main() {
 
 fn main() {
     let mut students = HashMap::new();
-    students.insert(&quot;buzzi&quot;, 100);
+    students.insert("buzzi", 100);
 }
 </code></pre></pre>
 <p>이런 경우는 어떤 원소를 넣는지 알 수 없기 때문에 타입을 명시적으로 알려줘야 함</p>
@@ -2950,7 +2979,7 @@ fn main() {
 
 fn main() {
     let mut students: HashMap&lt;&amp;str, i32&gt; = HashMap::new();
-    // students.insert(&quot;buzzi&quot;, 100);
+    // students.insert("buzzi", 100);
 }
 </code></pre></pre>
 <p>이 경우 터보피시를 사용해서 타입 어노테이션을 대체 가능</p>
@@ -2958,7 +2987,7 @@ fn main() {
 
 fn main() {
     let mut students: HashMap = HashMap::&lt;&amp;str, i32&gt;::new();
-    // students.insert(&quot;buzzi&quot;, 100);
+    // students.insert("buzzi", 100);
 }
 </code></pre></pre>
 <p>복잡한 예제</p>
@@ -2968,21 +2997,21 @@ fn main() {
 
 fn main() {
     let nums = double(vec![1, 2, 3]).collect::&lt;Vec&lt;i32&gt;&gt;();
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
     let nums: Vec&lt;String&gt; =
-        double(vec![&quot;1&quot;.to_string(), &quot;2&quot;.to_string(), &quot;3&quot;.to_string()]).collect();
-    println!(&quot;{:?}&quot;, nums);
+        double(vec!["1".to_string(), "2".to_string(), "3".to_string()]).collect();
+    println!("{:?}", nums);
 }</code></pre></pre>
 <h4 id="명시적-타입-어노테이션이-작동하지-않을-때"><a class="header" href="#명시적-타입-어노테이션이-작동하지-않을-때">명시적 타입 어노테이션이 작동하지 않을 때</a></h4>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let nums: Vec&lt;i32&gt; = [&quot;1&quot;, &quot;2&quot;, &quot;three&quot;]
+    let nums: Vec&lt;i32&gt; = ["1", "2", "three"]
         .iter()
         .filter_map(|x| x.parse().ok())
         .collect();
 }
 </code></pre></pre>
 <pre><code class="language-rust ignore">fn main() {
-    let nums: bool = [&quot;1&quot;, &quot;2&quot;, &quot;three&quot;]
+    let nums: bool = ["1", "2", "three"]
         .iter()
         .filter_map(|x| x.parse().ok())
         .collect() // 🤯
@@ -2990,7 +3019,7 @@ fn main() {
 }
 </code></pre>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let nums: bool = [&quot;1&quot;, &quot;2&quot;, &quot;three&quot;]
+    let nums: bool = ["1", "2", "three"]
         .iter()
         .filter_map(|x| x.parse().ok())
         .collect::&lt;Vec&lt;i32&gt;&gt;()
@@ -3022,7 +3051,7 @@ struct Args {
     let reader = BufReader::new(file);
 
     for line in reader.lines() {
-        println!(&quot;{}&quot;, line?);
+        println!("{}", line?);
     }
 
     Ok(())
@@ -3045,14 +3074,14 @@ fn cat(filename: &amp;str) -&gt; io::Result&lt;()&gt; {
     let reader = BufReader::new(file);
 
     for line in reader.lines() {
-        println!(&quot;{}&quot;, line?);
+        println!("{}", line?);
     }
 
     Ok(())
 }
 
 fn main() {
-    cat(&quot;text.txt&quot;).unwrap()
+    cat("text.txt").unwrap()
 }
 </code></pre></pre>
 <p>이제 사용자로부터 정보를 입력받기 위해 처음에 만든 <code>Args</code> 구조체를 사용합니다.</p>
@@ -3074,7 +3103,7 @@ fn cat(filename: &amp;str) -&gt; io::Result&lt;()&gt; {
     let reader = BufReader::new(file);
 
     for line in reader.lines() {
-        println!(&quot;{}&quot;, line?);
+        println!("{}", line?);
     }
 
     Ok(())
@@ -3107,18 +3136,18 @@ rating: 10
         r = &amp;x;
     }
 
-    println!(&quot;r: {}&quot;, r);
+    println!("r: {}", r);
 }
 </code></pre></pre>
 <p>내부 스코프에서 참조된 <code>x</code>가 스코프를 벗어나면 값이 삭제되기 때문에 <code>r</code>이 가리키고 있는 값이 없는 상태가 됩니다. 이러한 경우를 댕글링 레퍼런스(Dangling reference)라고 합니다.</p>
 <p>아쉽게도 변수에 라이프타임을 추가하는 문법은 아직 러스트에 존재하지 않습니다. 대신 함수에서 파라미터와 리턴 값의 라이프타임을 추가하는 방법을 알아보겠습니다.</p>
 <h3 id="함수에서의-라이프타임"><a class="header" href="#함수에서의-라이프타임">함수에서의 라이프타임</a></h3>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let string1 = String::from(&quot;abcd&quot;);
-    let string2 = &quot;xyz&quot;;
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
     let result = longest(string1.as_str(), string2);
-    println!(&quot;The longest string is {}&quot;, result);
+    println!("The longest string is {}", result);
 }
 
 fn longest(x: &amp;str, y: &amp;str) -&gt; &amp;str {
@@ -3152,11 +3181,11 @@ help: consider introducing a named lifetime parameter
 <span class="boring">}</span></code></pre></pre>
 <p>이 규칙에 따라 <code>longest</code>에 라이프타임을 나타내면 다음과 같습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let string1 = String::from(&quot;abcd&quot;);
-    let string2 = &quot;xyz&quot;;
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
     let result = longest(string1.as_str(), string2);
-    println!(&quot;The longest string is {}&quot;, result);
+    println!("The longest string is {}", result);
 }
 
 fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
@@ -3168,17 +3197,17 @@ fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
 }
 </code></pre></pre>
 <blockquote>
-<p>라이프타임에 대해서 기억해야 할 가장 중요한 점은 &quot;라이프타임 표기는 레퍼런스의 실제 라이프타임을 바꾸지 않는다&quot; 라는 것입니다. 여러 레퍼런스의 라이프타임 사이의 관계를 나타냅니다. </p>
+<p>라이프타임에 대해서 기억해야 할 가장 중요한 점은 "라이프타임 표기는 레퍼런스의 실제 라이프타임을 바꾸지 않는다" 라는 것입니다. 여러 레퍼런스의 라이프타임 사이의 관계를 나타냅니다.</p>
 </blockquote>
 <p>이번에는 서로 다른 라이프타임을 갖는 <code>string1</code>과 <code>string2</code>를 사용해 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let string1 = String::from(&quot;long string is long&quot;);
+    let string1 = String::from("long string is long");
     let result;
     {
-        let string2 = String::from(&quot;xyz&quot;);
+        let string2 = String::from("xyz");
         result = longest(string1.as_str(), string2.as_str()); // 🤯
     }
-    println!(&quot;The longest string is {}&quot;, result);
+    println!("The longest string is {}", result);
 }
 
 fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
@@ -3192,27 +3221,27 @@ fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
 <p><code>string2</code>의 레퍼런스가 스코프 안에서만 유효하기 때문에 이와 같은 라이프타임을 갖는 <code>result</code>는 스코프 밖에서 유효하지 않습니다.</p>
 <p>어찌되었든 유효한 소유권 규칙을 지키기 위해서 서로 다른 라이프타임을 명시하고, 가장 오래 살아남는 <code>x</code>만 리턴하도록 하면 코드를 동작하게 할 수 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let string1 = String::from(&quot;long string is long&quot;);
+    let string1 = String::from("long string is long");
     let result;
     {
-        let string2 = String::from(&quot;xyz&quot;);
+        let string2 = String::from("xyz");
         result = longest(string1.as_str(), string2.as_str()); // 🤯
     }
-    println!(&quot;The longest string is {}&quot;, result);
+    println!("The longest string is {}", result);
 }
 
 fn longest&lt;'a, 'b&gt;(x: &amp;'a str, y: &amp;'b str) -&gt; &amp;'a str {
     if x.len() &gt; y.len() {
         x
     } else {
-        &quot;y is no use here 🥲&quot;
+        "y is no use here 🥲"
     }
 }</code></pre></pre>
 <h3 id="스태틱static-라이프타임"><a class="header" href="#스태틱static-라이프타임">스태틱(static) 라이프타임</a></h3>
 <p>한 가지 특별한 라이프타임이 있습니다. 바로 <code>static</code>으로, 해당 레퍼런스가 프로그램이 실행되는 동안 계속해서 존재할 수 있음을 나타냅니다. 모든 문자열 리터럴은 스태틱 라이프타임을 가지고 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let s: &amp;'static str = &quot;Long live the static!&quot;;
+</span>let s: &amp;'static str = "Long live the static!";
 <span class="boring">}</span></code></pre></pre>
 <p>이 문자열의 값은 프로그램의 바이너리에 직접 저장되어 항상 사용할 수 있습니다. 따라서 모든 문자열 리터럴의 수명은 스태틱입니다.</p>
 <p>참고로, 문자열 관련 코드를 작성하다가 레퍼런스 관련 오류가 발생하면 오류 메시지에서 스태틱 라이프타임을 사용하라는 컴파일러의 제안을 볼 수 있습니다. 하지만 라이프타임은 문자열의 존재 기간을 명확하게 명시하는 용도이기 때문에 바로 스태틱 라이프타임을 사용하지 말고, 이 문자열의 정확한 라이프타임을 먼저 적용하는 것이 중요합니다.</p>
@@ -3225,20 +3254,20 @@ fn longest&lt;'a, 'b&gt;(x: &amp;'a str, y: &amp;'b str) -&gt; &amp;'a str {
 
 </code></pre>
 <blockquote>
-<p>멀티 스레드 환경에서 LBYL 접근 방식은 '보기'와 '도약' 사이에 경쟁 조건이 발생할 위험이 있습니다. </p>
+<p>멀티 스레드 환경에서 LBYL 접근 방식은 '보기'와 '도약' 사이에 경쟁 조건이 발생할 위험이 있습니다.</p>
 </blockquote>
 <h3 id="eafp"><a class="header" href="#eafp">EAFP</a></h3>
 <p>허락보다 용서받는 것이 더 쉽습니다(Easier to ask for forgiveness than permission). 이 코딩 스타일은 유효한 키 또는 속성이 있다고 가정하고, 가정이 거짓으로 판명되면 예외를 포착합니다. 이 깔끔하고 빠른 스타일은 많은 <code>try except</code> 블럭이 있다는 특징이 있습니다.</p>
 <pre><code class="language-python">try:
-    file = open(&quot;file.txt&quot;, &quot;r&quot;)
+    file = open("file.txt", "r")
 except FileNotFoundError:
-    print(&quot;File not found&quot;)
+    print("File not found")
 
 </code></pre>
 <h2 id="러스트의-에러-처리"><a class="header" href="#러스트의-에러-처리">러스트의 에러 처리</a></h2>
 <p>오류 처리에 대한 Rust의 접근 방식은 LBYL(Look Before You Leap, 도약하기 전에 살펴보기) 및 EAFP(Easier to Ask Forgiveness than Permission, 권한보다 용서를 구하기) 프로그래밍 스타일과 일부 유사점을 공유하지만, 이 둘 중 어느 쪽과도 엄격하게 일치하지는 않습니다.</p>
-<p>LBYL과 마찬가지로 Rust의 소유권 및 차용 시스템을 사용하면 컴파일러가 컴파일 시점에 많은 오류를 포착할 수 있으므로 런타임 검사의 필요성이 줄어듭니다. 따라서 Rust 코드는 더 효율적이고 오류가 덜 발생합니다. 그러나 Rust는 또한 &quot;결과&quot; 및 &quot;옵션&quot; 유형을 제공하여 보다 우아한 오류 처리 및 복구를 허용하며, 이는 EAFP 스타일에 더 부합합니다.</p>
-<p>Rust가 사용하는 &quot;결과&quot; 유형은 오류가 발생해도 LBYL에서처럼 즉시 중단하지 않고 프로그램을 계속 실행할 수 있다는 점에서 EAFP 스타일과 유사합니다. 연산을 시도하고 실패하면 오류를 나타내는 &quot;결과&quot;를 반환하여 오류를 우아하게 처리하는 것이 아이디어입니다. 이 접근 방식은 LBYL 검사로 채워진 코드보다 읽고 추론하기가 더 쉽습니다.</p>
+<p>LBYL과 마찬가지로 Rust의 소유권 및 차용 시스템을 사용하면 컴파일러가 컴파일 시점에 많은 오류를 포착할 수 있으므로 런타임 검사의 필요성이 줄어듭니다. 따라서 Rust 코드는 더 효율적이고 오류가 덜 발생합니다. 그러나 Rust는 또한 "결과" 및 "옵션" 유형을 제공하여 보다 우아한 오류 처리 및 복구를 허용하며, 이는 EAFP 스타일에 더 부합합니다.</p>
+<p>Rust가 사용하는 "결과" 유형은 오류가 발생해도 LBYL에서처럼 즉시 중단하지 않고 프로그램을 계속 실행할 수 있다는 점에서 EAFP 스타일과 유사합니다. 연산을 시도하고 실패하면 오류를 나타내는 "결과"를 반환하여 오류를 우아하게 처리하는 것이 아이디어입니다. 이 접근 방식은 LBYL 검사로 채워진 코드보다 읽고 추론하기가 더 쉽습니다.</p>
 <p>따라서 Rust는 LBYL 또는 EAFP와 엄격하게 일치하지는 않지만, 두 접근 방식과 몇 가지 유사점을 공유하며 두 스타일의 장점을 결합한 고유한 오류 처리 방식을 제공합니다.</p>
 <ul>
 <li><code>panic!</code>를 사용하여 치명적인 오류를 처리하는 방법</li>
@@ -3251,7 +3280,7 @@ except FileNotFoundError:
 </code></pre>
 <p>실행 결과</p>
 <pre><code>Traceback (most recent call last):
-  File &quot;/temp/python/main.py&quot;, line 1, in &lt;module&gt;
+  File "/temp/python/main.py", line 1, in &lt;module&gt;
     raise Exception
 Exception
 </code></pre>
@@ -3260,9 +3289,9 @@ Exception
 <li>패닉이 발생하는 코드를 실행(예: 배열에 잘못된 인덱스를 참조하는 경우)</li>
 <li><code>panic!</code> 매크로를 직접 실행하는 경우</li>
 </ul>
-<p><code>panic!</code>은 러스트에서 제공하는 편리한 매크로로, 프로그램이 즉시 종료됩니다. </p>
+<p><code>panic!</code>은 러스트에서 제공하는 편리한 매크로로, 프로그램이 즉시 종료됩니다.</p>
 <pre><pre class="playground"><code class="language-rust should_panic">fn main() {
-    panic!(&quot;🤯&quot;);
+    panic!("🤯");
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -3296,7 +3325,7 @@ note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose bac
 </span><span class="boring">fn main() {
 </span>fn give_some_or_none(some: bool) -&gt; Option&lt;String&gt; {
     if some {
-        Some(String::from(&quot;💖&quot;))
+        Some(String::from("💖"))
     } else {
         None
     }
@@ -3305,32 +3334,32 @@ note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose bac
 <p>이전에 열거형에서 배웠던 것처럼, 어떤 계산의 결과가 비어 있거나 없을 가능성이 있는 경우, std 라이브러리의 <code>Option&lt;T&gt;</code>을 써서 이를 표현할 수 있습니다. 문제는 이를 사용하는 곳에서 결과값을 어떻게 처리할 것인지입니다. 앞에서는 <code>match</code>문을 사용해 각 경우를 모두 처리할 수 있다고 배웠습니다. 이렇게 각 경우를 명시적으로 처리할 수도 있지만, 암묵적으로 함수의 결과를 처리하는 방법인 <code>unwrap</code> 을 사용할 수도 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn give_some_or_none(some: bool) -&gt; Option&lt;String&gt; {
     if some {
-        Some(String::from(&quot;💖&quot;))
+        Some(String::from("💖"))
     } else {
         None
     }
 }
 
 fn main() {
-    println!(&quot;{}&quot;, give_some_or_none(true).unwrap());
+    println!("{}", give_some_or_none(true).unwrap());
 }
 </code></pre></pre>
 <p>그런데 만일 <code>give_some_or_none</code> 함수에 <code>false</code>가 주어진다면 어떨까요?</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!(&quot;{}&quot;, give_some_or_none(false).unwrap());
+    println!("{}", give_some_or_none(false).unwrap());
 }</code></pre></pre>
 <p>실행 결과</p>
 <pre><code>thread 'main' panicked at 'called `Option::unwrap()` on a `None` value', src/main.rs:10:45
 </code></pre>
-<p>여기서 알 수 있듯이, <code>unwrap</code>을 사용하면 <code>None</code>이 리턴되는 경우에 패닉이 발생합니다. 따라서 <code>Option&lt;T&gt;</code>를 리턴하는 함수에 <code>unwrap</code>을 사용하려면 해당 함수가 반드시 <code>Some</code>을 리턴하는 것이 확실해야만 합니다. 그렇지 않으면 <code>match</code>를 사용해 모든 경우를 처리하는 게 올바른 방법입니다. </p>
+<p>여기서 알 수 있듯이, <code>unwrap</code>을 사용하면 <code>None</code>이 리턴되는 경우에 패닉이 발생합니다. 따라서 <code>Option&lt;T&gt;</code>를 리턴하는 함수에 <code>unwrap</code>을 사용하려면 해당 함수가 반드시 <code>Some</code>을 리턴하는 것이 확실해야만 합니다. 그렇지 않으면 <code>match</code>를 사용해 모든 경우를 처리하는 게 올바른 방법입니다.</p>
 <h2 id="unwrap_or"><a class="header" href="#unwrap_or">unwrap_or...</a></h2>
 <p>하지만 때로는 <code>Some</code>인 경우는 그냥 값을 바로 사용하고, 에러가 발생하는 경우만 따로 처리하고 싶은 경우가 있습니다. <code>if let Some</code> 을 사용해도 되지만, 함수형 프로그래밍답게 처리하는 세 가지 방법이 존재합니다.</p>
 <h3 id="unwrap_or-1"><a class="header" href="#unwrap_or-1">unwrap_or</a></h3>
 <p>포함된 Some 값 또는 제공된 기본값을 반환합니다.</p>
 <p>unwrap_or에 전달된 인수는 즉시 평가됩니다. 함수 호출의 결과를 전달하는 경우 느리게 평가되는 unwrap_or_else를 사용하는 것이 좋습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    assert_eq!(Some(&quot;car&quot;).unwrap_or(&quot;bike&quot;), &quot;car&quot;);
-    assert_eq!(None.unwrap_or(&quot;bike&quot;), &quot;bike&quot;);
+    assert_eq!(Some("car").unwrap_or("bike"), "car");
+    assert_eq!(None.unwrap_or("bike"), "bike");
 }
 </code></pre></pre>
 <h3 id="unwrap_or_else"><a class="header" href="#unwrap_or_else">unwrap_or_else</a></h3>
@@ -3356,7 +3385,7 @@ assert_eq!(y.unwrap_or_default(), 12);
 <p>결과가 <code>Some</code> 이 아닌 경우 즉시 함수를 종료하고 <code>None</code>을 반환합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn give_some_or_none(some: bool) -&gt; Option&lt;String&gt; {
     if some {
-        Some(String::from(&quot;💖&quot;))
+        Some(String::from("💖"))
     } else {
         None
     }
@@ -3368,8 +3397,8 @@ fn question_mark(bool: bool) -&gt; Option&lt;String&gt; {
 }
 
 fn main() {
-    println!(&quot;{:?}&quot;, question_mark(true));
-    println!(&quot;{:?}&quot;, question_mark(false));
+    println!("{:?}", question_mark(true));
+    println!("{:?}", question_mark(false));
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="result-열거형"><a class="header" href="#result-열거형">Result 열거형</a></h2>
@@ -3378,7 +3407,7 @@ fn main() {
 
 fn give_ok_or_err(bool: bool) -&gt; Result&lt;String, Error&gt; {
     if bool {
-        Ok(String::from(&quot;💖&quot;))
+        Ok(String::from("💖"))
     } else {
         Err(Error)
     }
@@ -3388,8 +3417,8 @@ fn main() {
     for bool in [true, false].iter() {
         let result = give_ok_or_err(*bool);
         match result {
-            Ok(value) =&gt; println!(&quot;value: {}&quot;, value),
-            Err(e) =&gt; println!(&quot;error: {}&quot;, e),
+            Ok(value) =&gt; println!("value: {}", value),
+            Err(e) =&gt; println!("error: {}", e),
         }
     }
 }
@@ -3400,7 +3429,7 @@ fn main() {
 
 fn give_ok_or_err(bool: bool) -&gt; Result&lt;String, Error&gt; {
     if bool {
-        Ok(String::from(&quot;💖&quot;))
+        Ok(String::from("💖"))
     } else {
         Err(Error)
     }
@@ -3408,7 +3437,7 @@ fn give_ok_or_err(bool: bool) -&gt; Result&lt;String, Error&gt; {
 
 fn main() {
     let result = give_ok_or_err(false).unwrap();
-    println!(&quot;{}&quot;, result);
+    println!("{}", result);
 }
 </code></pre></pre>
 <h3 id="unwrap_or-2"><a class="header" href="#unwrap_or-2">unwrap_or</a></h3>
@@ -3417,15 +3446,15 @@ fn main() {
 
 fn give_ok_or_err(bool: bool) -&gt; Result&lt;String, Error&gt; {
     if bool {
-        Ok(String::from(&quot;💖&quot;))
+        Ok(String::from("💖"))
     } else {
         Err(Error)
     }
 }
 
 fn main() {
-    let result = give_ok_or_err(false).unwrap_or(String::from(&quot;💔&quot;));
-    println!(&quot;{}&quot;, result);
+    let result = give_ok_or_err(false).unwrap_or(String::from("💔"));
+    println!("{}", result);
 }
 </code></pre></pre>
 <h2 id="ok_or"><a class="header" href="#ok_or">ok_or...</a></h2>
@@ -3434,8 +3463,8 @@ fn main() {
 <p><code>Option&lt;T&gt;</code>를 <code>Result&lt;T, E&gt;</code>로 변환하여 일부(<code>v</code>)를 <code>Ok(v)</code>로, 없음(<code>None</code>)을 <code>Err(err)</code>로 매핑합니다.</p>
 <p><code>ok_or에</code> 전달된 인수는 즈ㄱ시 평가되며, 함수 호출의 결과를 전달하는 경우 느리게 평가되는 <code>ok_or_else</code>를 사용하는 것이 좋습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let x = Some(&quot;foo&quot;);
-    assert_eq!(x.ok_or(0), Ok(&quot;foo&quot;));
+    let x = Some("foo");
+    assert_eq!(x.ok_or(0), Ok("foo"));
 
     let x: Option&lt;&amp;str&gt; = None;
     assert_eq!(x.ok_or(0), Err(0));
@@ -3444,8 +3473,8 @@ fn main() {
 <h3 id="ok_or_else"><a class="header" href="#ok_or_else">ok_or_else</a></h3>
 <p><code>Option&lt;T&gt;</code>를 <code>Result</code>&lt;T, E&gt;`로 변환하여 일부(v)를 Ok(v)로, 없음을 Err(err())로 매핑합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let x = Some(&quot;foo&quot;);
-    assert_eq!(x.ok_or_else(|| 0), Ok(&quot;foo&quot;));
+    let x = Some("foo");
+    assert_eq!(x.ok_or_else(|| 0), Ok("foo"));
 
     let x: Option&lt;&amp;str&gt; = None;
     assert_eq!(x.ok_or_else(|| 0), Err(0));
@@ -3457,7 +3486,7 @@ fn main() {
 
 fn give_ok_or_err(bool: bool) -&gt; Result&lt;String, Error&gt; {
     if bool {
-        Ok(String::from(&quot;💖&quot;))
+        Ok(String::from("💖"))
     } else {
         Err(Error)
     }
@@ -3470,9 +3499,9 @@ fn question_mark(bool: bool) -&gt; Result&lt;String, Error&gt; {
 
 fn main() {
     let result = question_mark(true);
-    println!(&quot;{:?}&quot;, result);
+    println!("{:?}", result);
     let result = question_mark(false);
-    println!(&quot;{:?}&quot;, result);
+    println!("{:?}", result);
 }
 </code></pre></pre>
 <h2 id="커스텀-예외-정의하기"><a class="header" href="#커스텀-예외-정의하기">커스텀 예외 정의하기</a></h2>
@@ -3480,8 +3509,8 @@ fn main() {
 
 
 def get_content():
-    filepath = os.path.join(os.path.pardir, &quot;test.txt&quot;)
-    with open(filepath, &quot;r&quot;) as f:
+    filepath = os.path.join(os.path.pardir, "test.txt")
+    with open(filepath, "r") as f:
         return f.read()
 
 
@@ -3491,12 +3520,12 @@ class CustomError(Exception):
 
 if __name__ == '__main__':
     try:
-        with open(&quot;hello.txt&quot;, &quot;r&quot;) as file:
+        with open("hello.txt", "r") as file:
             file.read()
     except FileNotFoundError as exc:
         print(exc)
     except:
-        print(&quot;Unexpected error&quot;)
+        print("Unexpected error")
 
     try:
         content = get_content()
@@ -3512,7 +3541,7 @@ use std::path::Path;
 
 fn get_content() -&gt; Result&lt;String, Error&gt; {
     let mut content = String::new();
-    let filepath = Path::new(std::env::current_dir().unwrap().parent().unwrap()).join(&quot;test.txt&quot;);
+    let filepath = Path::new(std::env::current_dir().unwrap().parent().unwrap()).join("test.txt");
     File::open(filepath)?.read_to_string(&amp;mut content)?;
     Ok(content)
 }
@@ -3522,37 +3551,37 @@ struct CustomError;
 
 impl fmt::Display for CustomError {
     fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
-        write!(f, &quot;File not found!&quot;)
+        write!(f, "File not found!")
     }
 }
 
 fn main() {
-    let file = File::open(&quot;hello.txt&quot;);
+    let file = File::open("hello.txt");
     match file {
-        Ok(file) =&gt; println!(&quot;{:?}&quot;, file),
+        Ok(file) =&gt; println!("{:?}", file),
         Err(error) =&gt; match error.kind() {
-            ErrorKind::NotFound =&gt; println!(&quot;{:?}&quot;, error),
-            _ =&gt; println!(&quot;Unexpected error&quot;),
+            ErrorKind::NotFound =&gt; println!("{:?}", error),
+            _ =&gt; println!("Unexpected error"),
         },
     }
 
     let content = get_content().unwrap_or_else(|_| {
-        panic!(&quot;{}&quot;, CustomError);
+        panic!("{}", CustomError);
     });
-    println!(&quot;{}&quot;, content);
+    println!("{}", content);
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="에러-로깅"><a class="header" href="#에러-로깅">에러 로깅</a></h2>
 <pre><code class="language-toml">[package]
-name = &quot;rust_part&quot;
-version = &quot;0.1.0&quot;
-edition = &quot;2021&quot;
+name = "rust_part"
+version = "0.1.0"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-log = &quot;0.4&quot;
-pretty_env_logger = &quot;0.4.0&quot;
+log = "0.4"
+pretty_env_logger = "0.4.0"
 
 
 [dev-dependencies]
@@ -3565,11 +3594,11 @@ pretty_env_logger = &quot;0.4.0&quot;
 fn main() {
     pretty_env_logger::init();
 
-    trace!(&quot;a trace example&quot;);
-    debug!(&quot;deboogging&quot;);
-    info!(&quot;such information&quot;);
-    warn!(&quot;o_O&quot;);
-    error!(&quot;boom&quot;);
+    trace!("a trace example");
+    debug!("deboogging");
+    info!("such information");
+    warn!("o_O");
+    error!("boom");
 }</code></pre></pre>
 <pre><code class="language-bash">RUST_LOG=trace cargo run
 </code></pre>
@@ -3588,11 +3617,11 @@ fn main() {
     let mut log_builder = pretty_env_logger::formatted_timed_builder();
     log_builder.parse_filters(LOG_LEVEL.as_str()).init();
 
-    trace!(&quot;a trace example&quot;);
-    debug!(&quot;deboogging&quot;);
-    info!(&quot;such information&quot;);
-    warn!(&quot;o_O&quot;);
-    error!(&quot;boom&quot;);
+    trace!("a trace example");
+    debug!("deboogging");
+    info!("such information");
+    warn!("o_O");
+    error!("boom");
 }
 </code></pre></pre>
 <pre><code> 2023-03-04T10:21:20.575Z TRACE rust_part &gt; a trace example
@@ -3603,7 +3632,7 @@ fn main() {
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch11-스마트-포인터"><a class="header" href="#ch11-스마트-포인터">CH11. 스마트 포인터</a></h1>
 <h2 id="포인터란"><a class="header" href="#포인터란">포인터란?</a></h2>
-<p>포인터는 메모리에 주소를 포함하는 변수에 대한 일반적인 개념입니다. 이 주소는 다른 데이터를 참조하거나 &quot;가리키고&quot; 있습니다. Rust에서 가장 일반적인 종류의 포인터는 4장에서 배운 참조입니다. 참조는 &amp; 기호로 표시되며 참조가 가리키는 값을 차용합니다. 데이터를 참조하는 것 외에는 특별한 기능이 없으며 오버헤드도 없습니다.</p>
+<p>포인터는 메모리에 주소를 포함하는 변수에 대한 일반적인 개념입니다. 이 주소는 다른 데이터를 참조하거나 "가리키고" 있습니다. Rust에서 가장 일반적인 종류의 포인터는 4장에서 배운 참조입니다. 참조는 &amp; 기호로 표시되며 참조가 가리키는 값을 차용합니다. 데이터를 참조하는 것 외에는 특별한 기능이 없으며 오버헤드도 없습니다.</p>
 <p>반면 스마트 포인터는 포인터처럼 작동하지만 추가적인 메타데이터와 기능을 가진 데이터 구조입니다. 스마트 포인터는 C++에서 시작되었으며 다른 언어에도 존재하기 때문에 스마트 포인터의 개념은 Rust에만 있는 것이 아닙니다. Rust에는 표준 라이브러리에 정의된 다양한 스마트 포인터가 있어 레퍼런스가 제공하는 기능 이상의 기능을 제공합니다. 일반적인 개념을 살펴보기 위해 참조 계수 스마트 포인터 유형을 포함하여 스마트 포인터의 몇 가지 다른 예를 살펴보겠습니다. 이 포인터를 사용하면 소유자 수를 추적하고 소유자가 남아 있지 않을 경우 데이터를 정리하여 데이터에 여러 소유자를 허용할 수 있습니다.</p>
 <p>소유권과 차용이라는 개념을 가진 Rust는 참조와 스마트 포인터 사이에 또 다른 차이점이 있는데, 참조는 데이터를 차용할 뿐이지만 많은 경우 스마트 포인터는 자신이 가리키는 데이터를 소유합니다.</p>
 <p>당시에는 스마트 포인터를 그렇게 부르지 않았지만, 이 책에서 이미 8장의 String과 Vec<T>를 포함해 몇 가지 스마트 포인터를 접한 적이 있습니다. 이 두 가지 유형은 모두 약간의 메모리를 소유하고 있고 이를 조작할 수 있기 때문에 스마트 포인터로 간주됩니다. 또한 메타데이터와 추가 기능 또는 보증이 있습니다. 예를 들어 문자열은 용량을 메타데이터로 저장하고 데이터가 항상 유효한 UTF-8이 되도록 보장하는 추가 기능을 가지고 있습니다.</p>
@@ -3626,7 +3655,7 @@ fn main() {
         value: 2,
         next: None,
     });
-    println!(&quot;{}&quot;, head.value);
+    println!("{}", head.value);
 }
 </code></pre>
 <pre><code>error[E0072]: recursive type `Node` has infinite size
@@ -3658,7 +3687,7 @@ fn main() {
         value: 2,
         next: None,
     }));
-    println!(&quot;{}&quot;, head.value);
+    println!("{}", head.value);
 }
 </code></pre></pre>
 <p>문제없이 컴파일</p>
@@ -3669,7 +3698,7 @@ fn main() {
 <p>아래 예제는 <code>Box</code>를 사용하여 <code>i32</code> 값을 힙에 저장하는 방법을 보여줍니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let my_box = Box::new(5);
-    println!(&quot;my_box = {}&quot;, my_box);
+    println!("my_box = {}", my_box);
 }
 </code></pre></pre>
 <p>변수 b가 힙에 할당된 값 5를 가리키는 Box의 값을 갖도록 정의합니다. 이 프로그램은 b = 5를 출력합니다. 이 경우 이 데이터가 스택에 있을 때와 유사하게 상자에 있는 데이터에 액세스할 수 있습니다. 다른 소유 값과 마찬가지로 상자가 범위를 벗어나면, 메인 끝에서 b가 그러하듯이, 상자는 할당 해제됩니다. 할당 해제는 상자(스택에 저장됨)와 상자가 가리키는 데이터(힙에 저장됨) 모두에 대해 발생합니다. 여기까지는 스택에 값을 저장하는 것과 크게 다르지 않습니다.</p>
@@ -3708,13 +3737,13 @@ trait Animal {
 
 impl Animal for Dog {
     fn noise(&amp;self) -&gt; &amp;'static str {
-        &quot;🐶멍멍!&quot;
+        "🐶멍멍!"
     }
 }
 
 impl Animal for Cat {
     fn noise(&amp;self) -&gt; &amp;'static str {
-        &quot;🐱야옹!&quot;
+        "🐱야옹!"
     }
 }
 
@@ -3728,7 +3757,7 @@ fn random_animal() -&gt; impl Animal {
 
 fn main() {
     for _ in 0..10 {
-        println!(&quot;{}&quot;, random_animal().noise());
+        println!("{}", random_animal().noise());
     }
 }
 </code></pre></pre>
@@ -3765,13 +3794,13 @@ trait Animal {
 
 impl Animal for Dog {
     fn noise(&amp;self) -&gt; &amp;'static str {
-        &quot;🐶멍멍!&quot;
+        "🐶멍멍!"
     }
 }
 
 impl Animal for Cat {
     fn noise(&amp;self) -&gt; &amp;'static str {
-        &quot;🐱야옹!&quot;
+        "🐱야옹!"
     }
 }
 
@@ -3785,7 +3814,7 @@ fn random_animal() -&gt; Box&lt;dyn Animal&gt; {
 
 fn main() {
     for _ in 0..10 {
-        println!(&quot;{}&quot;, random_animal().noise());
+        println!("{}", random_animal().noise());
     }
 }
 </code></pre></pre>
@@ -3817,10 +3846,10 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let cloned;
     {
-        let origin = &quot;Rust&quot;.to_string();
+        let origin = "Rust".to_string();
         cloned = &amp;origin; // 🤯
     }
-    println!(&quot;{}&quot;, cloned);
+    println!("{}", cloned);
 }
 </code></pre></pre>
 <p>하지만 <code>Rc</code>를 사용하면 원래 값이 스코프를 벗어나더라도 값을 참조하고 있는 <code>Rc</code>가 존재하기 때문에 여전히 값을 사용할 수 있습니다. 여기서 <code>clone</code>을 사용하면, 실제로 값이 복사되는 것이 아니라 <code>Rc</code>의 레퍼런스 카운트가 1 증가합니다.</p>
@@ -3832,7 +3861,7 @@ fn main() {
         let origin = Rc::new(1);
         cloned = origin.clone();
     }
-    println!(&quot;{}&quot;, cloned);
+    println!("{}", cloned);
 }
 </code></pre></pre>
 <h3 id="레퍼런스-카운팅"><a class="header" href="#레퍼런스-카운팅">레퍼런스 카운팅</a></h3>
@@ -3841,17 +3870,17 @@ fn main() {
 
 fn main() {
     let origin = Rc::new(0);
-    println!(&quot;Reference count: {}&quot;, Rc::strong_count(&amp;origin));
+    println!("Reference count: {}", Rc::strong_count(&amp;origin));
     {
         let _dup1 = Rc::clone(&amp;origin);
-        println!(&quot;Reference count: {}&quot;, Rc::strong_count(&amp;origin));
+        println!("Reference count: {}", Rc::strong_count(&amp;origin));
         {
             let _dup2 = &amp;origin.clone();
-            println!(&quot;Reference count: {}&quot;, Rc::strong_count(&amp;origin));
+            println!("Reference count: {}", Rc::strong_count(&amp;origin));
         }
-        println!(&quot;Reference count: {}&quot;, Rc::strong_count(&amp;origin));
+        println!("Reference count: {}", Rc::strong_count(&amp;origin));
     }
-    println!(&quot;Reference count: {}&quot;, Rc::strong_count(&amp;origin));
+    println!("Reference count: {}", Rc::strong_count(&amp;origin));
     // origin drops here
 }
 </code></pre></pre>
@@ -3888,8 +3917,8 @@ fn main() {
     };
     head2.next = Some(Box::new(node1)); // 🤯
 
-    println!(&quot;{} {}&quot;, head1.value, head1.next.unwrap().value);
-    println!(&quot;{} {}&quot;, head2.value, head2.next.unwrap().value);
+    println!("{} {}", head1.value, head1.next.unwrap().value);
+    println!("{} {}", head2.value, head2.next.unwrap().value);
 }
 </code></pre></pre>
 <p>정답</p>
@@ -3917,8 +3946,8 @@ fn main() {
     };
     head2.next = Some(Rc::clone(&amp;node1));
 
-    println!(&quot;{} {}&quot;, head1.value, head1.next.unwrap().value);
-    println!(&quot;{} {}&quot;, head2.value, head2.next.unwrap().value);
+    println!("{} {}", head1.value, head1.next.unwrap().value);
+    println!("{} {}", head2.value, head2.next.unwrap().value);
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="refcellt"><a class="header" href="#refcellt"><code>RefCell&lt;T&gt;</code></a></h2>
@@ -3937,7 +3966,7 @@ struct Tool {
 
 pub fn main() {
     let indo = Rc::new(Owner {
-        name: &quot;indo&quot;.to_string(),
+        name: "indo".to_string(),
         tools: Rc::new(vec![]),
     });
     let pliers = Rc::new(Tool {
@@ -3950,10 +3979,10 @@ pub fn main() {
     indo.tools.push(Rc::clone(&amp;pliers)); // 🤯
     indo.tools.push(Rc::clone(&amp;wrench));
 
-    println!(&quot;Pliers owner: {}&quot;, pliers.owner.name);
+    println!("Pliers owner: {}", pliers.owner.name);
 
     for tool in indo.tools.iter() {
-        println!(&quot;Tool's owner: {:?}&quot;, tool.owner.name);
+        println!("Tool's owner: {:?}", tool.owner.name);
     }
 }
 </code></pre></pre>
@@ -3980,7 +4009,7 @@ struct Tool {
 
 pub fn main() {
     let indo = Rc::from(Owner {
-        name: &quot;indo&quot;.to_string(),
+        name: "indo".to_string(),
         tools: RefCell::new(vec![]),
     });
     let pliers = Rc::from(Tool {
@@ -3993,10 +4022,10 @@ pub fn main() {
     indo.tools.borrow_mut().push(Rc::clone(&amp;pliers));
     indo.tools.borrow_mut().push(Rc::clone(&amp;wrench));
 
-    println!(&quot;Pliers owner: {}&quot;, pliers.owner.name);
+    println!("Pliers owner: {}", pliers.owner.name);
 
     for tool in indo.tools.borrow().iter() {
-        println!(&quot;Tool's owner: {:?}&quot;, tool.owner.name);
+        println!("Tool's owner: {:?}", tool.owner.name);
     }
 }
 </code></pre></pre>
@@ -4031,7 +4060,7 @@ struct Tool {
 
 pub fn main() {
     let indo = Rc::from(Owner {
-        name: &quot;indo&quot;.to_string(),
+        name: "indo".to_string(),
         tools: RefCell::new(vec![]),
     });
     let pliers = Rc::from(Tool {
@@ -4046,10 +4075,10 @@ pub fn main() {
     borrow_mut_tools1.push(Rc::clone(&amp;pliers));
     borrow_mut_tools2.push(Rc::clone(&amp;wrench));
 
-    println!(&quot;Pliers owner: {}&quot;, pliers.owner.name);
+    println!("Pliers owner: {}", pliers.owner.name);
 
     for tool in indo.tools.borrow().iter() {
-        println!(&quot;Tool's owner: {:?}&quot;, tool.owner.name);
+        println!("Tool's owner: {:?}", tool.owner.name);
     }
 }
 </code></pre></pre>
@@ -4088,7 +4117,7 @@ impl&lt;T: Display&gt; Node&lt;T&gt; {
     }
 
     fn depth_first(&amp;self) {
-        println!(&quot;{}&quot;, self.data);
+        println!("{}", self.data);
         for child in self.children.iter() {
             child.depth_first();
         }
@@ -4156,7 +4185,7 @@ impl&lt;T: Display&gt; Node&lt;T&gt; {
     }
 
     fn depth_first(&amp;self) {
-        println!(&quot;node {}&quot;, self.data);
+        println!("node {}", self.data);
         for child in self.children.iter() {
             child.borrow().depth_first();
         }
@@ -4176,7 +4205,7 @@ fn main() {
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ch12-멀티스레딩"><a class="header" href="#ch12-멀티스레딩">CH12. 멀티스레딩</a></h1>
-<p>멀티코어 프로세서가 등장하기 전에도 컴퓨터 운영체제는 여러 개의 프로그램을 &quot;동시에(concurrently)&quot; 실행할 수 있었습니다. 이는 여러 개의 프로세스 사이를 빠르게 전환하면서, 각각의 프로세스를 조금씩 실행시키는 방식이었습니다. 현재는 모든 컴퓨터가 멀티코어 프로세서를 가지고 있어서 여러 개의 프로세스를 병렬적으로(parallel) 실행할 수 있습니다. 하지만 각 프로세스는 독립적으로 격리되어 있어서 서로간에 데이터를 공유하기가 어렵습니다.</p>
+<p>멀티코어 프로세서가 등장하기 전에도 컴퓨터 운영체제는 여러 개의 프로그램을 "동시에(concurrently)" 실행할 수 있었습니다. 이는 여러 개의 프로세스 사이를 빠르게 전환하면서, 각각의 프로세스를 조금씩 실행시키는 방식이었습니다. 현재는 모든 컴퓨터가 멀티코어 프로세서를 가지고 있어서 여러 개의 프로세스를 병렬적으로(parallel) 실행할 수 있습니다. 하지만 각 프로세스는 독립적으로 격리되어 있어서 서로간에 데이터를 공유하기가 어렵습니다.</p>
 <p>하지만 하나의 프로세스로부터 여러 개의 스레드를 만들 수 있습니다. 한 프로세스 안에 속한 스레드들은 서로가 격리되어 있지 않고, 따라서 서로의 메모리를 공유하며 서로 통신하는 것도 가능합니다. 이번 챕터에서는 러스트의 스레드가 어떻게 만들어지는지, 그리고 어떻게 여러 개의 스레드가 안전하게 메모리를 공유하는지를 배워보겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="스레드-스폰"><a class="header" href="#스레드-스폰">스레드 스폰</a></h2>
 <p>프로세스에서 스레드를 만드는 것을 스레드를 스폰(spawn)한다고 말합니다.</p>
@@ -4189,7 +4218,7 @@ from time import sleep
 
 def func1():
     for i in range(0, 10):
-        print(f&quot;Hello, can you hear me?: {i}&quot;)
+        print(f"Hello, can you hear me?: {i}")
         sleep(0.001)
 
 
@@ -4197,7 +4226,7 @@ thread = Thread(target=func1)
 thread.start()
 
 for i in range(0, 5):
-    print(f&quot;Hello from the main thread: {i}&quot;)
+    print(f"Hello from the main thread: {i}")
     sleep(0.001)
 
 </code></pre>
@@ -4226,13 +4255,13 @@ use std::time::Duration;
 fn main() {
     let handle = thread::spawn(|| {
         for i in 0..10 {
-            println!(&quot;Hello, can you hear me?: {}&quot;, i);
+            println!("Hello, can you hear me?: {}", i);
             thread::sleep(Duration::from_millis(1));
         }
     });
 
     for i in 0..5 {
-        println!(&quot;Hello from the main thread: {}&quot;, i);
+        println!("Hello from the main thread: {}", i);
         thread::sleep(Duration::from_millis(1));
     }
 
@@ -4265,7 +4294,7 @@ from time import sleep
 
 def func1():
     for i in range(0, 10):
-        print(f&quot;Hello, can you hear me?: {i}&quot;)
+        print(f"Hello, can you hear me?: {i}")
         sleep(0.001)
 
 
@@ -4273,7 +4302,7 @@ thread = Thread(target=func1, daemon=True)
 thread.start()
 
 for i in range(0, 5):
-    print(f&quot;Hello from the main thread: {i}&quot;)
+    print(f"Hello from the main thread: {i}")
     sleep(0.001)
 
 </code></pre>
@@ -4295,13 +4324,13 @@ use std::time::Duration;
 fn main() {
     thread::spawn(|| {
         for i in 0..10 {
-            println!(&quot;Hello, can you hear me?: {}&quot;, i);
+            println!("Hello, can you hear me?: {}", i);
             thread::sleep(Duration::from_millis(1));
         }
     });
 
     for i in 0..5 {
-        println!(&quot;Hello from the main thread: {}&quot;, i);
+        println!("Hello from the main thread: {}", i);
         thread::sleep(Duration::from_millis(1));
     }
 }
@@ -4329,7 +4358,7 @@ from time import sleep
 
 def func1():
     for i in range(0, 10):
-        print(f&quot;Hello, can you hear me?: {i}&quot;)
+        print(f"Hello, can you hear me?: {i}")
         sleep(0.001)
 
 
@@ -4338,7 +4367,7 @@ thread.start()
 thread.join()
 
 for i in range(0, 5):
-    print(f&quot;Hello from the main thread: {i}&quot;)
+    print(f"Hello from the main thread: {i}")
     sleep(0.001)
 
 </code></pre>
@@ -4366,14 +4395,14 @@ use std::time::Duration;
 fn main() {
     let handle = thread::spawn(|| {
         for i in 0..10 {
-            println!(&quot;Hello, can you hear me?: {}&quot;, i);
+            println!("Hello, can you hear me?: {}", i);
             thread::sleep(Duration::from_millis(1));
         }
     });
     handle.join().unwrap();
 
     for i in 0..5 {
-        println!(&quot;Hello from the main thread: {}&quot;, i);
+        println!("Hello from the main thread: {}", i);
         thread::sleep(Duration::from_millis(1));
     }
 }
@@ -4402,7 +4431,7 @@ Hello from the main thread: 4
 </span>let numbers = vec![1, 2, 3];
 thread::spawn(move || {
     for n in numbers {
-        println!(&quot;{n}&quot;);
+        println!("{n}");
     }
 })
 .join()
@@ -4422,10 +4451,10 @@ let t = thread::spawn(move || {
 });
 
 let average = t.join().unwrap(); // 2
-println!(&quot;average: {average}&quot;);
+println!("average: {average}");
 <span class="boring">}</span></code></pre></pre>
 <p>위의 예제에서, 스레드의 클로저(1)에서 리턴된 값은 <code>join</code> 메소드(2)를 통해 메인 스레드로 전달됩니다.</p>
-<p>만일 변수 <code>numbers</code>의 길이가 0이라면 스레드는 (1)에서 값을 0으로 나누려고 하다가 패닉을 발생시키게 됩니다. 그러면 <code>join</code>은 패닉 메시지를 리턴하게 되고, <code>unwrap</code>(2)에 의해 메인 스레드 역시 패닉이 발생합니다. </p>
+<p>만일 변수 <code>numbers</code>의 길이가 0이라면 스레드는 (1)에서 값을 0으로 나누려고 하다가 패닉을 발생시키게 됩니다. 그러면 <code>join</code>은 패닉 메시지를 리턴하게 되고, <code>unwrap</code>(2)에 의해 메인 스레드 역시 패닉이 발생합니다.</p>
 <h3 id="범위-제한scoped-스레드"><a class="header" href="#범위-제한scoped-스레드">범위 제한(scoped) 스레드</a></h3>
 <p>만일 어떤 스레드가 반드시 특정 범위에서만 존재하는 것이 확실할 경우, 이 스레드는 지역 변수의 소유권을 빌려올 수 있습니다. 왜냐하면 스레드 역시 지역변수와 같이 특정 범위에서만 존재하기 때문입니다.</p>
 <p>이러한 스레드를 범위 제한 스레드라고 부릅니다. 범위 제한 스레드를 만들기 위해서는 <code>std::thread::scope</code>를 사용하면 됩니다. 이제 지역 변수를 입력받는 클로저와 범위가 동일한 스레드를 만들 수 있습니다.</p>
@@ -4436,11 +4465,11 @@ fn main() {
 
     thread::scope(|s| {
         s.spawn(|| {
-            println!(&quot;length: {}&quot;, numbers.len());
+            println!("length: {}", numbers.len());
         });
         s.spawn(|| {
             for n in &amp;numbers {
-                println!(&quot;{n}&quot;);
+                println!("{n}");
             }
         });
     });
@@ -4513,7 +4542,7 @@ def count(n):
 start = time.time()
 count(N)
 count(N)
-print(f&quot;Elapsed time(sequential): {(time.time() - start) * 1000:.3f}ms&quot;)
+print(f"Elapsed time(sequential): {(time.time() - start) * 1000:.3f}ms")
 
 start = time.time()
 t1 = threading.Thread(target=count, args=(N,))
@@ -4525,7 +4554,7 @@ t2.start()
 t1.join()
 t2.join()
 
-print(f&quot;Elapsed time(threaded): {(time.time() - start) * 1000:.3f}ms&quot;)
+print(f"Elapsed time(threaded): {(time.time() - start) * 1000:.3f}ms")
 </code></pre>
 <p>실행 결과</p>
 <pre><code class="language-python">Elapsed time(sequential): 0.4786410331726074
@@ -4615,7 +4644,7 @@ fn main() {
         *num = 6;
     }
 
-    println!(&quot;m = {:?}&quot;, m);
+    println!("m = {:?}", m);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -4637,9 +4666,9 @@ def withdraw(amount):
     if balance &gt;= amount:
         time.sleep(0.01)
         balance -= amount
-        print(f&quot;Withdrawal successful. Balance: {balance}&quot;)
+        print(f"Withdrawal successful. Balance: {balance}")
     else:
-        print(&quot;Insufficient balance.&quot;)
+        print("Insufficient balance.")
 
 def main():
     t1 = threading.Thread(target=withdraw, args=(50,))
@@ -4667,17 +4696,17 @@ def withdraw(amount):
     global balance
     thread_id = threading.get_ident()
     with lock:
-        print(f&quot;Thread {thread_id}: Checking balance...&quot;)
+        print(f"Thread {thread_id}: Checking balance...")
         if balance &gt;= amount:
             time.sleep(1)
             balance -= amount
-            print(f&quot;Thread {thread_id}: Withdrawal successful. Balance: {balance}&quot;)
+            print(f"Thread {thread_id}: Withdrawal successful. Balance: {balance}")
         else:
-            print(f&quot;Thread {thread_id}: Insufficient balance.&quot;)
+            print(f"Thread {thread_id}: Insufficient balance.")
 
 def check_lock():
     while lock.locked():
-        print(&quot;Lock is locked.&quot;)
+        print("Lock is locked.")
         time.sleep(0.1)
 
 def main():
@@ -4710,7 +4739,7 @@ Thread 123145503645696: Withdrawal successful. Balance: 50
 Thread 123145520435200: Checking balance...
 Thread 123145520435200: Insufficient balance.
 </code></pre>
-<p>다음 코드는 10개의 스레드가 100번씩 1씩 증가하는 값을 더하는 코드입니다. </p>
+<p>다음 코드는 10개의 스레드가 100번씩 1씩 증가하는 값을 더하는 코드입니다.</p>
 <pre><pre class="playground"><code class="language-rust">use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
@@ -4719,9 +4748,9 @@ fn withdraw(balance: &amp;mut i32, amount: i32) {
     if *balance &gt;= amount {
         thread::sleep(Duration::from_millis(10));
         *balance -= amount;
-        println!(&quot;Withdrawal successful. Balance: {balance}&quot;);
+        println!("Withdrawal successful. Balance: {balance}");
     } else {
-        println!(&quot;Insufficient balance.&quot;);
+        println!("Insufficient balance.");
     }
 }
 
@@ -4748,19 +4777,19 @@ use std::time::Duration;
 
 fn withdraw(balance: Arc&lt;Mutex&lt;i32&gt;&gt;, amount: i32) {
     let mut balance = balance.lock().unwrap();
-    println!(&quot;{:?}: Checking balance.&quot;, thread::current().id());
+    println!("{:?}: Checking balance.", thread::current().id());
     if *balance &gt;= amount {
         thread::sleep(Duration::from_millis(100));
         *balance -= amount;
-        println!(&quot;Withdrawal successful. Balance: {balance}&quot;);
+        println!("Withdrawal successful. Balance: {balance}");
     } else {
-        println!(&quot;Insufficient balance.&quot;);
+        println!("Insufficient balance.");
     }
 }
 
 fn check_lock(balance: Arc&lt;Mutex&lt;i32&gt;&gt;) {
     while let Err(_) = balance.try_lock() {
-        println!(&quot;Lock is locked.&quot;);
+        println!("Lock is locked.");
         thread::sleep(Duration::from_millis(10));
     }
 }
@@ -4813,15 +4842,15 @@ channel = Queue(maxsize=3)
 
 
 def producer():
-    for msg in [&quot;hello&quot;, &quot;from&quot;, &quot;the&quot;, &quot;other&quot;, &quot;side&quot;]:
-        print(f&quot;Producing {msg}...&quot;)
+    for msg in ["hello", "from", "the", "other", "side"]:
+        print(f"Producing {msg}...")
         channel.put(msg)
 
 
 def consumer():
     while not channel.empty():
         item = channel.get()
-        print(f&quot;Consuming {item}...&quot;)
+        print(f"Consuming {item}...")
         channel.task_done()
         time.sleep(0.01)
 
@@ -4846,16 +4875,16 @@ fn main() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        for msg in vec![&quot;hello&quot;, &quot;from&quot;, &quot;the&quot;, &quot;other&quot;, &quot;side&quot;] {
+        for msg in vec!["hello", "from", "the", "other", "side"] {
             let val = String::from(msg);
-            println!(&quot;Producing {}...&quot;, val);
+            println!("Producing {}...", val);
             tx.send(val).unwrap();
             thread::sleep(Duration::from_millis(10));
         }
     });
 
     for re in rx {
-        println!(&quot;Consuming {}...&quot;, re);
+        println!("Consuming {}...", re);
     }
 }
 </code></pre></pre>
@@ -4868,15 +4897,15 @@ fn main() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        let val = String::from(&quot;hello&quot;);
+        let val = String::from("hello");
         thread::sleep(Duration::from_millis(1000));
         tx.send(val).unwrap();
     });
 
     loop {
-        println!(&quot;Waiting for the signal...&quot;);
+        println!("Waiting for the signal...");
         if let Ok(received) = rx.try_recv() {
-            println!(&quot;Message: {}&quot;, received);
+            println!("Message: {}", received);
             break;
         }
 
@@ -4896,7 +4925,7 @@ fn main() {
 
     let tx1 = tx.clone();
     thread::spawn(move || {
-        for msg in vec![&quot;hello&quot;, &quot;from&quot;, &quot;the&quot;, &quot;other&quot;, &quot;side&quot;] {
+        for msg in vec!["hello", "from", "the", "other", "side"] {
             let val = String::from(msg);
             thread::sleep(Duration::from_millis(100));
             tx1.send(val).unwrap();
@@ -4904,13 +4933,13 @@ fn main() {
     });
 
     thread::spawn(move || {
-        let val = String::from(&quot;bye&quot;);
+        let val = String::from("bye");
         thread::sleep(Duration::from_millis(1000));
         tx.send(val).unwrap();
     });
 
     for re in rx {
-        println!(&quot;{}&quot;, re);
+        println!("{}", re);
     }
 }
 </code></pre></pre>
@@ -4934,15 +4963,15 @@ fn main() {
 <li>표준 라이브러리의 비동기 버전.</li>
 <li>대규모 라이브러리 에코시스템.</li>
 </ul>
-<p>이제 프로젝트에 <code>tokio</code> 를 설치하기 위해 <code>Cargo.toml</code>파일에 <code>tokio</code>를 추가합니다. 이때 <code>features = [&quot;full&quot;]</code> 을 넣어야 전체 기능을 다 사용할 수 있습니다.</p>
+<p>이제 프로젝트에 <code>tokio</code> 를 설치하기 위해 <code>Cargo.toml</code>파일에 <code>tokio</code>를 추가합니다. 이때 <code>features = ["full"]</code> 을 넣어야 전체 기능을 다 사용할 수 있습니다.</p>
 <pre><code class="language-toml">[dependencies]
-tokio = { version = &quot;1.25.0&quot;, features = [&quot;full&quot;] }
+tokio = { version = "1.25.0", features = ["full"] }
 </code></pre>
 <h3 id="비동기-함수-만들어보기"><a class="header" href="#비동기-함수-만들어보기">비동기 함수 만들어보기</a></h3>
-<p>파이썬에는 비동기 함수를 만들기 위해서 <code>asyncio</code> 라는 내장 라이브러리가 있습니다. </p>
+<p>파이썬에는 비동기 함수를 만들기 위해서 <code>asyncio</code> 라는 내장 라이브러리가 있습니다.</p>
 <p>비동기 함수를 선언하려면 일반 함수 정의 앞에 <code>async</code> 키워드를 붙여주면 됩니다.</p>
 <pre><code class="language-python">async def func():
-    print(&quot;async&quot;)
+    print("async")
 </code></pre>
 <p>비동기 함수는 그냥 호출하게 되면 결과 대신 <code>coroutine</code> 객체가 리턴되고, 경고가 발생합니다.</p>
 <pre><code class="language-python">&gt;&gt;&gt; print(func())
@@ -4956,18 +4985,18 @@ RuntimeWarning: Enable tracemalloc to get the object allocation traceback
 <pre><code class="language-python">import asyncio
 
 async def func():
-    print(&quot;async&quot;)
+    print("async")
 
 async def main():
     await func()
 
 asyncio.run(main())
 </code></pre>
-<p>러스트에서도 파이썬과 동일하게 비동기 함수를 만드려면 <code>async</code> 와 <code>await</code>을 모두 사용합니다. 위의 파이썬 코드와 동일한 러스트 코드를 만들어보면 다음과 같습니다. 파이썬에서는 함수의 앞에 <code>await</code> 을 사용하는 반면, 러스트에서는 함수 호출 뒤에 <code>.await</code> 을 붙여줍니다. 또한, 비동기 함수는 비동기 함수에서만 호출이 가능하므로 비동기 함수를 실행하기 위해서 <code>main</code> 을 <code>async</code> 로 바꾸고, <code>#[tokio::main]</code> 를 <code>main</code> 함수에 붙여서 비동기 메인 함수를 만들 수 있습니다. 이제 메인 함수가 비동기 함수이기 때문에 내부에서 <code>async</code>와 <code>await</code> 키워드를 사용 가능합니다. </p>
+<p>러스트에서도 파이썬과 동일하게 비동기 함수를 만드려면 <code>async</code> 와 <code>await</code>을 모두 사용합니다. 위의 파이썬 코드와 동일한 러스트 코드를 만들어보면 다음과 같습니다. 파이썬에서는 함수의 앞에 <code>await</code> 을 사용하는 반면, 러스트에서는 함수 호출 뒤에 <code>.await</code> 을 붙여줍니다. 또한, 비동기 함수는 비동기 함수에서만 호출이 가능하므로 비동기 함수를 실행하기 위해서 <code>main</code> 을 <code>async</code> 로 바꾸고, <code>#[tokio::main]</code> 를 <code>main</code> 함수에 붙여서 비동기 메인 함수를 만들 수 있습니다. 이제 메인 함수가 비동기 함수이기 때문에 내부에서 <code>async</code>와 <code>await</code> 키워드를 사용 가능합니다.</p>
 <pre><pre class="playground"><code class="language-rust">use tokio;
 
 async fn func() {
-    println!(&quot;async&quot;);
+    println!("async");
 }
 
 #[tokio::main]
@@ -4979,19 +5008,19 @@ async fn main() {
 <pre><pre class="playground"><code class="language-rust">use tokio;
 
 async fn func() {
-    println!(&quot;async&quot;);
+    println!("async");
 }
 
 #[tokio::main]
 async fn main() {
-    println!(&quot;{:?}&quot;, func()) // 🤯
+    println!("{:?}", func()) // 🤯
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>error[E0277]: `impl Future&lt;Output = i32&gt;` doesn't implement `std::fmt::Display`
  --&gt; src/main.rs:9:22
   |
-9 |     println!(&quot;{:#}&quot;, func())
+9 |     println!("{:#}", func())
   |                      ^^^^^^ `impl Future&lt;Output = i32&gt;` cannot be formatted with the default formatter
 </code></pre>
 <p>컴파일 에러를 들여다보면, 함수 <code>func</code>의 리턴값이<code>impl Future&lt;Output = i32&gt;</code>라는 것을 알 수 있습니다. 즉 비동기 함수를 기다리지 않으면, 파이썬에서는 <code>coroutine</code>이, 러스트에서는 <code>Future</code> 가 리턴됩니다. 둘 다 <code>await</code> 을 사용해 함수 호출이 끝나기를 기다려줘야 실제 함수의 결과를 얻을 수 있습니다.</p>
@@ -5000,14 +5029,14 @@ async fn main() {
 </blockquote>
 <p>하지만 단순히 <code>await</code>를 사용하기만 해서는 기존의 동기 함수와 비슷한 결과가 나옵니다.</p>
 <pre><pre class="playground"><code class="language-rust">async fn hello() -&gt; i32 {
-    println!(&quot;Hello World!&quot;);
+    println!("Hello World!");
     tokio::time::sleep(std::time::Duration::from_secs(3)).await;
-    println!(&quot;waited&quot;);
+    println!("waited");
     1
 }
 
 async fn bye() -&gt; i32 {
-    println!(&quot;Goodbye!&quot;);
+    println!("Goodbye!");
     2
 }
 
@@ -5028,7 +5057,7 @@ Goodbye!
 
 
 async def func():
-    return &quot;async&quot;
+    return "async"
 
 
 async def main():
@@ -5045,25 +5074,25 @@ asyncio.run(main())
 <pre><pre class="playground"><code class="language-rust">use tokio;
 
 async fn func&lt;'a&gt;() -&gt; &amp;'a str {
-    &quot;async&quot;
+    "async"
 }
 
 #[tokio::main]
 async fn main() {
-    println!(&quot;{:?}&quot;, func().await) // 🤯
+    println!("{:?}", func().await) // 🤯
 }
 </code></pre></pre>
 <p>실행 결과</p>
-<pre><code>&quot;async&quot;
+<pre><code>"async"
 </code></pre>
 <h3 id="여러-작업-실행하기"><a class="header" href="#여러-작업-실행하기">여러 작업 실행하기</a></h3>
 <p><code>asyncio.gather</code> 를 사용하면 여러 개의 비동기 함수를 한꺼번에 실행할 수도 있습니다.</p>
 <pre><code class="language-python">import asyncio
 
 async def give_order(order):
-    print(f&quot;Processing {order}...&quot;)
+    print(f"Processing {order}...")
     await asyncio.sleep(3 - order)
-    print(f&quot;Finished {order}&quot;)
+    print(f"Finished {order}")
 
 async def main():
     await asyncio.gather(give_order(1), give_order(2), give_order(3))
@@ -5082,9 +5111,9 @@ Finished 1
 <pre><code class="language-python">import asyncio
 
 async def give_order(order):
-    print(f&quot;Processing {order}...&quot;)
+    print(f"Processing {order}...")
     await asyncio.sleep(3 - order)
-    print(f&quot;Finished {order}&quot;)
+    print(f"Finished {order}")
     return order
 
 async def main():
@@ -5105,9 +5134,9 @@ Finished 1
 <p>실제 함수 실행 속도가 다르더라도 결과는 <code>gather</code> 에 넣은 순서대로 나오게 됩니다.</p>
 <p>러스트에서는 <code>tokio::join!</code>에 기다리고자 하는 함수들을 넣어주면 됩니다. 이게 가능한 이유는, 위에서 만든 <code>hello</code>와 <code>bye</code> 함수 모두 실제로는 <code>Future</code>라고 하는 비동기 객체를 리턴하게 되고, <code>tokio</code>가 <code>Future</code>를 사용해 내부적으로 비동기 관련 처리를 해주기 때문입니다.</p>
 <pre><pre class="playground"><code class="language-rust">async fn give_order(order: u64) -&gt; u64 {
-    println!(&quot;Processing {order}...&quot;);
+    println!("Processing {order}...");
     tokio::time::sleep(std::time::Duration::from_secs(3 - order)).await;
-    println!(&quot;Finished {order}&quot;);
+    println!("Finished {order}");
     order
 }
 
@@ -5115,7 +5144,7 @@ Finished 1
 async fn main() {
     let result = tokio::join!(give_order(1), give_order(2), give_order(3));
 
-    println!(&quot;{:?}&quot;, result);
+    println!("{:?}", result);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -5139,13 +5168,13 @@ MAX_POKEMON = 898
 
 def fetch(total):
     urls = [
-        f&quot;https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}&quot;
+        f"https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}"
         for _ in range(total)
     ]
     with requests.Session() as session:
         for url in urls:
             response = session.get(url).json()
-            yield response[&quot;name&quot;]
+            yield response["name"]
 
 
 def main():
@@ -5161,9 +5190,9 @@ main()
 <p>- <code>rand</code>: 이 크레이트는 난수 생성을 위한 유용한 유틸리티를 제공합니다. 여기에는 다양한 유형의 난수값을 생성하고, 이를 유용한 확률 분포로 변환하고, 무작위성 관련 알고리즘을 구현하는 기능이 포함되어 있습니다. 이 크레이트는 다양한 난수 생성기에 대해 구현된 <code>Rng</code> 특성을 통해 사용하기 쉬운 API를 제공합니다.
 - <code>reqwest</code>: 이 크레이트는 요청을 보내고 응답을 처리하기 위한 사용하기 쉬운 사용자 친화적인 HTTP 클라이언트를 제공합니다. 동기 및 비동기 요청을 모두 지원하며 상위 수준 API부터 고급 사용 사례를 위한 하위 수준 API까지 일반적인 사용 사례를 지원합니다.
 - <code>serde_json</code>: 이 크레이트는 Rust에서 데이터를 직렬화(serialize) 및 역직렬화(deserialize)하기 위한 프레임워크를 제공하는 <code>serde</code> 프로젝트의 일부입니다. <code>serde_json</code> 크레이트는 특히 데이터를 JSON으로 직렬화하고 JSON에서 데이터를 역직렬화하는 기능을 제공합니다.</p>
-<pre><code class="language-toml">rand = &quot;0.8.5&quot;
-reqwest = { version=&quot;0.11.16&quot;, features = [&quot;blocking&quot;, &quot;json&quot;] }
-serde_json = &quot;1.0.95&quot;
+<pre><code class="language-toml">rand = "0.8.5"
+reqwest = { version="0.11.16", features = ["blocking", "json"] }
+serde_json = "1.0.95"
 </code></pre>
 <p><code>rand::thread_rng()</code> 로 1부터 898까지의 무작위 난수 생성</p>
 <p><code>reqwest::blocking::Client::new()</code> 동기 방식의 HTTP 클라이언트 생성</p>
@@ -5178,7 +5207,7 @@ fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
     let mut urls = Vec::new();
     for _ in 0..total {
         let url = format!(
-            &quot;https://pokeapi.co/api/v2/pokemon/{}&quot;,
+            "https://pokeapi.co/api/v2/pokemon/{}",
             rand::thread_rng().gen_range(1..=MAX_POKEMON)
         );
         urls.push(url);
@@ -5192,17 +5221,17 @@ fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
             .unwrap()
             .json::&lt;serde_json::Value&gt;()
             .unwrap();
-        names.push(response[&quot;name&quot;].as_str().unwrap().to_string());
+        names.push(response["name"].as_str().unwrap().to_string());
     }
     names
 }
 
 fn main() {
     for name in fetch(10) {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
 
-    println!(&quot;{:?}&quot;, fetch(10));
+    println!("{:?}", fetch(10));
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -5235,14 +5264,14 @@ async def _fetch(session, url):
 
 async def fetch(total):
     urls = [
-        f&quot;https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}&quot;
+        f"https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}"
         for _ in range(total)
     ]
     async with aiohttp.ClientSession() as session:
         tasks = [_fetch(session, url) for url in urls]
         responses = await asyncio.gather(*tasks)
         for response in responses:
-            yield response[&quot;name&quot;]
+            yield response["name"]
 
 
 async def main():
@@ -5264,7 +5293,7 @@ async fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
     let mut urls = Vec::new();
     for _ in 0..total {
         let url = format!(
-            &quot;https://pokeapi.co/api/v2/pokemon/{}&quot;,
+            "https://pokeapi.co/api/v2/pokemon/{}",
             rand::thread_rng().gen_range(1..=MAX_POKEMON)
         );
         urls.push(url);
@@ -5280,7 +5309,7 @@ async fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
             .json::&lt;serde_json::Value&gt;()
             .await
             .unwrap();
-        names.push(response[&quot;name&quot;].as_str().unwrap().to_string());
+        names.push(response["name"].as_str().unwrap().to_string());
     }
     names
 }
@@ -5288,10 +5317,10 @@ async fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
 #[tokio::main]
 async fn main() {
     for name in fetch(10).await {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
 
-    println!(&quot;{:?}&quot;, fetch(10).await);
+    println!("{:?}", fetch(10).await);
 }
 </code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="rayon"><a class="header" href="#rayon">rayon</a></h2>
@@ -5339,10 +5368,10 @@ fn sum_of_squares_seq(input: &amp;Vec&lt;i32&gt;) -&gt; i32 {
 fn main() {
     let start = SystemTime::now();
     sum_of_squares(&amp;(1..100).collect());
-    println!(&quot;{}ms&quot;, start.elapsed().unwrap().as_millis());
+    println!("{}ms", start.elapsed().unwrap().as_millis());
     let start = SystemTime::now();
     sum_of_squares_seq(&amp;(1..100).collect());
-    println!(&quot;{}ms&quot;, start.elapsed().unwrap().as_millis());
+    println!("{}ms", start.elapsed().unwrap().as_millis());
 }
 </code></pre>
 <p>실행 결과</p>
@@ -5372,11 +5401,11 @@ fn main() {
 
     let start = SystemTime::now();
     increment_all(&amp;mut data);
-    println!(&quot;{:?} - {}ms&quot;, data, start.elapsed().unwrap().as_millis());
+    println!("{:?} - {}ms", data, start.elapsed().unwrap().as_millis());
 
     let start = SystemTime::now();
     increment_all_seq(&amp;mut data);
-    println!(&quot;{:?} - {}ms&quot;, data, start.elapsed().unwrap().as_millis());
+    println!("{:?} - {}ms", data, start.elapsed().unwrap().as_millis());
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -5396,11 +5425,11 @@ fn main() {
 
     let start = SystemTime::now();
     data1.par_sort();
-    println!(&quot;{}ms&quot;, start.elapsed().unwrap().as_millis());
+    println!("{}ms", start.elapsed().unwrap().as_millis());
 
     let start = SystemTime::now();
     data2.sort();
-    println!(&quot;{}ms&quot;, start.elapsed().unwrap().as_millis());
+    println!("{}ms", start.elapsed().unwrap().as_millis());
 
     assert_eq!(data1, data2);
 }
@@ -5434,20 +5463,20 @@ fn main() {
 <p>먼저 파이썬 코드를 살펴보겠습니다. <code>logic.py</code> 모듈은 다음과 같습니다.</p>
 <pre><code class="language-python">from typing import Optional
 
-CARDS = [&quot;Rock&quot;, &quot;Scissors&quot;, &quot;Paper&quot;]
+CARDS = ["Rock", "Scissors", "Paper"]
 
 
 def play(card1: str, card2: str) -&gt; Optional[bool]:
-    assert card1 in CARDS, &quot;Invalid card1&quot;
-    assert card2 in CARDS, &quot;Invalid card2&quot;
+    assert card1 in CARDS, "Invalid card1"
+    assert card2 in CARDS, "Invalid card2"
 
     if card1 == card2:
         return None
 
     if (
-        (card1 == &quot;Rock&quot; and card2 == &quot;Scissors&quot;)
-        or (card1 == &quot;Scissors&quot; and card2 == &quot;Paper&quot;)
-        or (card1 == &quot;Paper&quot; and card2 == &quot;Rock&quot;)
+        (card1 == "Rock" and card2 == "Scissors")
+        or (card1 == "Scissors" and card2 == "Paper")
+        or (card1 == "Paper" and card2 == "Rock")
     ):
         return True
     else:
@@ -5455,7 +5484,7 @@ def play(card1: str, card2: str) -&gt; Optional[bool]:
 
 
 def stop():
-    raise Exception(&quot;stop!&quot;)
+    raise Exception("stop!")
 
 </code></pre>
 <p><code>play()</code> 함수는 입력받은 두 카드의 값을 비교해 첫 번째 카드의 승패 유무를 리턴하는 함수입니다. 가위바위보에서 이기면 <code>True</code>, 지면 <code>False</code> , 비기면 <code>None</code> 을 리턴합니다. <code>stop()</code> 함수는 무조건 에러를 발생시켜 프로그램을 종료시킵니다.</p>
@@ -5466,24 +5495,24 @@ from logic import play, stop
 
 
 @pytest.mark.parametrize(
-    &quot;card1, card2&quot;,
-    [(&quot;Rock&quot;, &quot;Scissors&quot;), (&quot;Scissors&quot;, &quot;Paper&quot;), (&quot;Paper&quot;, &quot;Rock&quot;)],
+    "card1, card2",
+    [("Rock", "Scissors"), ("Scissors", "Paper"), ("Paper", "Rock")],
 )
 def test_win(card1, card2):
     assert play(card1, card2) == True
 
 
 @pytest.mark.parametrize(
-    &quot;card1, card2&quot;,
-    [(&quot;Rock&quot;, &quot;Rock&quot;), (&quot;Scissors&quot;, &quot;Scissors&quot;), (&quot;Paper&quot;, &quot;Paper&quot;)],
+    "card1, card2",
+    [("Rock", "Rock"), ("Scissors", "Scissors"), ("Paper", "Paper")],
 )
 def test_draw(card1, card2):
     assert play(card1, card2) == None
 
 
 @pytest.mark.parametrize(
-    &quot;card1, card2&quot;,
-    [(&quot;Scissors&quot;, &quot;Rock&quot;), (&quot;Rock&quot;, &quot;Paper&quot;), (&quot;Paper&quot;, &quot;Scissors&quot;)],
+    "card1, card2",
+    [("Scissors", "Rock"), ("Rock", "Paper"), ("Paper", "Scissors")],
 )
 def test_lose(card1, card2):
     assert play(card1, card2) == False
@@ -5538,7 +5567,7 @@ pub fn play(card1: Cards, card2: Cards) -&gt; Option&lt;bool&gt; {
 }
 
 pub fn stop() {
-    panic!(&quot;stop!&quot;);
+    panic!("stop!");
 }
 
 #[cfg(test)]
@@ -5567,7 +5596,7 @@ pub mod test {
     }
 
     #[test]
-    #[should_panic(expected=&quot;stop!&quot;)]
+    #[should_panic(expected="stop!")]
     fn test_stop(){
         stop();
     }
@@ -5597,7 +5626,7 @@ test src/lib.rs - play (line 10) ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s
 </code></pre>
-<p>러스트는 테스트를 위해 바이너리를 빌드하는 과정이 먼저 수행됩니다. 그리고 유닛 테스트를 수행합니다. 마지막에 &quot;Doc-tests&quot;라는게 추가로 수행되는데 이는 밑에서 더 자세히 설명하겠습니다.</p>
+<p>러스트는 테스트를 위해 바이너리를 빌드하는 과정이 먼저 수행됩니다. 그리고 유닛 테스트를 수행합니다. 마지막에 "Doc-tests"라는게 추가로 수행되는데 이는 밑에서 더 자세히 설명하겠습니다.</p>
 <p>비슷하게 클래스도 테스트할 수 있습니다. 먼저 파이썬에서 다음과 같은 클래스를 정의합니다.</p>
 <pre><code class="language-python">class Person:
     def __init__(self, name, age):
@@ -5609,16 +5638,16 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
         return self._age
 
     def hi(self):
-        return f&quot;Hi, I'm {self.name}, I'm {self._age} years old.&quot;
+        return f"Hi, I'm {self.name}, I'm {self._age} years old."
 
 </code></pre>
 <p>테스트 모듈에서는 객체화를 한 다음 프로퍼티와 메소드가 잘 적용되는지를 테스트합니다.</p>
 <pre><code class="language-python">def test_hi():
-    name = &quot;John&quot;
+    name = "John"
     age = 30
     person = Person(name, age)
-    assert person.hi() == f&quot;Hi, I'm {name}, I'm {age} years old.&quot;
-    assert person.hi() == f&quot;Hi, I'm {person.name}, I'm {person.age} years old.&quot;
+    assert person.hi() == f"Hi, I'm {name}, I'm {age} years old."
+    assert person.hi() == f"Hi, I'm {person.name}, I'm {person.age} years old."
 
 </code></pre>
 <p>러스트에서는 다음과 같이 구조체를 선언했습니다. 먼저 <code>person</code> 모듈을 선언하고 그 다음 <code>Person</code> 구조체와 메소드를 정의했습니다. 여기서 별도로 모듈을 만들지 않아도 상관없습니다.</p>
@@ -5638,7 +5667,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
         }
 
         pub fn hi(&amp;self) -&gt; String {
-            format!(&quot;Hi, I'm {}, I am {} years old.&quot;, self.name, self.age())
+            format!("Hi, I'm {}, I am {} years old.", self.name, self.age())
         }
 
         pub fn age(&amp;self) -&gt; u8 {
@@ -5650,16 +5679,16 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <p>그 다음 테스트 모듈에 아래 함수를 추가합니다.</p>
 <pre><code class="language-rust ignore">#[test]
 fn test_hi() {
-  let name = &quot;John&quot;;
+  let name = "John";
   let age: u8 = 30;
   let person = person::Person::new(name, age);
   assert_eq!(
     person.hi(),
-    format!(&quot;Hi, I'm {}, I am {} years old.&quot;, name, age)
+    format!("Hi, I'm {}, I am {} years old.", name, age)
   );
   assert_eq!(
     person.hi(),
-    format!(&quot;Hi, I'm {}, I am {} years old.&quot;, person.name, person.age())
+    format!("Hi, I'm {}, I am {} years old.", person.name, person.age())
   );
 }</code></pre>
 <p>파이썬과 마찬가지로 프로퍼티와 메소드가 잘 적용되는지를 테스트합니다. 아래 명령어로 테스트들을 수행합니다.</p>
@@ -5668,9 +5697,9 @@ fn test_hi() {
 <h3 id="비동기-함수-테스트"><a class="header" href="#비동기-함수-테스트">비동기 함수 테스트</a></h3>
 <p><code>#[tokio::test]</code>를 함수에 붙여주면 됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">async fn give_order(order: u64) -&gt; u64 {
-    println!(&quot;Processing {order}...&quot;);
+    println!("Processing {order}...");
     tokio::time::sleep(std::time::Duration::from_secs(3 - order)).await;
-    println!(&quot;Finished {order}&quot;);
+    println!("Finished {order}");
     order
 }
 
@@ -5678,7 +5707,7 @@ fn test_hi() {
 async fn main() {
     let result = tokio::join!(give_order(1), give_order(2), give_order(3));
 
-    println!(&quot;{:?}&quot;, result);
+    println!("{:?}", result);
 }
 
 #[cfg(test)]
@@ -5725,7 +5754,7 @@ pub mod person {
     /// ```
     /// use rust_part::person::Person;
     ///
-    /// let person = Person::new(&quot;John&quot;, 30);
+    /// let person = Person::new("John", 30);
     /// person.hi();
     /// ```
     pub struct Person {
@@ -5742,7 +5771,7 @@ pub mod person {
         }
 
         pub fn hi(&amp;self) -&gt; String {
-            format!(&quot;Hi, I'm {}, I am {} years old.&quot;, self.name, self.age())
+            format!("Hi, I'm {}, I am {} years old.", self.name, self.age())
         }
 
         pub fn age(&amp;self) -&gt; u8 {
@@ -5762,7 +5791,7 @@ pub mod person {
 <pre><code class="language-bash">cargo test --doc
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="모킹"><a class="header" href="#모킹">모킹</a></h2>
-<p>파이썬에서 다양한 모킹을 사용하기 위해 <code>pytest-mock</code> 플러그인이 자주 사용됩니다. </p>
+<p>파이썬에서 다양한 모킹을 사용하기 위해 <code>pytest-mock</code> 플러그인이 자주 사용됩니다.</p>
 <pre><code class="language-python">pip install pytest-mock
 </code></pre>
 <p>유닉스 파일 시스템에서 파일을 지우는 코드를 모킹을 사용해 테스트해보면 다음과 같습니다.</p>
@@ -5779,10 +5808,10 @@ def test_unix_fs(mocker):
     os.remove.assert_called_once_with('file')
 
 </code></pre>
-<p>러스트에서의 모킹은 파이썬과는 매우 다르게 사용됩니다. 일반적으로 <code>mockall</code> 크레이트를 사용하는데, 파이썬과 달리 객체를 직접 모킹할 수 없습니다. </p>
+<p>러스트에서의 모킹은 파이썬과는 매우 다르게 사용됩니다. 일반적으로 <code>mockall</code> 크레이트를 사용하는데, 파이썬과 달리 객체를 직접 모킹할 수 없습니다.</p>
 <pre><code class="language-bash">cargo add mockall mockall_double
 </code></pre>
-<p>이것은 파일 시스템과 상호 작용하는 모듈에 대한 단위 테스트를 작성하기 위해 <code>mockall</code> 및 <code>mockall_double</code> 크레이트를 사용하는 방법을 보여주는 Rust 코드입니다. <code>fs_api</code> 모듈은 <code>std::fs::remove_file</code> 함수를 래핑하는 <code>remove_file</code> 메서드가 있는 <code>FS</code> 구조체를 정의합니다. </p>
+<p>이것은 파일 시스템과 상호 작용하는 모듈에 대한 단위 테스트를 작성하기 위해 <code>mockall</code> 및 <code>mockall_double</code> 크레이트를 사용하는 방법을 보여주는 Rust 코드입니다. <code>fs_api</code> 모듈은 <code>std::fs::remove_file</code> 함수를 래핑하는 <code>remove_file</code> 메서드가 있는 <code>FS</code> 구조체를 정의합니다.</p>
 <p>여기서 <code>mockall::automock</code> 은 테스트 코드에서 사용될 모킹된 <code>MockFS</code> 구조체를 자동으로 생성합니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -5822,7 +5851,7 @@ impl UnixFS {
     }
 }
 <span class="boring">}</span></code></pre></pre>
-<p>이 코드에는 <code>mockall</code> 를 사용하여 <code>FS</code> 구조체에 대한 모의 객체를 생성하고 <code>UnixFS::rm</code> 메서드의 동작을 테스트하는 테스트 모듈도 포함되어 있습니다. <code>use mockall::predicate::*;</code> 는 모킹한 함수 <code>expect_remove_file</code>의 예상 입력을 찾을 수 있도록 하는 함수입니다. 즉 입력으로 문자열 슬라이스 <code>&quot;file&quot;</code>이 들어오는 경우에 이 모킹 함수가 작동합니다.</p>
+<p>이 코드에는 <code>mockall</code> 를 사용하여 <code>FS</code> 구조체에 대한 모의 객체를 생성하고 <code>UnixFS::rm</code> 메서드의 동작을 테스트하는 테스트 모듈도 포함되어 있습니다. <code>use mockall::predicate::*;</code> 는 모킹한 함수 <code>expect_remove_file</code>의 예상 입력을 찾을 수 있도록 하는 함수입니다. 즉 입력으로 문자열 슬라이스 <code>"file"</code>이 들어오는 경우에 이 모킹 함수가 작동합니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[cfg(test)]
@@ -5835,10 +5864,10 @@ mod test {
         let mut fs = FS::default();
 
         fs.expect_remove_file()
-            .with(eq(&quot;file&quot;))
+            .with(eq("file"))
             .returning(|_| Ok(()));
 
-        UnixFS::rm(&amp;fs, &quot;file&quot;).unwrap();
+        UnixFS::rm(&amp;fs, "file").unwrap();
     }
 }
 
@@ -5887,17 +5916,17 @@ mod test {
         let mut fs = FS::default();
 
         fs.expect_remove_file()
-            .with(eq(&quot;file&quot;))
+            .with(eq("file"))
             .returning(|_| Ok(()));
 
-        UnixFS::rm(&amp;fs, &quot;file&quot;).unwrap();
+        UnixFS::rm(&amp;fs, "file").unwrap();
     }
 }
 
 fn main() {
     let fs = FS::new();
-    if let Err(e) = UnixFS::rm(&amp;fs, &quot;file&quot;) {
-        println!(&quot;Error: {}&quot;, e);
+    if let Err(e) = UnixFS::rm(&amp;fs, "file") {
+        println!("Error: {}", e);
     };
 }
 </code></pre></pre>
@@ -5935,18 +5964,18 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </code></pre>
 <p>결과적으로 일반 패키지와 개발 패키지가 Pipfile에 구분되어서 추가되는 것을 알 수 있습니다.</p>
 <pre><code class="language-toml">[[source]]
-url = &quot;https://pypi.org/simple&quot;
+url = "https://pypi.org/simple"
 verify_ssl = true
-name = &quot;pypi&quot;
+name = "pypi"
 
 [packages]
-requests = &quot;*&quot;
+requests = "*"
 
 [dev-packages]
-black = &quot;*&quot;
+black = "*"
 
 [requires]
-python_version = &quot;3.11&quot;
+python_version = "3.11"
 
 [pipenv]
 allow_prereleases = true
@@ -5954,7 +5983,7 @@ allow_prereleases = true
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="러스트-프로젝트-생성하기"><a class="header" href="#러스트-프로젝트-생성하기">러스트 프로젝트 생성하기</a></h2>
 <h3 id="파이썬-바인딩이란"><a class="header" href="#파이썬-바인딩이란">파이썬 바인딩이란?</a></h3>
-<p>파이썬 바인딩은 다른 프로그래밍 언어로 작성된 코드를 파이썬에서 사용하는 것을 의미합니다. </p>
+<p>파이썬 바인딩은 다른 프로그래밍 언어로 작성된 코드를 파이썬에서 사용하는 것을 의미합니다.</p>
 <p>파이썬용 러스트 바인딩을 사용하면 파이썬에서 러스트로 함수를 호출하고 데이터를 전달할 수 있으므로 두 언어의 강점을 모두 활용할 수 있습니다. 이 기능은 테스트를 거쳐 안정적으로 작성된 대규모 라이브러리를 파이썬에서 활용하거나 파이썬 코드의 특정 섹션을 러스트로 변환하여 속도를 높이고자 하는 경우에 유용합니다.</p>
 <p>파이썬에서 러스트 바인딩을 생성하는 데 가장 널리 알려진 프로젝트는 PyO3입니다. 이 프로젝트는 러스트로 파이썬 모듈을 작성하거나 파이썬 런타임을 러스트 바이너리에 임베드하는 데 사용할 수 있습니다. PyO3는 파이썬 패키징 및 바인딩이 포함된 러스트 상자를 작성하는 도구인 Maturin이라는 또 다른 프로젝트를 활용합니다.</p>
 <h3 id="pyo3"><a class="header" href="#pyo3">PyO3</a></h3>
@@ -5983,32 +6012,32 @@ $ pipenv shell
 ├── src
     └── lib.rs
 </code></pre>
-<p><code>Cargo.toml</code>파일에서 패키지와 라이브러리의 이름을 &quot;fibonacci&quot;로 변경합니다.</p>
+<p><code>Cargo.toml</code>파일에서 패키지와 라이브러리의 이름을 "fibonacci"로 변경합니다.</p>
 <pre><code class="language-toml">[package]
-name = &quot;fibonacci&quot;
-version = &quot;0.1.0&quot;
-edition = &quot;2021&quot;
+name = "fibonacci"
+version = "0.1.0"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = &quot;fibonacci&quot;
-crate-type = [&quot;cdylib&quot;]
+name = "fibonacci"
+crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = &quot;0.16.5&quot;, features = [&quot;extension-module&quot;] }
+pyo3 = { version = "0.16.5", features = ["extension-module"] }
 </code></pre>
-<p><code>pyproject.toml</code> 파일에서도 프로젝트 이름을 &quot;fibonacci&quot;로 수정합니다.</p>
+<p><code>pyproject.toml</code> 파일에서도 프로젝트 이름을 "fibonacci"로 수정합니다.</p>
 <pre><code class="language-toml">[build-system]
-requires = [&quot;maturin&gt;=0.13,&lt;0.14&quot;]
-build-backend = &quot;maturin&quot;
+requires = ["maturin&gt;=0.13,&lt;0.14"]
+build-backend = "maturin"
 
 [project]
-name = &quot;fibonacci&quot;
-requires-python = &quot;&gt;=3.7&quot;
+name = "fibonacci"
+requires-python = "&gt;=3.7"
 classifiers = [
-    &quot;Programming Language :: Rust&quot;,
-    &quot;Programming Language :: Python :: Implementation :: CPython&quot;,
-    &quot;Programming Language :: Python :: Implementation :: PyPy&quot;,
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
 ]
 
 </code></pre>
@@ -6076,10 +6105,10 @@ N = 35
 
 start = time.time()
 result = pyrun(N)
-print(f&quot;python: {time.time()-start:.2f}, result: {result}&quot;)
+print(f"python: {time.time()-start:.2f}, result: {result}")
 start = time.time()
 result = run(N)
-print(f&quot;rust: {time.time()-start:.2f}, result: {result}&quot;)
+print(f"rust: {time.time()-start:.2f}, result: {result}")
 
 </code></pre>
 <p>실행 결과</p>
@@ -6128,7 +6157,7 @@ rust: 0.03, result: 9227465
 <pre><code class="language-bash">maturin init -b pyo3
 </code></pre>
 <h3 id="gil-획득과-해제"><a class="header" href="#gil-획득과-해제">GIL 획득과 해제</a></h3>
-<p><code>py.allow_threads</code>는 PyO3에서 제공하는 메서드로, 클로저를 실행하는 동안 GIL을 일시적으로 해제할 수 있습니다. 이 메서드는 파이썬 인터프리터와 상호 작용할 필요가 없는 장기 실행 계산이 있고 다른 스레드가 파이썬 코드를 병렬로 실행하도록 허용하려는 경우에 유용할 수 있습니다. <code>py.allow_threads</code>를 사용하면 GIL의 해제 및 획득 시점을 세밀하게 제어할 수 있으므로 일부 상황에서 유용할 수 있습니다. </p>
+<p><code>py.allow_threads</code>는 PyO3에서 제공하는 메서드로, 클로저를 실행하는 동안 GIL을 일시적으로 해제할 수 있습니다. 이 메서드는 파이썬 인터프리터와 상호 작용할 필요가 없는 장기 실행 계산이 있고 다른 스레드가 파이썬 코드를 병렬로 실행하도록 허용하려는 경우에 유용할 수 있습니다. <code>py.allow_threads</code>를 사용하면 GIL의 해제 및 획득 시점을 세밀하게 제어할 수 있으므로 일부 상황에서 유용할 수 있습니다.</p>
 <p>PyO3에서 GIL을 해제하는 다른 방법으로는 <code>Python::with_gil</code> 메서드를 사용하여 명시적으로 GIL을 획득하고 해제할 수도 있습니다.</p>
 <p>일반적으로 파이썬 인터프리터와 상호 작용할 필요가 없는 장기 실행 계산이 있을 때마다 GIL을 해제하는 것이 좋습니다. 이렇게 하면 다른 스레드에서 Python 코드를 병렬로 실행할 수 있으므로 프로그램 성능이 향상될 수 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
@@ -6141,19 +6170,19 @@ use pyo3::types::PyList;
 
 #[pyfunction]
 fn double_list(py: Python&lt;'_&gt;, list: &amp;PyList, result: &amp;PyList, idx: usize) -&gt; PyResult&lt;()&gt; {
-    println!(&quot;Rust: Enter double_list...&quot;);
+    println!("Rust: Enter double_list...");
     py.allow_threads(|| {
-        println!(&quot;Rust: Release GIL...&quot;);
+        println!("Rust: Release GIL...");
         thread::sleep(Duration::from_secs(1));
     });
 
     let doubled: Vec&lt;i32&gt; = list.extract::&lt;Vec&lt;i32&gt;&gt;()?.iter().map(|x| x * 2).collect();
 
     Python::with_gil(|py| {
-        println!(&quot;Rust: Acquire GIL...&quot;);
+        println!("Rust: Acquire GIL...");
         thread::sleep(Duration::from_secs(1));
         let py_list = PyList::new(py, &amp;doubled);
-        println!(&quot;Rust: Exit...&quot;);
+        println!("Rust: Exit...");
         result.set_item(idx, py_list)
     })
 }
@@ -6174,10 +6203,10 @@ from gil import double_list
 
 
 def double_list_py(list, result, idx):
-    print(&quot;Py: Enter double_list_py...&quot;)
+    print("Py: Enter double_list_py...")
     time.sleep(0.1)
     result[idx] = [x * 2 for x in list]
-    print(&quot;Py: Exit...&quot;)
+    print("Py: Exit...")
 
 
 result = [[], []]
@@ -6192,8 +6221,8 @@ t2.start()
 t1.join()
 t2.join()
 
-print(f&quot;Py: {result[0]}&quot;)
-print(f&quot;Rust: {result[1]}&quot;)
+print(f"Py: {result[0]}")
+print(f"Rust: {result[1]}")
 
 </code></pre>
 <p>실행 결과</p>

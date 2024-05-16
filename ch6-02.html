@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="kr" class="sidebar-visible no-js light">
+<html lang="kr" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,42 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li><li class="chapter-item expanded "><a href="ch1-04.html"><strong aria-hidden="true">1.4.</strong> 러스트 코드 실행하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html" class="active"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9-00.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="(./ch9-01.html"><strong aria-hidden="true">9.1.</strong> 타입 파라미터</a></li><li class="chapter-item expanded "><a href="ch9-02.html"><strong aria-hidden="true">9.2.</strong> 제네릭과 트레이트</a></li><li class="chapter-item expanded "><a href="ch9-03.html"><strong aria-hidden="true">9.3.</strong> 미니프로젝트: cat 만들어보기</a></li><li class="chapter-item expanded "><a href="ch9-04.html"><strong aria-hidden="true">9.4.</strong> 라이프타임과 스태틱</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00.html"><strong aria-hidden="true">10.</strong> 예외 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01.html"><strong aria-hidden="true">10.1.</strong> panic!</a></li><li class="chapter-item expanded "><a href="ch10-02.html"><strong aria-hidden="true">10.2.</strong> Option 열거형</a></li><li class="chapter-item expanded "><a href="ch10-03.html"><strong aria-hidden="true">10.3.</strong> Result 열거형</a></li><li class="chapter-item expanded "><a href="ch10-04.html"><strong aria-hidden="true">10.4.</strong> 에러 로깅</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00.html"><strong aria-hidden="true">11.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01.html"><strong aria-hidden="true">11.1.</strong> Box 타입</a></li><li class="chapter-item expanded "><a href="ch11-02.html"><strong aria-hidden="true">11.2.</strong> Rc</a></li><li class="chapter-item expanded "><a href="ch11-03.html"><strong aria-hidden="true">11.3.</strong> RefCell</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -154,10 +183,10 @@
 
 
 class Languages(Enum):
-    PYTHON = &quot;python&quot;
-    RUST = &quot;rust&quot;
-    JAVASCRIPT = &quot;javascript&quot;
-    GO = &quot;go&quot;
+    PYTHON = "python"
+    RUST = "rust"
+    JAVASCRIPT = "javascript"
+    GO = "go"
 
     def echo(self):
         print(self.name)
@@ -167,20 +196,20 @@ language = Languages.RUST
 language.echo()
 
 if language == Languages.PYTHON:
-    print(&quot;I love Python&quot;)
+    print("I love Python")
 elif language == Languages.GO:
-    print(&quot;I love Go&quot;)
+    print("I love Go")
 elif language == Languages.JAVASCRIPT:
-    print(&quot;I love Javascript&quot;)
+    print("I love Javascript")
 else:
-    print(&quot;I love Rust🦀&quot;)
+    print("I love Rust🦀")
 
 </code></pre>
 <p>실행 결과</p>
 <pre><code>RUST
 I love Rust🦀
 </code></pre>
-<p>러스트의 열거형은 <code>enum</code> 키워드로 선언이 가능합니다. 이때 값이 없는 열거형과 값이 있는 열거형 두 가지를 만들 수 있는데, 먼저 값이 없는 열거형을 만들어 보면 다음과 같습니다. <code>impl</code> 블럭을 이용해 열거형에서 사용할 메소드를 만들 수 있습니다. 이에 관련한 자세한 문법은 나중에 객체지향을 배우면서 좀더 자세히 다루겠습니다. 마지막으로, 파이썬에서 <code>if</code> 문을 사용한 것과 다르게, 러스트에서는 <code>match</code> 를 이용해 열거형의 값에 따라 다른 행동을 하도록 만듭니다. </p>
+<p>러스트의 열거형은 <code>enum</code> 키워드로 선언이 가능합니다. 이때 값이 없는 열거형과 값이 있는 열거형 두 가지를 만들 수 있는데, 먼저 값이 없는 열거형을 만들어 보면 다음과 같습니다. <code>impl</code> 블럭을 이용해 열거형에서 사용할 메소드를 만들 수 있습니다. 이에 관련한 자세한 문법은 나중에 객체지향을 배우면서 좀더 자세히 다루겠습니다. 마지막으로, 파이썬에서 <code>if</code> 문을 사용한 것과 다르게, 러스트에서는 <code>match</code> 를 이용해 열거형의 값에 따라 다른 행동을 하도록 만듭니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     // Enum
     #[allow(dead_code)]
@@ -194,7 +223,7 @@ I love Rust🦀
 
     impl Languages {
         fn echo(&amp;self) {
-            println!(&quot;{:?}&quot;, &amp;self);
+            println!("{:?}", &amp;self);
         }
     }
 
@@ -203,10 +232,10 @@ I love Rust🦀
 
     // match
     match language {
-        Languages::Python =&gt; println!(&quot;I love Python&quot;),
-        Languages::Go =&gt; println!(&quot;I love Go&quot;),
-        Languages::Javascript =&gt; println!(&quot;I love Javascript&quot;),
-        _ =&gt; println!(&quot;I love Rust🦀&quot;),
+        Languages::Python =&gt; println!("I love Python"),
+        Languages::Go =&gt; println!("I love Go"),
+        Languages::Javascript =&gt; println!("I love Javascript"),
+        _ =&gt; println!("I love Rust🦀"),
     }
 }
 </code></pre></pre>
@@ -215,7 +244,7 @@ I love Rust🦀
 I love Rust🦀
 </code></pre>
 <p>열거형에 값을 지정하려면 열거형을 선언하면서 타입을 지정하면 됩니다. 열거형 변수 뒤에 <code>(타입)</code> 과 같이 입력하면 됩니다. 이제 열거형 변수를 선언할 때, 해당 타입에 대한 정보를 추가로 입력해줘야 합니다. 예를 들어, <code>indo</code> 라는 변수에 학년은 A, 이름은 indo라는 값을 넣으려면 다음과 같습니다.</p>
-<pre><code class="language-rust ignore">let indo = Job::Student(Grade::A, &quot;indo&quot;.to_string());</code></pre>
+<pre><code class="language-rust ignore">let indo = Job::Student(Grade::A, "indo".to_string());</code></pre>
 <p>이제 <code>indo</code> 변수의 값에 따라 서로 다른 내용을 출력하도록 <code>match</code> 를 사용한 전체 코드는 다음과 같습니다.</p>
 <pre><pre class="playground"><code class="language-rust">#[allow(dead_code)]
 fn main() {
@@ -231,14 +260,14 @@ fn main() {
         Developer(String),
     }
 
-    let indo = Job::Student(Grade::A, &quot;indo&quot;.to_string());
+    let indo = Job::Student(Grade::A, "indo".to_string());
 
     match indo {
         Job::Student(grade, name) =&gt; {
-            println!(&quot;{} is a student with grade {:?}&quot;, name, grade);
+            println!("{} is a student with grade {:?}", name, grade);
         }
         Job::Developer(name) =&gt; {
-            println!(&quot;{} is a developer&quot;, name);
+            println!("{} is a developer", name);
         }
     }
 }
@@ -258,14 +287,14 @@ fn main() {
 <p><code>Option</code>을 사용하려면, 열거형 변수 중 하나인 <code>Some</code>을 사용해 값을 감싸주기만 하면 됩니다. 만일 값이 없음을 나타내려면 <code>None</code>을 사용합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let some_number = Some(5);
-    let some_string = Some(&quot;a string&quot;);
+    let some_string = Some("a string");
 
     let absent_number: Option&lt;i32&gt; = None;
 
-    println!(&quot;{:?} {:?} {:?}&quot;, some_number, some_string, absent_number);
+    println!("{:?} {:?} {:?}", some_number, some_string, absent_number);
 }</code></pre></pre>
 <p>실행 결과</p>
-<pre><code>Some(5) Some(&quot;a string&quot;) None
+<pre><code>Some(5) Some("a string") None
 </code></pre>
 <h4 id="match를-사용한-패턴-매칭"><a class="header" href="#match를-사용한-패턴-매칭"><code>match</code>를 사용한 패턴 매칭</a></h4>
 <p><code>Option</code>은 주로 <code>match</code>와 함께 사용됩니다. 그 이유는 다음 코드를 실행해 보면 알 수 있습니다.</p>
@@ -280,7 +309,7 @@ fn main() {
     let nums = vec![1, 2, 3];
 
     match check_len(nums) {
-        Some(len) =&gt; println!(&quot;Length: {}&quot;, len),
+        Some(len) =&gt; println!("Length: {}", len),
     }
 }
 </code></pre>
@@ -304,22 +333,22 @@ fn main() {
     let nums = vec![1, 2, 3];
 
     match check_len(nums) {
-        Some(len) =&gt; println!(&quot;Length: {}&quot;, len),
-        None =&gt; println!(&quot;No elements&quot;),
+        Some(len) =&gt; println!("Length: {}", len),
+        None =&gt; println!("No elements"),
     }
 }
 </code></pre></pre>
 <h4 id="if-let-구문"><a class="header" href="#if-let-구문"><code>if let</code> 구문</a></h4>
-<p>만일 <code>Option</code>의 결과에 따라서 특정 행동만 하고 싶다면, <code>if let</code> 구문을 사용하면 됩니다. </p>
+<p>만일 <code>Option</code>의 결과에 따라서 특정 행동만 하고 싶다면, <code>if let</code> 구문을 사용하면 됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let val = Some(3);
     match val {
-        Some(3) =&gt; println!(&quot;three&quot;),
+        Some(3) =&gt; println!("three"),
         _ =&gt; (),
     }
 
     if let Some(3) = val {
-        println!(&quot;three&quot;);
+        println!("three");
     }
 }</code></pre></pre>
 <h3 id="resultt-e-열거형"><a class="header" href="#resultt-e-열거형">Result&lt;T, E&gt; 열거형</a></h3>
@@ -335,11 +364,11 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">use std::fs::File;
 
 fn main() {
-    let f = File::open(&quot;hello.txt&quot;);
+    let f = File::open("hello.txt");
 
     let f = match f {
         Ok(file) =&gt; file,
-        Err(error) =&gt; panic!(&quot;There was a problem opening the file: {:?}&quot;, error),
+        Err(error) =&gt; panic!("There was a problem opening the file: {:?}", error),
     };
 }</code></pre></pre>
 <h4 id="if-let-구문-1"><a class="header" href="#if-let-구문-1"><code>if let</code> 구문</a></h4>
@@ -347,7 +376,7 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">use std::fs::File;
 
 fn main() {
-    let f = File::open(&quot;hello.txt&quot;);
+    let f = File::open("hello.txt");
 
     if let Ok(file) = f {
         // 파일을 사용합니다.
@@ -369,17 +398,17 @@ struct Info {
 
 fn write_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
     // Early return on error
-    let mut file = match File::create(&quot;my_best_friends.txt&quot;) {
+    let mut file = match File::create("my_best_friends.txt") {
         Err(e) =&gt; return Err(e),
         Ok(f) =&gt; f,
     };
-    if let Err(e) = file.write_all(format!(&quot;name: {}\n&quot;, info.name).as_bytes()) {
+    if let Err(e) = file.write_all(format!("name: {}\n", info.name).as_bytes()) {
         return Err(e);
     }
-    if let Err(e) = file.write_all(format!(&quot;age: {}\n&quot;, info.age).as_bytes()) {
+    if let Err(e) = file.write_all(format!("age: {}\n", info.age).as_bytes()) {
         return Err(e);
     }
-    if let Err(e) = file.write_all(format!(&quot;rating: {}\n&quot;, info.rating).as_bytes()) {
+    if let Err(e) = file.write_all(format!("rating: {}\n", info.rating).as_bytes()) {
         return Err(e);
     }
     Ok(())
@@ -387,11 +416,11 @@ fn write_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
 
 fn main() {
     if let Ok(_) = write_info(&amp;Info {
-        name: &quot;John&quot;.to_string(),
+        name: "John".to_string(),
         age: 32,
         rating: 10,
     }) {
-        println!(&quot;Writing to file succeeded!&quot;);
+        println!("Writing to file succeeded!");
     }
 }
 </code></pre></pre>
@@ -407,21 +436,21 @@ struct Info {
 }
 
 fn write_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
-    let mut file = File::create(&quot;my_best_friends.txt&quot;)?;
+    let mut file = File::create("my_best_friends.txt")?;
     // Early return on error
-    file.write_all(format!(&quot;name: {}\n&quot;, info.name).as_bytes())?;
-    file.write_all(format!(&quot;age: {}\n&quot;, info.age).as_bytes())?;
-    file.write_all(format!(&quot;rating: {}\n&quot;, info.rating).as_bytes())?;
+    file.write_all(format!("name: {}\n", info.name).as_bytes())?;
+    file.write_all(format!("age: {}\n", info.age).as_bytes())?;
+    file.write_all(format!("rating: {}\n", info.rating).as_bytes())?;
     Ok(())
 }
 
 fn main() {
     if let Ok(_) = write_info(&amp;Info {
-        name: &quot;John&quot;.to_string(),
+        name: "John".to_string(),
         age: 32,
         rating: 10,
     }) {
-        println!(&quot;Writing to file succeeded!&quot;);
+        println!("Writing to file succeeded!");
     }
 }
 </code></pre></pre>
@@ -434,7 +463,7 @@ fn main() {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="ch6-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch6-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -448,7 +477,7 @@ fn main() {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="ch6-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch6-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

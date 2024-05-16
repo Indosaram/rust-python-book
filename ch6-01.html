@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="kr" class="sidebar-visible no-js light">
+<html lang="kr" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,42 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li><li class="chapter-item expanded "><a href="ch1-04.html"><strong aria-hidden="true">1.4.</strong> 러스트 코드 실행하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html" class="active"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9-00.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="(./ch9-01.html"><strong aria-hidden="true">9.1.</strong> 타입 파라미터</a></li><li class="chapter-item expanded "><a href="ch9-02.html"><strong aria-hidden="true">9.2.</strong> 제네릭과 트레이트</a></li><li class="chapter-item expanded "><a href="ch9-03.html"><strong aria-hidden="true">9.3.</strong> 미니프로젝트: cat 만들어보기</a></li><li class="chapter-item expanded "><a href="ch9-04.html"><strong aria-hidden="true">9.4.</strong> 라이프타임과 스태틱</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00.html"><strong aria-hidden="true">10.</strong> 예외 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01.html"><strong aria-hidden="true">10.1.</strong> panic!</a></li><li class="chapter-item expanded "><a href="ch10-02.html"><strong aria-hidden="true">10.2.</strong> Option 열거형</a></li><li class="chapter-item expanded "><a href="ch10-03.html"><strong aria-hidden="true">10.3.</strong> Result 열거형</a></li><li class="chapter-item expanded "><a href="ch10-04.html"><strong aria-hidden="true">10.4.</strong> 에러 로깅</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00.html"><strong aria-hidden="true">11.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01.html"><strong aria-hidden="true">11.1.</strong> Box 타입</a></li><li class="chapter-item expanded "><a href="ch11-02.html"><strong aria-hidden="true">11.2.</strong> Rc</a></li><li class="chapter-item expanded "><a href="ch11-03.html"><strong aria-hidden="true">11.3.</strong> RefCell</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -156,7 +185,7 @@
     let vec2 = vec![1, 2, 3];
 }
 </code></pre></pre>
-<p>비어 있는 벡터를 선언하는 경우는 원소로부터 타입을 추론할 수 없기 때문에 반드시 타입을 명시해야 합니다. </p>
+<p>비어 있는 벡터를 선언하는 경우는 원소로부터 타입을 추론할 수 없기 때문에 반드시 타입을 명시해야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let vec3: Vec&lt;i32&gt; = Vec::new();
     let vec4: Vec&lt;i32&gt; = vec![];
@@ -179,7 +208,7 @@ print(num)
 
     let num = vec1[1];
 
-    println!(&quot;{}&quot;, num);
+    println!("{}", num);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -198,7 +227,7 @@ print(vec1)
 <p>실행 결과</p>
 <pre><code>[1, 2, 3, 4, 5, 6]
 </code></pre>
-<p>마찬가지로 벡터의 마지막에 값을 추가해 보겠습니다. <code>push</code> 메소드를 사용하면 원소를 벡터 마지막에 하나씩 추가할 수 있습니다. 주의해야 하는 점은 벡터 <code>vec1</code> 이 변경되기 때문에 처음에 <code>vec1</code>을 가변 변수로 선언해야 한다는 것입니다. 마지막으로, 벡터를 프린트할 때는 디버그 모드를 사용해야 합니다.  따라서 서식을 <code>&quot;{:?}&quot;</code>로 사용해야 합니다.</p>
+<p>마찬가지로 벡터의 마지막에 값을 추가해 보겠습니다. <code>push</code> 메소드를 사용하면 원소를 벡터 마지막에 하나씩 추가할 수 있습니다. 주의해야 하는 점은 벡터 <code>vec1</code> 이 변경되기 때문에 처음에 <code>vec1</code>을 가변 변수로 선언해야 한다는 것입니다. 마지막으로, 벡터를 프린트할 때는 디버그 모드를 사용해야 합니다.  따라서 서식을 <code>"{:?}"</code>로 사용해야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut vec1 = vec![1, 2, 3];
 
@@ -206,7 +235,7 @@ print(vec1)
     vec1.push(5);
     vec1.push(6);
 
-    println!(&quot;{:?}&quot;, vec1);
+    println!("{:?}", vec1);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -231,7 +260,7 @@ print(num1, num2, vec1)
     let num1 = vec1.pop().unwrap();
     let num2 = vec1.remove(0);
 
-    println!(&quot;{} {} {:?}&quot;, num1, num2, vec1);
+    println!("{} {} {:?}", num1, num2, vec1);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -253,7 +282,7 @@ print(deq.popleft())
 
 fn main() {
     let mut deq = VecDeque::from([1, 2, 3]);
-    println!(&quot;{}&quot;, deq.pop_front().unwrap());
+    println!("{}", deq.pop_front().unwrap());
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -266,18 +295,18 @@ fn main() {
 
 months = np.array(
     [
-        &quot;January&quot;,
-        &quot;February&quot;,
-        &quot;March&quot;,
-        &quot;April&quot;,
-        &quot;May&quot;,
-        &quot;June&quot;,
-        &quot;July&quot;,
-        &quot;August&quot;,
-        &quot;September&quot;,
-        &quot;October&quot;,
-        &quot;November&quot;,
-        &quot;December&quot;,
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     ]
 )
 print(months)
@@ -295,40 +324,40 @@ print(nums)
 <p>실행 결과</p>
 <pre><code>[3 3 3 3 3]
 </code></pre>
-<p>러스트의 배열의 길이는 처음 선언된 이후 변경할 수 없습니다. 배열을 사용하면 벡터와 다르게 메모리가 스택 영역에 저장되기 때문에 빠르게 값에 접근할 수 있다는 장점이 있습니다. 이때 배열의 원소들은 모두 같은 타입이어야 합니다. </p>
-<p>배열의 선언은 대괄호 안에 콤마로 구분된 값을 나열합니다. </p>
+<p>러스트의 배열의 길이는 처음 선언된 이후 변경할 수 없습니다. 배열을 사용하면 벡터와 다르게 메모리가 스택 영역에 저장되기 때문에 빠르게 값에 접근할 수 있다는 장점이 있습니다. 이때 배열의 원소들은 모두 같은 타입이어야 합니다.</p>
+<p>배열의 선언은 대괄호 안에 콤마로 구분된 값을 나열합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let months = [
-        &quot;January&quot;,
-        &quot;February&quot;,
-        &quot;March&quot;,
-        &quot;April&quot;,
-        &quot;May&quot;,
-        &quot;June&quot;,
-        &quot;July&quot;,
-        &quot;August&quot;,
-        &quot;September&quot;,
-        &quot;October&quot;,
-        &quot;November&quot;,
-        &quot;December&quot;,
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     ];
-    println!(&quot;{:?}&quot;, months);
+    println!("{:?}", months);
 }
 </code></pre></pre>
 <p>실행 결과</p>
-<pre><code>[&quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;]
+<pre><code>["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 </code></pre>
 <p>러스트에서도 편리한 배열 초기화를 지원합니다. <code>[3; 5]</code> 와 같이 표기하면 숫자 3을 5번 나열하라는 의미입니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let nums = [3; 5];
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>[3, 3, 3, 3, 3]
 </code></pre>
 <h3 id="원소-참조"><a class="header" href="#원소-참조">원소 참조</a></h3>
-<p>넘파이 배열의 원소들은 인덱스를 통해 접근이 가능합니다.	</p>
+<p>넘파이 배열의 원소들은 인덱스를 통해 접근이 가능합니다.</p>
 <pre><code class="language-python">import numpy as np
 
 nums = np.full(5, 3)
@@ -343,7 +372,7 @@ print(nums)
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut nums = [3; 5];
     nums[1] = 1;
-    println!(&quot;{:?}&quot;, nums);
+    println!("{:?}", nums);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -358,14 +387,14 @@ print(nums[5])
 </code></pre>
 <p>실행 결과</p>
 <pre><code>Traceback (most recent call last):
-  File &quot;/Users/code/temp/python/main.py&quot;, line 4, in &lt;module&gt;
+  File "/Users/code/temp/python/main.py", line 4, in &lt;module&gt;
     print(nums[5])
 IndexError: index 5 is out of bounds for axis 0 with size 5
 </code></pre>
 <p>러스트 코드는 컴파일 시 인덱스가 범위를 벗어난다는 에러가 발생합니다.</p>
 <pre><code class="language-rust ignore">fn main() {
     let nums = [3; 5];
-    println!(&quot;{}&quot;, nums[5]);
+    println!("{}", nums[5]);
 }
 </code></pre>
 <p>실행 결과</p>
@@ -373,7 +402,7 @@ IndexError: index 5 is out of bounds for axis 0 with size 5
 error: this operation will panic at runtime
  --&gt; src/main.rs:3:20
   |
-3 |     println!(&quot;{}&quot;, nums[5]);
+3 |     println!("{}", nums[5]);
   |                    ^^^^^^^ index out of bounds: the length is 5 but the index is 5
   |
   = note: `#[deny(unconditional_panic)]` on by default
@@ -384,7 +413,7 @@ error: could not compile `rust_part` due to previous error
 <pre><pre class="playground"><code class="language-rust should_panic">fn main() {
     let nums = [3; 5];
     for i in 0..nums.len() + 1 {
-        println!(&quot;{}&quot;, nums[i]);
+        println!("{}", nums[i]);
     }
 }
 </code></pre></pre>
@@ -399,34 +428,34 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </code></pre>
 <p>배열은 벡터와 자주 비교되는데, 데이터의 길이가 컴파일 타임에 정해지는 경우에는 배열을, 데이터의 길이가 런타임에 정해지는 경우에는 벡터를 사용합니다.</p>
 <h2 id="튜플"><a class="header" href="#튜플">튜플</a></h2>
-<p>튜플은 프로그래밍에서 가장 대표적인 열거형 자료형으로, 값들을 순서대로 나열해 저장하는 데이터 구조입니다. 파이썬과 러스트 모두 튜플 자료형을 가지고 있습니다. </p>
+<p>튜플은 프로그래밍에서 가장 대표적인 열거형 자료형으로, 값들을 순서대로 나열해 저장하는 데이터 구조입니다. 파이썬과 러스트 모두 튜플 자료형을 가지고 있습니다.</p>
 <h3 id="튜플-선언"><a class="header" href="#튜플-선언">튜플 선언</a></h3>
 <p>파이썬의 튜플은 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다.</p>
-<pre><code class="language-python">tup1 = (0, 0.1, &quot;hello&quot;)
-tup2 = (1, 1.01, &quot;bye&quot;)
+<pre><code class="language-python">tup1 = (0, 0.1, "hello")
+tup2 = (1, 1.01, "bye")
 
 _, y, _ = tup2
 
-print(f&quot;tup1 has {tup1} and the value of y is {y}&quot;)
+print(f"tup1 has {tup1} and the value of y is {y}")
 </code></pre>
 <p>실행 결과</p>
 <pre><code>tup1 has (0, 0.1, 'hello') and the value of y is 1.01
 </code></pre>
 <p>러스트의 튜플도 소괄호 안에 콤마로 구분된 값을 넣어서 선언합니다. 변수의 타입을 컴파일러가 추론하는 것처럼 튜플의 타입도 컴파일러가 추론하기 때문에 타입을 명시할 필요가 없습니다. 하지만 타입을 직접 명시해도 상관없습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let tup1 = (0, 0.1, &quot;hello&quot;);
-    let tup2: (i32, f64, &amp;str) = (1, 1.01, &quot;bye&quot;);
+    let tup1 = (0, 0.1, "hello");
+    let tup2: (i32, f64, &amp;str) = (1, 1.01, "bye");
 
     let (_, y, _) = tup2;
 
-    println!(&quot;tup1 has {:?} and the value of y is: {}&quot;, tup1, y);
+    println!("tup1 has {:?} and the value of y is: {}", tup1, y);
 }</code></pre></pre>
 <p>실행 결과</p>
-<pre><code>tup1 is (0, 0.1, &quot;hello&quot;) and the value of y is: 1.01
+<pre><code>tup1 is (0, 0.1, "hello") and the value of y is: 1.01
 </code></pre>
 <h3 id="원소-참조-1"><a class="header" href="#원소-참조-1">원소 참조</a></h3>
 <p>파이썬에서 튜플 원소를 참조하려면 인덱스를 넣으면 됩니다.</p>
-<pre><code class="language-python">tup1 = (0, 0.1, (&quot;hello&quot;, &quot;world&quot;))
+<pre><code class="language-python">tup1 = (0, 0.1, ("hello", "world"))
 
 print(tup1[2][0], tup1[2][1])
 
@@ -436,17 +465,17 @@ print(tup1[2][0], tup1[2][1])
 </code></pre>
 <p>러스트에서 튜플 원소의 참조는 약간 특이한 방식으로 합니다. 튜플 이름 뒤에 점(<code>.</code>)을 붙이고 그 뒤에 인덱스를 입력합니다. 만일 다중 튜플인 경우, 점을 한번 더 찍고 인덱스를 입력하면 됩니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let tup1 = (0, 0.1, (&quot;hello&quot;, &quot;world&quot;));
+    let tup1 = (0, 0.1, ("hello", "world"));
 
-    println!(&quot;{} {}&quot;, tup1.2 .0, tup1.2 .1);
+    println!("{} {}", tup1.2 .0, tup1.2 .1);
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>hello world
 </code></pre>
 <h3 id="튜플-불변성"><a class="header" href="#튜플-불변성">튜플 불변성</a></h3>
-<p>파이썬에서의 튜플과 러스트의 튜플은 차이점이 있는데 바로 불변성입니다. 파이썬의 튜플은 한 번 선언되면 원소의 내용을 바꾸거나, 튜플의 크기를 변경할 수 없습니다. </p>
-<pre><code class="language-python">tup1 = (0, 0.1, &quot;hello&quot;)
+<p>파이썬에서의 튜플과 러스트의 튜플은 차이점이 있는데 바로 불변성입니다. 파이썬의 튜플은 한 번 선언되면 원소의 내용을 바꾸거나, 튜플의 크기를 변경할 수 없습니다.</p>
+<pre><code class="language-python">tup1 = (0, 0.1, "hello")
 
 x = tup1[0]
 _, y, _ = tup1
@@ -462,13 +491,13 @@ tup1[0] = 3
 <p>실행 결과</p>
 <pre><code>(0, 0.1, 'hello') 1 1.1
 Traceback (most recent call last):
-  File &quot;main.py&quot;, line 11, in &lt;module&gt;
+  File "main.py", line 11, in &lt;module&gt;
     tup1[0] = 3
 TypeError: 'tuple' object does not support item assignment
 </code></pre>
-<p>마찬가지로 러스트의 튜플도 한 번 선언되면 크기를 변경할 수 없지만, 원소의 내용은 바꿀 수 있습니다. 다만 처음 선언한 타입은 그대로 유지되어야 합니다. </p>
+<p>마찬가지로 러스트의 튜플도 한 번 선언되면 크기를 변경할 수 없지만, 원소의 내용은 바꿀 수 있습니다. 다만 처음 선언한 타입은 그대로 유지되어야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let mut tup1 = (0, 0.1, &quot;hello&quot;);
+    let mut tup1 = (0, 0.1, "hello");
 
     let mut x = tup1.0;
     let (_, mut y, _) = tup1;
@@ -476,35 +505,35 @@ TypeError: 'tuple' object does not support item assignment
     x = 1;
     y = 1.1;
 
-    println!(&quot;{:?} {} {}&quot;, tup1, x, y);
+    println!("{:?} {} {}", tup1, x, y);
 
     tup1.0 = 3;
 }
 </code></pre></pre>
 <p>실행 결과</p>
-<pre><code>(0, 0.1, &quot;hello&quot;) 1 1.1
+<pre><code>(0, 0.1, "hello") 1 1.1
 </code></pre>
 <h2 id="해시맵"><a class="header" href="#해시맵">해시맵</a></h2>
 <p>해시맵은 키와 밸류를 묶어서 관리하는 자료형으로, 키에 대응하는 밸류를 빠르게 찾을 수 있는 장점이 있습니다. 특히 데이터를 인덱스로 관리하지 않는 경우에 유용합니다.</p>
 <p>파이썬에서는 해시맵을 딕셔너리로 구현하고 있습니다. 다음 예제 코드에서는 <code>songs</code> 딕셔너리에 가수 이름과 대표 곡을 넣어 두었습니다. 그리고 딕셔너리에 특정 키나 밸류가 포함되어 있는지를 찾는 방법,  새로운 키를 넣거나 기존의 밸류를 업데이트하는 방법, 마지막으로 특정 원소를 삭제하는 방법 그리고 존재하지 않는 키를 참조할 때의 처리 방법을 다루고 있습니다.</p>
 <pre><code class="language-python">songs = {
-    &quot;Toto&quot;: &quot;Africa&quot;,
-    &quot;Post Malone&quot;: &quot;Rockstar&quot;,
-    &quot;twenty one pilots&quot;: &quot;Stressed Out&quot;,
+    "Toto": "Africa",
+    "Post Malone": "Rockstar",
+    "twenty one pilots": "Stressed Out",
 }
-print(&quot;----- Playlists -----&quot;)
-if &quot;Toto&quot; in songs and &quot;Africa&quot; in songs.values():
-    print(&quot;Toto's africa is the best song!&quot;)
+print("----- Playlists -----")
+if "Toto" in songs and "Africa" in songs.values():
+    print("Toto's africa is the best song!")
 
-songs[&quot;a-ha&quot;] = &quot;Take on Me&quot;  # Insert
-songs[&quot;Post Malone&quot;] = &quot;Happier&quot;  # Update
+songs["a-ha"] = "Take on Me"  # Insert
+songs["Post Malone"] = "Happier"  # Update
 
 for artist, title in songs.items():
-    print(f&quot;{artist} - {title}&quot;)
-print(&quot;---------------------&quot;)
+    print(f"{artist} - {title}")
+print("---------------------")
 
-songs.pop(&quot;Post Malone&quot;)  # Delete
-print(songs.get(&quot;Post Malone&quot;, &quot;Post Malone is not in the playlist&quot;))
+songs.pop("Post Malone")  # Delete
+print(songs.get("Post Malone", "Post Malone is not in the playlist"))
 
 </code></pre>
 <p>실행 결과</p>
@@ -523,29 +552,29 @@ Post Malone is not in the playlist
 fn main() {
     // Rust's HashMap does not keep the insertion order.
     let mut songs = HashMap::from([
-        (&quot;Toto&quot;, &quot;Africa&quot;),
-        (&quot;Post Malone&quot;, &quot;Rockstar&quot;),
-        (&quot;twenty one pilots&quot;, &quot;Stressed Out&quot;),
+        ("Toto", "Africa"),
+        ("Post Malone", "Rockstar"),
+        ("twenty one pilots", "Stressed Out"),
     ]);
-    println!(&quot;----- Playlists -----&quot;);
-    if songs.contains_key(&quot;Toto&quot;) &amp;&amp; songs.values().any(|&amp;val| val == &quot;Africa&quot;) {
-        println!(&quot;Toto's africa is the best song!&quot;);
+    println!("----- Playlists -----");
+    if songs.contains_key("Toto") &amp;&amp; songs.values().any(|&amp;val| val == "Africa") {
+        println!("Toto's africa is the best song!");
     }
 
-    songs.insert(&quot;a-ha&quot;, &quot;Take on Me&quot;); // Insert
-    songs.entry(&quot;Post Malone&quot;).and_modify(|v| *v = &quot;Happier&quot;); // Update
+    songs.insert("a-ha", "Take on Me"); // Insert
+    songs.entry("Post Malone").and_modify(|v| *v = "Happier"); // Update
 
     for (artist, title) in songs.iter() {
-        println!(&quot;{} - {}&quot;, artist, title);
+        println!("{} - {}", artist, title);
     }
 
-    println!(&quot;---------------------&quot;);
-    songs.remove(&quot;Post Malone&quot;); // Delete
+    println!("---------------------");
+    songs.remove("Post Malone"); // Delete
     println!(
-        &quot;{:?}&quot;,
+        "{:?}",
         songs
-            .get(&quot;Post Malone&quot;)
-            .unwrap_or(&amp;&quot;Post Malone is not in the playlist&quot;)
+            .get("Post Malone")
+            .unwrap_or(&amp;"Post Malone is not in the playlist")
     );
 }
 </code></pre></pre>
@@ -557,7 +586,7 @@ Toto - Africa
 twenty one pilots - Stressed Out
 a-ha - Take on Me
 ---------------------
-&quot;Post Malone is not in the playlist&quot;
+"Post Malone is not in the playlist"
 </code></pre>
 <p>여기서 파이썬과 러스트의 출력 순서가 다른데, 이는 파이썬이 3.6버전부터 원소의 삽입 순서를 보존하기 때문입니다. 만일 러스트에서도 삽입 순서를 보존하고 싶다면 <code>HashMap</code> 대신 <a href="https://github.com/bluss/indexmap"><code>indexmap</code> 크레이트</a>를 사용해야 합니다.</p>
 <h2 id="문자열"><a class="header" href="#문자열">문자열</a></h2>
@@ -565,8 +594,8 @@ a-ha - Take on Me
 <p>문자열을 만드는 방법에는 두 가지가 존재합니다. 코드가 컴파일 될 때 스택 영역에 만들어지는 <code>str</code>과 런타임에 힙 영역에 메모리가 할당되는 <code>String</code>입니다.</p>
 <p><code>str</code> 타입은 문자열 리터럴로 불리며, 아래와 같이 선언할 수 있습니다. <code>str</code> 타입은 한 번 만들어지면 값을 변경하거나 길이를 바꿀 수 없습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let s = &quot;hello&quot;;
-    println!(&quot;{}&quot;, s);
+    let s = "hello";
+    println!("{}", s);
 }
 </code></pre></pre>
 <p>일반적으로 문자열 혹은 스트링이라고 말하는 <code>String</code> 타입은 아래와 같이 여러 방법으로 선언이 가능합니다. 벡터와 마찬가지로 동적으로 값을 바꾸거나 길이를 바꿀 수 있습니다.</p>
@@ -575,12 +604,12 @@ a-ha - Take on Me
     let mut s = String::new();
 
     // 스트링 리터럴로부터 스트링 만들기
-    let data = &quot;initial contents&quot;;
+    let data = "initial contents";
     let s = data.to_string();
-    let s = &quot;initial contents&quot;.to_string();
+    let s = "initial contents".to_string();
 
     // String::from()을 사용하여 스트링 만들기
-    let s = String::from(&quot;initial contents&quot;);
+    let s = String::from("initial contents");
 }
 </code></pre></pre>
 <p>정리하자면 다음과 같습니다.</p>
@@ -591,10 +620,10 @@ a-ha - Take on Me
 <h3 id="문자열-슬라이스"><a class="header" href="#문자열-슬라이스">문자열 슬라이스</a></h3>
 <p><code>&amp;str</code> 은 문자열의 일부분을 의미하기도 합니다. 따라서 <code>&amp;str</code>을 문자열 슬라이스라고 부릅니다. <code>String</code> 타입으로 문자열을 선언하고, 해당 문자열로부터 문자열 슬라이스를 만들어 프린트해 보겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let greet = String::from(&quot;Hi, buzzi!&quot;);
-    // let name = &quot;buzzi!&quot;;
+    let greet = String::from("Hi, buzzi!");
+    // let name = "buzzi!";
     let name = &amp;greet[4..];
-    println!(&quot;{}&quot;, name);
+    println!("{}", name);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -602,19 +631,19 @@ a-ha - Take on Me
 </code></pre>
 <p>문자열 슬라이스를 사용할 때 주의해야 하는 점은, 러스트의 모든 문자열은 UTF-8로 인코딩되어 있다는 점입니다. 실제로 문자열 슬라이스의 인덱스는 문자 단위가 아닌 바이트 스트림의 바이트 단위 입니다. 아래 예제를 살펴봅시다.</p>
 <pre><pre class="playground"><code class="language-rust should_panic">fn main() {
-    let greet = String::from(&quot;Hi😃 buzzi!&quot;);
+    let greet = String::from("Hi😃 buzzi!");
     let name = &amp;greet[4..];
-    println!(&quot;{}&quot;, name);
+    println!("{}", name);
 }</code></pre></pre>
 <p>실행 결과</p>
 <pre><code>thread 'main' panicked at 'byte index 4 is not a char boundary; it is inside '😃' (bytes 2..6) of `Hi😃 buzzi!`', src/main.rs:4:17
 </code></pre>
 <p>일반적인 알파벳 문자는 바이트 스트림에서 1바이트를 차지하지만, 유니코드로 만들어진 이모지의 경우는 4바이트를 차지하기 때문입니다. 바이트 4에 해당하는 인덱스가 이모지 중간에 위치하므로 정상적으로 문자열을 잘라낼 수 없게 됩니다. 따라서 반드시 스트링을 문자 단위로 슬라이스하고 싶은 경우라면 문자열을 벡터로 만들어줘야 합니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let greet = String::from(&quot;Hi😃 buzzi!&quot;);
+    let greet = String::from("Hi😃 buzzi!");
     let greet_chars: Vec&lt;char&gt; = greet.chars().collect();
     let name = &amp;greet_chars[4..].iter().collect::&lt;String&gt;();
-    println!(&quot;{:?}&quot;, name);
+    println!("{:?}", name);
 }
 </code></pre></pre>
 
@@ -626,7 +655,7 @@ a-ha - Take on Me
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="ch6-02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch6-02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -640,7 +669,7 @@ a-ha - Take on Me
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="ch6-02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch6-02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="kr" class="sidebar-visible no-js light">
+<html lang="kr" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,42 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">1.</strong> 러스트 시작하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">1.1.</strong> 파이썬 개발자가 러스트를 배워야 하는 이유</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">1.2.</strong> 러스트로 뭘 할 수 있나요?</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">1.3.</strong> 러스트 개발 환경 설정하기</a></li><li class="chapter-item expanded "><a href="ch1-04.html"><strong aria-hidden="true">1.4.</strong> 러스트 코드 실행하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">2.</strong> 변수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">2.1.</strong> 변수 선언하고 값 출력하기</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">2.2.</strong> 변수의 불변성</a></li><li class="chapter-item expanded "><a href="ch2-03.html"><strong aria-hidden="true">2.3.</strong> 섀도잉</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">2.4.</strong> 타입</a></li><li class="chapter-item expanded "><a href="ch2-05.html"><strong aria-hidden="true">2.5.</strong> 상수</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">3.</strong> 함수</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">3.1.</strong> 함수 선언하기</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">3.2.</strong> 스코프</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">3.3.</strong> 익명 함수</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">4.</strong> 흐름제어</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">4.1.</strong> if</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">4.2.</strong> for</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">4.3.</strong> while</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">4.4.</strong> loop</a></li><li class="chapter-item expanded "><a href="ch4-05.html"><strong aria-hidden="true">4.5.</strong> match</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">5.</strong> 소유권</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">5.1.</strong> 컴퓨터의 메모리</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">5.2.</strong> 소유권 규칙</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">5.3.</strong> 클로저와 소유권</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">6.</strong> 데이터 구조와 이터레이터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">6.1.</strong> 자료형</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">6.2.</strong> 열거형</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">6.3.</strong> 이터레이터</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">7.</strong> 구조체</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">7.1.</strong> 구조체</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">7.2.</strong> 트레이트</a></li></ol></li><li class="chapter-item expanded "><a href="ch8-00.html"><strong aria-hidden="true">8.</strong> 모듈과 크레이트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch8-01.html"><strong aria-hidden="true">8.1.</strong> 러스트의 모듈 시스템</a></li><li class="chapter-item expanded "><a href="ch8-02.html"><strong aria-hidden="true">8.2.</strong> 모듈과 크레이트 사용해 보기</a></li></ol></li><li class="chapter-item expanded "><a href="ch9-00.html"><strong aria-hidden="true">9.</strong> 제네릭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="(./ch9-01.html"><strong aria-hidden="true">9.1.</strong> 타입 파라미터</a></li><li class="chapter-item expanded "><a href="ch9-02.html"><strong aria-hidden="true">9.2.</strong> 제네릭과 트레이트</a></li><li class="chapter-item expanded "><a href="ch9-03.html"><strong aria-hidden="true">9.3.</strong> 미니프로젝트: cat 만들어보기</a></li><li class="chapter-item expanded "><a href="ch9-04.html"><strong aria-hidden="true">9.4.</strong> 라이프타임과 스태틱</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00.html"><strong aria-hidden="true">10.</strong> 예외 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01.html"><strong aria-hidden="true">10.1.</strong> panic!</a></li><li class="chapter-item expanded "><a href="ch10-02.html"><strong aria-hidden="true">10.2.</strong> Option 열거형</a></li><li class="chapter-item expanded "><a href="ch10-03.html"><strong aria-hidden="true">10.3.</strong> Result 열거형</a></li><li class="chapter-item expanded "><a href="ch10-04.html"><strong aria-hidden="true">10.4.</strong> 에러 로깅</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00.html"><strong aria-hidden="true">11.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01.html"><strong aria-hidden="true">11.1.</strong> Box 타입</a></li><li class="chapter-item expanded "><a href="ch11-02.html"><strong aria-hidden="true">11.2.</strong> Rc</a></li><li class="chapter-item expanded "><a href="ch11-03.html"><strong aria-hidden="true">11.3.</strong> RefCell</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00.html"><strong aria-hidden="true">12.</strong> 멀티스레딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01.html"><strong aria-hidden="true">12.1.</strong> 스레드 스폰</a></li><li class="chapter-item expanded "><a href="ch12-02.html"><strong aria-hidden="true">12.2.</strong> 메모리 공유</a></li><li class="chapter-item expanded "><a href="ch12-03.html"><strong aria-hidden="true">12.3.</strong> 메시지 전달</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00.html"><strong aria-hidden="true">13.</strong> 비동기 프로그래밍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01.html"><strong aria-hidden="true">13.1.</strong> 비동기 프로그래밍이란?</a></li><li class="chapter-item expanded "><a href="ch13-02.html" class="active"><strong aria-hidden="true">13.2.</strong> tokio</a></li><li class="chapter-item expanded "><a href="ch13-03.html"><strong aria-hidden="true">13.3.</strong> rayon</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00.html"><strong aria-hidden="true">14.</strong> 테스트</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01.html"><strong aria-hidden="true">14.1.</strong> 유닛 테스트</a></li><li class="chapter-item expanded "><a href="ch14-02.html"><strong aria-hidden="true">14.2.</strong> 문서 테스트</a></li><li class="chapter-item expanded "><a href="ch14-03.html"><strong aria-hidden="true">14.3.</strong> 모킹</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00.html"><strong aria-hidden="true">15.</strong> 파이썬 바인딩</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01.html"><strong aria-hidden="true">15.1.</strong> 파이썬 가상환경 만들기</a></li><li class="chapter-item expanded "><a href="ch15-02.html"><strong aria-hidden="true">15.2.</strong> PyO3 프로젝트 생성하기</a></li><li class="chapter-item expanded "><a href="ch15-03.html"><strong aria-hidden="true">15.3.</strong> 파이썬에서 러스트 코드 실행해 보기</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -154,15 +183,15 @@
 <li>표준 라이브러리의 비동기 버전.</li>
 <li>대규모 라이브러리 에코시스템.</li>
 </ul>
-<p>이제 프로젝트에 <code>tokio</code> 를 설치하기 위해 <code>Cargo.toml</code>파일에 <code>tokio</code>를 추가합니다. 이때 <code>features = [&quot;full&quot;]</code> 을 넣어야 전체 기능을 다 사용할 수 있습니다.</p>
+<p>이제 프로젝트에 <code>tokio</code> 를 설치하기 위해 <code>Cargo.toml</code>파일에 <code>tokio</code>를 추가합니다. 이때 <code>features = ["full"]</code> 을 넣어야 전체 기능을 다 사용할 수 있습니다.</p>
 <pre><code class="language-toml">[dependencies]
-tokio = { version = &quot;1.25.0&quot;, features = [&quot;full&quot;] }
+tokio = { version = "1.25.0", features = ["full"] }
 </code></pre>
 <h3 id="비동기-함수-만들어보기"><a class="header" href="#비동기-함수-만들어보기">비동기 함수 만들어보기</a></h3>
-<p>파이썬에는 비동기 함수를 만들기 위해서 <code>asyncio</code> 라는 내장 라이브러리가 있습니다. </p>
+<p>파이썬에는 비동기 함수를 만들기 위해서 <code>asyncio</code> 라는 내장 라이브러리가 있습니다.</p>
 <p>비동기 함수를 선언하려면 일반 함수 정의 앞에 <code>async</code> 키워드를 붙여주면 됩니다.</p>
 <pre><code class="language-python">async def func():
-    print(&quot;async&quot;)
+    print("async")
 </code></pre>
 <p>비동기 함수는 그냥 호출하게 되면 결과 대신 <code>coroutine</code> 객체가 리턴되고, 경고가 발생합니다.</p>
 <pre><code class="language-python">&gt;&gt;&gt; print(func())
@@ -176,18 +205,18 @@ RuntimeWarning: Enable tracemalloc to get the object allocation traceback
 <pre><code class="language-python">import asyncio
 
 async def func():
-    print(&quot;async&quot;)
+    print("async")
 
 async def main():
     await func()
 
 asyncio.run(main())
 </code></pre>
-<p>러스트에서도 파이썬과 동일하게 비동기 함수를 만드려면 <code>async</code> 와 <code>await</code>을 모두 사용합니다. 위의 파이썬 코드와 동일한 러스트 코드를 만들어보면 다음과 같습니다. 파이썬에서는 함수의 앞에 <code>await</code> 을 사용하는 반면, 러스트에서는 함수 호출 뒤에 <code>.await</code> 을 붙여줍니다. 또한, 비동기 함수는 비동기 함수에서만 호출이 가능하므로 비동기 함수를 실행하기 위해서 <code>main</code> 을 <code>async</code> 로 바꾸고, <code>#[tokio::main]</code> 를 <code>main</code> 함수에 붙여서 비동기 메인 함수를 만들 수 있습니다. 이제 메인 함수가 비동기 함수이기 때문에 내부에서 <code>async</code>와 <code>await</code> 키워드를 사용 가능합니다. </p>
+<p>러스트에서도 파이썬과 동일하게 비동기 함수를 만드려면 <code>async</code> 와 <code>await</code>을 모두 사용합니다. 위의 파이썬 코드와 동일한 러스트 코드를 만들어보면 다음과 같습니다. 파이썬에서는 함수의 앞에 <code>await</code> 을 사용하는 반면, 러스트에서는 함수 호출 뒤에 <code>.await</code> 을 붙여줍니다. 또한, 비동기 함수는 비동기 함수에서만 호출이 가능하므로 비동기 함수를 실행하기 위해서 <code>main</code> 을 <code>async</code> 로 바꾸고, <code>#[tokio::main]</code> 를 <code>main</code> 함수에 붙여서 비동기 메인 함수를 만들 수 있습니다. 이제 메인 함수가 비동기 함수이기 때문에 내부에서 <code>async</code>와 <code>await</code> 키워드를 사용 가능합니다.</p>
 <pre><pre class="playground"><code class="language-rust">use tokio;
 
 async fn func() {
-    println!(&quot;async&quot;);
+    println!("async");
 }
 
 #[tokio::main]
@@ -199,19 +228,19 @@ async fn main() {
 <pre><pre class="playground"><code class="language-rust">use tokio;
 
 async fn func() {
-    println!(&quot;async&quot;);
+    println!("async");
 }
 
 #[tokio::main]
 async fn main() {
-    println!(&quot;{:?}&quot;, func()) // 🤯
+    println!("{:?}", func()) // 🤯
 }
 </code></pre></pre>
 <p>실행 결과</p>
 <pre><code>error[E0277]: `impl Future&lt;Output = i32&gt;` doesn't implement `std::fmt::Display`
  --&gt; src/main.rs:9:22
   |
-9 |     println!(&quot;{:#}&quot;, func())
+9 |     println!("{:#}", func())
   |                      ^^^^^^ `impl Future&lt;Output = i32&gt;` cannot be formatted with the default formatter
 </code></pre>
 <p>컴파일 에러를 들여다보면, 함수 <code>func</code>의 리턴값이<code>impl Future&lt;Output = i32&gt;</code>라는 것을 알 수 있습니다. 즉 비동기 함수를 기다리지 않으면, 파이썬에서는 <code>coroutine</code>이, 러스트에서는 <code>Future</code> 가 리턴됩니다. 둘 다 <code>await</code> 을 사용해 함수 호출이 끝나기를 기다려줘야 실제 함수의 결과를 얻을 수 있습니다.</p>
@@ -220,14 +249,14 @@ async fn main() {
 </blockquote>
 <p>하지만 단순히 <code>await</code>를 사용하기만 해서는 기존의 동기 함수와 비슷한 결과가 나옵니다.</p>
 <pre><pre class="playground"><code class="language-rust">async fn hello() -&gt; i32 {
-    println!(&quot;Hello World!&quot;);
+    println!("Hello World!");
     tokio::time::sleep(std::time::Duration::from_secs(3)).await;
-    println!(&quot;waited&quot;);
+    println!("waited");
     1
 }
 
 async fn bye() -&gt; i32 {
-    println!(&quot;Goodbye!&quot;);
+    println!("Goodbye!");
     2
 }
 
@@ -248,7 +277,7 @@ Goodbye!
 
 
 async def func():
-    return &quot;async&quot;
+    return "async"
 
 
 async def main():
@@ -265,25 +294,25 @@ asyncio.run(main())
 <pre><pre class="playground"><code class="language-rust">use tokio;
 
 async fn func&lt;'a&gt;() -&gt; &amp;'a str {
-    &quot;async&quot;
+    "async"
 }
 
 #[tokio::main]
 async fn main() {
-    println!(&quot;{:?}&quot;, func().await) // 🤯
+    println!("{:?}", func().await) // 🤯
 }
 </code></pre></pre>
 <p>실행 결과</p>
-<pre><code>&quot;async&quot;
+<pre><code>"async"
 </code></pre>
 <h3 id="여러-작업-실행하기"><a class="header" href="#여러-작업-실행하기">여러 작업 실행하기</a></h3>
 <p><code>asyncio.gather</code> 를 사용하면 여러 개의 비동기 함수를 한꺼번에 실행할 수도 있습니다.</p>
 <pre><code class="language-python">import asyncio
 
 async def give_order(order):
-    print(f&quot;Processing {order}...&quot;)
+    print(f"Processing {order}...")
     await asyncio.sleep(3 - order)
-    print(f&quot;Finished {order}&quot;)
+    print(f"Finished {order}")
 
 async def main():
     await asyncio.gather(give_order(1), give_order(2), give_order(3))
@@ -302,9 +331,9 @@ Finished 1
 <pre><code class="language-python">import asyncio
 
 async def give_order(order):
-    print(f&quot;Processing {order}...&quot;)
+    print(f"Processing {order}...")
     await asyncio.sleep(3 - order)
-    print(f&quot;Finished {order}&quot;)
+    print(f"Finished {order}")
     return order
 
 async def main():
@@ -325,9 +354,9 @@ Finished 1
 <p>실제 함수 실행 속도가 다르더라도 결과는 <code>gather</code> 에 넣은 순서대로 나오게 됩니다.</p>
 <p>러스트에서는 <code>tokio::join!</code>에 기다리고자 하는 함수들을 넣어주면 됩니다. 이게 가능한 이유는, 위에서 만든 <code>hello</code>와 <code>bye</code> 함수 모두 실제로는 <code>Future</code>라고 하는 비동기 객체를 리턴하게 되고, <code>tokio</code>가 <code>Future</code>를 사용해 내부적으로 비동기 관련 처리를 해주기 때문입니다.</p>
 <pre><pre class="playground"><code class="language-rust">async fn give_order(order: u64) -&gt; u64 {
-    println!(&quot;Processing {order}...&quot;);
+    println!("Processing {order}...");
     tokio::time::sleep(std::time::Duration::from_secs(3 - order)).await;
-    println!(&quot;Finished {order}&quot;);
+    println!("Finished {order}");
     order
 }
 
@@ -335,7 +364,7 @@ Finished 1
 async fn main() {
     let result = tokio::join!(give_order(1), give_order(2), give_order(3));
 
-    println!(&quot;{:?}&quot;, result);
+    println!("{:?}", result);
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -359,13 +388,13 @@ MAX_POKEMON = 898
 
 def fetch(total):
     urls = [
-        f&quot;https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}&quot;
+        f"https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}"
         for _ in range(total)
     ]
     with requests.Session() as session:
         for url in urls:
             response = session.get(url).json()
-            yield response[&quot;name&quot;]
+            yield response["name"]
 
 
 def main():
@@ -381,9 +410,9 @@ main()
 <p>- <code>rand</code>: 이 크레이트는 난수 생성을 위한 유용한 유틸리티를 제공합니다. 여기에는 다양한 유형의 난수값을 생성하고, 이를 유용한 확률 분포로 변환하고, 무작위성 관련 알고리즘을 구현하는 기능이 포함되어 있습니다. 이 크레이트는 다양한 난수 생성기에 대해 구현된 <code>Rng</code> 특성을 통해 사용하기 쉬운 API를 제공합니다.
 - <code>reqwest</code>: 이 크레이트는 요청을 보내고 응답을 처리하기 위한 사용하기 쉬운 사용자 친화적인 HTTP 클라이언트를 제공합니다. 동기 및 비동기 요청을 모두 지원하며 상위 수준 API부터 고급 사용 사례를 위한 하위 수준 API까지 일반적인 사용 사례를 지원합니다.
 - <code>serde_json</code>: 이 크레이트는 Rust에서 데이터를 직렬화(serialize) 및 역직렬화(deserialize)하기 위한 프레임워크를 제공하는 <code>serde</code> 프로젝트의 일부입니다. <code>serde_json</code> 크레이트는 특히 데이터를 JSON으로 직렬화하고 JSON에서 데이터를 역직렬화하는 기능을 제공합니다.</p>
-<pre><code class="language-toml">rand = &quot;0.8.5&quot;
-reqwest = { version=&quot;0.11.16&quot;, features = [&quot;blocking&quot;, &quot;json&quot;] }
-serde_json = &quot;1.0.95&quot;
+<pre><code class="language-toml">rand = "0.8.5"
+reqwest = { version="0.11.16", features = ["blocking", "json"] }
+serde_json = "1.0.95"
 </code></pre>
 <p><code>rand::thread_rng()</code> 로 1부터 898까지의 무작위 난수 생성</p>
 <p><code>reqwest::blocking::Client::new()</code> 동기 방식의 HTTP 클라이언트 생성</p>
@@ -398,7 +427,7 @@ fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
     let mut urls = Vec::new();
     for _ in 0..total {
         let url = format!(
-            &quot;https://pokeapi.co/api/v2/pokemon/{}&quot;,
+            "https://pokeapi.co/api/v2/pokemon/{}",
             rand::thread_rng().gen_range(1..=MAX_POKEMON)
         );
         urls.push(url);
@@ -412,17 +441,17 @@ fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
             .unwrap()
             .json::&lt;serde_json::Value&gt;()
             .unwrap();
-        names.push(response[&quot;name&quot;].as_str().unwrap().to_string());
+        names.push(response["name"].as_str().unwrap().to_string());
     }
     names
 }
 
 fn main() {
     for name in fetch(10) {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
 
-    println!(&quot;{:?}&quot;, fetch(10));
+    println!("{:?}", fetch(10));
 }
 </code></pre></pre>
 <p>실행 결과</p>
@@ -455,14 +484,14 @@ async def _fetch(session, url):
 
 async def fetch(total):
     urls = [
-        f&quot;https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}&quot;
+        f"https://pokeapi.co/api/v2/pokemon/{randint(1, MAX_POKEMON)}"
         for _ in range(total)
     ]
     async with aiohttp.ClientSession() as session:
         tasks = [_fetch(session, url) for url in urls]
         responses = await asyncio.gather(*tasks)
         for response in responses:
-            yield response[&quot;name&quot;]
+            yield response["name"]
 
 
 async def main():
@@ -484,7 +513,7 @@ async fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
     let mut urls = Vec::new();
     for _ in 0..total {
         let url = format!(
-            &quot;https://pokeapi.co/api/v2/pokemon/{}&quot;,
+            "https://pokeapi.co/api/v2/pokemon/{}",
             rand::thread_rng().gen_range(1..=MAX_POKEMON)
         );
         urls.push(url);
@@ -500,7 +529,7 @@ async fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
             .json::&lt;serde_json::Value&gt;()
             .await
             .unwrap();
-        names.push(response[&quot;name&quot;].as_str().unwrap().to_string());
+        names.push(response["name"].as_str().unwrap().to_string());
     }
     names
 }
@@ -508,10 +537,10 @@ async fn fetch(total: u32) -&gt; Vec&lt;String&gt; {
 #[tokio::main]
 async fn main() {
     for name in fetch(10).await {
-        println!(&quot;{}&quot;, name);
+        println!("{}", name);
     }
 
-    println!(&quot;{:?}&quot;, fetch(10).await);
+    println!("{:?}", fetch(10).await);
 }
 </code></pre></pre>
 
@@ -523,7 +552,7 @@ async fn main() {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="ch13-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch13-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -537,7 +566,7 @@ async fn main() {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="ch13-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch13-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
