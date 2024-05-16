@@ -3,7 +3,7 @@ authors = ["Indosaram"]
 language = "kr"
 multilingual = false
 src = "src"
-title = "파이썬 프로그래머를 위한 러스트 입문"
+title = "파이썬과 비교하며 배우는 러스트 프로그래밍"
 
 [output.html]
 git-repository-url = "https://github.com/Indosaram/rust-python-book"
