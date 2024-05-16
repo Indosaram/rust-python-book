@@ -12,9 +12,9 @@ https://www.yes24.com/Product/Goods/126578252
 
 # 온라인 강의
 
-프로그래머스에서 "파이썬 프로그래머를 위한 러스트(Rust) 입문"이라는 강의가 런칭되었습니다!
+책 출간에 맞추어 인프런에서 새로운 강의 "세상에서 제일 쉬운 러스트 프로그래밍"도 오픈 예정입니다!
 
-[강의 바로가기](https://school.programmers.co.kr/learn/courses/16130/16130-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%9F%AC%EC%8A%A4%ED%8A%B8rust-%EC%9E%85%EB%AC%B8)
+[강의 바로가기](https://inf.run/kXsni)
 
 ## 기여
 
